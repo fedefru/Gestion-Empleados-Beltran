@@ -1,0 +1,22 @@
+{
+  "gestionEmpleadosApp": {
+    "paises": {
+      "home": {
+        "title": "Paises",
+        "createLabel": "Crear nuevo Paises",
+        "createOrEditLabel": "Crear o editar Paises",
+        "notFound": "Ningún Paises encontrado"
+      },
+      "created": "Un nuevo Paises ha sido creado con el identificador {{ param }}",
+      "updated": "Un Paises ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Paises ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Paises {{ id }}?"
+      },
+      "detail": {
+        "title": "Paises"
+      },
+      "nombre": "Nombre"
+    }
+  }
+}

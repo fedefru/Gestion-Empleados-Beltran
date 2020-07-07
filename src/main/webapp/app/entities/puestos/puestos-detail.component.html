@@ -1,0 +1,34 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="puestos">
+            <h2><span jhiTranslate="gestionEmpleadosApp.puestos.detail.title">Puestos</span> {{ puestos.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestionEmpleadosApp.puestos.nombre">Nombre</span></dt>
+                <dd>
+                    <span>{{ puestos.nombre }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionEmpleadosApp.puestos.activo">Activo</span></dt>
+                <dd>
+                    <span>{{ puestos.activo }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/puestos', puestos.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

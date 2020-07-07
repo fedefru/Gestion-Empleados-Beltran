@@ -1,0 +1,23 @@
+{
+  "gestionEmpleadosApp": {
+    "permisos": {
+      "home": {
+        "title": "Permisos",
+        "createLabel": "Create a new Permisos",
+        "createOrEditLabel": "Create or edit a Permisos",
+        "notFound": "No Permisos found"
+      },
+      "created": "A new Permisos is created with identifier {{ param }}",
+      "updated": "A Permisos is updated with identifier {{ param }}",
+      "deleted": "A Permisos is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Permisos {{ id }}?"
+      },
+      "detail": {
+        "title": "Permisos"
+      },
+      "nombre": "Nombre",
+      "descripcion": "Descripcion"
+    }
+  }
+}

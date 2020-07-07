@@ -1,0 +1,24 @@
+{
+  "gestionEmpleadosApp": {
+    "permisosGrupos": {
+      "home": {
+        "title": "Permisos Grupos",
+        "createLabel": "Create a new Permisos Grupos",
+        "createOrEditLabel": "Create or edit a Permisos Grupos",
+        "notFound": "No Permisos Grupos found"
+      },
+      "created": "A new Permisos Grupos is created with identifier {{ param }}",
+      "updated": "A Permisos Grupos is updated with identifier {{ param }}",
+      "deleted": "A Permisos Grupos is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Permisos Grupos {{ id }}?"
+      },
+      "detail": {
+        "title": "Permisos Grupos"
+      },
+      "nombre": "Nombre",
+      "permiso": "Permiso",
+      "grupos": "Grupos"
+    }
+  }
+}

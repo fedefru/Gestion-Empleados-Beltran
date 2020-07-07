@@ -1,0 +1,133 @@
+entity Paises{
+	nombre String
+}
+entity Provincias{
+	nombre String
+}
+entity Ciudades{
+	nombre String
+}
+entity Direcciones{
+	calle String,
+    altura Integer,
+    piso Integer,
+    departamento String
+}
+
+entity TipoDireccion {
+	descripcion String
+}
+
+entity Empresas{
+	nombre String
+}
+entity EntidadesEmpresas {
+	valor String
+}
+entity EntidadesUsuarios {
+	valor String
+}
+entity Entidades{
+	nombre String,
+    comentario String
+}
+entity Estados{
+	nombre String
+}
+entity ContactoEmpresas{
+	nombre String
+}
+entity TipoContactos{
+	descripcion String
+}
+entity ContactoUsuarios{
+	nombre String
+}
+entity Usuarios{
+    nombre String,
+    apellido String,
+    fechaNac LocalDate,
+    clave String,
+    usuario String
+}
+entity TipoDocumentos{
+	tipo String	
+}
+entity GrupoUsuarios{
+	nombre String
+}
+entity PermisosGrupos{
+	nombre String
+}
+entity Grupos{
+	nombre String,
+    descripcion String
+}
+entity Permisos{
+	nombre String,
+    descripcion String
+}
+entity Empleados{
+	fechaIngreso LocalDate,
+}
+entity Fichajes{
+	fichaje LocalDate,
+    accion String
+}
+entity Puestos{
+	nombre String,
+    activo Boolean
+}
+entity Areas{
+	nombre String,
+    codSector String,
+    activo Boolean
+}
+entity Configuraciones{
+	clave String,
+    valor String,
+    detalle String
+}
+
+relationship ManyToOne {
+	Usuarios{Estado} to Estados
+    Usuarios{Direccion} to TipoDireccion
+    Usuarios{Contacto} to TipoContactos
+    
+    Empresas{Direccion} to TipoDireccion
+    Empresas{Contacto} to TipoContactos
+    Empresas{Estado} to Estados
+	
+    TipoDireccion{Direccion} to Direcciones
+    
+    ContactoEmpresas{Contacto} to TipoContactos
+    ContactoUsuarios{Contacto} to TipoContactos
+    TipoContactos{TipoDocumento} to TipoDocumentos
+    
+    EntidadesEmpresas{Empresa} to Empresas
+    EntidadesEmpresas{Entidad} to Entidades
+    
+    EntidadesUsuarios{Usuario} to Usuarios
+    EntidadesUsuarios{Entidad} to Entidades
+    
+    Empleados{Jefe} to Empleados
+    Empleados{Usuario} to Usuarios
+    Empleados{Estado} to Estados
+    
+    PermisosGrupos{Permiso} to Permisos
+    PermisosGrupos{Grupos} to Grupos
+    
+    GrupoUsuarios{Usuario} to Usuarios
+    GrupoUsuarios{Grupo} to Grupos
+    
+	Provincias{Pais} to Paises
+	Direcciones{Ciudad} to Ciudades
+	Ciudades{Provicia} to Provincias
+
+	Empleados{Area} to Areas
+    Empleados{Puesto} to Puestos
+    Empleados{Fichaje} to Fichajes
+    Empleados{Empresa} to Empresas
+}
+
+paginate Usuarios, Empleados, TipoContactos, Empresas  with pagination

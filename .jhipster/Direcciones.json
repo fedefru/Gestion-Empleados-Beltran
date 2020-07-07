@@ -1,0 +1,41 @@
+{
+  "name": "Direcciones",
+  "fields": [
+    {
+      "fieldName": "calle",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "altura",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "piso",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "departamento",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "ciudades",
+      "otherEntityRelationshipName": "direcciones",
+      "relationshipName": "ciudad",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200704004430",
+  "entityTableName": "direcciones",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

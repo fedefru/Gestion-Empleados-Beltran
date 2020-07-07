@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity Empleados.
+    -->
+    <changeSet id="20200704010030-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="jefe_id"
+                                 baseTableName="empleados"
+                                 constraintName="fk_empleados_jefe_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="empleados"/>
+
+        <addForeignKeyConstraint baseColumnNames="usuario_id"
+                                 baseTableName="empleados"
+                                 constraintName="fk_empleados_usuario_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="usuarios"/>
+
+        <addForeignKeyConstraint baseColumnNames="estado_id"
+                                 baseTableName="empleados"
+                                 constraintName="fk_empleados_estado_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="estados"/>
+
+        <addForeignKeyConstraint baseColumnNames="area_id"
+                                 baseTableName="empleados"
+                                 constraintName="fk_empleados_area_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="areas"/>
+
+        <addForeignKeyConstraint baseColumnNames="puesto_id"
+                                 baseTableName="empleados"
+                                 constraintName="fk_empleados_puesto_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="puestos"/>
+
+        <addForeignKeyConstraint baseColumnNames="fichaje_id"
+                                 baseTableName="empleados"
+                                 constraintName="fk_empleados_fichaje_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="fichajes"/>
+
+        <addForeignKeyConstraint baseColumnNames="empresa_id"
+                                 baseTableName="empleados"
+                                 constraintName="fk_empleados_empresa_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="empresas"/>
+
+    </changeSet>
+</databaseChangeLog>

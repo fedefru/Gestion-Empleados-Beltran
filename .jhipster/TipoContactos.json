@@ -1,0 +1,29 @@
+{
+  "name": "TipoContactos",
+  "fields": [
+    {
+      "fieldName": "descripcion",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "tipoDocumentos",
+      "otherEntityRelationshipName": "tipoContactos",
+      "relationshipName": "tipoDocumento",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200704005230",
+  "entityTableName": "tipo_contactos",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

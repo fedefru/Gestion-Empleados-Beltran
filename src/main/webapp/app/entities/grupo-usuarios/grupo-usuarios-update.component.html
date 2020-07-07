@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-grupo-usuarios-heading" jhiTranslate="gestionEmpleadosApp.grupoUsuarios.home.createOrEditLabel">Create or edit a Grupo Usuarios</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.grupoUsuarios.nombre" for="field_nombre">Nombre</label>
+                    <input type="text" class="form-control" name="nombre" id="field_nombre"
+                           formControlName="nombre"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.grupoUsuarios.usuario" for="field_usuario">Usuario</label>
+                    <select class="form-control" id="field_usuario" name="usuario" formControlName="usuario">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="usuariosOption.id === editForm.get('usuario')!.value?.id ? editForm.get('usuario')!.value : usuariosOption" *ngFor="let usuariosOption of usuarios; trackBy: trackById">{{ usuariosOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.grupoUsuarios.grupo" for="field_grupo">Grupo</label>
+                    <select class="form-control" id="field_grupo" name="grupo" formControlName="grupo">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="gruposOption.id === editForm.get('grupo')!.value?.id ? editForm.get('grupo')!.value : gruposOption" *ngFor="let gruposOption of grupos; trackBy: trackById">{{ gruposOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

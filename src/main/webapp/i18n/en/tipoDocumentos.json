@@ -1,0 +1,22 @@
+{
+  "gestionEmpleadosApp": {
+    "tipoDocumentos": {
+      "home": {
+        "title": "Tipo Documentos",
+        "createLabel": "Create a new Tipo Documentos",
+        "createOrEditLabel": "Create or edit a Tipo Documentos",
+        "notFound": "No Tipo Documentos found"
+      },
+      "created": "A new Tipo Documentos is created with identifier {{ param }}",
+      "updated": "A Tipo Documentos is updated with identifier {{ param }}",
+      "deleted": "A Tipo Documentos is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Tipo Documentos {{ id }}?"
+      },
+      "detail": {
+        "title": "Tipo Documentos"
+      },
+      "tipo": "Tipo"
+    }
+  }
+}

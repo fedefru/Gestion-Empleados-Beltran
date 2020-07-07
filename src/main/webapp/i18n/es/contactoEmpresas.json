@@ -1,0 +1,23 @@
+{
+  "gestionEmpleadosApp": {
+    "contactoEmpresas": {
+      "home": {
+        "title": "Contacto Empresas",
+        "createLabel": "Crear nuevo Contacto Empresas",
+        "createOrEditLabel": "Crear o editar Contacto Empresas",
+        "notFound": "Ningún Contacto Empresas encontrado"
+      },
+      "created": "Un nuevo Contacto Empresas ha sido creado con el identificador {{ param }}",
+      "updated": "Un Contacto Empresas ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Contacto Empresas ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Contacto Empresas {{ id }}?"
+      },
+      "detail": {
+        "title": "Contacto Empresas"
+      },
+      "nombre": "Nombre",
+      "contacto": "Contacto"
+    }
+  }
+}

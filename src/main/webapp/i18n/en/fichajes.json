@@ -1,0 +1,23 @@
+{
+  "gestionEmpleadosApp": {
+    "fichajes": {
+      "home": {
+        "title": "Fichajes",
+        "createLabel": "Create a new Fichajes",
+        "createOrEditLabel": "Create or edit a Fichajes",
+        "notFound": "No Fichajes found"
+      },
+      "created": "A new Fichajes is created with identifier {{ param }}",
+      "updated": "A Fichajes is updated with identifier {{ param }}",
+      "deleted": "A Fichajes is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Fichajes {{ id }}?"
+      },
+      "detail": {
+        "title": "Fichajes"
+      },
+      "fichaje": "Fichaje",
+      "accion": "Accion"
+    }
+  }
+}

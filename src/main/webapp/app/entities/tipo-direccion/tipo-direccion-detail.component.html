@@ -1,0 +1,36 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="tipoDireccion">
+            <h2><span jhiTranslate="gestionEmpleadosApp.tipoDireccion.detail.title">Tipo Direccion</span> {{ tipoDireccion.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestionEmpleadosApp.tipoDireccion.descripcion">Descripcion</span></dt>
+                <dd>
+                    <span>{{ tipoDireccion.descripcion }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionEmpleadosApp.tipoDireccion.direccion">Direccion</span></dt>
+                <dd>
+                    <div *ngIf="tipoDireccion.direccion">
+                        <a [routerLink]="['/direcciones', tipoDireccion.direccion?.id, 'view']">{{ tipoDireccion.direccion?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/tipo-direccion', tipoDireccion.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

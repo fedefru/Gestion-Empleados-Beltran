@@ -1,0 +1,59 @@
+{
+  "name": "Usuarios",
+  "fields": [
+    {
+      "fieldName": "nombre",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "apellido",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fechaNac",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "clave",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "usuario",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "estados",
+      "otherEntityRelationshipName": "usuarios",
+      "relationshipName": "estado",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "tipoDireccion",
+      "otherEntityRelationshipName": "usuarios",
+      "relationshipName": "direccion",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "tipoContactos",
+      "otherEntityRelationshipName": "usuarios",
+      "relationshipName": "contacto",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200704005430",
+  "entityTableName": "usuarios",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

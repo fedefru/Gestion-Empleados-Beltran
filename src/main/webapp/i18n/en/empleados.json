@@ -1,0 +1,29 @@
+{
+  "gestionEmpleadosApp": {
+    "empleados": {
+      "home": {
+        "title": "Empleados",
+        "createLabel": "Create a new Empleados",
+        "createOrEditLabel": "Create or edit a Empleados",
+        "notFound": "No Empleados found"
+      },
+      "created": "A new Empleados is created with identifier {{ param }}",
+      "updated": "A Empleados is updated with identifier {{ param }}",
+      "deleted": "A Empleados is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Empleados {{ id }}?"
+      },
+      "detail": {
+        "title": "Empleados"
+      },
+      "fechaIngreso": "Fecha Ingreso",
+      "jefe": "Jefe",
+      "usuario": "Usuario",
+      "estado": "Estado",
+      "area": "Area",
+      "puesto": "Puesto",
+      "fichaje": "Fichaje",
+      "empresa": "Empresa"
+    }
+  }
+}

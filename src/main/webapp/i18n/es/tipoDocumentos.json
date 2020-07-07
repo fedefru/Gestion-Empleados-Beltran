@@ -1,0 +1,22 @@
+{
+  "gestionEmpleadosApp": {
+    "tipoDocumentos": {
+      "home": {
+        "title": "Tipo Documentos",
+        "createLabel": "Crear nuevo Tipo Documentos",
+        "createOrEditLabel": "Crear o editar Tipo Documentos",
+        "notFound": "Ningún Tipo Documentos encontrado"
+      },
+      "created": "Un nuevo Tipo Documentos ha sido creado con el identificador {{ param }}",
+      "updated": "Un Tipo Documentos ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Tipo Documentos ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Tipo Documentos {{ id }}?"
+      },
+      "detail": {
+        "title": "Tipo Documentos"
+      },
+      "tipo": "Tipo"
+    }
+  }
+}

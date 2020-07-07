@@ -1,0 +1,29 @@
+{
+  "name": "Provincias",
+  "fields": [
+    {
+      "fieldName": "nombre",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "paises",
+      "otherEntityRelationshipName": "provincias",
+      "relationshipName": "pais",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200704004230",
+  "entityTableName": "provincias",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

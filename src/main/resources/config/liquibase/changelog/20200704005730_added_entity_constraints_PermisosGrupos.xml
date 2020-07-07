@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity PermisosGrupos.
+    -->
+    <changeSet id="20200704005730-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="permiso_id"
+                                 baseTableName="permisos_grupos"
+                                 constraintName="fk_permisos_grupos_permiso_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="permisos"/>
+
+        <addForeignKeyConstraint baseColumnNames="grupos_id"
+                                 baseTableName="permisos_grupos"
+                                 constraintName="fk_permisos_grupos_grupos_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="grupos"/>
+
+    </changeSet>
+</databaseChangeLog>

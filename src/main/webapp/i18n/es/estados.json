@@ -1,0 +1,22 @@
+{
+  "gestionEmpleadosApp": {
+    "estados": {
+      "home": {
+        "title": "Estados",
+        "createLabel": "Crear nuevo Estados",
+        "createOrEditLabel": "Crear o editar Estados",
+        "notFound": "Ningún Estados encontrado"
+      },
+      "created": "Un nuevo Estados ha sido creado con el identificador {{ param }}",
+      "updated": "Un Estados ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Estados ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Estados {{ id }}?"
+      },
+      "detail": {
+        "title": "Estados"
+      },
+      "nombre": "Nombre"
+    }
+  }
+}

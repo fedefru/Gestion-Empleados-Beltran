@@ -1,0 +1,23 @@
+{
+  "gestionEmpleadosApp": {
+    "permisos": {
+      "home": {
+        "title": "Permisos",
+        "createLabel": "Crear nuevo Permisos",
+        "createOrEditLabel": "Crear o editar Permisos",
+        "notFound": "Ningún Permisos encontrado"
+      },
+      "created": "Un nuevo Permisos ha sido creado con el identificador {{ param }}",
+      "updated": "Un Permisos ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Permisos ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Permisos {{ id }}?"
+      },
+      "detail": {
+        "title": "Permisos"
+      },
+      "nombre": "Nombre",
+      "descripcion": "Descripcion"
+    }
+  }
+}

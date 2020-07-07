@@ -1,0 +1,36 @@
+{
+  "name": "EntidadesUsuarios",
+  "fields": [
+    {
+      "fieldName": "valor",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "usuarios",
+      "otherEntityRelationshipName": "entidadesUsuarios",
+      "relationshipName": "usuario",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "entidades",
+      "otherEntityRelationshipName": "entidadesUsuarios",
+      "relationshipName": "entidad",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200704004830",
+  "entityTableName": "entidades_usuarios",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

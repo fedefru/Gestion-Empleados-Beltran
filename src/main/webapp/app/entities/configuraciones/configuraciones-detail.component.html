@@ -1,0 +1,38 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="configuraciones">
+            <h2><span jhiTranslate="gestionEmpleadosApp.configuraciones.detail.title">Configuraciones</span> {{ configuraciones.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestionEmpleadosApp.configuraciones.clave">Clave</span></dt>
+                <dd>
+                    <span>{{ configuraciones.clave }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionEmpleadosApp.configuraciones.valor">Valor</span></dt>
+                <dd>
+                    <span>{{ configuraciones.valor }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionEmpleadosApp.configuraciones.detalle">Detalle</span></dt>
+                <dd>
+                    <span>{{ configuraciones.detalle }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/configuraciones', configuraciones.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="entidadesUsuarios">
+            <h2><span jhiTranslate="gestionEmpleadosApp.entidadesUsuarios.detail.title">Entidades Usuarios</span> {{ entidadesUsuarios.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestionEmpleadosApp.entidadesUsuarios.valor">Valor</span></dt>
+                <dd>
+                    <span>{{ entidadesUsuarios.valor }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionEmpleadosApp.entidadesUsuarios.usuario">Usuario</span></dt>
+                <dd>
+                    <div *ngIf="entidadesUsuarios.usuario">
+                        <a [routerLink]="['/usuarios', entidadesUsuarios.usuario?.id, 'view']">{{ entidadesUsuarios.usuario?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gestionEmpleadosApp.entidadesUsuarios.entidad">Entidad</span></dt>
+                <dd>
+                    <div *ngIf="entidadesUsuarios.entidad">
+                        <a [routerLink]="['/entidades', entidadesUsuarios.entidad?.id, 'view']">{{ entidadesUsuarios.entidad?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/entidades-usuarios', entidadesUsuarios.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

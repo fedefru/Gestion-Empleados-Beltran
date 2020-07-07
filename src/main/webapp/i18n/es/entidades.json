@@ -1,0 +1,23 @@
+{
+  "gestionEmpleadosApp": {
+    "entidades": {
+      "home": {
+        "title": "Entidades",
+        "createLabel": "Crear nuevo Entidades",
+        "createOrEditLabel": "Crear o editar Entidades",
+        "notFound": "Ningún Entidades encontrado"
+      },
+      "created": "Un nuevo Entidades ha sido creado con el identificador {{ param }}",
+      "updated": "Un Entidades ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Entidades ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Entidades {{ id }}?"
+      },
+      "detail": {
+        "title": "Entidades"
+      },
+      "nombre": "Nombre",
+      "comentario": "Comentario"
+    }
+  }
+}

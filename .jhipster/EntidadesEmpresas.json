@@ -1,0 +1,36 @@
+{
+  "name": "EntidadesEmpresas",
+  "fields": [
+    {
+      "fieldName": "valor",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "empresas",
+      "otherEntityRelationshipName": "entidadesEmpresas",
+      "relationshipName": "empresa",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "entidades",
+      "otherEntityRelationshipName": "entidadesEmpresas",
+      "relationshipName": "entidad",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200704004730",
+  "entityTableName": "entidades_empresas",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

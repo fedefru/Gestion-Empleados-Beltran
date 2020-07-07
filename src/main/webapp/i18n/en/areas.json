@@ -1,0 +1,24 @@
+{
+  "gestionEmpleadosApp": {
+    "areas": {
+      "home": {
+        "title": "Areas",
+        "createLabel": "Create a new Areas",
+        "createOrEditLabel": "Create or edit a Areas",
+        "notFound": "No Areas found"
+      },
+      "created": "A new Areas is created with identifier {{ param }}",
+      "updated": "A Areas is updated with identifier {{ param }}",
+      "deleted": "A Areas is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Areas {{ id }}?"
+      },
+      "detail": {
+        "title": "Areas"
+      },
+      "nombre": "Nombre",
+      "codSector": "Cod Sector",
+      "activo": "Activo"
+    }
+  }
+}

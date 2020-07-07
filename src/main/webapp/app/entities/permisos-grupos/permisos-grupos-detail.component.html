@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="permisosGrupos">
+            <h2><span jhiTranslate="gestionEmpleadosApp.permisosGrupos.detail.title">Permisos Grupos</span> {{ permisosGrupos.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestionEmpleadosApp.permisosGrupos.nombre">Nombre</span></dt>
+                <dd>
+                    <span>{{ permisosGrupos.nombre }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionEmpleadosApp.permisosGrupos.permiso">Permiso</span></dt>
+                <dd>
+                    <div *ngIf="permisosGrupos.permiso">
+                        <a [routerLink]="['/permisos', permisosGrupos.permiso?.id, 'view']">{{ permisosGrupos.permiso?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gestionEmpleadosApp.permisosGrupos.grupos">Grupos</span></dt>
+                <dd>
+                    <div *ngIf="permisosGrupos.grupos">
+                        <a [routerLink]="['/grupos', permisosGrupos.grupos?.id, 'view']">{{ permisosGrupos.grupos?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/permisos-grupos', permisosGrupos.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

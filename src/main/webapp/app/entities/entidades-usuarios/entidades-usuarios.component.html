@@ -1,0 +1,73 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="gestionEmpleadosApp.entidadesUsuarios.home.title">Entidades Usuarios</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-entidades-usuarios" [routerLink]="['/entidades-usuarios/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="gestionEmpleadosApp.entidadesUsuarios.home.createLabel">
+            Create a new Entidades Usuarios
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="entidadesUsuarios?.length === 0">
+        <span jhiTranslate="gestionEmpleadosApp.entidadesUsuarios.home.notFound">No entidadesUsuarios found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="entidadesUsuarios && entidadesUsuarios.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionEmpleadosApp.entidadesUsuarios.valor">Valor</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionEmpleadosApp.entidadesUsuarios.usuario">Usuario</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionEmpleadosApp.entidadesUsuarios.entidad">Entidad</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let entidadesUsuarios of entidadesUsuarios ;trackBy: trackId">
+                    <td><a [routerLink]="['/entidades-usuarios', entidadesUsuarios.id, 'view']">{{ entidadesUsuarios.id }}</a></td>
+                    <td>{{ entidadesUsuarios.valor }}</td>
+                    <td>
+                        <div *ngIf="entidadesUsuarios.usuario">
+                            <a [routerLink]="['/usuarios', entidadesUsuarios.usuario?.id, 'view']" >{{ entidadesUsuarios.usuario?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="entidadesUsuarios.entidad">
+                            <a [routerLink]="['/entidades', entidadesUsuarios.entidad?.id, 'view']" >{{ entidadesUsuarios.entidad?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/entidades-usuarios', entidadesUsuarios.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/entidades-usuarios', entidadesUsuarios.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(entidadesUsuarios)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

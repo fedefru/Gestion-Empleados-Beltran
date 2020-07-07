@@ -1,0 +1,29 @@
+{
+  "name": "TipoDireccion",
+  "fields": [
+    {
+      "fieldName": "descripcion",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "direcciones",
+      "otherEntityRelationshipName": "tipoDireccion",
+      "relationshipName": "direccion",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200704004530",
+  "entityTableName": "tipo_direccion",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

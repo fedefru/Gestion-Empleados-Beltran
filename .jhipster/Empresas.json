@@ -1,0 +1,43 @@
+{
+  "name": "Empresas",
+  "fields": [
+    {
+      "fieldName": "nombre",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "tipoDireccion",
+      "otherEntityRelationshipName": "empresas",
+      "relationshipName": "direccion",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "tipoContactos",
+      "otherEntityRelationshipName": "empresas",
+      "relationshipName": "contacto",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "estados",
+      "otherEntityRelationshipName": "empresas",
+      "relationshipName": "estado",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200704004630",
+  "entityTableName": "empresas",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

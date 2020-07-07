@@ -1,0 +1,29 @@
+{
+  "name": "Configuraciones",
+  "fields": [
+    {
+      "fieldName": "clave",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "valor",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "detalle",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20200704010430",
+  "entityTableName": "configuraciones",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

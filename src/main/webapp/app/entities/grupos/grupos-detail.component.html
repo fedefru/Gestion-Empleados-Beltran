@@ -1,0 +1,34 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="grupos">
+            <h2><span jhiTranslate="gestionEmpleadosApp.grupos.detail.title">Grupos</span> {{ grupos.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestionEmpleadosApp.grupos.nombre">Nombre</span></dt>
+                <dd>
+                    <span>{{ grupos.nombre }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionEmpleadosApp.grupos.descripcion">Descripcion</span></dt>
+                <dd>
+                    <span>{{ grupos.descripcion }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/grupos', grupos.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

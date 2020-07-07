@@ -1,0 +1,23 @@
+{
+  "gestionEmpleadosApp": {
+    "ciudades": {
+      "home": {
+        "title": "Ciudades",
+        "createLabel": "Crear nuevo Ciudades",
+        "createOrEditLabel": "Crear o editar Ciudades",
+        "notFound": "Ningún Ciudades encontrado"
+      },
+      "created": "Un nuevo Ciudades ha sido creado con el identificador {{ param }}",
+      "updated": "Un Ciudades ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Ciudades ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Ciudades {{ id }}?"
+      },
+      "detail": {
+        "title": "Ciudades"
+      },
+      "nombre": "Nombre",
+      "provicia": "Provicia"
+    }
+  }
+}

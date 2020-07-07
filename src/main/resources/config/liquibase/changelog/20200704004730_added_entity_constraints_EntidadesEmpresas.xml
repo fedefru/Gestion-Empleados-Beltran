@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity EntidadesEmpresas.
+    -->
+    <changeSet id="20200704004730-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="empresa_id"
+                                 baseTableName="entidades_empresas"
+                                 constraintName="fk_entidades_empresas_empresa_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="empresas"/>
+
+        <addForeignKeyConstraint baseColumnNames="entidad_id"
+                                 baseTableName="entidades_empresas"
+                                 constraintName="fk_entidades_empresas_entidad_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="entidades"/>
+
+    </changeSet>
+</databaseChangeLog>

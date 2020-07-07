@@ -1,0 +1,23 @@
+{
+  "gestionEmpleadosApp": {
+    "tipoContactos": {
+      "home": {
+        "title": "Tipo Contactos",
+        "createLabel": "Crear nuevo Tipo Contactos",
+        "createOrEditLabel": "Crear o editar Tipo Contactos",
+        "notFound": "Ningún Tipo Contactos encontrado"
+      },
+      "created": "Un nuevo Tipo Contactos ha sido creado con el identificador {{ param }}",
+      "updated": "Un Tipo Contactos ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Tipo Contactos ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Tipo Contactos {{ id }}?"
+      },
+      "detail": {
+        "title": "Tipo Contactos"
+      },
+      "descripcion": "Descripcion",
+      "tipoDocumento": "Tipo Documento"
+    }
+  }
+}

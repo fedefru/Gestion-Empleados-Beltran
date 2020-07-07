@@ -1,0 +1,23 @@
+{
+  "gestionEmpleadosApp": {
+    "puestos": {
+      "home": {
+        "title": "Puestos",
+        "createLabel": "Crear nuevo Puestos",
+        "createOrEditLabel": "Crear o editar Puestos",
+        "notFound": "Ningún Puestos encontrado"
+      },
+      "created": "Un nuevo Puestos ha sido creado con el identificador {{ param }}",
+      "updated": "Un Puestos ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Puestos ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Puestos {{ id }}?"
+      },
+      "detail": {
+        "title": "Puestos"
+      },
+      "nombre": "Nombre",
+      "activo": "Activo"
+    }
+  }
+}

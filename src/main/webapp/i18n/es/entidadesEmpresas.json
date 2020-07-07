@@ -1,0 +1,24 @@
+{
+  "gestionEmpleadosApp": {
+    "entidadesEmpresas": {
+      "home": {
+        "title": "Entidades Empresas",
+        "createLabel": "Crear nuevo Entidades Empresas",
+        "createOrEditLabel": "Crear o editar Entidades Empresas",
+        "notFound": "Ningún Entidades Empresas encontrado"
+      },
+      "created": "Un nuevo Entidades Empresas ha sido creado con el identificador {{ param }}",
+      "updated": "Un Entidades Empresas ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Entidades Empresas ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Entidades Empresas {{ id }}?"
+      },
+      "detail": {
+        "title": "Entidades Empresas"
+      },
+      "valor": "Valor",
+      "empresa": "Empresa",
+      "entidad": "Entidad"
+    }
+  }
+}

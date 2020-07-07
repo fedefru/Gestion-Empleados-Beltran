@@ -1,0 +1,64 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="usuarios">
+            <h2><span jhiTranslate="gestionEmpleadosApp.usuarios.detail.title">Usuarios</span> {{ usuarios.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestionEmpleadosApp.usuarios.nombre">Nombre</span></dt>
+                <dd>
+                    <span>{{ usuarios.nombre }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionEmpleadosApp.usuarios.apellido">Apellido</span></dt>
+                <dd>
+                    <span>{{ usuarios.apellido }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionEmpleadosApp.usuarios.fechaNac">Fecha Nac</span></dt>
+                <dd>
+                    <span>{{ usuarios.fechaNac }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionEmpleadosApp.usuarios.clave">Clave</span></dt>
+                <dd>
+                    <span>{{ usuarios.clave }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionEmpleadosApp.usuarios.usuario">Usuario</span></dt>
+                <dd>
+                    <span>{{ usuarios.usuario }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionEmpleadosApp.usuarios.estado">Estado</span></dt>
+                <dd>
+                    <div *ngIf="usuarios.estado">
+                        <a [routerLink]="['/estados', usuarios.estado?.id, 'view']">{{ usuarios.estado?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gestionEmpleadosApp.usuarios.direccion">Direccion</span></dt>
+                <dd>
+                    <div *ngIf="usuarios.direccion">
+                        <a [routerLink]="['/tipo-direccion', usuarios.direccion?.id, 'view']">{{ usuarios.direccion?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gestionEmpleadosApp.usuarios.contacto">Contacto</span></dt>
+                <dd>
+                    <div *ngIf="usuarios.contacto">
+                        <a [routerLink]="['/tipo-contactos', usuarios.contacto?.id, 'view']">{{ usuarios.contacto?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/usuarios', usuarios.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

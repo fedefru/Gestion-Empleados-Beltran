@@ -1,0 +1,71 @@
+{
+  "name": "Empleados",
+  "fields": [
+    {
+      "fieldName": "fechaIngreso",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "empleados",
+      "otherEntityRelationshipName": "empleados",
+      "relationshipName": "jefe",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "usuarios",
+      "otherEntityRelationshipName": "empleados",
+      "relationshipName": "usuario",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "estados",
+      "otherEntityRelationshipName": "empleados",
+      "relationshipName": "estado",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "areas",
+      "otherEntityRelationshipName": "empleados",
+      "relationshipName": "area",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "puestos",
+      "otherEntityRelationshipName": "empleados",
+      "relationshipName": "puesto",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "fichajes",
+      "otherEntityRelationshipName": "empleados",
+      "relationshipName": "fichaje",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "empresas",
+      "otherEntityRelationshipName": "empleados",
+      "relationshipName": "empresa",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200704010030",
+  "entityTableName": "empleados",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

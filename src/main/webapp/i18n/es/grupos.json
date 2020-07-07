@@ -1,0 +1,23 @@
+{
+  "gestionEmpleadosApp": {
+    "grupos": {
+      "home": {
+        "title": "Grupos",
+        "createLabel": "Crear nuevo Grupos",
+        "createOrEditLabel": "Crear o editar Grupos",
+        "notFound": "Ningún Grupos encontrado"
+      },
+      "created": "Un nuevo Grupos ha sido creado con el identificador {{ param }}",
+      "updated": "Un Grupos ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Grupos ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Grupos {{ id }}?"
+      },
+      "detail": {
+        "title": "Grupos"
+      },
+      "nombre": "Nombre",
+      "descripcion": "Descripcion"
+    }
+  }
+}

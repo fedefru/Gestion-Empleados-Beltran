@@ -1,0 +1,24 @@
+{
+  "gestionEmpleadosApp": {
+    "configuraciones": {
+      "home": {
+        "title": "Configuraciones",
+        "createLabel": "Create a new Configuraciones",
+        "createOrEditLabel": "Create or edit a Configuraciones",
+        "notFound": "No Configuraciones found"
+      },
+      "created": "A new Configuraciones is created with identifier {{ param }}",
+      "updated": "A Configuraciones is updated with identifier {{ param }}",
+      "deleted": "A Configuraciones is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Configuraciones {{ id }}?"
+      },
+      "detail": {
+        "title": "Configuraciones"
+      },
+      "clave": "Clave",
+      "valor": "Valor",
+      "detalle": "Detalle"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "gestionEmpleadosApp": {
+    "grupos": {
+      "home": {
+        "title": "Grupos",
+        "createLabel": "Create a new Grupos",
+        "createOrEditLabel": "Create or edit a Grupos",
+        "notFound": "No Grupos found"
+      },
+      "created": "A new Grupos is created with identifier {{ param }}",
+      "updated": "A Grupos is updated with identifier {{ param }}",
+      "deleted": "A Grupos is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Grupos {{ id }}?"
+      },
+      "detail": {
+        "title": "Grupos"
+      },
+      "nombre": "Nombre",
+      "descripcion": "Descripcion"
+    }
+  }
+}

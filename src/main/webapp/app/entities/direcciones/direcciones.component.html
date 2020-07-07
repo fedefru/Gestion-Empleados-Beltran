@@ -1,0 +1,73 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="gestionEmpleadosApp.direcciones.home.title">Direcciones</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-direcciones" [routerLink]="['/direcciones/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="gestionEmpleadosApp.direcciones.home.createLabel">
+            Create a new Direcciones
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="direcciones?.length === 0">
+        <span jhiTranslate="gestionEmpleadosApp.direcciones.home.notFound">No direcciones found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="direcciones && direcciones.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionEmpleadosApp.direcciones.calle">Calle</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionEmpleadosApp.direcciones.altura">Altura</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionEmpleadosApp.direcciones.piso">Piso</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionEmpleadosApp.direcciones.departamento">Departamento</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionEmpleadosApp.direcciones.ciudad">Ciudad</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let direcciones of direcciones ;trackBy: trackId">
+                    <td><a [routerLink]="['/direcciones', direcciones.id, 'view']">{{ direcciones.id }}</a></td>
+                    <td>{{ direcciones.calle }}</td>
+                    <td>{{ direcciones.altura }}</td>
+                    <td>{{ direcciones.piso }}</td>
+                    <td>{{ direcciones.departamento }}</td>
+                    <td>
+                        <div *ngIf="direcciones.ciudad">
+                            <a [routerLink]="['/ciudades', direcciones.ciudad?.id, 'view']" >{{ direcciones.ciudad?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/direcciones', direcciones.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/direcciones', direcciones.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(direcciones)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

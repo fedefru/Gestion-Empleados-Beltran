@@ -1,0 +1,24 @@
+{
+  "gestionEmpleadosApp": {
+    "entidadesUsuarios": {
+      "home": {
+        "title": "Entidades Usuarios",
+        "createLabel": "Create a new Entidades Usuarios",
+        "createOrEditLabel": "Create or edit a Entidades Usuarios",
+        "notFound": "No Entidades Usuarios found"
+      },
+      "created": "A new Entidades Usuarios is created with identifier {{ param }}",
+      "updated": "A Entidades Usuarios is updated with identifier {{ param }}",
+      "deleted": "A Entidades Usuarios is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Entidades Usuarios {{ id }}?"
+      },
+      "detail": {
+        "title": "Entidades Usuarios"
+      },
+      "valor": "Valor",
+      "usuario": "Usuario",
+      "entidad": "Entidad"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "gestionEmpleadosApp": {
+    "contactoUsuarios": {
+      "home": {
+        "title": "Contacto Usuarios",
+        "createLabel": "Crear nuevo Contacto Usuarios",
+        "createOrEditLabel": "Crear o editar Contacto Usuarios",
+        "notFound": "Ningún Contacto Usuarios encontrado"
+      },
+      "created": "Un nuevo Contacto Usuarios ha sido creado con el identificador {{ param }}",
+      "updated": "Un Contacto Usuarios ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Contacto Usuarios ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Contacto Usuarios {{ id }}?"
+      },
+      "detail": {
+        "title": "Contacto Usuarios"
+      },
+      "nombre": "Nombre",
+      "contacto": "Contacto"
+    }
+  }
+}
