@@ -35,12 +35,12 @@
                     <td>{{ entidadesUsuarios.valor }}</td>
                     <td>
                         <div *ngIf="entidadesUsuarios.usuario">
-                            <a [routerLink]="['/usuarios', entidadesUsuarios.usuario?.id, 'view']" >{{ entidadesUsuarios.usuario?.id }}</a>
+                            <a [routerLink]="['/usuarios', entidadesUsuarios.usuario?.id, 'view']" >{{ entidadesUsuarios.usuario?.nombre }}</a>
                         </div>
                     </td>
                     <td>
                         <div *ngIf="entidadesUsuarios.entidad">
-                            <a [routerLink]="['/entidades', entidadesUsuarios.entidad?.id, 'view']" >{{ entidadesUsuarios.entidad?.id }}</a>
+                            <a [routerLink]="['/entidades', entidadesUsuarios.entidad?.id, 'view']" >{{ entidadesUsuarios.entidad?.nombre }}</a>
                         </div>
                     </td>
                     <td class="text-right">

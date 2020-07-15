@@ -15,13 +15,13 @@
                 <dt><span jhiTranslate="gestionEmpleadosApp.entidadesEmpresas.empresa">Empresa</span></dt>
                 <dd>
                     <div *ngIf="entidadesEmpresas.empresa">
-                        <a [routerLink]="['/empresas', entidadesEmpresas.empresa?.id, 'view']">{{ entidadesEmpresas.empresa?.id }}</a>
+                        <a [routerLink]="['/empresas', entidadesEmpresas.empresa?.id, 'view']">{{ entidadesEmpresas.empresa?.nombre }}</a>
                     </div>
                 </dd>
                 <dt><span jhiTranslate="gestionEmpleadosApp.entidadesEmpresas.entidad">Entidad</span></dt>
                 <dd>
                     <div *ngIf="entidadesEmpresas.entidad">
-                        <a [routerLink]="['/entidades', entidadesEmpresas.entidad?.id, 'view']">{{ entidadesEmpresas.entidad?.id }}</a>
+                        <a [routerLink]="['/entidades', entidadesEmpresas.entidad?.id, 'view']">{{ entidadesEmpresas.entidad?.nombre }}</a>
                     </div>
                 </dd>
             </dl>

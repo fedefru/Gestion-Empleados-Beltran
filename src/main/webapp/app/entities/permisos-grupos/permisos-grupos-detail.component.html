@@ -15,13 +15,13 @@
                 <dt><span jhiTranslate="gestionEmpleadosApp.permisosGrupos.permiso">Permiso</span></dt>
                 <dd>
                     <div *ngIf="permisosGrupos.permiso">
-                        <a [routerLink]="['/permisos', permisosGrupos.permiso?.id, 'view']">{{ permisosGrupos.permiso?.id }}</a>
+                        <a [routerLink]="['/permisos', permisosGrupos.permiso?.id, 'view']">{{ permisosGrupos.permiso?.nombre }}</a>
                     </div>
                 </dd>
                 <dt><span jhiTranslate="gestionEmpleadosApp.permisosGrupos.grupos">Grupos</span></dt>
                 <dd>
                     <div *ngIf="permisosGrupos.grupos">
-                        <a [routerLink]="['/grupos', permisosGrupos.grupos?.id, 'view']">{{ permisosGrupos.grupos?.id }}</a>
+                        <a [routerLink]="['/grupos', permisosGrupos.grupos?.id, 'view']">{{ permisosGrupos.grupos?.nombre }}</a>
                     </div>
                 </dd>
             </dl>

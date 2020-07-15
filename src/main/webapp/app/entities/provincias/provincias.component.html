@@ -34,7 +34,7 @@
                     <td>{{ provincias.nombre }}</td>
                     <td>
                         <div *ngIf="provincias.pais">
-                            <a [routerLink]="['/paises', provincias.pais?.id, 'view']" >{{ provincias.pais?.id }}</a>
+                            <a [routerLink]="['/paises', provincias.pais?.id, 'view']" >{{ provincias.pais?.nombre }}</a>
                         </div>
                     </td>
                     <td class="text-right">

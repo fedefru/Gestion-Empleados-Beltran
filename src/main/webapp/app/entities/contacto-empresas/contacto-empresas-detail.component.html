@@ -15,7 +15,7 @@
                 <dt><span jhiTranslate="gestionEmpleadosApp.contactoEmpresas.contacto">Contacto</span></dt>
                 <dd>
                     <div *ngIf="contactoEmpresas.contacto">
-                        <a [routerLink]="['/tipo-contactos', contactoEmpresas.contacto?.id, 'view']">{{ contactoEmpresas.contacto?.id }}</a>
+                        <a [routerLink]="['/tipo-contactos', contactoEmpresas.contacto?.id, 'view']">{{ contactoEmpresas.contacto?.descripcion }}</a>
                     </div>
                 </dd>
             </dl>

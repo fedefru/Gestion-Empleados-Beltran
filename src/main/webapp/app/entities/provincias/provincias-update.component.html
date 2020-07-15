@@ -21,7 +21,7 @@
                     <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.provincias.pais" for="field_pais">Pais</label>
                     <select class="form-control" id="field_pais" name="pais" formControlName="pais">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="paisesOption.id === editForm.get('pais')!.value?.id ? editForm.get('pais')!.value : paisesOption" *ngFor="let paisesOption of paises; trackBy: trackById">{{ paisesOption.id }}</option>
+                        <option [ngValue]="paisesOption.id === editForm.get('pais')!.value?.id ? editForm.get('pais')!.value : paisesOption" *ngFor="let paisesOption of paises; trackBy: trackById">{{ paisesOption.nombre }}</option>
                     </select>
                 </div>
             </div>

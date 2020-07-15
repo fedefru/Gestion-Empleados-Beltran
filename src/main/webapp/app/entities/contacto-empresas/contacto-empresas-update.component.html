@@ -21,7 +21,7 @@
                     <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.contactoEmpresas.contacto" for="field_contacto">Contacto</label>
                     <select class="form-control" id="field_contacto" name="contacto" formControlName="contacto">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="tipoContactosOption.id === editForm.get('contacto')!.value?.id ? editForm.get('contacto')!.value : tipoContactosOption" *ngFor="let tipoContactosOption of tipocontactos; trackBy: trackById">{{ tipoContactosOption.id }}</option>
+                        <option [ngValue]="tipoContactosOption.id === editForm.get('contacto')!.value?.id ? editForm.get('contacto')!.value : tipoContactosOption" *ngFor="let tipoContactosOption of tipocontactos; trackBy: trackById">{{ tipoContactosOption.descripcion }}</option>
                     </select>
                 </div>
             </div>

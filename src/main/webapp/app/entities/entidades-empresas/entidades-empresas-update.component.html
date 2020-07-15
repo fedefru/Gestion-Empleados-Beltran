@@ -21,7 +21,7 @@
                     <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.entidadesEmpresas.empresa" for="field_empresa">Empresa</label>
                     <select class="form-control" id="field_empresa" name="empresa" formControlName="empresa">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="empresasOption.id === editForm.get('empresa')!.value?.id ? editForm.get('empresa')!.value : empresasOption" *ngFor="let empresasOption of empresas; trackBy: trackById">{{ empresasOption.id }}</option>
+                        <option [ngValue]="empresasOption.id === editForm.get('empresa')!.value?.id ? editForm.get('empresa')!.value : empresasOption" *ngFor="let empresasOption of empresas; trackBy: trackById">{{ empresasOption.nombre }}</option>
                     </select>
                 </div>
 
@@ -29,7 +29,7 @@
                     <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.entidadesEmpresas.entidad" for="field_entidad">Entidad</label>
                     <select class="form-control" id="field_entidad" name="entidad" formControlName="entidad">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="entidadesOption.id === editForm.get('entidad')!.value?.id ? editForm.get('entidad')!.value : entidadesOption" *ngFor="let entidadesOption of entidades; trackBy: trackById">{{ entidadesOption.id }}</option>
+                        <option [ngValue]="entidadesOption.id === editForm.get('entidad')!.value?.id ? editForm.get('entidad')!.value : entidadesOption" *ngFor="let entidadesOption of entidades; trackBy: trackById">{{ entidadesOption.nombre }}</option>
                     </select>
                 </div>
             </div>

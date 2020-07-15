@@ -40,7 +40,7 @@
                     <td>{{ direcciones.departamento }}</td>
                     <td>
                         <div *ngIf="direcciones.ciudad">
-                            <a [routerLink]="['/ciudades', direcciones.ciudad?.id, 'view']" >{{ direcciones.ciudad?.id }}</a>
+                            <a [routerLink]="['/ciudades', direcciones.ciudad?.id, 'view']" >{{ direcciones.ciudad?.nombre }}</a>
                         </div>
                     </td>
                     <td class="text-right">

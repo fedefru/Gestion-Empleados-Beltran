@@ -15,7 +15,7 @@
                 <dt><span jhiTranslate="gestionEmpleadosApp.provincias.pais">Pais</span></dt>
                 <dd>
                     <div *ngIf="provincias.pais">
-                        <a [routerLink]="['/paises', provincias.pais?.id, 'view']">{{ provincias.pais?.id }}</a>
+                        <a [routerLink]="['/paises', provincias.pais?.id, 'view']">{{ provincias.pais?.nombre }}</a>
                     </div>
                 </dd>
             </dl>

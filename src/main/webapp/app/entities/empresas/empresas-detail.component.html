@@ -15,19 +15,19 @@
                 <dt><span jhiTranslate="gestionEmpleadosApp.empresas.direccion">Direccion</span></dt>
                 <dd>
                     <div *ngIf="empresas.direccion">
-                        <a [routerLink]="['/tipo-direccion', empresas.direccion?.id, 'view']">{{ empresas.direccion?.id }}</a>
+                        <a [routerLink]="['/tipo-direccion', empresas.direccion?.id, 'view']">{{ empresas.direccion?.descripcion }}</a>
                     </div>
                 </dd>
                 <dt><span jhiTranslate="gestionEmpleadosApp.empresas.contacto">Contacto</span></dt>
                 <dd>
                     <div *ngIf="empresas.contacto">
-                        <a [routerLink]="['/tipo-contactos', empresas.contacto?.id, 'view']">{{ empresas.contacto?.id }}</a>
+                        <a [routerLink]="['/tipo-contactos', empresas.contacto?.id, 'view']">{{ empresas.contacto?.descripcion }}</a>
                     </div>
                 </dd>
                 <dt><span jhiTranslate="gestionEmpleadosApp.empresas.estado">Estado</span></dt>
                 <dd>
                     <div *ngIf="empresas.estado">
-                        <a [routerLink]="['/estados', empresas.estado?.id, 'view']">{{ empresas.estado?.id }}</a>
+                        <a [routerLink]="['/estados', empresas.estado?.id, 'view']">{{ empresas.estado?.nombre }}</a>
                     </div>
                 </dd>
             </dl>

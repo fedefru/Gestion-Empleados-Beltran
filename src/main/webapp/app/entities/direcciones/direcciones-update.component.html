@@ -39,7 +39,7 @@
                     <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.direcciones.ciudad" for="field_ciudad">Ciudad</label>
                     <select class="form-control" id="field_ciudad" name="ciudad" formControlName="ciudad">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="ciudadesOption.id === editForm.get('ciudad')!.value?.id ? editForm.get('ciudad')!.value : ciudadesOption" *ngFor="let ciudadesOption of ciudades; trackBy: trackById">{{ ciudadesOption.id }}</option>
+                        <option [ngValue]="ciudadesOption.id === editForm.get('ciudad')!.value?.id ? editForm.get('ciudad')!.value : ciudadesOption" *ngFor="let ciudadesOption of ciudades; trackBy: trackById">{{ ciudadesOption.nombre }}</option>
                     </select>
                 </div>
             </div>

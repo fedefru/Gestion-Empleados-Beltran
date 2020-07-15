@@ -31,19 +31,19 @@
                 <dt><span jhiTranslate="gestionEmpleadosApp.usuarios.estado">Estado</span></dt>
                 <dd>
                     <div *ngIf="usuarios.estado">
-                        <a [routerLink]="['/estados', usuarios.estado?.id, 'view']">{{ usuarios.estado?.id }}</a>
+                        <a [routerLink]="['/estados', usuarios.estado?.id, 'view']">{{ usuarios.estado?.nombre }}</a>
                     </div>
                 </dd>
                 <dt><span jhiTranslate="gestionEmpleadosApp.usuarios.direccion">Direccion</span></dt>
                 <dd>
                     <div *ngIf="usuarios.direccion">
-                        <a [routerLink]="['/tipo-direccion', usuarios.direccion?.id, 'view']">{{ usuarios.direccion?.id }}</a>
+                        <a [routerLink]="['/tipo-direccion', usuarios.direccion?.id, 'view']">{{ usuarios.direccion?.descripcion }}</a>
                     </div>
                 </dd>
                 <dt><span jhiTranslate="gestionEmpleadosApp.usuarios.contacto">Contacto</span></dt>
                 <dd>
                     <div *ngIf="usuarios.contacto">
-                        <a [routerLink]="['/tipo-contactos', usuarios.contacto?.id, 'view']">{{ usuarios.contacto?.id }}</a>
+                        <a [routerLink]="['/tipo-contactos', usuarios.contacto?.id, 'view']">{{ usuarios.contacto?.descripcion }}</a>
                     </div>
                 </dd>
             </dl>

@@ -40,37 +40,37 @@
                     <td>{{ empleados.fechaIngreso | date:'mediumDate' }}</td>
                     <td>
                         <div *ngIf="empleados.jefe">
-                            <a [routerLink]="['/empleados', empleados.jefe?.id, 'view']" >{{ empleados.jefe?.id }}</a>
+                            <a [routerLink]="['/empleados', empleados.jefe?.id, 'view']" >{{ empleados.jefe?.nombre }}</a>
                         </div>
                     </td>
                     <td>
                         <div *ngIf="empleados.usuario">
-                            <a [routerLink]="['/usuarios', empleados.usuario?.id, 'view']" >{{ empleados.usuario?.id }}</a>
+                            <a [routerLink]="['/usuarios', empleados.usuario?.id, 'view']" >{{ empleados.usuario?.nombre }}</a>
                         </div>
                     </td>
                     <td>
                         <div *ngIf="empleados.estado">
-                            <a [routerLink]="['/estados', empleados.estado?.id, 'view']" >{{ empleados.estado?.id }}</a>
+                            <a [routerLink]="['/estados', empleados.estado?.id, 'view']" >{{ empleados.estado?.nombre }}</a>
                         </div>
                     </td>
                     <td>
                         <div *ngIf="empleados.area">
-                            <a [routerLink]="['/areas', empleados.area?.id, 'view']" >{{ empleados.area?.id }}</a>
+                            <a [routerLink]="['/areas', empleados.area?.id, 'view']" >{{ empleados.area?.nombre }}</a>
                         </div>
                     </td>
                     <td>
                         <div *ngIf="empleados.puesto">
-                            <a [routerLink]="['/puestos', empleados.puesto?.id, 'view']" >{{ empleados.puesto?.id }}</a>
+                            <a [routerLink]="['/puestos', empleados.puesto?.id, 'view']" >{{ empleados.puesto?.nombre }}</a>
                         </div>
                     </td>
                     <td>
                         <div *ngIf="empleados.fichaje">
-                            <a [routerLink]="['/fichajes', empleados.fichaje?.id, 'view']" >{{ empleados.fichaje?.id }}</a>
+                            <a [routerLink]="['/fichajes', empleados.fichaje?.id, 'view']" >{{ empleados.fichaje?.accion }}</a>
                         </div>
                     </td>
                     <td>
                         <div *ngIf="empleados.empresa">
-                            <a [routerLink]="['/empresas', empleados.empresa?.id, 'view']" >{{ empleados.empresa?.id }}</a>
+                            <a [routerLink]="['/empresas', empleados.empresa?.id, 'view']" >{{ empleados.empresa?.nombre }}</a>
                         </div>
                     </td>
                     <td class="text-right">

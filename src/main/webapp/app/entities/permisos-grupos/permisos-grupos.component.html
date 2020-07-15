@@ -35,12 +35,12 @@
                     <td>{{ permisosGrupos.nombre }}</td>
                     <td>
                         <div *ngIf="permisosGrupos.permiso">
-                            <a [routerLink]="['/permisos', permisosGrupos.permiso?.id, 'view']" >{{ permisosGrupos.permiso?.id }}</a>
+                            <a [routerLink]="['/permisos', permisosGrupos.permiso?.id, 'view']" >{{ permisosGrupos.permiso?.nombre }}</a>
                         </div>
                     </td>
                     <td>
                         <div *ngIf="permisosGrupos.grupos">
-                            <a [routerLink]="['/grupos', permisosGrupos.grupos?.id, 'view']" >{{ permisosGrupos.grupos?.id }}</a>
+                            <a [routerLink]="['/grupos', permisosGrupos.grupos?.id, 'view']" >{{ permisosGrupos.grupos?.nombre }}</a>
                         </div>
                     </td>
                     <td class="text-right">

@@ -15,7 +15,7 @@
                 <dt><span jhiTranslate="gestionEmpleadosApp.tipoContactos.tipoDocumento">Tipo Documento</span></dt>
                 <dd>
                     <div *ngIf="tipoContactos.tipoDocumento">
-                        <a [routerLink]="['/tipo-documentos', tipoContactos.tipoDocumento?.id, 'view']">{{ tipoContactos.tipoDocumento?.id }}</a>
+                        <a [routerLink]="['/tipo-documentos', tipoContactos.tipoDocumento?.id, 'view']">{{ tipoContactos.tipoDocumento?.tipo }}</a>
                     </div>
                 </dd>
             </dl>

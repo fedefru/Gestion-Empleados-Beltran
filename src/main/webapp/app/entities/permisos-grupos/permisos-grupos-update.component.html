@@ -21,7 +21,7 @@
                     <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.permisosGrupos.permiso" for="field_permiso">Permiso</label>
                     <select class="form-control" id="field_permiso" name="permiso" formControlName="permiso">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="permisosOption.id === editForm.get('permiso')!.value?.id ? editForm.get('permiso')!.value : permisosOption" *ngFor="let permisosOption of permisos; trackBy: trackById">{{ permisosOption.id }}</option>
+                        <option [ngValue]="permisosOption.id === editForm.get('permiso')!.value?.id ? editForm.get('permiso')!.value : permisosOption" *ngFor="let permisosOption of permisos; trackBy: trackById">{{ permisosOption.nombre }}</option>
                     </select>
                 </div>
 
@@ -29,7 +29,7 @@
                     <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.permisosGrupos.grupos" for="field_grupos">Grupos</label>
                     <select class="form-control" id="field_grupos" name="grupos" formControlName="grupos">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="gruposOption.id === editForm.get('grupos')!.value?.id ? editForm.get('grupos')!.value : gruposOption" *ngFor="let gruposOption of grupos; trackBy: trackById">{{ gruposOption.id }}</option>
+                        <option [ngValue]="gruposOption.id === editForm.get('grupos')!.value?.id ? editForm.get('grupos')!.value : gruposOption" *ngFor="let gruposOption of grupos; trackBy: trackById">{{ gruposOption.nombre }}</option>
                     </select>
                 </div>
             </div>

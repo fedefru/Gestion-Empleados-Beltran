@@ -34,7 +34,7 @@
                     <td>{{ tipoContactos.descripcion }}</td>
                     <td>
                         <div *ngIf="tipoContactos.tipoDocumento">
-                            <a [routerLink]="['/tipo-documentos', tipoContactos.tipoDocumento?.id, 'view']" >{{ tipoContactos.tipoDocumento?.id }}</a>
+                            <a [routerLink]="['/tipo-documentos', tipoContactos.tipoDocumento?.id, 'view']" >{{ tipoContactos.tipoDocumento?.tipo }}</a>
                         </div>
                     </td>
                     <td class="text-right">

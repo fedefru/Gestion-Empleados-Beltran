@@ -25,7 +25,7 @@
                     <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.empleados.jefe" for="field_jefe">Jefe</label>
                     <select class="form-control" id="field_jefe" name="jefe" formControlName="jefe">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="empleadosOption.id === editForm.get('jefe')!.value?.id ? editForm.get('jefe')!.value : empleadosOption" *ngFor="let empleadosOption of empleadosCollection; trackBy: trackById">{{ empleadosOption.id }}</option>
+                        <option [ngValue]="empleadosOption.id === editForm.get('jefe')!.value?.id ? editForm.get('jefe')!.value : empleadosOption" *ngFor="let empleadosOption of empleadosCollection; trackBy: trackById">{{ empleadosOption.nombre }}</option>
                     </select>
                 </div>
 
@@ -33,7 +33,7 @@
                     <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.empleados.usuario" for="field_usuario">Usuario</label>
                     <select class="form-control" id="field_usuario" name="usuario" formControlName="usuario">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="usuariosOption.id === editForm.get('usuario')!.value?.id ? editForm.get('usuario')!.value : usuariosOption" *ngFor="let usuariosOption of usuarios; trackBy: trackById">{{ usuariosOption.id }}</option>
+                        <option [ngValue]="usuariosOption.id === editForm.get('usuario')!.value?.id ? editForm.get('usuario')!.value : usuariosOption" *ngFor="let usuariosOption of usuarios; trackBy: trackById">{{ usuariosOption.nombre }}</option>
                     </select>
                 </div>
 
@@ -41,7 +41,7 @@
                     <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.empleados.estado" for="field_estado">Estado</label>
                     <select class="form-control" id="field_estado" name="estado" formControlName="estado">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="estadosOption.id === editForm.get('estado')!.value?.id ? editForm.get('estado')!.value : estadosOption" *ngFor="let estadosOption of estados; trackBy: trackById">{{ estadosOption.id }}</option>
+                        <option [ngValue]="estadosOption.id === editForm.get('estado')!.value?.id ? editForm.get('estado')!.value : estadosOption" *ngFor="let estadosOption of estados; trackBy: trackById">{{ estadosOption.nombre }}</option>
                     </select>
                 </div>
 
@@ -49,7 +49,7 @@
                     <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.empleados.area" for="field_area">Area</label>
                     <select class="form-control" id="field_area" name="area" formControlName="area">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="areasOption.id === editForm.get('area')!.value?.id ? editForm.get('area')!.value : areasOption" *ngFor="let areasOption of areas; trackBy: trackById">{{ areasOption.id }}</option>
+                        <option [ngValue]="areasOption.id === editForm.get('area')!.value?.id ? editForm.get('area')!.value : areasOption" *ngFor="let areasOption of areas; trackBy: trackById">{{ areasOption.nombre }}</option>
                     </select>
                 </div>
 
@@ -57,7 +57,7 @@
                     <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.empleados.puesto" for="field_puesto">Puesto</label>
                     <select class="form-control" id="field_puesto" name="puesto" formControlName="puesto">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="puestosOption.id === editForm.get('puesto')!.value?.id ? editForm.get('puesto')!.value : puestosOption" *ngFor="let puestosOption of puestos; trackBy: trackById">{{ puestosOption.id }}</option>
+                        <option [ngValue]="puestosOption.id === editForm.get('puesto')!.value?.id ? editForm.get('puesto')!.value : puestosOption" *ngFor="let puestosOption of puestos; trackBy: trackById">{{ puestosOption.nombre }}</option>
                     </select>
                 </div>
 
@@ -65,7 +65,7 @@
                     <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.empleados.fichaje" for="field_fichaje">Fichaje</label>
                     <select class="form-control" id="field_fichaje" name="fichaje" formControlName="fichaje">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="fichajesOption.id === editForm.get('fichaje')!.value?.id ? editForm.get('fichaje')!.value : fichajesOption" *ngFor="let fichajesOption of fichajes; trackBy: trackById">{{ fichajesOption.id }}</option>
+                        <option [ngValue]="fichajesOption.id === editForm.get('fichaje')!.value?.id ? editForm.get('fichaje')!.value : fichajesOption" *ngFor="let fichajesOption of fichajes; trackBy: trackById">{{ fichajesOption.accion }}</option>
                     </select>
                 </div>
 
@@ -73,7 +73,7 @@
                     <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.empleados.empresa" for="field_empresa">Empresa</label>
                     <select class="form-control" id="field_empresa" name="empresa" formControlName="empresa">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="empresasOption.id === editForm.get('empresa')!.value?.id ? editForm.get('empresa')!.value : empresasOption" *ngFor="let empresasOption of empresas; trackBy: trackById">{{ empresasOption.id }}</option>
+                        <option [ngValue]="empresasOption.id === editForm.get('empresa')!.value?.id ? editForm.get('empresa')!.value : empresasOption" *ngFor="let empresasOption of empresas; trackBy: trackById">{{ empresasOption.nombre }}</option>
                     </select>
                 </div>
             </div>

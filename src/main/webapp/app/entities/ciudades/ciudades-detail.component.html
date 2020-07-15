@@ -15,7 +15,7 @@
                 <dt><span jhiTranslate="gestionEmpleadosApp.ciudades.provicia">Provicia</span></dt>
                 <dd>
                     <div *ngIf="ciudades.provicia">
-                        <a [routerLink]="['/provincias', ciudades.provicia?.id, 'view']">{{ ciudades.provicia?.id }}</a>
+                        <a [routerLink]="['/provincias', ciudades.provicia?.id, 'view']">{{ ciudades.provicia?.nombre }}</a>
                     </div>
                 </dd>
             </dl>

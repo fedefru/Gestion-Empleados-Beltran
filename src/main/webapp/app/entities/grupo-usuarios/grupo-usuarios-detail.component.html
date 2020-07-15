@@ -15,13 +15,13 @@
                 <dt><span jhiTranslate="gestionEmpleadosApp.grupoUsuarios.usuario">Usuario</span></dt>
                 <dd>
                     <div *ngIf="grupoUsuarios.usuario">
-                        <a [routerLink]="['/usuarios', grupoUsuarios.usuario?.id, 'view']">{{ grupoUsuarios.usuario?.id }}</a>
+                        <a [routerLink]="['/usuarios', grupoUsuarios.usuario?.id, 'view']">{{ grupoUsuarios.usuario?.nombre }}</a>
                     </div>
                 </dd>
                 <dt><span jhiTranslate="gestionEmpleadosApp.grupoUsuarios.grupo">Grupo</span></dt>
                 <dd>
                     <div *ngIf="grupoUsuarios.grupo">
-                        <a [routerLink]="['/grupos', grupoUsuarios.grupo?.id, 'view']">{{ grupoUsuarios.grupo?.id }}</a>
+                        <a [routerLink]="['/grupos', grupoUsuarios.grupo?.id, 'view']">{{ grupoUsuarios.grupo?.nombre }}</a>
                     </div>
                 </dd>
             </dl>
