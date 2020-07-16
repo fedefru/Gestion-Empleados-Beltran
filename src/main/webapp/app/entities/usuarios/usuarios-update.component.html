@@ -14,13 +14,13 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.usuarios.nombre" for="field_nombre">Nombre</label>
                     <input type="text" class="form-control" name="nombre" id="field_nombre"
-                           formControlName="nombre"/>
+                           formControlName="nombre" minlength="4" required />
                 </div>
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.usuarios.apellido" for="field_apellido">Apellido</label>
                     <input type="text" class="form-control" name="apellido" id="field_apellido"
-                           formControlName="apellido"/>
+                           formControlName="apellido" minlength="4" required />
                 </div>
 
                 <div class="form-group">
@@ -35,14 +35,21 @@
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.usuarios.clave" for="field_clave">Clave</label>
-                    <input type="text" class="form-control" name="clave" id="field_clave"
-                           formControlName="clave"/>
+                    <input type="password" class="form-control" name="clave" id="field_clave"
+                           formControlName="clave" minlength="8" required />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.usuarios.repClave">Repetir clave</label>
+                    <input type="password" class="form-control" name="repClave" id="repClave"
+                           formControlName="repClave" required />
+                     
                 </div>
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.usuarios.usuario" for="field_usuario">Usuario</label>
                     <input type="text" class="form-control" name="usuario" id="field_usuario"
-                           formControlName="usuario"/>
+                           formControlName="usuario" minlength="4" required />
                 </div>
 
                 <div class="form-group">

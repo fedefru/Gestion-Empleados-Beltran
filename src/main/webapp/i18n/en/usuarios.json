@@ -14,16 +14,17 @@
         "question": "Are you sure you want to delete Usuarios {{ id }}?"
       },
       "detail": {
-        "title": "Usuarios"
+        "title": "Users"
       },
-      "nombre": "Nombre",
-      "apellido": "Apellido",
-      "fechaNac": "Fecha Nac",
-      "clave": "Clave",
-      "usuario": "Usuario",
-      "estado": "Estado",
-      "direccion": "Direccion",
-      "contacto": "Contacto"
+      "nombre": "Name",
+      "apellido": "Surname",
+      "fechaNac": "Date of birth",
+      "clave": "Password",
+      "repClave": "Repeat password",
+      "usuario": "User",
+      "estado": "State",
+      "direccion": "Adress",
+      "contacto": "Contact"
     }
   }
 }

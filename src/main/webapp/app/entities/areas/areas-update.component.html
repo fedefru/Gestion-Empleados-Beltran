@@ -14,13 +14,13 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.areas.nombre" for="field_nombre">Nombre</label>
                     <input type="text" class="form-control" name="nombre" id="field_nombre"
-                           formControlName="nombre"/>
+                           formControlName="nombre" minlength="4" required />
                 </div>
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.areas.codSector" for="field_codSector">Cod Sector</label>
                     <input type="text" class="form-control" name="codSector" id="field_codSector"
-                           formControlName="codSector"/>
+                           formControlName="codSector"  minlength="2" />
                 </div>
 
                 <div class="form-group">

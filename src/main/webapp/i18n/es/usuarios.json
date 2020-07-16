@@ -20,6 +20,7 @@
       "apellido": "Apellido",
       "fechaNac": "Fecha Nac",
       "clave": "Clave",
+      "repClave": "Repetir clave",
       "usuario": "Usuario",
       "estado": "Estado",
       "direccion": "Direccion",
