@@ -15,7 +15,7 @@
                 <dt><span jhiTranslate="gestionEmpleadosApp.empleados.jefe">Jefe</span></dt>
                 <dd>
                     <div *ngIf="empleados.jefe">
-                        <a [routerLink]="['/empleados', empleados.jefe?.id, 'view']">{{ empleados.jefe?.nombre }}</a>
+                        <a [routerLink]="['/empleados', empleados.jefe?.id, 'view']">{{ empleados.jefe?.usuario?.nombre }}</a>
                     </div>
                 </dd>
                 <dt><span jhiTranslate="gestionEmpleadosApp.empleados.usuario">Usuario</span></dt>

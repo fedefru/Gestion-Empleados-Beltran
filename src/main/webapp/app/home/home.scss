@@ -10,6 +10,22 @@ Main page styles
   background-size: contain;
 }
 
+.parallax {
+  /* The image used */
+  background-image: url("../../../../../proyecto-imagenes/home.jpg");
+  background-color: red;
+
+  /* Set a specific height */
+  height: 400px;
+  width: 100%;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 /* wait autoprefixer update to allow simple generation of high pixel density media query */
 @media only screen and (-webkit-min-device-pixel-ratio: 2),
   only screen and (-moz-min-device-pixel-ratio: 2),
