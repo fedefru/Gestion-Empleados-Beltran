@@ -13,7 +13,6 @@ Main page styles
 .parallax {
   /* The image used */
   background-image: url('../../../../../proyecto-imagenes/home.jpg');
-  background-color: red;
 
   /* Set a specific height */
   height: 400px;
@@ -24,6 +23,52 @@ Main page styles
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  margin-bottom: 50px;
+}
+.parallax-bottom{
+/* The image used */
+background-image: url('../../../../../proyecto-imagenes/work-team.jpg');
+/* Set a specific height */
+height: 400px;
+width: 100%;
+
+/* Create the parallax scrolling effect */
+background-attachment: fixed;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+margin-bottom: 50px;
+}
+
+.fondo-efecto{
+  background-color: rgba(0, 0, 0, 0.397);
+}
+
+h1 {
+  font-family: 'Red Hat Display', sans-serif;
+  font-weight: bold;
+}
+
+.text-panel-footer {
+  font-size: 15px;
+  color: white;
+  margin-top: 125px;
+  text-align: right;
+  margin-right: 20px;
+}
+
+.text-panel{
+  color: white;
+  margin-top: 130px;
+}
+.col-home{
+  font-family: 'Red Hat Display', sans-serif;
+  margin-bottom: 50px;
+}
+
+.text-home{
+  text-align: center;
+  margin-top: 15px;
 }
 
 /* wait autoprefixer update to allow simple generation of high pixel density media query */
