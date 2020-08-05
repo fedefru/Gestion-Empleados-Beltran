@@ -20,6 +20,7 @@ export class RegisterComponent implements AfterViewInit {
   errorEmailExists = false;
   errorUserExists = false;
   success = false;
+  habilitarPaso?: boolean = false;
 
   registerForm = this.fb.group({
     login: [
@@ -70,6 +71,13 @@ export class RegisterComponent implements AfterViewInit {
 
   openLogin(): void {
     this.loginModalService.open();
+  }
+
+  siguientePaso(): void {
+    this.habilitarPaso = true;
+    // eslint-disable-next-line no-console
+    console.log(this.registerForm);
+    // eslint-enable-next-line no-console
   }
 
   private processError(response: HttpErrorResponse): void {

@@ -3,6 +3,7 @@ package com.beltran.gestionempleados.service;
 import com.beltran.gestionempleados.config.Constants;
 import com.beltran.gestionempleados.domain.Authority;
 import com.beltran.gestionempleados.domain.User;
+import com.beltran.gestionempleados.domain.Usuarios;
 import com.beltran.gestionempleados.repository.AuthorityRepository;
 import com.beltran.gestionempleados.repository.UserRepository;
 import com.beltran.gestionempleados.security.AuthoritiesConstants;
@@ -87,33 +88,23 @@ public class UserService {
             });
     }
 
-    public User registerUser(UserDTO userDTO, String password) {
-        userRepository.findOneByLogin(userDTO.getLogin().toLowerCase()).ifPresent(existingUser -> {
-            boolean removed = removeNonActivatedUser(existingUser);
-            if (!removed) {
-                throw new UsernameAlreadyUsedException();
-            }
-        });
-        userRepository.findOneByEmailIgnoreCase(userDTO.getEmail()).ifPresent(existingUser -> {
-            boolean removed = removeNonActivatedUser(existingUser);
-            if (!removed) {
-                throw new EmailAlreadyUsedException();
-            }
-        });
+    public User registerUser(Usuarios userDTO, String clave) {
+
         User newUser = new User();
-        String encryptedPassword = passwordEncoder.encode(password);
-        newUser.setLogin(userDTO.getLogin().toLowerCase());
+        String encryptedPassword = passwordEncoder.encode(userDTO.getClave());
+        newUser.setLogin(userDTO.getUsuario().toLowerCase());
         // new user gets initially a generated password
         newUser.setPassword(encryptedPassword);
-        newUser.setFirstName(userDTO.getFirstName());
-        newUser.setLastName(userDTO.getLastName());
-        if (userDTO.getEmail() != null) {
-            newUser.setEmail(userDTO.getEmail().toLowerCase());
+        newUser.setFirstName(userDTO.getNombre());
+        newUser.setLastName(userDTO.getApellido());
+        if ((userDTO.getNombre()+"@gmail.com") != null) {
+            newUser.setEmail(userDTO.getNombre().toLowerCase()+ "@gmail.com");
         }
-        newUser.setImageUrl(userDTO.getImageUrl());
-        newUser.setLangKey(userDTO.getLangKey());
+        //newUser.setImageUrl(userDTO.getImageUrl());
+        //newUser.setLangKey(userDTO.getLangKey());
+
         // new user is not active
-        newUser.setActivated(false);
+        newUser.setActivated(true);
         // new user gets registration key
         newUser.setActivationKey(RandomUtil.generateActivationKey());
         Set<Authority> authorities = new HashSet<>();

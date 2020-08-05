@@ -1,7 +1,9 @@
 package com.beltran.gestionempleados.web.rest;
 
+import com.beltran.gestionempleados.domain.User;
 import com.beltran.gestionempleados.domain.Usuarios;
 import com.beltran.gestionempleados.repository.UsuariosRepository;
+import com.beltran.gestionempleados.service.UserService;
 import com.beltran.gestionempleados.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
@@ -9,11 +11,11 @@ import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -52,6 +54,9 @@ public class UsuariosResource {
      * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new usuarios, or with status {@code 400 (Bad Request)} if the usuarios has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
+    @Autowired
+    UserService userService;
+
     @PostMapping("/usuarios")
     public ResponseEntity<Usuarios> createUsuarios(@RequestBody Usuarios usuarios) throws URISyntaxException {
         log.debug("REST request to save Usuarios : {}", usuarios);
@@ -59,6 +64,8 @@ public class UsuariosResource {
             throw new BadRequestAlertException("A new usuarios cannot already have an ID", ENTITY_NAME, "idexists");
         }
         Usuarios result = usuariosRepository.save(usuarios);
+        User user = userService.registerUser(usuarios, usuarios.getClave());
+
         return ResponseEntity.created(new URI("/api/usuarios/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -80,6 +87,7 @@ public class UsuariosResource {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
         Usuarios result = usuariosRepository.save(usuarios);
+
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, usuarios.getId().toString()))
             .body(result);
