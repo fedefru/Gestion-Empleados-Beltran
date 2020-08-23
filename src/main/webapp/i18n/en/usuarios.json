@@ -3,8 +3,8 @@
     "usuarios": {
       "home": {
         "title": "Usuarios",
-        "createLabel": "Create a new Usuarios",
-        "createOrEditLabel": "Create or edit a Usuarios",
+        "createLabel": "Registry an account",
+        "createOrEditLabel": "Registry an account",
         "notFound": "No Usuarios found"
       },
       "created": "A new Usuarios is created with identifier {{ param }}",

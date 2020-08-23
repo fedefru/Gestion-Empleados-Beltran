@@ -49,7 +49,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .antMatchers("/content/**")
             .antMatchers("/h2-console/**")
             .antMatchers("/swagger-ui/index.html")
-            .antMatchers("/test/**");
+            .antMatchers("/test/**")
+            .antMatchers("/api/usuarios")
+            .antMatchers("/api/tipo-direccion")
+            .antMatchers("/api/tipo-direccions")
+            .antMatchers("/api/estados")
+            .antMatchers("/api/tipo-contactos");
     }
 
     @Override
@@ -87,6 +92,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .antMatchers("/management/info").permitAll()
             .antMatchers("/management/prometheus").permitAll()
             .antMatchers("/management/**").hasAuthority(AuthoritiesConstants.ADMIN)
+            .antMatchers("/api/usuarios").permitAll()
+            .antMatchers("/api/tipo-direccion").permitAll()
+            .antMatchers("/api/tipo-direccions").permitAll()
+            .antMatchers("/api/estados").permitAll()
+            .antMatchers("/api/tipo-contactos").permitAll()
         .and()
             .httpBasic()
         .and()

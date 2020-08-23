@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-            <h2 id="jhi-usuarios-heading" jhiTranslate="gestionEmpleadosApp.usuarios.home.createOrEditLabel">Create or edit a Usuarios</h2>
+            <h2 id="jhi-usuarios-heading" jhiTranslate="gestionEmpleadosApp.usuarios.home.createOrEditLabel">Registrar una cuenta</h2>
 
             <div>
                 <jhi-alert-error></jhi-alert-error>
@@ -9,6 +9,12 @@
                 <div class="form-group" [hidden]="!editForm.get('id')!.value">
                     <label for="id" jhiTranslate="global.field.id">ID</label>
                     <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.usuarios.usuario" for="field_usuario">Usuario</label>
+                    <input type="text" class="form-control" name="usuario" id="field_usuario"
+                           formControlName="usuario" minlength="4" required />
                 </div>
 
                 <div class="form-group">
@@ -26,7 +32,7 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.usuarios.fechaNac" for="field_fechaNac">Fecha Nac</label>
                     <div class="input-group">
-                        <input id="field_fechaNac" type="text" class="form-control" name="fechaNac" ngbDatepicker #fechaNacDp="ngbDatepicker" formControlName="fechaNac"/>
+                        <input id="field_fechaNac" type="text" class="form-control" name="fechaNac" autocomplete="off" ngbDatepicker #fechaNacDp="ngbDatepicker" formControlName="fechaNac"/>
                         <span class="input-group-append">
                             <button type="button" class="btn btn-secondary" (click)="fechaNacDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
                         </span>
@@ -36,20 +42,7 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.usuarios.clave" for="field_clave">Clave</label>
                     <input type="password" class="form-control" name="clave" id="field_clave"
-                           formControlName="clave" minlength="8" required />
-                </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.usuarios.repClave">Repetir clave</label>
-                    <input type="password" class="form-control" name="repClave" id="repClave"
-                           formControlName="repClave" required />
-                     
-                </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.usuarios.usuario" for="field_usuario">Usuario</label>
-                    <input type="text" class="form-control" name="usuario" id="field_usuario"
-                           formControlName="usuario" minlength="4" required />
+                           formControlName="clave" minlength="8" required autocomplete="off" />
                 </div>
 
                 <div class="form-group">

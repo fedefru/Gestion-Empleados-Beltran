@@ -3,8 +3,8 @@
     "usuarios": {
       "home": {
         "title": "Usuarios",
-        "createLabel": "Crear nuevo Usuarios",
-        "createOrEditLabel": "Crear o editar Usuarios",
+        "createLabel": "Registrar una cuenta",
+        "createOrEditLabel": "Registrar una cuenta",
         "notFound": "Ningún Usuarios encontrado"
       },
       "created": "Un nuevo Usuarios ha sido creado con el identificador {{ param }}",

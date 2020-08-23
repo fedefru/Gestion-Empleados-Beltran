@@ -49,15 +49,15 @@ export class UsuariosUpdateComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.data.subscribe(({ usuarios }) => {
-      this.updateForm(usuarios);
+    //  this.activatedRoute.data.subscribe(({ usuarios }) => {
+    //  this.updateForm(usuarios);
 
-      this.estadosService.query().subscribe((res: HttpResponse<IEstados[]>) => (this.estados = res.body || []));
+    this.estadosService.query().subscribe((res: HttpResponse<IEstados[]>) => (this.estados = res.body || []));
 
-      this.tipoDireccionService.query().subscribe((res: HttpResponse<ITipoDireccion[]>) => (this.tipodireccions = res.body || []));
+    this.tipoDireccionService.query().subscribe((res: HttpResponse<ITipoDireccion[]>) => (this.tipodireccions = res.body || []));
 
-      this.tipoContactosService.query().subscribe((res: HttpResponse<ITipoContactos[]>) => (this.tipocontactos = res.body || []));
-    });
+    this.tipoContactosService.query().subscribe((res: HttpResponse<ITipoContactos[]>) => (this.tipocontactos = res.body || []));
+    // });
   }
 
   updateForm(usuarios: IUsuarios): void {
@@ -81,11 +81,8 @@ export class UsuariosUpdateComponent implements OnInit {
   save(): void {
     this.isSaving = true;
     const usuarios = this.createFromForm();
-    if (usuarios.id !== undefined) {
-      this.subscribeToSaveResponse(this.usuariosService.update(usuarios));
-    } else {
-      this.subscribeToSaveResponse(this.usuariosService.create(usuarios));
-    }
+
+    this.subscribeToSaveResponse(this.usuariosService.create(usuarios));
   }
 
   private createFromForm(): IUsuarios {

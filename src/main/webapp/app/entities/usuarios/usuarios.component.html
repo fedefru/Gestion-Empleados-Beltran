@@ -26,7 +26,7 @@
                     <th scope="col"  jhiSortBy="nombre"><span jhiTranslate="gestionEmpleadosApp.usuarios.nombre">Nombre</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="apellido"><span jhiTranslate="gestionEmpleadosApp.usuarios.apellido">Apellido</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="fechaNac"><span jhiTranslate="gestionEmpleadosApp.usuarios.fechaNac">Fecha Nac</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="clave"><span jhiTranslate="gestionEmpleadosApp.usuarios.clave">Clave</span> <fa-icon icon="sort"></fa-icon></th>
+                    <!-- <th scope="col"  jhiSortBy="clave"><span jhiTranslate="gestionEmpleadosApp.usuarios.clave">Clave</span> <fa-icon icon="sort"></fa-icon></th> -->
                     <th scope="col"  jhiSortBy="usuario"><span jhiTranslate="gestionEmpleadosApp.usuarios.usuario">Usuario</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="estado.id"><span jhiTranslate="gestionEmpleadosApp.usuarios.estado">Estado</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="direccion.id"><span jhiTranslate="gestionEmpleadosApp.usuarios.direccion">Direccion</span> <fa-icon icon="sort"></fa-icon></th>
@@ -40,7 +40,7 @@
                     <td>{{ usuarios.nombre }}</td>
                     <td>{{ usuarios.apellido }}</td>
                     <td>{{ usuarios.fechaNac | date:'mediumDate' }}</td>
-                    <td>{{ usuarios.clave }}</td>
+                    <!-- <td>{{ usuarios.clave }}</td> -->
                     <td>{{ usuarios.usuario }}</td>
                     <td>
                         <div *ngIf="usuarios.estado">
