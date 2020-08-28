@@ -7,10 +7,17 @@ import { FichajesDetailComponent } from './fichajes-detail.component';
 import { FichajesUpdateComponent } from './fichajes-update.component';
 import { FichajesDeleteDialogComponent } from './fichajes-delete-dialog.component';
 import { fichajesRoute } from './fichajes.route';
+import { InterfazFichajeComponent } from './interfaz-fichaje/interfaz-fichaje.component';
 
 @NgModule({
   imports: [GestionEmpleadosSharedModule, RouterModule.forChild(fichajesRoute)],
-  declarations: [FichajesComponent, FichajesDetailComponent, FichajesUpdateComponent, FichajesDeleteDialogComponent],
+  declarations: [
+    FichajesComponent,
+    FichajesDetailComponent,
+    FichajesUpdateComponent,
+    FichajesDeleteDialogComponent,
+    InterfazFichajeComponent,
+  ],
   entryComponents: [FichajesDeleteDialogComponent],
 })
 export class GestionEmpleadosFichajesModule {}

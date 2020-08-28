@@ -11,6 +11,7 @@ import { FichajesService } from './fichajes.service';
 import { FichajesComponent } from './fichajes.component';
 import { FichajesDetailComponent } from './fichajes-detail.component';
 import { FichajesUpdateComponent } from './fichajes-update.component';
+import { InterfazFichajeComponent } from './interfaz-fichaje/interfaz-fichaje.component';
 
 @Injectable({ providedIn: 'root' })
 export class FichajesResolve implements Resolve<IFichajes> {
@@ -74,6 +75,15 @@ export const fichajesRoute: Routes = [
     resolve: {
       fichajes: FichajesResolve,
     },
+    data: {
+      authorities: [Authority.USER],
+      pageTitle: 'gestionEmpleadosApp.fichajes.home.title',
+    },
+    canActivate: [UserRouteAccessService],
+  },
+  {
+    path: 'fichaje',
+    component: InterfazFichajeComponent,
     data: {
       authorities: [Authority.USER],
       pageTitle: 'gestionEmpleadosApp.fichajes.home.title',
