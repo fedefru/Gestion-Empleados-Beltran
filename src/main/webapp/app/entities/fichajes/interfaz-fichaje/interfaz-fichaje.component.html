@@ -1,4 +1,4 @@
-<div class="container" id="atencion-box">
+<div *ngIf="atencion" class="container" id="atencion-box">
     <h2 id="titulo-box">Atención!</h2>
     <p id="subtitulo-box">Tenga en cuenta los siguientes consejos para una mejor experiencia</p>
     <div id="consejos">
@@ -10,6 +10,42 @@
         </ol>
     </div>
     <div>
-        <button class="btn btn-primary" id="btn-entendido">Entendido <fa-icon icon="check" [fixedWidth]="true"></fa-icon></button>
+        <button class="btn btn-primary" id="btn-entendido" (click)="activarReconocimiento()">Entendido <fa-icon icon="check" [fixedWidth]="true"></fa-icon></button>
     </div>
 </div> 
+
+<div *ngIf="spinner" class="d-flex justify-content-center text-primary">
+    <div class="spinner-border" id="spinner" role="status">
+      <span class="sr-only" >Loading...</span>
+    </div>
+  </div>
+
+<div *ngIf="exito" class="container" id="confirmacion-box">
+
+    <h2 id="titulo-box">Felicidades!</h2>
+    <p id="subtitulo-box">Se han cargado sus horas exitosamente ⏳ </p>
+
+    <div id="check-img">
+        <img id="img-box" src="../../../../../../proyecto-imagenes/check.png" alt="Imagen de confirmacion">
+    </div>
+
+    <div>
+        <a href="/"><button class="btn btn-primary" id="btn-entendido"> Genial</button></a>
+    </div>
+
+</div>
+
+<div *ngIf="error" class="container" id="error-box" >
+
+    <h2 id="titulo-box">Error</h2>
+    <p id="subtitulo-box">Se ha producido un error al intentar reconocerte </p>
+
+    <div id="error-img">
+        <img id="img-box" src="../../../../../../proyecto-imagenes/dead.png" alt="Imagen de error">
+    </div>
+
+    <div>
+        <button class="btn btn-primary" id="btn-entendido" (click)="activarReconocimiento()"> Volver a intentarlo</button>
+    </div>
+
+</div>

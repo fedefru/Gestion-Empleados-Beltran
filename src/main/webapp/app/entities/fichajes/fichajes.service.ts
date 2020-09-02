@@ -15,6 +15,7 @@ type EntityArrayResponseType = HttpResponse<IFichajes[]>;
 @Injectable({ providedIn: 'root' })
 export class FichajesService {
   public resourceUrl = SERVER_API_URL + 'api/fichajes';
+  public urlFichaje = SERVER_API_URL + 'http://127.0.0.1:5000/reconocimiento';
 
   constructor(protected http: HttpClient) {}
 
@@ -47,6 +48,12 @@ export class FichajesService {
 
   delete(id: number): Observable<HttpResponse<{}>> {
     return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });
+  }
+
+  reconocerRostro(): Observable<HttpResponse<any>> {
+    return this.http
+      .get<any>(`${this.urlFichaje}`, { observe: 'response' })
+      .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
   }
 
   protected convertDateFromClient(fichajes: IFichajes): IFichajes {

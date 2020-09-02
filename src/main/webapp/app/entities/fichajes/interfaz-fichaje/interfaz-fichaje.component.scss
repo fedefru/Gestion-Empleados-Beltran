@@ -1,10 +1,12 @@
 ::ng-deep :root {
-  --color-borde: #ffbf69;
+  --color-atencion: #ffbf69;
+  --color-exito: #00a47c;
+  --color-error: #d96465;
 }
 
 #atencion-box {
   border: 1.5px solid;
-  border-color: var(--color-borde);
+  border-color: var(--color-atencion);
   animation: fadein 0.7s;
 }
 
@@ -41,6 +43,35 @@
   -webkit-transition: all ease 1s;
   -moz-transition: all ease 1s;
   transition: all ease 1s;
+}
+
+#confirmacion-box {
+  animation: fadein 0.7s;
+  border: 2px solid;
+  border-color: var(--color-exito);
+}
+
+#error-box {
+  animation: fadein 0.7s;
+  border: 2px solid;
+  border-color: var(--color-error);
+}
+
+#img-box {
+  height: 120px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2%;
+}
+
+a {
+  text-decoration: none;
+}
+
+#spinner {
+  height: 100px;
+  width: 100px;
 }
 
 @keyframes fadein {
