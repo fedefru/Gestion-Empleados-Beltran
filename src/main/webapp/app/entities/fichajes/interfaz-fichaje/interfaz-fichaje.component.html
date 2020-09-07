@@ -1,3 +1,4 @@
+
 <div *ngIf="atencion" class="container" id="atencion-box">
     <h2 id="titulo-box">Atención!</h2>
     <p id="subtitulo-box">Tenga en cuenta los siguientes consejos para una mejor experiencia</p>
@@ -23,7 +24,7 @@
 <div *ngIf="exito" class="container" id="confirmacion-box">
 
     <h2 id="titulo-box">Felicidades!</h2>
-    <p id="subtitulo-box">Se han cargado sus horas exitosamente ⏳ </p>
+    <p id="subtitulo-box">Horas acreditadas en <span id="nombre-cuenta"> {{this.informacion['body']}} </span> ⏳ </p>
 
     <div id="check-img">
         <img id="img-box" src="../../../../../../proyecto-imagenes/check.png" alt="Imagen de confirmacion">

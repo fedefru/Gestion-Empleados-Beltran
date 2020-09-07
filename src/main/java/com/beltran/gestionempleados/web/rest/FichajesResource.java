@@ -52,7 +52,9 @@ public class FichajesResource {
         if (fichajes.getId() != null) {
             throw new BadRequestAlertException("A new fichajes cannot already have an ID", ENTITY_NAME, "idexists");
         }
+
         Fichajes result = fichajesRepository.save(fichajes);
+        
         return ResponseEntity.created(new URI("/api/fichajes/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
             .body(result);

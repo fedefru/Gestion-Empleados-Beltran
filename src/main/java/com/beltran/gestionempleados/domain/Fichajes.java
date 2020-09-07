@@ -7,6 +7,7 @@ import javax.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * A Fichajes.
@@ -23,7 +24,7 @@ public class Fichajes implements Serializable {
     private Long id;
 
     @Column(name = "fichaje")
-    private LocalDate fichaje;
+    private LocalDateTime fichaje;
 
     @Column(name = "accion")
     private String accion;
@@ -37,16 +38,16 @@ public class Fichajes implements Serializable {
         this.id = id;
     }
 
-    public LocalDate getFichaje() {
+    public LocalDateTime getFichaje() {
         return fichaje;
     }
 
-    public Fichajes fichaje(LocalDate fichaje) {
+    public Fichajes fichaje(LocalDateTime fichaje) {
         this.fichaje = fichaje;
         return this;
     }
 
-    public void setFichaje(LocalDate fichaje) {
+    public void setFichaje(LocalDateTime fichaje) {
         this.fichaje = fichaje;
     }
 

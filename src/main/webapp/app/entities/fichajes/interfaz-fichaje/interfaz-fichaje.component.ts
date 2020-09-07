@@ -1,6 +1,10 @@
+/* eslint-disable no-console */
+
 import { Component, OnInit } from '@angular/core';
 import { FichajesService } from '../fichajes.service';
 import { HttpResponse } from '@angular/common/http';
+import { AccountService } from '../../../core/auth/account.service';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'jhi-interfaz-fichaje',
@@ -14,7 +18,9 @@ export class InterfazFichajeComponent implements OnInit {
   spinner: boolean;
   error: boolean;
 
-  constructor(protected fichajesService: FichajesService) {
+  cuenta: any;
+
+  constructor(protected fichajesService: FichajesService, protected accountService: AccountService, private fb: FormBuilder) {
     this.informacion = [];
     this.atencion = true;
     this.exito = false;
@@ -22,7 +28,11 @@ export class InterfazFichajeComponent implements OnInit {
     this.error = false;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.accountService.identity().subscribe(account => {
+      this.cuenta = account!.login;
+    });
+  }
 
   activarReconocimiento(): void {
     this.atencion = false;
@@ -36,6 +46,14 @@ export class InterfazFichajeComponent implements OnInit {
         this.spinner = false;
         this.atencion = false;
         this.exito = true;
+
+        if (this.cuenta === this.informacion['body']) {
+          console.log('nombre coinciden');
+        } else {
+          console.log('mal ahi bro');
+          console.log('nombrePY', this.informacion['body']);
+          console.log('nombreAN', this.cuenta);
+        }
       } else {
         this.spinner = false;
         this.atencion = false;
@@ -44,3 +62,4 @@ export class InterfazFichajeComponent implements OnInit {
     });
   }
 }
+/* eslint-enable no-console */

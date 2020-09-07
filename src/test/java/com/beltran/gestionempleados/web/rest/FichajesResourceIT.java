@@ -15,6 +15,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.List;
 
@@ -31,8 +32,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WithMockUser
 public class FichajesResourceIT {
 
-    private static final LocalDate DEFAULT_FICHAJE = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_FICHAJE = LocalDate.now(ZoneId.systemDefault());
+    private static final LocalDateTime DEFAULT_FICHAJE = LocalDateTime.now();
+    private static final LocalDateTime UPDATED_FICHAJE = LocalDateTime.now(ZoneId.systemDefault());
 
     private static final String DEFAULT_ACCION = "AAAAAAAAAA";
     private static final String UPDATED_ACCION = "BBBBBBBBBB";
@@ -130,7 +131,7 @@ public class FichajesResourceIT {
             .andExpect(jsonPath("$.[*].fichaje").value(hasItem(DEFAULT_FICHAJE.toString())))
             .andExpect(jsonPath("$.[*].accion").value(hasItem(DEFAULT_ACCION)));
     }
-    
+
     @Test
     @Transactional
     public void getFichajes() throws Exception {
