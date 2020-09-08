@@ -15,22 +15,20 @@ type EntityArrayResponseType = HttpResponse<IFichajes[]>;
 @Injectable({ providedIn: 'root' })
 export class FichajesService {
   public resourceUrl = SERVER_API_URL + 'api/fichajes';
-  public urlFichaje = SERVER_API_URL + 'http://127.0.0.1:5000/reconocimiento';
+  public urlFichaje = 'http://127.0.0.1:5000/reconocimiento';
 
   constructor(protected http: HttpClient) {}
 
   create(fichajes: IFichajes): Observable<EntityResponseType> {
-    const copy = this.convertDateFromClient(fichajes);
+    const copy = fichajes;
     return this.http
-      .post<IFichajes>(this.resourceUrl, copy, { observe: 'response' })
-      .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
+      .post<IFichajes>(this.resourceUrl, copy, { observe: 'response' });
   }
 
   update(fichajes: IFichajes): Observable<EntityResponseType> {
-    const copy = this.convertDateFromClient(fichajes);
+    const copy = fichajes;
     return this.http
-      .put<IFichajes>(this.resourceUrl, copy, { observe: 'response' })
-      .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
+      .put<IFichajes>(this.resourceUrl, copy, { observe: 'response' });
   }
 
   find(id: number): Observable<EntityResponseType> {
@@ -52,8 +50,7 @@ export class FichajesService {
 
   reconocerRostro(): Observable<HttpResponse<any>> {
     return this.http
-      .get<any>(`${this.urlFichaje}`, { observe: 'response' })
-      .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
+      .get<any>(`${this.urlFichaje}`, { observe: 'response' });
   }
 
   protected convertDateFromClient(fichajes: IFichajes): IFichajes {

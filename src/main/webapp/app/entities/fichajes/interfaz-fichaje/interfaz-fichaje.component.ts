@@ -5,6 +5,9 @@ import { FichajesService } from '../fichajes.service';
 import { HttpResponse } from '@angular/common/http';
 import { AccountService } from '../../../core/auth/account.service';
 import { FormBuilder } from '@angular/forms';
+import { Observable } from 'rxjs';
+import * as moment from 'moment';
+import { IFichajes } from 'app/shared/model/fichajes.model';
 
 @Component({
   selector: 'jhi-interfaz-fichaje',
@@ -17,8 +20,9 @@ export class InterfazFichajeComponent implements OnInit {
   exito: boolean;
   spinner: boolean;
   error: boolean;
-
+  isSaving = false;
   cuenta: any;
+  formateDate: string;
 
   constructor(protected fichajesService: FichajesService, protected accountService: AccountService, private fb: FormBuilder) {
     this.informacion = [];
@@ -26,6 +30,7 @@ export class InterfazFichajeComponent implements OnInit {
     this.exito = false;
     this.spinner = false;
     this.error = false;
+    this.formateDate = 'YYYY-MM-DD HH:mm:ss'
   }
 
   ngOnInit(): void {
@@ -47,12 +52,12 @@ export class InterfazFichajeComponent implements OnInit {
         this.atencion = false;
         this.exito = true;
 
-        if (this.cuenta === this.informacion['body']) {
-          console.log('nombre coinciden');
+        if (this.cuenta.toLowerCase() === this.informacion['body'].toLowerCase()) {
+          this.isSaving = true;
+          console.log('este es el time que envio: '+ moment(this.informacion['time']).format(this.formateDate));
+          this.fichajesService.create({'id': undefined, 'fichaje': moment(this.informacion['time']), 'accion': 'ingreso'});
         } else {
-          console.log('mal ahi bro');
-          console.log('nombrePY', this.informacion['body']);
-          console.log('nombreAN', this.cuenta);
+          alert('No puedes registrar en nombre del Usuario logueado.');
         }
       } else {
         this.spinner = false;
@@ -61,5 +66,27 @@ export class InterfazFichajeComponent implements OnInit {
       }
     });
   }
+
+  protected subscribeToSaveResponse(result: Observable<HttpResponse<IFichajes>>): void {
+    result.subscribe(
+      () => this.onSaveSuccess(),
+      () => this.onSaveError()
+    );
+  }
+
+  protected onSaveSuccess(): void {
+    this.isSaving = false;
+    this.previousState();
+  }
+
+  protected onSaveError(): void {
+    this.isSaving = false;
+  }
+
+  previousState(): void {
+    window.history.back();
+  }
 }
+
+
 /* eslint-enable no-console */
