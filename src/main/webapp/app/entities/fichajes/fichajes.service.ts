@@ -23,15 +23,13 @@ export class FichajesService {
 
   create(fichajes: IFichajes): Observable<EntityResponseType> {
     const copy = fichajes;
-    console.log('entre, fichaje -> '+fichajes);
-    return this.http
-      .post<IFichajes>(this.resourceUrl, copy, { observe: 'response' });
+    console.log('entre, fichaje -> ' + fichajes);
+    return this.http.post<IFichajes>(this.resourceUrl, copy, { observe: 'response' });
   }
 
   update(fichajes: IFichajes): Observable<EntityResponseType> {
     const copy = fichajes;
-    return this.http
-      .put<IFichajes>(this.resourceUrl, copy, { observe: 'response' });
+    return this.http.put<IFichajes>(this.resourceUrl, copy, { observe: 'response' });
   }
 
   find(id: number): Observable<EntityResponseType> {
@@ -52,8 +50,7 @@ export class FichajesService {
   }
 
   reconocerRostro(): Observable<HttpResponse<any>> {
-    return this.http
-      .get<any>(`${this.urlFichaje}`, { observe: 'response' });
+    return this.http.get<any>(`${this.urlFichaje}`, { observe: 'response' });
   }
 
   protected convertDateFromClient(fichajes: IFichajes): IFichajes {

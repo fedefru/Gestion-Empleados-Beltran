@@ -1,5 +1,7 @@
 package com.beltran.gestionempleados.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -28,6 +30,10 @@ public class Fichajes implements Serializable {
 
     @Column(name = "accion")
     private String accion;
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = "", allowSetters = true)
+    private Usuarios usuario;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {

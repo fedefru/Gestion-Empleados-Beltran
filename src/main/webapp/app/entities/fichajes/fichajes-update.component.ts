@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 
 import { IFichajes, Fichajes } from 'app/shared/model/fichajes.model';
 import { FichajesService } from './fichajes.service';
+import { IUsuarios } from '../../shared/model/usuarios.model';
 
 @Component({
   selector: 'jhi-fichajes-update',
@@ -15,11 +16,13 @@ import { FichajesService } from './fichajes.service';
 export class FichajesUpdateComponent implements OnInit {
   isSaving = false;
   fichajeDp: any;
+  usuario: IUsuarios[] = [];
 
   editForm = this.fb.group({
     id: [],
     fichaje: [],
     accion: [],
+    usuario: [],
   });
 
   constructor(protected fichajesService: FichajesService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
@@ -35,6 +38,7 @@ export class FichajesUpdateComponent implements OnInit {
       id: fichajes.id,
       fichaje: fichajes.fichaje,
       accion: fichajes.accion,
+      usuario: fichajes.usuario,
     });
   }
 
@@ -58,6 +62,7 @@ export class FichajesUpdateComponent implements OnInit {
       id: this.editForm.get(['id'])!.value,
       fichaje: this.editForm.get(['fichaje'])!.value,
       accion: this.editForm.get(['accion'])!.value,
+      usuario: this.editForm.get(['usuario'])?.value,
     };
   }
 

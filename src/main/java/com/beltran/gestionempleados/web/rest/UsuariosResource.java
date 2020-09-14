@@ -107,6 +107,14 @@ public class UsuariosResource {
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 
+    @GetMapping("/usuarios/alias/{user}")
+    public ResponseEntity<Usuarios> getUsuarioByAlias(@PathVariable String user) {
+        log.debug("REST request to get a page of Usuarios");
+        Optional<Usuarios> usuario = usuariosRepository.findByUsuario(user);
+
+        return ResponseUtil.wrapOrNotFound(usuario);
+    }
+
     /**
      * {@code GET  /usuarios/:id} : get the "id" usuarios.
      *

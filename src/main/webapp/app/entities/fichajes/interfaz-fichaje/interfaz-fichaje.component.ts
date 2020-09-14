@@ -7,6 +7,8 @@ import { AccountService } from '../../../core/auth/account.service';
 import { FormBuilder } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { IFichajes } from 'app/shared/model/fichajes.model';
+import { IUsuarios } from '../../../shared/model/usuarios.model';
+import { UsuariosService } from '../../usuarios/usuarios.service';
 
 @Component({
   selector: 'jhi-interfaz-fichaje',
@@ -22,19 +24,31 @@ export class InterfazFichajeComponent implements OnInit {
   isSaving = false;
   cuenta: any;
   formateDate: string;
+  usuario!: IUsuarios;
 
-  constructor(protected fichajesService: FichajesService, protected accountService: AccountService, private fb: FormBuilder) {
+  constructor(
+    protected fichajesService: FichajesService,
+    protected accountService: AccountService,
+    protected usuarioService: UsuariosService,
+    private fb: FormBuilder
+  ) {
     this.informacion = [];
     this.atencion = true;
     this.exito = false;
     this.spinner = false;
     this.error = false;
-    this.formateDate = ''
+    this.formateDate = '';
   }
 
   ngOnInit(): void {
     this.accountService.identity().subscribe(account => {
+      console.log(account);
       this.cuenta = account!.login;
+    });
+
+    this.usuarioService.findUsuarioByAlias(this.cuenta.toLowerCase()).subscribe((resp: HttpResponse<any>) => {
+      this.usuario = resp.body;
+      console.log('Usuario encontrado: ', this.usuario);
     });
   }
 
@@ -51,11 +65,17 @@ export class InterfazFichajeComponent implements OnInit {
         this.atencion = false;
         this.exito = true;
 
-
         if (this.cuenta.toLowerCase() === this.informacion['body'].toLowerCase()) {
-          this.isSaving = true;
-          console.log(this.informacion);
-          this.subscribeToSaveResponse(this.fichajesService.create({'id': undefined, 'fichaje': this.informacion['time'], 'accion': 'ingreso'}));
+          if (this.usuario) {
+            this.isSaving = true;
+
+            console.log(this.informacion);
+            this.subscribeToSaveResponse(
+              this.fichajesService.create({ id: undefined, fichaje: this.informacion['time'], accion: 'ingreso', usuario: this.usuario })
+            );
+          } else {
+            console.log('usuario vacio');
+          }
         } else {
           alert('No puedes registrar en nombre del Usuario logueado.');
         }
@@ -76,7 +96,6 @@ export class InterfazFichajeComponent implements OnInit {
 
   protected onSaveSuccess(): void {
     this.isSaving = false;
-
   }
 
   protected onSaveError(): void {
@@ -87,6 +106,5 @@ export class InterfazFichajeComponent implements OnInit {
     window.history.back();
   }
 }
-
 
 /* eslint-enable no-console */
