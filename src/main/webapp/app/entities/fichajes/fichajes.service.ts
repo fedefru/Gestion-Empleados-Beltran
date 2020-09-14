@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -21,6 +23,7 @@ export class FichajesService {
 
   create(fichajes: IFichajes): Observable<EntityResponseType> {
     const copy = fichajes;
+    console.log('entre, fichaje -> '+fichajes);
     return this.http
       .post<IFichajes>(this.resourceUrl, copy, { observe: 'response' });
   }
@@ -76,3 +79,5 @@ export class FichajesService {
     return res;
   }
 }
+
+/* eslint-enable no-console */

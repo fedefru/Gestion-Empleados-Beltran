@@ -6,7 +6,6 @@ import { HttpResponse } from '@angular/common/http';
 import { AccountService } from '../../../core/auth/account.service';
 import { FormBuilder } from '@angular/forms';
 import { Observable } from 'rxjs';
-import * as moment from 'moment';
 import { IFichajes } from 'app/shared/model/fichajes.model';
 
 @Component({
@@ -30,7 +29,7 @@ export class InterfazFichajeComponent implements OnInit {
     this.exito = false;
     this.spinner = false;
     this.error = false;
-    this.formateDate = 'YYYY-MM-DD HH:mm:ss'
+    this.formateDate = ''
   }
 
   ngOnInit(): void {
@@ -52,10 +51,11 @@ export class InterfazFichajeComponent implements OnInit {
         this.atencion = false;
         this.exito = true;
 
+
         if (this.cuenta.toLowerCase() === this.informacion['body'].toLowerCase()) {
           this.isSaving = true;
-          console.log('este es el time que envio: '+ moment(this.informacion['time']).format(this.formateDate));
-          this.fichajesService.create({'id': undefined, 'fichaje': moment(this.informacion['time']), 'accion': 'ingreso'});
+          console.log(this.informacion);
+          this.subscribeToSaveResponse(this.fichajesService.create({'id': undefined, 'fichaje': this.informacion['time'], 'accion': 'ingreso'}));
         } else {
           alert('No puedes registrar en nombre del Usuario logueado.');
         }
@@ -76,7 +76,7 @@ export class InterfazFichajeComponent implements OnInit {
 
   protected onSaveSuccess(): void {
     this.isSaving = false;
-    this.previousState();
+
   }
 
   protected onSaveError(): void {
