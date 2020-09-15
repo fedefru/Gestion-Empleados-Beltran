@@ -23,7 +23,7 @@ export class FichajesService {
 
   create(fichajes: IFichajes): Observable<EntityResponseType> {
     const copy = fichajes;
-    console.log('entre, fichaje -> ' + fichajes);
+    console.log('entre, fichaje -> ' + copy);
     return this.http.post<IFichajes>(this.resourceUrl, copy, { observe: 'response' });
   }
 

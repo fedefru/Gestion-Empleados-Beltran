@@ -2,6 +2,8 @@
   --color-atencion: #ffbf69;
   --color-exito: #00a47c;
   --color-error: #d96465;
+
+  --color-boton: #40916c;
 }
 
 #atencion-box {
@@ -36,8 +38,27 @@
 }
 
 #btn-entendido:hover {
-  border-color: #40916c;
-  background-color: #40916c;
+  border-color: var(--color-boton);
+  background-color: var(--color-boton);
+
+  box-shadow: inset 0 0 0 0 #0bf;
+  -webkit-transition: all ease 1s;
+  -moz-transition: all ease 1s;
+  transition: all ease 1s;
+}
+
+#btn-precaucion {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2%;
+  width: 20%;
+  border-radius: 50px;
+}
+
+#btn-precaucion:hover {
+  border-color: var(--color-atencion);
+  background-color: var(--color-atencion);
 
   box-shadow: inset 0 0 0 0 #0bf;
   -webkit-transition: all ease 1s;
