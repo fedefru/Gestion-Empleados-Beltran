@@ -50,3 +50,18 @@
     </div>
 
 </div>
+
+<div class="container" id="notAccount-box" id="atencion-box" *ngIf="notAccount">
+
+    <h2 id="titulo-box">Advertencia!</h2>
+    <p id="subtitulo-box">Se detectó que no está logueado en su cuenta 🤔</p>
+
+    <div id="error-img">
+        <img id="img-box" src="../../../../../../proyecto-imagenes/dead.png" alt="Imagen de error">
+    </div>
+
+    <div>
+        <button class="btn btn-primary" id="btn-precaucion" (click)="logout()">Cambiar de cuenta</button>
+    </div>
+
+</div>

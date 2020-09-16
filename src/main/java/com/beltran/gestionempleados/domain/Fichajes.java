@@ -71,6 +71,15 @@ public class Fichajes implements Serializable {
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
+
+    public Usuarios getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuarios usuario) {
+        this.usuario = usuario;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

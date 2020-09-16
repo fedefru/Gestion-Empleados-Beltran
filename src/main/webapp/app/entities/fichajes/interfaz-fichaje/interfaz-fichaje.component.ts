@@ -9,6 +9,9 @@ import { Observable } from 'rxjs';
 import { IFichajes } from 'app/shared/model/fichajes.model';
 import { IUsuarios } from '../../../shared/model/usuarios.model';
 import { UsuariosService } from '../../usuarios/usuarios.service';
+import { LoginService } from '../../../core/login/login.service';
+import { Router } from '@angular/router';
+import { LoginModalService } from 'app/core/login/login-modal.service';
 
 @Component({
   selector: 'jhi-interfaz-fichaje',
@@ -21,6 +24,7 @@ export class InterfazFichajeComponent implements OnInit {
   exito: boolean;
   spinner: boolean;
   error: boolean;
+  notAccount: boolean;
   isSaving = false;
   cuenta: any;
   formateDate: string;
@@ -30,25 +34,27 @@ export class InterfazFichajeComponent implements OnInit {
     protected fichajesService: FichajesService,
     protected accountService: AccountService,
     protected usuarioService: UsuariosService,
-    private fb: FormBuilder
+    protected loginService: LoginService,
+    private loginModalService: LoginModalService,
+    private fb: FormBuilder,
+    private router: Router
   ) {
     this.informacion = [];
     this.atencion = true;
     this.exito = false;
     this.spinner = false;
     this.error = false;
+    this.notAccount = false;
     this.formateDate = '';
   }
 
   ngOnInit(): void {
     this.accountService.identity().subscribe(account => {
-      console.log(account);
       this.cuenta = account!.login;
     });
 
     this.usuarioService.findUsuarioByAlias(this.cuenta.toLowerCase()).subscribe((resp: HttpResponse<any>) => {
       this.usuario = resp.body;
-      console.log('Usuario encontrado: ', this.usuario);
     });
   }
 
@@ -68,16 +74,16 @@ export class InterfazFichajeComponent implements OnInit {
         if (this.cuenta.toLowerCase() === this.informacion['body'].toLowerCase()) {
           if (this.usuario) {
             this.isSaving = true;
-
-            console.log(this.informacion);
             this.subscribeToSaveResponse(
               this.fichajesService.create({ id: undefined, fichaje: this.informacion['time'], accion: 'ingreso', usuario: this.usuario })
             );
-          } else {
-            console.log('usuario vacio');
           }
         } else {
-          alert('No puedes registrar en nombre del Usuario logueado.');
+          this.spinner = false;
+          this.atencion = false;
+          this.error = false;
+          this.exito = false;
+          this.notAccount = true;
         }
       } else {
         this.spinner = false;
@@ -104,6 +110,12 @@ export class InterfazFichajeComponent implements OnInit {
 
   previousState(): void {
     window.history.back();
+  }
+
+  logout(): void {
+    this.loginService.logout();
+    this.router.navigate(['']);
+    this.loginModalService.open();
   }
 }
 
