@@ -4,8 +4,10 @@ import com.beltran.gestionempleados.domain.Fichajes;
 import com.beltran.gestionempleados.repository.FichajesRepository;
 import com.beltran.gestionempleados.web.rest.errors.BadRequestAlertException;
 
+import com.hazelcast.concurrent.lock.operations.LocalLockCleanupOperation;
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
+import net.bytebuddy.asm.Advice;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,8 +15,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.text.html.Option;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -52,6 +60,9 @@ public class FichajesResource {
         if (fichajes.getId() != null) {
             throw new BadRequestAlertException("A new fichajes cannot already have an ID", ENTITY_NAME, "idexists");
         }
+
+
+
         Fichajes result = fichajesRepository.save(fichajes);
 
         return ResponseEntity.created(new URI("/api/fichajes/" + result.getId()))
@@ -102,6 +113,18 @@ public class FichajesResource {
         log.debug("REST request to get Fichajes : {}", id);
         Optional<Fichajes> fichajes = fichajesRepository.findById(id);
         return ResponseUtil.wrapOrNotFound(fichajes);
+    }
+
+    @GetMapping("/fichajes/rutaimagen/{idUsuarioImagen}")
+    public List<String> getRutaImagenById(@PathVariable String idUsuarioImagen) {
+        log.debug("REST request to get Fichajes : {}", idUsuarioImagen);
+        try {
+            List<String> rutas = fichajesRepository.findRutasById(idUsuarioImagen);
+            System.out.println();
+            return rutas;
+        }catch (Exception e){
+            return null;
+        }
     }
 
     /**

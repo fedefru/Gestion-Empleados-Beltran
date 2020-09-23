@@ -1,0 +1,11 @@
+<div>
+    <h1 class="tittle">Imagenes fichaje de {{usuario.nombre}}</h1>
+    <div *ngIf="rutas" >
+        <div class="row">
+            <div *ngFor="let ruta of rutas; let i = index" class="col-md-2">
+                <img class="img-fichaje"  src="{{server}}{{ruta}}" alt="">
+                <p>Fecha de fechaje:</p>
+            </div>
+        </div>   
+    </div>
+</div>

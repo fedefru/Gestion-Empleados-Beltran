@@ -8,6 +8,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -26,10 +27,13 @@ public class Fichajes implements Serializable {
     private Long id;
 
     @Column(name = "fichaje")
-    private LocalDateTime fichaje;
+    private String fichaje;
 
     @Column(name = "accion")
     private String accion;
+
+    @Column(name = "ruta_imagen")
+    private String rutaImagen;
 
     @ManyToOne
     @JsonIgnoreProperties(value = "", allowSetters = true)
@@ -44,16 +48,17 @@ public class Fichajes implements Serializable {
         this.id = id;
     }
 
-    public LocalDateTime getFichaje() {
-        return fichaje;
-    }
 
-    public Fichajes fichaje(LocalDateTime fichaje) {
+    public Fichajes fichaje(String fichaje) {
         this.fichaje = fichaje;
         return this;
     }
 
-    public void setFichaje(LocalDateTime fichaje) {
+    public String getFichaje() {
+        return fichaje;
+    }
+
+    public void setFichaje(String fichaje) {
         this.fichaje = fichaje;
     }
 
@@ -78,6 +83,14 @@ public class Fichajes implements Serializable {
 
     public void setUsuario(Usuarios usuario) {
         this.usuario = usuario;
+    }
+
+    public String getRutaImagen() {
+        return rutaImagen;
+    }
+
+    public void setRutaImagen(String rutaImagen) {
+        this.rutaImagen = rutaImagen;
     }
 
     @Override

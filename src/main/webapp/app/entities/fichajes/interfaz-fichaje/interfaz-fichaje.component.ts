@@ -75,7 +75,7 @@ export class InterfazFichajeComponent implements OnInit {
           if (this.usuario) {
             this.isSaving = true;
             this.subscribeToSaveResponse(
-              this.fichajesService.create({ id: undefined, fichaje: this.informacion['time'], accion: 'ingreso', usuario: this.usuario })
+              this.fichajesService.create({ id: undefined, fichaje: this.informacion['date'], accion: 'ingreso',rutaImagen: this.informacion['ruta_imagen'] ,usuario: this.usuario })
             );
           }
         } else {
