@@ -2,6 +2,7 @@ package com.beltran.gestionempleados.repository;
 
 import com.beltran.gestionempleados.domain.Fichajes;
 
+import com.beltran.gestionempleados.domain.Usuarios;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -20,6 +21,8 @@ public interface FichajesRepository extends JpaRepository<Fichajes, Long> {
         value="SELECT ruta_imagen from FICHAJES where USUARIO_ID = :idUsuarioImagen",
         nativeQuery = true)
     List<String> findRutasById(@Param(value="idUsuarioImagen") String idUsuarioImagen);
+
+    Optional<Fichajes> findTopByUsuarioOrderByIdDesc(Usuarios usuario);
 
 }
 

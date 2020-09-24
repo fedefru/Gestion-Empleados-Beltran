@@ -1,4 +1,3 @@
-import { Moment } from 'moment';
 import { IUsuarios } from './usuarios.model';
 
 export interface IFichajes {
@@ -10,5 +9,11 @@ export interface IFichajes {
 }
 
 export class Fichajes implements IFichajes {
-  constructor(public id?: number, public fichaje?: string, public accion?: string, public rutaImagen ?: string, public usuario?: IUsuarios) {}
+  constructor(
+    public id?: number,
+    public fichaje?: string,
+    public accion?: string,
+    public rutaImagen?: string,
+    public usuario?: IUsuarios
+  ) {}
 }

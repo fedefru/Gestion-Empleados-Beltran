@@ -2,6 +2,7 @@ package com.beltran.gestionempleados.web.rest;
 
 import com.beltran.gestionempleados.domain.Fichajes;
 import com.beltran.gestionempleados.repository.FichajesRepository;
+import com.beltran.gestionempleados.service.FichajeService;
 import com.beltran.gestionempleados.web.rest.errors.BadRequestAlertException;
 
 import com.hazelcast.concurrent.lock.operations.LocalLockCleanupOperation;
@@ -10,6 +11,7 @@ import io.github.jhipster.web.util.ResponseUtil;
 import net.bytebuddy.asm.Advice;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,6 +35,9 @@ import java.util.Optional;
 @RequestMapping("/api")
 @Transactional
 public class FichajesResource {
+
+    @Autowired
+    private FichajeService      fichajeService;
 
     private final Logger log = LoggerFactory.getLogger(FichajesResource.class);
 
@@ -61,7 +66,7 @@ public class FichajesResource {
             throw new BadRequestAlertException("A new fichajes cannot already have an ID", ENTITY_NAME, "idexists");
         }
 
-
+        fichajes.setAccion(fichajeService.verificarUltimaAccion(fichajes.getUsuario()));
 
         Fichajes result = fichajesRepository.save(fichajes);
 
