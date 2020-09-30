@@ -5,8 +5,10 @@
         <div class="row">
             <div *ngFor="let ruta of rutas; let i = index" class="col-md-2">
                 <img class="img-fichaje"  src="{{server}}{{ruta}}" alt="">
-                <p>Fecha de fichaje:</p>
+                <p>Fecha de fichaje: {{fechas[i]}}</p>
+                <p>Hora de fichaje: {{horas[i]}}</p>
             </div>
         </div>   
     </div>
 </div>
+

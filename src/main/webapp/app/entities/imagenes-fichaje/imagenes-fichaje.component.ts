@@ -25,7 +25,8 @@ export class ImagenesFichajeComponent implements OnInit {
   server!: string;
   rutas?: any;
   fechas?: any;
-  regex:any;
+  horas?: any;
+  regex: any;
 
   constructor(
     protected imagenesFichajeService: ImagenesFichajeService,
@@ -33,10 +34,11 @@ export class ImagenesFichajeComponent implements OnInit {
     protected usuarioService: UsuariosService,
     protected loginService: LoginService,
     private loginModalService: LoginModalService,
-    private router: Router
+    private router: Router,
   ) {
-    
+
     this.server = 'http://localhost:5000/get_image?filename=./';
+    this.regex = /-/gi;
   }
 
   ngOnInit(): void {
@@ -47,32 +49,32 @@ export class ImagenesFichajeComponent implements OnInit {
     this.usuarioService.findUsuarioByAlias(this.cuenta.toLowerCase()).subscribe((resp: HttpResponse<any>) => {
       this.usuario = resp.body;
       console.log(this.usuario)
-      
+
       this.imagenesFichajeService.queryImagenes(this.usuario.id).subscribe((res: HttpResponse<any>) => {
         this.rutas = res.body;
         console.log(this.rutas);
 
-        this.rutas.map( (x:any) => {
-            this.fechas =  x.substring(
-              x.lastIndexOf("_") + 1, 
-              x.lastIndexOf("T"));
-              
-              /*
-              temp1.map( x => {
-              temp2 =  x.substring(
-                x.lastIndexOf("_") + 1, 
-                x.lastIndexOf("T"));
-              });
-              */
+        this.fechas = this.rutas.map((x: any) => {
+         return x.substring(
+            x.lastIndexOf("_") + 1,
+            x.lastIndexOf("T"));
         });
 
+        this.horas = this.rutas.map((x:any) => {
+          x = x.substring(
+            x.lastIndexOf("T") + 1,
+            x.lastIndexOf(".")
+          );
+          return x.replace(this.regex, ":");
+        })
       });
+
     });
 
-    
+
   }
 
-  
+
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IFichajes>>): void {
     result.subscribe(
       () => this.onSaveSuccess(),
