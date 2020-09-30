@@ -1,10 +1,11 @@
 <div>
-    <h1 class="tittle">Imagenes fichaje de {{usuario.nombre}}</h1>
+    <h1 *ngIf="usuario" class="tittle">Fichajes anteriores de {{usuario.nombre}}</h1>
+    <br>
     <div *ngIf="rutas" >
         <div class="row">
             <div *ngFor="let ruta of rutas; let i = index" class="col-md-2">
                 <img class="img-fichaje"  src="{{server}}{{ruta}}" alt="">
-                <p>Fecha de fechaje:</p>
+                <p>Fecha de fichaje:</p>
             </div>
         </div>   
     </div>

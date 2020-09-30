@@ -125,7 +125,6 @@ public class FichajesResource {
         log.debug("REST request to get Fichajes : {}", idUsuarioImagen);
         try {
             List<String> rutas = fichajesRepository.findRutasById(idUsuarioImagen);
-            System.out.println();
             return rutas;
         }catch (Exception e){
             return null;
