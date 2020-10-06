@@ -25,6 +25,9 @@ public class Empresas implements Serializable {
     @Column(name = "nombre")
     private String nombre;
 
+    @Column(name = "clave")
+    private String clave;
+
     @ManyToOne
     @JsonIgnoreProperties(value = "empresas", allowSetters = true)
     private TipoDireccion direccion;
@@ -57,6 +60,19 @@ public class Empresas implements Serializable {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getClave() {
+        return clave;
+    }
+
+    public Empresas clave(String clave) {
+        this.clave = clave;
+        return this;
+    }
+
+    public void setClave(String clave) {
+        this.clave = clave;
     }
 
     public TipoDireccion getDireccion() {

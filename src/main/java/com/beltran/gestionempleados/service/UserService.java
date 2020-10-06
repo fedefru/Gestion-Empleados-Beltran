@@ -2,6 +2,7 @@ package com.beltran.gestionempleados.service;
 
 import com.beltran.gestionempleados.config.Constants;
 import com.beltran.gestionempleados.domain.Authority;
+import com.beltran.gestionempleados.domain.Empresas;
 import com.beltran.gestionempleados.domain.User;
 import com.beltran.gestionempleados.domain.Usuarios;
 import com.beltran.gestionempleados.repository.AuthorityRepository;
@@ -99,6 +100,34 @@ public class UserService {
         newUser.setLastName(userDTO.getApellido());
         if ((userDTO.getNombre()+"@gmail.com") != null) {
             newUser.setEmail(userDTO.getNombre().toLowerCase()+ "@gmail.com");
+        }
+        //newUser.setImageUrl(userDTO.getImageUrl());
+        //newUser.setLangKey(userDTO.getLangKey());
+
+        // new user is not active
+        newUser.setActivated(true);
+        // new user gets registration key
+        newUser.setActivationKey(RandomUtil.generateActivationKey());
+        Set<Authority> authorities = new HashSet<>();
+        authorityRepository.findById(AuthoritiesConstants.USER).ifPresent(authorities::add);
+        newUser.setAuthorities(authorities);
+        userRepository.save(newUser);
+        this.clearUserCaches(newUser);
+        log.debug("Created Information for User: {}", newUser);
+        return newUser;
+    }
+
+    public User registerEmpresa(Empresas empresasDTO) {
+
+        User newUser = new User();
+        String encryptedPassword = passwordEncoder.encode(empresasDTO.getClave());
+        newUser.setLogin(empresasDTO.getNombre().toLowerCase());
+        // new user gets initially a generated password
+        newUser.setPassword(encryptedPassword);
+        newUser.setFirstName(empresasDTO.getNombre());
+        newUser.setLastName("-");
+        if ((empresasDTO.getNombre()+"@gmail.com") != null) {
+            newUser.setEmail(empresasDTO.getNombre().toLowerCase()+ "@gmail.com");
         }
         //newUser.setImageUrl(userDTO.getImageUrl());
         //newUser.setLangKey(userDTO.getLangKey());

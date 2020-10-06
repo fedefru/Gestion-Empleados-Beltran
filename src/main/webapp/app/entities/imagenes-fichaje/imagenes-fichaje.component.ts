@@ -18,7 +18,6 @@ import { LoginService } from 'app/core/login/login.service';
   styleUrls: ['./imagenes-fichaje.component.scss'],
 })
 export class ImagenesFichajeComponent implements OnInit {
-
   isSaving = false;
   cuenta: any;
   usuario!: IUsuarios;
@@ -34,10 +33,9 @@ export class ImagenesFichajeComponent implements OnInit {
     protected usuarioService: UsuariosService,
     protected loginService: LoginService,
     private loginModalService: LoginModalService,
-    private router: Router,
+    private router: Router
   ) {
-
-    this.server = 'http://localhost:5000/get_image?filename=./';
+    this.server = 'http://localhost:5000/get_image?filename=';
     this.regex = /-/gi;
   }
 
@@ -48,32 +46,23 @@ export class ImagenesFichajeComponent implements OnInit {
 
     this.usuarioService.findUsuarioByAlias(this.cuenta.toLowerCase()).subscribe((resp: HttpResponse<any>) => {
       this.usuario = resp.body;
-      console.log(this.usuario)
+      console.log(this.usuario);
 
       this.imagenesFichajeService.queryImagenes(this.usuario.id).subscribe((res: HttpResponse<any>) => {
         this.rutas = res.body;
         console.log(this.rutas);
 
         this.fechas = this.rutas.map((x: any) => {
-         return x.substring(
-            x.lastIndexOf("_") + 1,
-            x.lastIndexOf("T"));
+          return x.substring(x.lastIndexOf('_') + 1, x.lastIndexOf('T'));
         });
 
-        this.horas = this.rutas.map((x:any) => {
-          x = x.substring(
-            x.lastIndexOf("T") + 1,
-            x.lastIndexOf(".")
-          );
-          return x.replace(this.regex, ":");
-        })
+        this.horas = this.rutas.map((x: any) => {
+          x = x.substring(x.lastIndexOf('T') + 1, x.lastIndexOf('.'));
+          return x.replace(this.regex, ':');
+        });
       });
-
     });
-
-
   }
-
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IFichajes>>): void {
     result.subscribe(

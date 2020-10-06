@@ -29,6 +29,7 @@ export class EmpresasUpdateComponent implements OnInit {
   editForm = this.fb.group({
     id: [],
     nombre: [],
+    clave: [],
     direccion: [],
     contacto: [],
     estado: [],
@@ -44,21 +45,22 @@ export class EmpresasUpdateComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.data.subscribe(({ empresas }) => {
-      this.updateForm(empresas);
+    // this.activatedRoute.data.subscribe(({ empresas }) => {
+    // this.updateForm(empresas);
 
-      this.tipoDireccionService.query().subscribe((res: HttpResponse<ITipoDireccion[]>) => (this.tipodireccions = res.body || []));
+    this.tipoDireccionService.query().subscribe((res: HttpResponse<ITipoDireccion[]>) => (this.tipodireccions = res.body || []));
 
-      this.tipoContactosService.query().subscribe((res: HttpResponse<ITipoContactos[]>) => (this.tipocontactos = res.body || []));
+    this.tipoContactosService.query().subscribe((res: HttpResponse<ITipoContactos[]>) => (this.tipocontactos = res.body || []));
 
-      this.estadosService.query().subscribe((res: HttpResponse<IEstados[]>) => (this.estados = res.body || []));
-    });
+    this.estadosService.query().subscribe((res: HttpResponse<IEstados[]>) => (this.estados = res.body || []));
+    // });
   }
 
   updateForm(empresas: IEmpresas): void {
     this.editForm.patchValue({
       id: empresas.id,
       nombre: empresas.nombre,
+      clave: empresas.clave,
       direccion: empresas.direccion,
       contacto: empresas.contacto,
       estado: empresas.estado,
@@ -72,11 +74,8 @@ export class EmpresasUpdateComponent implements OnInit {
   save(): void {
     this.isSaving = true;
     const empresas = this.createFromForm();
-    if (empresas.id !== undefined) {
-      this.subscribeToSaveResponse(this.empresasService.update(empresas));
-    } else {
-      this.subscribeToSaveResponse(this.empresasService.create(empresas));
-    }
+
+    this.subscribeToSaveResponse(this.empresasService.create(empresas));
   }
 
   private createFromForm(): IEmpresas {
@@ -84,6 +83,7 @@ export class EmpresasUpdateComponent implements OnInit {
       ...new Empresas(),
       id: this.editForm.get(['id'])!.value,
       nombre: this.editForm.get(['nombre'])!.value,
+      clave: this.editForm.get(['clave'])!.value,
       direccion: this.editForm.get(['direccion'])!.value,
       contacto: this.editForm.get(['contacto'])!.value,
       estado: this.editForm.get(['estado'])!.value,

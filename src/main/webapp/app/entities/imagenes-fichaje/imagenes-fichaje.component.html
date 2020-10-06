@@ -3,10 +3,10 @@
     <br>
     <div *ngIf="rutas" >
         <div class="row">
-            <div *ngFor="let ruta of rutas; let i = index" class="col-md-2">
-                <img class="img-fichaje"  src="{{server}}{{ruta}}" alt="">
-                <p>Fecha de fichaje: {{fechas[i]}}</p>
-                <p>Hora de fichaje: {{horas[i]}}</p>
+            <div *ngFor="let ruta of rutas; let i = index" class="col-md-2 fichajes--box">
+                <img class="img--fichaje"  src="{{server}}{{ruta}}" alt="">
+                <p id="fichaje--item">Fecha de fichaje: <span id="bold--item"> {{fechas[i]}}</span></p>
+                <p id="fichaje--item">Hora de fichaje:  <span id="bold--item"> {{horas[i]}}</span></p>
             </div>
         </div>   
     </div>

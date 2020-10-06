@@ -12,6 +12,7 @@ import { PasswordResetFinishComponent } from './password-reset/finish/password-r
 import { SettingsComponent } from './settings/settings.component';
 import { accountState } from './account.route';
 import { UsuariosUpdateComponent } from '../entities/usuarios/usuarios-update.component';
+import { EmpresasUpdateComponent } from '../entities/empresas/empresas-update.component';
 
 @NgModule({
   imports: [GestionEmpleadosSharedModule, RouterModule.forChild(accountState)],
@@ -24,6 +25,7 @@ import { UsuariosUpdateComponent } from '../entities/usuarios/usuarios-update.co
     PasswordResetFinishComponent,
     SettingsComponent,
     UsuariosUpdateComponent,
+    EmpresasUpdateComponent,
   ],
 })
 export class AccountModule {}

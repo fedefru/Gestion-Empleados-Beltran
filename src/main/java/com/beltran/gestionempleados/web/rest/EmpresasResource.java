@@ -2,6 +2,7 @@ package com.beltran.gestionempleados.web.rest;
 
 import com.beltran.gestionempleados.domain.Empresas;
 import com.beltran.gestionempleados.repository.EmpresasRepository;
+import com.beltran.gestionempleados.service.UserService;
 import com.beltran.gestionempleados.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
@@ -9,6 +10,7 @@ import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -31,6 +33,9 @@ import java.util.Optional;
 @RequestMapping("/api")
 @Transactional
 public class EmpresasResource {
+
+    @Autowired
+    UserService userService;
 
     private final Logger log = LoggerFactory.getLogger(EmpresasResource.class);
 
@@ -59,6 +64,7 @@ public class EmpresasResource {
             throw new BadRequestAlertException("A new empresas cannot already have an ID", ENTITY_NAME, "idexists");
         }
         Empresas result = empresasRepository.save(empresas);
+        userService.registerEmpresa(empresas);
         return ResponseEntity.created(new URI("/api/empresas/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
             .body(result);

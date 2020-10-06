@@ -5,6 +5,7 @@ import { IEstados } from 'app/shared/model/estados.model';
 export interface IEmpresas {
   id?: number;
   nombre?: string;
+  clave?: string;
   direccion?: ITipoDireccion;
   contacto?: ITipoContactos;
   estado?: IEstados;
@@ -14,6 +15,7 @@ export class Empresas implements IEmpresas {
   constructor(
     public id?: number,
     public nombre?: string,
+    public clave?: string,
     public direccion?: ITipoDireccion,
     public contacto?: ITipoContactos,
     public estado?: IEstados
