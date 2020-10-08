@@ -104,6 +104,10 @@ import { RouterModule } from '@angular/router';
         path: 'imagenes-fichaje',
         loadChildren: () => import('./imagenes-fichaje/imagenes-fichaje.module').then(m => m.GestionEmpleadosImagenesFichajeModule),
       },
+      {
+        path: 'sugerencias',
+        loadChildren: () => import('./sugerencias/sugerencias.module').then(m => m.GestionEmpleadosSugerenciasModule),
+      },
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ]),
   ],
