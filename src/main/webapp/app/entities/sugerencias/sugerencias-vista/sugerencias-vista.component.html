@@ -1,0 +1,18 @@
+<div class="container-fluid">
+    <div class="row">
+
+        <div *ngFor="let sugerencia of sugerencias" id="card--sugerencia" class="card" style="width: 20rem;">
+           <!--  <img src="..." class="card-img-top" alt="..."> -->
+           <div class="card-header"> 
+               <h5 class="card-title"> {{sugerencia.asunto}} </h5>
+               <div *jhiHasAnyAuthority="'ROLE_ADMIN'" class="row justify-content-center">
+                    <button class="btn btn-primary" (click)="marcarComoLeido(sugerencia.id)" >Marcar como leído</button>
+                </div>
+            </div>
+            <div class="card-body"> 
+              <p class="card-text"> {{sugerencia.mensaje}} </p>
+            </div>
+          </div>
+
+    </div>
+</div>

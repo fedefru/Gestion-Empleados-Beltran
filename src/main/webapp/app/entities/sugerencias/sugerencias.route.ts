@@ -10,6 +10,7 @@ import { UserRouteAccessService } from '../../../app/core/auth/user-route-access
 import { ISugerencias, Sugerencias } from '../../shared/model/sugerencias.model';
 import { SugerenciasService } from './sugerencias.service';
 import { SugerenciasComponent } from './sugerencias.component';
+import { SugerenciasVistaComponent } from './sugerencias-vista/sugerencias-vista.component';
 
 @Injectable({ providedIn: 'root' })
 export class SugerenciasResolve implements Resolve<ISugerencias> {
@@ -37,6 +38,15 @@ export const sugerenciasRoute: Routes = [
   {
     path: '',
     component: SugerenciasComponent,
+    data: {
+      authorities: [Authority.USER],
+      pageTitle: 'Sugerencia',
+    },
+    canActivate: [UserRouteAccessService],
+  },
+  {
+    path: 'portal',
+    component: SugerenciasVistaComponent,
     data: {
       authorities: [Authority.USER],
       pageTitle: 'Sugerencia',

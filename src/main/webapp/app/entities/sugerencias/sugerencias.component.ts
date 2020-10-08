@@ -20,6 +20,7 @@ export class SugerenciasComponent implements OnInit {
   leido = false;
   cuenta: any;
   usuario!: IUsuarios;
+  redaccion: boolean;
 
   editForm = this.fb.group({
     id: [],
@@ -35,7 +36,9 @@ export class SugerenciasComponent implements OnInit {
     protected accountService: AccountService,
     protected usuarioService: UsuariosService,
     protected loginService: LoginService
-  ) {}
+  ) {
+    this.redaccion = true;
+  }
 
   ngOnInit(): void {
     this.accountService.identity().subscribe(account => {
@@ -45,10 +48,6 @@ export class SugerenciasComponent implements OnInit {
     this.usuarioService.findUsuarioByAlias(this.cuenta.toLowerCase()).subscribe((resp: HttpResponse<any>) => {
       this.usuario = resp.body;
     });
-
-    /* this.activatedRoute.data.subscribe(({sugerencias}) => {
-      this.updateForm(sugerencias);
-    }) */
   }
 
   previousState(): void {
@@ -60,6 +59,7 @@ export class SugerenciasComponent implements OnInit {
     const sugerencias = this.createFromForm();
 
     this.subscribeToSaveResponse(this.sugerenciasService.create(sugerencias));
+    this.redaccion = false;
   }
 
   private createFromForm(): ISugerencias {
@@ -83,7 +83,7 @@ export class SugerenciasComponent implements OnInit {
 
   protected onSaveSuccess(): void {
     this.isSaving = false;
-    this.previousState();
+    // this.previousState();
   }
 
   protected onSaveError(): void {

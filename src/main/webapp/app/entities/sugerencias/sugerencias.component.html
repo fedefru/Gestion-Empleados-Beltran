@@ -1,44 +1,64 @@
 <div class="row justify-content-center">
-    <div class="col-8">
+    <div *ngIf="redaccion" class="col-md-6" id="box--sugerencia">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-            
+                <h2 id="title--sugerencia">Redactar una sugerencia</h2>
             <div>
                 <jhi-alert-error></jhi-alert-error>
-
+                <br>
                 <div class="form-group" [hidden]="!editForm.get('id')!.value">
                     <label for="id" jhiTranslate="global.field.id">ID</label>
                     <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
                 </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" for="field_asunto">Asunto</label>
-                    <input type="text" class="form-control" name="asunto" id="field_asunto"
-                           formControlName="asunto" minlength="4" required />
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label class="form-control-label" for="field_asunto">Asunto</label>
+                        <input type="text" class="form-control" name="asunto" id="field_asunto"
+                               formControlName="asunto" minlength="4" required />
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label class="form-control-label" for="field_prioridad">Prioridad</label>
-                    <input type="text" class="form-control" name="prioridad" id="field_prioridad"
-                           formControlName="prioridad" minlength="4" required />
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="form-control-label" for="field_prioridad">Prioridad</label>
+                        <select class="form-control" name="prioridad" id="field_prioridad"
+                        formControlName="prioridad">
+                          <option>Baja</option>
+                          <option>Media</option>
+                          <option>Alta</option>
+                        </select>  
+                    </div>
                 </div>
 
+            </div>
+                
                 <div class="form-group">
                     <label class="form-control-label" for="field_mensaje">Mensaje</label>
-                    <input type="text" class="form-control" name="mensaje" id="field_mensaje"
-                           formControlName="mensaje" minlength="4" required />
+                    <textarea class="form-control" name="mensaje" id="field_mensaje"
+                    formControlName="mensaje" minlength="4" rows="4" cols="50" required maxlength="600"></textarea>
                 </div>
 
             </div>
 
-            <div>
-                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
-                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
-                </button>
+            <div class="row justify-content-end">
+               <div class="col-md-2">
+                    <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                        <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                    </button>
+               </div>   
+               <div class="col-md-2">
+                    <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                       <span>Enviar </span> <fa-icon icon="plane"></fa-icon>&nbsp;
+                    </button>
+               </div>
 
-                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
-                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
-                </button>
+               
             </div>
         </form>
     </div>
+
+    <div *ngIf="redaccion == false" class="col-md-5">
+        <h2 id="title--sugerencia">Sugerencia enviada con éxito</h2>
+        <img id="img--check" src="../../../../../proyecto-imagenes/check.png" alt="">
+
 </div>

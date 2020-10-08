@@ -1,0 +1,66 @@
+#box--sugerencia {
+  border: 1px solid;
+  border-color: #1c2833;
+  padding: 40px 40px 40px 40px;
+}
+
+#title--sugerencia {
+  text-align: center;
+}
+
+#title--sugerencia,
+label {
+  color: #1c2833;
+  font-family: 'Alata', sans-serif;
+}
+
+button {
+  width: 100%;
+  margin-top: 2%;
+}
+
+#save-entity:hover {
+  border-color: #28b463;
+  background-color: #28b463;
+
+  box-shadow: inset 0 0 0 0 #0bf;
+  -webkit-transition: all ease 1.5s;
+  -moz-transition: all ease 1.5s;
+  transition: all ease 1.5s;
+}
+
+#img--check {
+  -webkit-animation: scale-out-center 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) reverse both;
+  animation: scale-out-center 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) reverse both;
+
+  height: 120px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2%;
+}
+
+@-webkit-keyframes scale-out-center {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    opacity: 1;
+  }
+}
+@keyframes scale-out-center {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    opacity: 1;
+  }
+}

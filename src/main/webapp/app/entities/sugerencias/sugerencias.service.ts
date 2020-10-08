@@ -11,15 +11,18 @@ type EntityArrayResponseType = HttpResponse<ISugerencias[]>;
 @Injectable({ providedIn: 'root' })
 export class SugerenciasService {
   public resourceUrl = SERVER_API_URL + 'api/sugerencias';
-
+  public resourceUrlLeido = SERVER_API_URL + 'api/sugerencias/leido';
   constructor(protected http: HttpClient) {}
 
-  create(puestos: ISugerencias): Observable<EntityResponseType> {
-    return this.http.post<ISugerencias>(this.resourceUrl, puestos, { observe: 'response' });
+  create(sugerencias: ISugerencias): Observable<EntityResponseType> {
+    return this.http.post<ISugerencias>(this.resourceUrl, sugerencias, { observe: 'response' });
   }
 
-  update(puestos: ISugerencias): Observable<EntityResponseType> {
-    return this.http.put<ISugerencias>(this.resourceUrl, puestos, { observe: 'response' });
+  update(sugerencias: ISugerencias): Observable<EntityResponseType> {
+    /* eslint-disable no-console */
+    console.log('Antes del back, ', sugerencias);
+    /* eslint-enable no-console */
+    return this.http.put<ISugerencias>(this.resourceUrlLeido, sugerencias, { observe: 'response' });
   }
 
   find(id: number): Observable<EntityResponseType> {

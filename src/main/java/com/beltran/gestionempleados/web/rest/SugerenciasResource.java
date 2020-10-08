@@ -1,6 +1,7 @@
 package com.beltran.gestionempleados.web.rest;
 
 import com.beltran.gestionempleados.domain.Sugerencias;
+import com.beltran.gestionempleados.repository.PuestosRepository;
 import com.beltran.gestionempleados.repository.SugerenciasRepository;
 import com.beltran.gestionempleados.web.rest.errors.BadRequestAlertException;
 import io.github.jhipster.web.util.HeaderUtil;
@@ -23,20 +24,23 @@ import java.util.Optional;
 @Transactional
 public class SugerenciasResource {
 
-    private final Logger log = LoggerFactory.getLogger(FichajesResource.class);
+    private final Logger log = LoggerFactory.getLogger(SugerenciasResource.class);
 
     private static final String ENTITY_NAME = "sugerencias";
 
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
 
-    @Autowired
-    SugerenciasRepository   sugerenciasRepository;
 
+    private final SugerenciasRepository sugerenciasRepository;
+
+    public SugerenciasResource(SugerenciasRepository sugerenciasRepository) {
+        this.sugerenciasRepository = sugerenciasRepository;
+    }
 
     @PostMapping("/sugerencias")
     public ResponseEntity<Sugerencias> createSugerencias(@RequestBody Sugerencias sugerencia)throws URISyntaxException {
-        log.debug("REST request to save Fichajes : {}", sugerencia);
+        log.debug("REST request to save sugerencia : {}", sugerencia);
         if (sugerencia.getId() != null) {
             throw new BadRequestAlertException("A new sugerencia cannot already have an ID", ENTITY_NAME, "idexists");
         }
@@ -49,13 +53,14 @@ public class SugerenciasResource {
 
     }
 
-    @PutMapping("/sugerencias")
+    @PutMapping("/sugerencias/leido")
     public ResponseEntity<Sugerencias> updateSugerencias(@RequestBody Sugerencias sugerencia) throws URISyntaxException {
-        log.debug("REST request to update Fichajes : {}", sugerencia);
+        log.debug("REST request to update sugerencia : {}", sugerencia);
         if (sugerencia.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
         Sugerencias result = sugerenciasRepository.save(sugerencia);
+        System.out.println("AAAAAAAAAAAAAA" + result);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, sugerencia.getId().toString()))
             .body(result);

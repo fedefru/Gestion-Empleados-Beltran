@@ -38,6 +38,7 @@
     <include file="config/liquibase/changelog/20200704010230_added_entity_Puestos.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200704010330_added_entity_Areas.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20201007101010_added_entity_Sugerencias.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201008101010_added_entity_SugerenciasUsuarios.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200704010430_added_entity_Configuraciones.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20200704004230_added_entity_constraints_Provincias.xml" relativeToChangelogFile="false"/>

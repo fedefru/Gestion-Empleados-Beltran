@@ -31,6 +31,9 @@ public class Sugerencias implements Serializable {
     @Column(name = "leido")
     private Boolean leido;
 
+    @Column(name = "likes")
+    private Long likes;
+
     @ManyToOne
     @JsonIgnoreProperties(value = "", allowSetters = true)
     private Usuarios usuario;
@@ -94,6 +97,14 @@ public class Sugerencias implements Serializable {
 
     public void setLeido(Boolean leido) {
         this.leido = leido;
+    }
+
+    public Long getLikes() {
+        return likes;
+    }
+
+    public void setLikes(Long likes) {
+        this.likes = likes;
     }
 
     public Usuarios getUsuario() {
