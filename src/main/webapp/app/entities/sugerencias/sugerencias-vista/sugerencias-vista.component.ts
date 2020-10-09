@@ -48,6 +48,7 @@ export class SugerenciasVistaComponent implements OnInit {
       this.sugerencia.leido = true;
 
       this.subscribeToSaveResponse(this.sugerenciasService.update(this.sugerencia));
+      window.location.reload();
     });
   }
 
