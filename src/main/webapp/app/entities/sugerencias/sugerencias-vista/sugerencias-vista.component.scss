@@ -4,9 +4,10 @@
   margin-top: 2%;
   min-height: 500px;
   max-height: 500px;
+  overflow: auto;
 }
 .card-header {
-  background-color: #17a589;
+  background-color: #15967d;
 }
 .card-title {
   text-align: center;
@@ -16,4 +17,16 @@
 .card-text {
   color: #1c2833;
   font-family: 'Alata', sans-serif;
+}
+#check--img {
+  width: 37px;
+  height: 37px;
+}
+
+#check--text {
+  color: white;
+  font-family: 'Alata', sans-serif;
+}
+#visto--eye:hover {
+  cursor: pointer;
 }

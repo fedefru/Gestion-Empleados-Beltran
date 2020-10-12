@@ -5,14 +5,27 @@
            <!--  <img src="..." class="card-img-top" alt="..."> -->
            <div class="card-header"> 
                <h5 class="card-title"> {{sugerencia.asunto}} </h5>
-               <div *jhiHasAnyAuthority="'ROLE_ADMIN'" class="row justify-content-center">
-                    <button class="btn btn-primary" (click)="marcarComoLeido(sugerencia.id)" >Marcar como leído</button>
+               
+                <div class="row justify-content-center">
+                    <div *ngIf="sugerencia.leido == false">
+                      <span id="check--text" >No Leído por RRHH</span>
+                      <img id="check--img" src="../../../../../../proyecto-imagenes/reloj.png" alt="">  
+                    </div>
                 </div>
+                <div *ngIf="sugerencia.leido" class="row justify-content-center">
+                  <span id="check--text" >Leido por RRHH</span>
+                  <img id="check--img" src="../../../../../../proyecto-imagenes/check.png" alt="">         
+               </div>
+
             </div>
             <div class="card-body"> 
-              <p class="card-text"> {{sugerencia.mensaje}} </p>
+              <p class="card-text"> {{sugerencia.mensaje}} <span *jhiHasAnyAuthority="'ROLE_ADMIN'"> <span id="visto--eye" *ngIf="sugerencia.leido == false" (click)="marcarComoLeido(sugerencia.id)" title="Marcar como leido">👁‍🗨</span></span></p>     
             </div>
+            <div *jhiHasAnyAuthority="'ROLE_ADMIN'" class="card-footer border-success" [ngStyle]="{'background-color':sugerencia.prioridad === 'Baja' ? '#52BE80' : '#E74C3C'}"> 
+              <span id="check--text">Prioridad {{sugerencia.prioridad}} </span>
+            </div>
+          
           </div>
-
+          
     </div>
 </div>
