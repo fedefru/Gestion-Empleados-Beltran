@@ -38,6 +38,12 @@ export class EmpleadosService {
       .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
   }
 
+  findAll(): Observable<EntityResponseType> {
+    return this.http
+      .get<IEmpleados>(this.resourceUrl, { observe: 'response' })
+      .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
+  }
+
   query(req?: any): Observable<EntityArrayResponseType> {
     const options = createRequestOption(req);
     return this.http

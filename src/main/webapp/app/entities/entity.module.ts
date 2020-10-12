@@ -108,6 +108,10 @@ import { RouterModule } from '@angular/router';
         path: 'sugerencias',
         loadChildren: () => import('./sugerencias/sugerencias.module').then(m => m.GestionEmpleadosSugerenciasModule),
       },
+      {
+        path: 'organigrama',
+        loadChildren: () => import('./organigrama/organigrama.module').then(m => m.GestionEmpleadosOrganigramaModule),
+      },
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ]),
   ],
