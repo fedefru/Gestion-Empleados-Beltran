@@ -94,7 +94,7 @@ export class OrganigramaComponent implements OnInit, AfterViewInit {
             let color = node.findObject('SHAPE').fill;
             const dia: go.Diagram = node.diagram;
             if (dia && dia.layout.network) {
-              dia.layout.network.vertexes.each(function (v: go.TreeVertex) {
+              dia.layout.network.vertexes.each(function (v: any) {
                 if (v.node && v.node.key === node.data.key) {
                   const level: number = v.level % levelColors.length;
                   color = levelColors[level];

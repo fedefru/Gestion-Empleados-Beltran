@@ -1,7 +1,22 @@
 {
   "home": {
-    "title": "Welcome, Java Hipster!",
-    "subtitle": "This is your homepage",
+    "title": "Employee management",
+    "subtitleOne": "The web application has arrived that will facilitate the administration of your company,",
+    "subtitleTwo": "we have the latest technologies that allow you to keep your employees",
+    "subtitleThree": "informed and communicated with each other.",
+    "subtitleFour": "Register now to start enjoying our services for free.",
+    "empleados": "Employee",
+    "empleadosTexto": "Keep your Employees informed.",
+    "empresas": "Company",
+    "empresasTexto": "Manage simply and safely.",
+    "fichaje": "Webcam transfer system!",
+    "fichajeTexto": "Smile, we are filming it! 😄",
+    "sugerencias": "Suggestions",
+    "sugerenciasTexto": "Suggestions section for possible implementations",
+    "localizacion": "Location",
+    "localizacionTexto": "See the locations of all branches.",
+    "controlHorarios": "Schedule Control",
+    "controlHorariosTexto": "Manage the schedules of your days",
     "logged": {
       "message": "You are logged in as user \"{{username}}\"."
     },

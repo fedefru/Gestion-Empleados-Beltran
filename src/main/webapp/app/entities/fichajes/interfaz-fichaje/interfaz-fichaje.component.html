@@ -1,17 +1,17 @@
 
 <div *ngIf="atencion" class="container" id="atencion-box">
-    <h2 id="titulo-box">Atención!</h2>
-    <p id="subtitulo-box">Tenga en cuenta los siguientes consejos para una mejor experiencia</p>
+    <h2 id="titulo-box" jhiTranslate="gestionEmpleadosApp.fichajes.home.titleInterfazFichaje">Atención!</h2>
+    <p id="subtitulo-box" jhiTranslate="gestionEmpleadosApp.fichajes.home.subtitleInterfazFichaje"></p>
     <div id="consejos">
         <ol id="items-consejos">
-            <li>Trate de encontrar un lugar con buena iluminación</li>
-            <li>Evite tener la luz natural o articial detrás de usted</li>
-            <li>Descubra su rostro, evite usar gorros, lentes de sol y cubrebocas</li>
-            <li>Sonría 😄</li>
+            <li jhiTranslate="gestionEmpleadosApp.fichajes.home.tipOne"></li>
+            <li jhiTranslate="gestionEmpleadosApp.fichajes.home.tipTwo"></li>
+            <li jhiTranslate="gestionEmpleadosApp.fichajes.home.tipThree"></li>
+            <li jhiTranslate="gestionEmpleadosApp.fichajes.home.tipFour"></li>
         </ol>
     </div>
     <div>
-        <button class="btn btn-primary" id="btn-entendido" (click)="activarReconocimiento()">Entendido <fa-icon icon="check" [fixedWidth]="true"></fa-icon></button>
+        <button class="btn btn-primary" id="btn-entendido" (click)="activarReconocimiento()" jhiTranslate="gestionEmpleadosApp.fichajes.home.buttonOkey"><fa-icon icon="check" [fixedWidth]="true"></fa-icon></button>
     </div>
 </div> 
 
@@ -23,47 +23,51 @@
 
 <div *ngIf="exito" class="container" id="confirmacion-box">
 
-    <h2 id="titulo-box">Felicidades!</h2>
-    <p id="subtitulo-box">Horas acreditadas en <span id="nombre-cuenta"> {{this.informacion['body']}} </span> ⏳ </p>
-
+    <h2 id="titulo-box" jhiTranslate="gestionEmpleadosApp.fichajes.home.congratulations"></h2>
+    <p id="subtitulo-box">
+        <span jhiTranslate="gestionEmpleadosApp.fichajes.home.hours"></span>
+        <span id="nombre-cuenta"> {{this.informacion['body']}} ⏳</span> 
+    </p>
+    
+    
     <div id="check-img">
         <img id="img-box" src="../../../../../../proyecto-imagenes/check.png" alt="Imagen de confirmacion">
     </div>
     <div>
-        <a href="/imagenes-fichaje"><button class="btn btn-dark" id="btn-entendido"> Ver fichajes anteriores</button></a>
+        <a href="/imagenes-fichaje"><button class="btn btn-dark" id="btn-entendido" jhiTranslate="gestionEmpleadosApp.fichajes.home.lastFichajes"></button></a>
     </div>
     <div>
-        <a href="/"><button class="btn btn-primary" id="btn-entendido"> Finalizar</button></a>
+        <a href="/"><button class="btn btn-primary" id="btn-entendido" jhiTranslate="gestionEmpleadosApp.fichajes.home.finish"></button></a>
     </div>
 
 </div>
 
 <div *ngIf="error" class="container" id="error-box" >
 
-    <h2 id="titulo-box">Error</h2>
-    <p id="subtitulo-box">Se ha producido un error al intentar reconocerte </p>
+    <h2 id="titulo-box" jhiTranslate="gestionEmpleadosApp.fichajes.home.error"></h2>
+    <p id="subtitulo-box" jhiTranslate="gestionEmpleadosApp.fichajes.home.errorSubtitle"></p>
 
     <div id="error-img">
         <img id="img-box" src="../../../../../../proyecto-imagenes/dead.png" alt="Imagen de error">
     </div>
 
     <div>
-        <button class="btn btn-primary" id="btn-entendido" (click)="activarReconocimiento()"> Volver a intentarlo</button>
+        <button class="btn btn-primary" id="btn-entendido" (click)="activarReconocimiento()" jhiTranslate="gestionEmpleadosApp.fichajes.home.tryAgain"></button>
     </div>
 
 </div>
 
 <div class="container" id="notAccount-box" id="atencion-box" *ngIf="notAccount">
 
-    <h2 id="titulo-box">Advertencia!</h2>
-    <p id="subtitulo-box">Se detectó que no está logueado en su cuenta 🤔</p>
+    <h2 id="titulo-box" jhiTranslate="gestionEmpleadosApp.fichajes.home.warning"></h2>
+    <p id="subtitulo-box" jhiTranslate="gestionEmpleadosApp.fichajes.home.warningSubtitle"></p>
 
     <div id="error-img">
         <img id="img-box" src="../../../../../../proyecto-imagenes/dead.png" alt="Imagen de error">
     </div>
 
     <div>
-        <button class="btn btn-primary" id="btn-precaucion" (click)="logout()">Cambiar de cuenta</button>
+        <button class="btn btn-primary" id="btn-precaucion" (click)="logout()" jhiTranslate="gestionEmpleadosApp.fichajes.home.changeAccount"></button>
     </div>
 
 </div>
