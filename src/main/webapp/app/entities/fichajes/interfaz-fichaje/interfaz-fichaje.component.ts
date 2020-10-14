@@ -51,6 +51,7 @@ export class InterfazFichajeComponent implements OnInit {
   ngOnInit(): void {
     this.accountService.identity().subscribe(account => {
       this.cuenta = account!.login;
+      console.log('LA cuenta', this.cuenta);
     });
 
     this.usuarioService.findUsuarioByAlias(this.cuenta.toLowerCase()).subscribe((resp: HttpResponse<any>) => {

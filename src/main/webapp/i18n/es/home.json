@@ -1,7 +1,22 @@
 {
   "home": {
-    "title": "¡Bienvenido, Java Hipster!",
-    "subtitle": "Esta es su página de inicio",
+    "title": "Gestion de Empleados",
+    "subtitleOne": "Llego la aplicación web que te va a facilitar la administración de tu empresa,",
+    "subtitleTwo": "contamos con las ultimas tecnologias que permite mantener a tus empleados",
+    "subtitleThree": "informados y comunicados entre si.",
+    "subtitleFour": "Registrate ahora para empezar a disfrutar de nuestros servicios de manera gratuita.",
+    "empleados": "Empleados",
+    "empleadosText": "Mantenga a sus Empleados informados.",
+    "empresas": "Empresas",
+    "empresasTexto": "Administrar de manera simple y segura.",
+    "fichaje": "¡Sistema de fichaje por webcam!",
+    "fichajeTexto": "Sonrie, lo estamos filmando! 😄",
+    "sugerencias": "Sugerencias",
+    "sugerenciasTexto": "Sección de sugerencias para posibles implementaciones",
+    "localizacion": "Localización",
+    "localizacionTexto": "Consulta las ubicaciones de todas las sucursales.",
+    "controlHorarios": "Control de Horarios",
+    "controlHorariosTexto": "Gestiona los horarios de tus jornadas",
     "logged": {
       "message": "Está conectado como \"{{username}}\"."
     },

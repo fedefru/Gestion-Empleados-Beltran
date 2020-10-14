@@ -1,12 +1,18 @@
 <div>
-    <h1 *ngIf="usuario" class="tittle">Fichajes anteriores de {{usuario.nombre}}</h1>
+    <h1 *ngIf="usuario" class="tittle"><span jhiTranslate="gestionEmpleadosApp.fichajes.home.fichajesDe"></span> {{usuario.nombre}}</h1>
     <br>
     <div *ngIf="rutas" >
         <div class="row">
             <div *ngFor="let ruta of rutas; let i = index" class="col-md-2 fichajes--box">
                 <img class="img--fichaje"  src="{{server}}{{ruta}}" alt="">
-                <p id="fichaje--item">Fecha de fichaje: <span id="bold--item"> {{fechas[i]}}</span></p>
-                <p id="fichaje--item">Hora de fichaje:  <span id="bold--item"> {{horas[i]}}</span></p>
+               <p>
+                <span id="fichaje--item" jhiTranslate="gestionEmpleadosApp.fichajes.home.fechaFichaje"> </span>
+                <span id="bold--item"> {{fechas[i]}}</span>
+               </p>
+               <p>
+                <span id="fichaje--item" jhiTranslate="gestionEmpleadosApp.fichajes.home.horaFichaje"></span>
+                <span id="bold--item"> {{horas[i]}}</span>
+                </p>
             </div>
         </div>   
     </div>
