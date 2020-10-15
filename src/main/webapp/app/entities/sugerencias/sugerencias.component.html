@@ -47,7 +47,7 @@
                     </button>
                </div>   
                <div class="col-md-2">
-                    <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <button type="button" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary" (click)="warning = true ; redaccion = false">
                        <span>Enviar </span> <fa-icon icon="plane"></fa-icon>&nbsp;
                     </button>
                </div>
@@ -57,8 +57,30 @@
         </form>
     </div>
 
-    <div *ngIf="redaccion == false" class="col-md-5">
+    <div class="col-md-5" *ngIf="warning">
+
+        <div class="box--warning">
+            <h2 id="title--sugerencia">Atención!</h2>
+            <br>
+            <span id="text--sugerencia">Al enviar una sugerencia su información puede ser vista por una persona de RRHH o Administrador</span>
+            <br>
+            <span id="text--sugerencia">Revise y esté seguro de su ortografía y contenido del mensaje para evitar inconvenientes en el futuro</span>
+
+            <button type="button" id="cancel-save" class="btn btn-dark" (click)="warning = false ; redaccion = true" >
+                <span>Cancelar y revisar mi sugerencia</span>
+             </button>
+
+
+            <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary" (click)="save()">
+                <span>Estoy seguro y deseo enviar mi sugerencia </span> <fa-icon icon="plane"></fa-icon>&nbsp;
+             </button>
+
+        </div>
+
+    </div>
+
+    <div *ngIf="success" class="col-md-5">
         <h2 id="title--sugerencia">Sugerencia enviada con éxito</h2>
         <img id="img--check" src="../../../../../proyecto-imagenes/check.png" alt="">
 
-</div>
+    </div>

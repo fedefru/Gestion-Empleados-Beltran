@@ -7,6 +7,8 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Table(name = "sugerencias")
@@ -33,6 +35,9 @@ public class Sugerencias implements Serializable {
 
     @Column(name = "likes")
     private Long likes;
+
+    @Column(name = "fecha_redaccion")
+    private LocalDate fecha;
 
     @ManyToOne
     @JsonIgnoreProperties(value = "", allowSetters = true)
@@ -105,6 +110,14 @@ public class Sugerencias implements Serializable {
 
     public void setLikes(Long likes) {
         this.likes = likes;
+    }
+
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
     }
 
     public Usuarios getUsuario() {

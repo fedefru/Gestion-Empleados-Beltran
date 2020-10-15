@@ -4,7 +4,7 @@
       "home": {
         "title": "Empresas",
         "createLabel": "Create a new Empresas",
-        "createOrEditLabel": "Create or edit a Empresas",
+        "createOrEditLabel": "Create Empresa",
         "notFound": "No Empresas found"
       },
       "created": "A new Empresas is created with identifier {{ param }}",

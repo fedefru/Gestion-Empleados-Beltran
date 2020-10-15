@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,7 +45,7 @@ public class SugerenciasResource {
         if (sugerencia.getId() != null) {
             throw new BadRequestAlertException("A new sugerencia cannot already have an ID", ENTITY_NAME, "idexists");
         }
-
+        sugerencia.setFecha(LocalDate.now());
         Sugerencias result = sugerenciasRepository.save(sugerencia);
 
         return ResponseEntity.created(new URI("/api/sugerencias/" + result.getId()))
@@ -69,7 +70,7 @@ public class SugerenciasResource {
     @GetMapping("/sugerencias")
     public List<Sugerencias> getAllSugerencias() {
         log.debug("REST request to get all Sugerencias");
-        return sugerenciasRepository.findAll();
+        return sugerenciasRepository.findAllByOrderByIdDesc();
     }
 
     @GetMapping("/sugerencias/{id}")

@@ -1,7 +1,11 @@
+#col--card {
+  display: block;
+  margin-left: 6%;
+  margin-top: 3%;
+}
+
 #card--sugerencia {
   display: block;
-  margin-left: 3%;
-  margin-top: 2%;
   min-height: 500px;
   max-height: 500px;
   overflow: auto;
@@ -9,7 +13,8 @@
 .card-header {
   background-color: #15967d;
 }
-.card-title {
+.card-title,
+#fecha--sugerencia {
   text-align: center;
   color: white;
 }
@@ -28,5 +33,13 @@
   font-family: 'Alata', sans-serif;
 }
 #visto--eye:hover {
+  cursor: pointer;
+}
+
+#cross--sugerencia {
+  margin-left: 5%;
+}
+
+#cross--sugerencia:hover {
   cursor: pointer;
 }
