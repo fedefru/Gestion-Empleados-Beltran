@@ -17,6 +17,10 @@
     "localizacionTexto": "Consulta las ubicaciones de todas las sucursales.",
     "controlHorarios": "Control de Horarios",
     "controlHorariosTexto": "Gestiona los horarios de tus jornadas",
+    "organigrama": "Organigrama",
+    "fichar": "Fichar ahora",
+    "crearSugerencia": "Crear sugerencia",
+    "verSugerencias": "Ver sugerencias",
     "logged": {
       "message": "Está conectado como \"{{username}}\"."
     },
