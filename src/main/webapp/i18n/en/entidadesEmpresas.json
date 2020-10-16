@@ -2,23 +2,23 @@
   "gestionEmpleadosApp": {
     "entidadesEmpresas": {
       "home": {
-        "title": "Entidades Empresas",
-        "createLabel": "Create a new Entidades Empresas",
-        "createOrEditLabel": "Create or edit a Entidades Empresas",
-        "notFound": "No Entidades Empresas found"
+        "title": "Entity companies",
+        "createLabel": "Create a new Entity company",
+        "createOrEditLabel": "Create or edit a Entity company",
+        "notFound": "No Entity company found"
       },
-      "created": "A new Entidades Empresas is created with identifier {{ param }}",
-      "updated": "A Entidades Empresas is updated with identifier {{ param }}",
-      "deleted": "A Entidades Empresas is deleted with identifier {{ param }}",
+      "created": "A new Entity company is created with identifier {{ param }}",
+      "updated": "An Entity company is updated with identifier {{ param }}",
+      "deleted": "An Entity company is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Entidades Empresas {{ id }}?"
+        "question": "Are you sure you want to delete Entity company {{ id }}?"
       },
       "detail": {
-        "title": "Entidades Empresas"
+        "title": "Entity companies"
       },
-      "valor": "Valor",
-      "empresa": "Empresa",
-      "entidad": "Entidad"
+      "valor": "Value",
+      "empresa": "Company",
+      "entidad": "Entity"
     }
   }
 }

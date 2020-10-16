@@ -3,22 +3,22 @@
     "areas": {
       "home": {
         "title": "Areas",
-        "createLabel": "Create a new Areas",
-        "createOrEditLabel": "Create or edit a Areas",
+        "createLabel": "Create a new Area",
+        "createOrEditLabel": "Create or edit an Area",
         "notFound": "No Areas found"
       },
-      "created": "A new Areas is created with identifier {{ param }}",
-      "updated": "A Areas is updated with identifier {{ param }}",
-      "deleted": "A Areas is deleted with identifier {{ param }}",
+      "created": "A new Area is created with identifier {{ param }}",
+      "updated": "A Area is updated with identifier {{ param }}",
+      "deleted": "A Area is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Areas {{ id }}?"
+        "question": "Are you sure you want to delete Area {{ id }}?"
       },
       "detail": {
         "title": "Areas"
       },
-      "nombre": "Nombre",
+      "nombre": "Name",
       "codSector": "Cod Sector",
-      "activo": "Activo"
+      "activo": "Active"
     }
   }
 }

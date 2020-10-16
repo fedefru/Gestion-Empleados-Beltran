@@ -3,13 +3,13 @@
     "entidadesUsuarios": {
       "home": {
         "title": "Entidades Usuarios",
-        "createLabel": "Crear nuevo Entidades Usuarios",
+        "createLabel": "Crear nueva Entidad Usuarios",
         "createOrEditLabel": "Crear o editar Entidades Usuarios",
-        "notFound": "Ningún Entidades Usuarios encontrado"
+        "notFound": "Ninguna Entidades Usuarios encontrada"
       },
-      "created": "Un nuevo Entidades Usuarios ha sido creado con el identificador {{ param }}",
-      "updated": "Un Entidades Usuarios ha sido actualizado con el identificador {{ param }}",
-      "deleted": "Un Entidades Usuarios ha sido eliminado con el identificador {{ param }}",
+      "created": "Una nueva Entidades Usuarios ha sido creada con el identificador {{ param }}",
+      "updated": "Una Entidades Usuarios ha sido actualizada con el identificador {{ param }}",
+      "deleted": "Una Entidades Usuarios ha sido eliminada con el identificador {{ param }}",
       "delete": {
         "question": "¿Seguro que quiere eliminar Entidades Usuarios {{ id }}?"
       },

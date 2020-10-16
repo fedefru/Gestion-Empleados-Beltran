@@ -2,25 +2,25 @@
   "gestionEmpleadosApp": {
     "direcciones": {
       "home": {
-        "title": "Direcciones",
-        "createLabel": "Create a new Direcciones",
-        "createOrEditLabel": "Create or edit a Direcciones",
-        "notFound": "No Direcciones found"
+        "title": "Addresses",
+        "createLabel": "Create a new Adress",
+        "createOrEditLabel": "Create or edit a Adress",
+        "notFound": "No Addresses found"
       },
-      "created": "A new Direcciones is created with identifier {{ param }}",
-      "updated": "A Direcciones is updated with identifier {{ param }}",
-      "deleted": "A Direcciones is deleted with identifier {{ param }}",
+      "created": "A new Adress is created with identifier {{ param }}",
+      "updated": "An Adress is updated with identifier {{ param }}",
+      "deleted": "An Andress is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Direcciones {{ id }}?"
+        "question": "Are you sure you want to delete Adress {{ id }}?"
       },
       "detail": {
-        "title": "Direcciones"
+        "title": "Addresses"
       },
-      "calle": "Calle",
-      "altura": "Altura",
-      "piso": "Piso",
-      "departamento": "Departamento",
-      "ciudad": "Ciudad"
+      "calle": "Street",
+      "altura": "Height",
+      "piso": "Storey",
+      "departamento": "Departmen",
+      "ciudad": "City"
     }
   }
 }

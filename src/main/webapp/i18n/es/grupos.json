@@ -3,15 +3,15 @@
     "grupos": {
       "home": {
         "title": "Grupos",
-        "createLabel": "Crear nuevo Grupos",
-        "createOrEditLabel": "Crear o editar Grupos",
+        "createLabel": "Crear nuevo Grupo",
+        "createOrEditLabel": "Crear o editar Grupo",
         "notFound": "Ningún Grupos encontrado"
       },
-      "created": "Un nuevo Grupos ha sido creado con el identificador {{ param }}",
-      "updated": "Un Grupos ha sido actualizado con el identificador {{ param }}",
-      "deleted": "Un Grupos ha sido eliminado con el identificador {{ param }}",
+      "created": "Un nuevo Grupo ha sido creado con el identificador {{ param }}",
+      "updated": "Un Grupo ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Grupo ha sido eliminado con el identificador {{ param }}",
       "delete": {
-        "question": "¿Seguro que quiere eliminar Grupos {{ id }}?"
+        "question": "¿Seguro que quiere eliminar Grupo {{ id }}?"
       },
       "detail": {
         "title": "Grupos"

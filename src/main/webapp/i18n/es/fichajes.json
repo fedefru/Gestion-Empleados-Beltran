@@ -23,15 +23,15 @@
         "fichajesDe": "Fichajes anteriores de ",
         "fechaFichaje": "Fecha de fichaje: ",
         "horaFichaje": "Hora de fichaje",
-        "createLabel": "Crear nuevo Fichajes",
-        "createOrEditLabel": "Crear o editar Fichajes",
-        "notFound": "Ningún Fichajes encontrado"
+        "createLabel": "Crear nuevo Fichaje",
+        "createOrEditLabel": "Crear o editar Fichaje",
+        "notFound": "Ningún Fichaje encontrado"
       },
-      "created": "Un nuevo Fichajes ha sido creado con el identificador {{ param }}",
-      "updated": "Un Fichajes ha sido actualizado con el identificador {{ param }}",
-      "deleted": "Un Fichajes ha sido eliminado con el identificador {{ param }}",
+      "created": "Un nuevo Fichaje ha sido creado con el identificador {{ param }}",
+      "updated": "Un Fichaje ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Fichaje ha sido eliminado con el identificador {{ param }}",
       "delete": {
-        "question": "¿Seguro que quiere eliminar Fichajes {{ id }}?"
+        "question": "¿Seguro que quiere eliminar Fichaje {{ id }}?"
       },
       "detail": {
         "title": "Fichajes"

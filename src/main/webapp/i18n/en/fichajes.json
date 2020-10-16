@@ -27,17 +27,17 @@
         "createOrEditLabel": "Create or edit a Fichajes",
         "notFound": "No Fichajes found"
       },
-      "created": "A new Fichajes is created with identifier {{ param }}",
-      "updated": "A Fichajes is updated with identifier {{ param }}",
-      "deleted": "A Fichajes is deleted with identifier {{ param }}",
+      "created": "A new signing is created with identifier {{ param }}",
+      "updated": "A signing is updated with identifier {{ param }}",
+      "deleted": "A signing is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Fichajes {{ id }}?"
+        "question": "Are you sure you want to delete signing {{ id }}?"
       },
       "detail": {
-        "title": "Fichajes"
+        "title": "Signing"
       },
-      "fichaje": "Fichaje",
-      "accion": "Accion"
+      "fichaje": "Signing",
+      "accion": "Action"
     }
   }
 }

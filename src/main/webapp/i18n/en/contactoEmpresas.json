@@ -2,22 +2,22 @@
   "gestionEmpleadosApp": {
     "contactoEmpresas": {
       "home": {
-        "title": "Contacto Empresas",
-        "createLabel": "Create a new Contacto Empresas",
-        "createOrEditLabel": "Create or edit a Contacto Empresas",
-        "notFound": "No Contacto Empresas found"
+        "title": "Company contact",
+        "createLabel": "Create a new Company contact",
+        "createOrEditLabel": "Create or edit a Company contact",
+        "notFound": "No Company contact found"
       },
-      "created": "A new Contacto Empresas is created with identifier {{ param }}",
-      "updated": "A Contacto Empresas is updated with identifier {{ param }}",
-      "deleted": "A Contacto Empresas is deleted with identifier {{ param }}",
+      "created": "A new Company contact is created with identifier {{ param }}",
+      "updated": "A Company contact is updated with identifier {{ param }}",
+      "deleted": "A Company contact is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Contacto Empresas {{ id }}?"
+        "question": "Are you sure you want to delete Company contact {{ id }}?"
       },
       "detail": {
-        "title": "Contacto Empresas"
+        "title": "Company contact"
       },
-      "nombre": "Nombre",
-      "contacto": "Contacto"
+      "nombre": "Name",
+      "contacto": "Contact"
     }
   }
 }

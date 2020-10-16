@@ -3,15 +3,15 @@
     "permisos": {
       "home": {
         "title": "Permisos",
-        "createLabel": "Crear nuevo Permisos",
-        "createOrEditLabel": "Crear o editar Permisos",
-        "notFound": "Ningún Permisos encontrado"
+        "createLabel": "Crear nuevo Permiso",
+        "createOrEditLabel": "Crear o editar Permiso",
+        "notFound": "Ningún Permiso encontrado"
       },
-      "created": "Un nuevo Permisos ha sido creado con el identificador {{ param }}",
-      "updated": "Un Permisos ha sido actualizado con el identificador {{ param }}",
-      "deleted": "Un Permisos ha sido eliminado con el identificador {{ param }}",
+      "created": "Un nuevo Permiso ha sido creado con el identificador {{ param }}",
+      "updated": "Un Permiso ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Permiso ha sido eliminado con el identificador {{ param }}",
       "delete": {
-        "question": "¿Seguro que quiere eliminar Permisos {{ id }}?"
+        "question": "¿Seguro que quiere eliminar Permiso {{ id }}?"
       },
       "detail": {
         "title": "Permisos"

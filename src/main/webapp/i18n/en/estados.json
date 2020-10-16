@@ -2,21 +2,21 @@
   "gestionEmpleadosApp": {
     "estados": {
       "home": {
-        "title": "Estados",
-        "createLabel": "Create a new Estados",
-        "createOrEditLabel": "Create or edit a Estados",
-        "notFound": "No Estados found"
+        "title": "States",
+        "createLabel": "Create a new State",
+        "createOrEditLabel": "Create or edit a State",
+        "notFound": "No States found"
       },
-      "created": "A new Estados is created with identifier {{ param }}",
-      "updated": "A Estados is updated with identifier {{ param }}",
-      "deleted": "A Estados is deleted with identifier {{ param }}",
+      "created": "A new State is created with identifier {{ param }}",
+      "updated": "A State is updated with identifier {{ param }}",
+      "deleted": "A State is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Estados {{ id }}?"
+        "question": "Are you sure you want to delete State {{ id }}?"
       },
       "detail": {
-        "title": "Estados"
+        "title": "States"
       },
-      "nombre": "Nombre"
+      "nombre": "Name"
     }
   }
 }

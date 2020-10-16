@@ -3,13 +3,13 @@
     "entidadesEmpresas": {
       "home": {
         "title": "Entidades Empresas",
-        "createLabel": "Crear nuevo Entidades Empresas",
+        "createLabel": "Crear nueva Entidades Empresas",
         "createOrEditLabel": "Crear o editar Entidades Empresas",
-        "notFound": "Ningún Entidades Empresas encontrado"
+        "notFound": "Ninguna Entidades Empresas encontrada"
       },
-      "created": "Un nuevo Entidades Empresas ha sido creado con el identificador {{ param }}",
-      "updated": "Un Entidades Empresas ha sido actualizado con el identificador {{ param }}",
-      "deleted": "Un Entidades Empresas ha sido eliminado con el identificador {{ param }}",
+      "created": "Una nueva Entidad Empresas ha sido creado con el identificador {{ param }}",
+      "updated": "Una Entidades Empresas ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Una Entidades Empresas ha sido eliminado con el identificador {{ param }}",
       "delete": {
         "question": "¿Seguro que quiere eliminar Entidades Empresas {{ id }}?"
       },

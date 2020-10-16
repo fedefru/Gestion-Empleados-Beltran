@@ -3,15 +3,15 @@
     "configuraciones": {
       "home": {
         "title": "Configuraciones",
-        "createLabel": "Crear nuevo Configuraciones",
-        "createOrEditLabel": "Crear o editar Configuraciones",
-        "notFound": "Ningún Configuraciones encontrado"
+        "createLabel": "Crear nueva Configuracion",
+        "createOrEditLabel": "Crear o editar Configuracion",
+        "notFound": "Ningún Configuracion encontrada"
       },
-      "created": "Un nuevo Configuraciones ha sido creado con el identificador {{ param }}",
-      "updated": "Un Configuraciones ha sido actualizado con el identificador {{ param }}",
-      "deleted": "Un Configuraciones ha sido eliminado con el identificador {{ param }}",
+      "created": "Una nueva Configuracion ha sido creada con el identificador {{ param }}",
+      "updated": "Una Configuracion ha sido actualizada con el identificador {{ param }}",
+      "deleted": "Una Configuracion ha sido eliminada con el identificador {{ param }}",
       "delete": {
-        "question": "¿Seguro que quiere eliminar Configuraciones {{ id }}?"
+        "question": "¿Seguro que quiere eliminar Configuracion {{ id }}?"
       },
       "detail": {
         "title": "Configuraciones"

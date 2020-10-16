@@ -3,15 +3,15 @@
     "areas": {
       "home": {
         "title": "Areas",
-        "createLabel": "Crear nuevo Areas",
-        "createOrEditLabel": "Crear o editar Areas",
-        "notFound": "Ningún Areas encontrado"
+        "createLabel": "Crear nueva Area",
+        "createOrEditLabel": "Crear o editar Area",
+        "notFound": "Ningún Area encontrada"
       },
-      "created": "Un nuevo Areas ha sido creado con el identificador {{ param }}",
-      "updated": "Un Areas ha sido actualizado con el identificador {{ param }}",
-      "deleted": "Un Areas ha sido eliminado con el identificador {{ param }}",
+      "created": "Una nueva Area ha sido creada con el identificador {{ param }}",
+      "updated": "Un Area ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Area ha sido eliminado con el identificador {{ param }}",
       "delete": {
-        "question": "¿Seguro que quiere eliminar Areas {{ id }}?"
+        "question": "¿Seguro que quiere eliminar Area {{ id }}?"
       },
       "detail": {
         "title": "Areas"

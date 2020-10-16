@@ -2,21 +2,21 @@
   "gestionEmpleadosApp": {
     "paises": {
       "home": {
-        "title": "Paises",
-        "createLabel": "Create a new Paises",
-        "createOrEditLabel": "Create or edit a Paises",
-        "notFound": "No Paises found"
+        "title": "Contries",
+        "createLabel": "Create a new Country",
+        "createOrEditLabel": "Create or edit a Contry",
+        "notFound": "No Countries found"
       },
-      "created": "A new Paises is created with identifier {{ param }}",
-      "updated": "A Paises is updated with identifier {{ param }}",
-      "deleted": "A Paises is deleted with identifier {{ param }}",
+      "created": "A new Country is created with identifier {{ param }}",
+      "updated": "A Country is updated with identifier {{ param }}",
+      "deleted": "A Country is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Paises {{ id }}?"
+        "question": "Are you sure you want to delete Country {{ id }}?"
       },
       "detail": {
-        "title": "Paises"
+        "title": "Countries"
       },
-      "nombre": "Nombre"
+      "nombre": "Name"
     }
   }
 }

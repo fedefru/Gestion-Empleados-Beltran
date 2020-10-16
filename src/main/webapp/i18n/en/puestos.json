@@ -2,22 +2,22 @@
   "gestionEmpleadosApp": {
     "puestos": {
       "home": {
-        "title": "Puestos",
-        "createLabel": "Create a new Puestos",
-        "createOrEditLabel": "Create or edit a Puestos",
-        "notFound": "No Puestos found"
+        "title": "Employments",
+        "createLabel": "Create a new Employment",
+        "createOrEditLabel": "Create or edit an Employment",
+        "notFound": "No Employments found"
       },
-      "created": "A new Puestos is created with identifier {{ param }}",
-      "updated": "A Puestos is updated with identifier {{ param }}",
-      "deleted": "A Puestos is deleted with identifier {{ param }}",
+      "created": "A new Employment is created with identifier {{ param }}",
+      "updated": "An Employment is updated with identifier {{ param }}",
+      "deleted": "An Employment is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Puestos {{ id }}?"
+        "question": "Are you sure you want to delete Employment {{ id }}?"
       },
       "detail": {
-        "title": "Puestos"
+        "title": "Employments"
       },
-      "nombre": "Nombre",
-      "activo": "Activo"
+      "nombre": "Name",
+      "activo": "Active"
     }
   }
 }
