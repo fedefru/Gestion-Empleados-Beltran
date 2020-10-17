@@ -6,6 +6,7 @@ export interface ISugerencias {
   prioridad?: string;
   mensaje?: string;
   leido?: boolean;
+  fecha?: any;
   usuario?: IUsuarios;
 }
 
@@ -16,6 +17,7 @@ export class Sugerencias implements ISugerencias {
     public prioridad?: string,
     public mensaje?: string,
     public leido?: boolean,
+    public fecha?: any,
     public usuario?: IUsuarios
   ) {}
 }

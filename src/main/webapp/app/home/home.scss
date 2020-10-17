@@ -10,6 +10,33 @@ Main page styles
   background-size: contain;
 }
 
+#row--option {
+  -webkit-animation: slide-out-fwd-center 0.7s cubic-bezier(0.55, 0.085, 0.68, 0.53) reverse both;
+  animation: slide-out-fwd-center 0.7s cubic-bezier(0.55, 0.085, 0.68, 0.53) reverse both;
+}
+
+#home--option {
+  margin-left: 3%;
+  margin-top: 3%;
+  width: 300px;
+  height: 200px;
+
+  font-size: 20px;
+  background-image: linear-gradient(to left top, #0150c6, #0066cf, #007ad2, #008cd2, #0c9ccf);
+  border-radius: 4%;
+}
+
+#home--option:hover {
+  background-image: none;
+  border-color: #3498db;
+  background-color: #3498db;
+
+  box-shadow: inset 0 0 0 0 #0bf;
+  -webkit-transition: all ease 1.5s;
+  -moz-transition: all ease 1.5s;
+  transition: all ease 1.5s;
+}
+
 .parallax {
   /* The image used */
   background-image: url('../../../../proyecto-imagenes/home.jpg');
@@ -25,22 +52,22 @@ Main page styles
   background-size: cover;
   margin-bottom: 50px;
 }
-.parallax-bottom{
-/* The image used */
-background-image: url('../../../../proyecto-imagenes/work-team.jpg');
-/* Set a specific height */
-height: 400px;
-width: 100%;
+.parallax-bottom {
+  /* The image used */
+  background-image: url('../../../../proyecto-imagenes/work-team.jpg');
+  /* Set a specific height */
+  height: 400px;
+  width: 100%;
 
-/* Create the parallax scrolling effect */
-background-attachment: fixed;
-background-position: center;
-background-repeat: no-repeat;
-background-size: cover;
-margin-bottom: 50px;
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: 50px;
 }
 
-.fondo-efecto{
+.fondo-efecto {
   background-color: rgba(0, 0, 0, 0.397);
 }
 
@@ -57,16 +84,16 @@ h1 {
   margin-right: 20px;
 }
 
-.text-panel{
+.text-panel {
   color: white;
   margin-top: 130px;
 }
-.col-home{
+.col-home {
   font-family: 'Red Hat Display', sans-serif;
   margin-bottom: 50px;
 }
 
-.text-home{
+.text-home {
   text-align: center;
   margin-top: 15px;
 }
@@ -80,5 +107,55 @@ h1 {
   .hipster {
     background: url('../../content/images/jhipster_family_member_3.svg') no-repeat center top;
     background-size: contain;
+  }
+}
+
+@-webkit-keyframes scale-out-center {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    opacity: 1;
+  }
+}
+@keyframes scale-out-center {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes slide-out-fwd-center {
+  0% {
+    -webkit-transform: translateZ(1);
+    transform: translateZ(1);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateZ(600px);
+    transform: translateZ(600px);
+    opacity: 0;
+  }
+}
+@keyframes slide-out-fwd-center {
+  0% {
+    -webkit-transform: translateZ(1);
+    transform: translateZ(1);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateZ(600px);
+    transform: translateZ(600px);
+    opacity: 0;
   }
 }

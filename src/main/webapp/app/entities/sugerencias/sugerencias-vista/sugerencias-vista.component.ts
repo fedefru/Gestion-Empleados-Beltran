@@ -52,6 +52,12 @@ export class SugerenciasVistaComponent implements OnInit {
     });
   }
 
+  eliminarSugerencia(id: number): void {
+    this.sugerenciasService.delete(id).subscribe(() => {
+      window.location.reload();
+    });
+  }
+
   protected subscribeToSaveResponse(result: Observable<HttpResponse<ISugerencias>>): void {
     result.subscribe(
       () => this.onSaveSuccess(),

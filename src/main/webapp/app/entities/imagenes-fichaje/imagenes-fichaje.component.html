@@ -7,7 +7,7 @@
                 <img class="img--fichaje"  src="{{server}}{{ruta}}" alt="">
                <p>
                 <span id="fichaje--item" jhiTranslate="gestionEmpleadosApp.fichajes.home.fechaFichaje"> </span>
-                <span id="bold--item"> {{fechas[i]}}</span>
+                <span id="bold--item"> {{fechas[i] | date: 'dd/MM/yyyy'}}</span>
                </p>
                <p>
                 <span id="fichaje--item" jhiTranslate="gestionEmpleadosApp.fichajes.home.horaFichaje"></span>

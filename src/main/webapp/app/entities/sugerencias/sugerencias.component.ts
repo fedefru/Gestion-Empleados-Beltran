@@ -21,6 +21,8 @@ export class SugerenciasComponent implements OnInit {
   cuenta: any;
   usuario!: IUsuarios;
   redaccion: boolean;
+  warning: boolean;
+  success: boolean;
 
   editForm = this.fb.group({
     id: [],
@@ -38,6 +40,8 @@ export class SugerenciasComponent implements OnInit {
     protected loginService: LoginService
   ) {
     this.redaccion = true;
+    this.warning = false;
+    this.success = false;
   }
 
   ngOnInit(): void {
@@ -59,7 +63,8 @@ export class SugerenciasComponent implements OnInit {
     const sugerencias = this.createFromForm();
 
     this.subscribeToSaveResponse(this.sugerenciasService.create(sugerencias));
-    this.redaccion = false;
+    this.warning = false;
+    this.success = true;
   }
 
   private createFromForm(): ISugerencias {

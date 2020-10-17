@@ -2,24 +2,24 @@
   "gestionEmpleadosApp": {
     "empresas": {
       "home": {
-        "title": "Empresas",
-        "createLabel": "Create a new Empresas",
-        "createOrEditLabel": "Create or edit a Empresas",
-        "notFound": "No Empresas found"
+        "title": "Enterprises",
+        "createLabel": "Create a new Enterprise",
+        "createOrEditLabel": "Create Enterprise",
+        "notFound": "No Enterprises found"
       },
-      "created": "A new Empresas is created with identifier {{ param }}",
-      "updated": "A Empresas is updated with identifier {{ param }}",
-      "deleted": "A Empresas is deleted with identifier {{ param }}",
+      "created": "A new Enterprise is created with identifier {{ param }}",
+      "updated": "An Enterprise is updated with identifier {{ param }}",
+      "deleted": "An Enterprise is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Empresas {{ id }}?"
+        "question": "Are you sure you want to delete Enterprise {{ id }}?"
       },
       "detail": {
-        "title": "Empresas"
+        "title": "Enterprises"
       },
-      "nombre": "Nombre",
-      "direccion": "Direccion",
-      "contacto": "Contacto",
-      "estado": "Estado"
+      "nombre": "Name",
+      "direccion": "Adress",
+      "contacto": "Contact",
+      "estado": "State"
     }
   }
 }

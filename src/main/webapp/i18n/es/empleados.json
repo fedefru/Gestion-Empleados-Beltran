@@ -3,15 +3,15 @@
     "empleados": {
       "home": {
         "title": "Empleados",
-        "createLabel": "Crear nuevo Empleados",
-        "createOrEditLabel": "Crear o editar Empleados",
-        "notFound": "Ningún Empleados encontrado"
+        "createLabel": "Crear nuevo Empleado",
+        "createOrEditLabel": "Crear o editar Empleado",
+        "notFound": "Ningún Empleado encontrado"
       },
-      "created": "Un nuevo Empleados ha sido creado con el identificador {{ param }}",
-      "updated": "Un Empleados ha sido actualizado con el identificador {{ param }}",
-      "deleted": "Un Empleados ha sido eliminado con el identificador {{ param }}",
+      "created": "Un nuevo Empleado ha sido creado con el identificador {{ param }}",
+      "updated": "Un Empleado ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Empleado ha sido eliminado con el identificador {{ param }}",
       "delete": {
-        "question": "¿Seguro que quiere eliminar Empleados {{ id }}?"
+        "question": "¿Seguro que quiere eliminar Empleado {{ id }}?"
       },
       "detail": {
         "title": "Empleados"

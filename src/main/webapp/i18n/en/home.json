@@ -17,6 +17,10 @@
     "localizacionTexto": "See the locations of all branches.",
     "controlHorarios": "Schedule Control",
     "controlHorariosTexto": "Manage the schedules of your days",
+    "organigrama": "Organization chart",
+    "fichar": "Credit hours",
+    "crearSugerencia": "Create suggestion",
+    "verSugerencias": "See suggestions",
     "logged": {
       "message": "You are logged in as user \"{{username}}\"."
     },

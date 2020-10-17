@@ -3,15 +3,15 @@
     "entidades": {
       "home": {
         "title": "Entidades",
-        "createLabel": "Crear nuevo Entidades",
-        "createOrEditLabel": "Crear o editar Entidades",
-        "notFound": "Ningún Entidades encontrado"
+        "createLabel": "Crear nueva Entidad",
+        "createOrEditLabel": "Crear o editar Entidad",
+        "notFound": "Ningúna Entidad encontrada"
       },
-      "created": "Un nuevo Entidades ha sido creado con el identificador {{ param }}",
-      "updated": "Un Entidades ha sido actualizado con el identificador {{ param }}",
-      "deleted": "Un Entidades ha sido eliminado con el identificador {{ param }}",
+      "created": "Una nueva Entidad ha sido creada con el identificador {{ param }}",
+      "updated": "Una Entidad ha sido actualizada con el identificador {{ param }}",
+      "deleted": "Una Entidad ha sido eliminada con el identificador {{ param }}",
       "delete": {
-        "question": "¿Seguro que quiere eliminar Entidades {{ id }}?"
+        "question": "¿Seguro que quiere eliminar Entidad {{ id }}?"
       },
       "detail": {
         "title": "Entidades"

@@ -3,15 +3,15 @@
     "estados": {
       "home": {
         "title": "Estados",
-        "createLabel": "Crear nuevo Estados",
-        "createOrEditLabel": "Crear o editar Estados",
-        "notFound": "Ningún Estados encontrado"
+        "createLabel": "Crear nuevo Estado",
+        "createOrEditLabel": "Crear o editar Estado",
+        "notFound": "Ningún Estado encontrado"
       },
-      "created": "Un nuevo Estados ha sido creado con el identificador {{ param }}",
-      "updated": "Un Estados ha sido actualizado con el identificador {{ param }}",
-      "deleted": "Un Estados ha sido eliminado con el identificador {{ param }}",
+      "created": "Un nuevo Estado ha sido creado con el identificador {{ param }}",
+      "updated": "Un Estado ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Estado ha sido eliminado con el identificador {{ param }}",
       "delete": {
-        "question": "¿Seguro que quiere eliminar Estados {{ id }}?"
+        "question": "¿Seguro que quiere eliminar Estado {{ id }}?"
       },
       "detail": {
         "title": "Estados"

@@ -3,15 +3,15 @@
     "empresas": {
       "home": {
         "title": "Empresas",
-        "createLabel": "Crear nuevo Empresas",
-        "createOrEditLabel": "Crear o editar Empresas",
-        "notFound": "Ningún Empresas encontrado"
+        "createLabel": "Crear nueva Empresa",
+        "createOrEditLabel": "Crear Empresa",
+        "notFound": "Ningúna Empresa encontrada"
       },
-      "created": "Un nuevo Empresas ha sido creado con el identificador {{ param }}",
-      "updated": "Un Empresas ha sido actualizado con el identificador {{ param }}",
-      "deleted": "Un Empresas ha sido eliminado con el identificador {{ param }}",
+      "created": "Una nueva Empresa ha sido creada con el identificador {{ param }}",
+      "updated": "Una Empresa ha sido actualizada con el identificador {{ param }}",
+      "deleted": "Una Empresa ha sido eliminada con el identificador {{ param }}",
       "delete": {
-        "question": "¿Seguro que quiere eliminar Empresas {{ id }}?"
+        "question": "¿Seguro que quiere eliminar Empresa {{ id }}?"
       },
       "detail": {
         "title": "Empresas"

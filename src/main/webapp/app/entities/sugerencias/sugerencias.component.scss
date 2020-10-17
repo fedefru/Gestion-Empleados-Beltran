@@ -1,4 +1,13 @@
 #box--sugerencia {
+  -webkit-animation: fade-out 0.3s ease-out reverse both;
+  animation: fade-out 0.3s ease-out reverse both;
+  border: 1px solid;
+  border-color: #1c2833;
+  padding: 40px 40px 40px 40px;
+}
+.box--warning {
+  -webkit-animation: scale-out-center 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) reverse both;
+  animation: scale-out-center 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) reverse both;
   border: 1px solid;
   border-color: #1c2833;
   padding: 40px 40px 40px 40px;
@@ -9,7 +18,8 @@
 }
 
 #title--sugerencia,
-label {
+label,
+#text--sugerencia {
   color: #1c2833;
   font-family: 'Alata', sans-serif;
 }
@@ -22,6 +32,16 @@ button {
 #save-entity:hover {
   border-color: #28b463;
   background-color: #28b463;
+
+  box-shadow: inset 0 0 0 0 #0bf;
+  -webkit-transition: all ease 1.5s;
+  -moz-transition: all ease 1.5s;
+  transition: all ease 1.5s;
+}
+
+#cancel-save:hover {
+  border-color: #cd5c5c;
+  background-color: #cd5c5c;
 
   box-shadow: inset 0 0 0 0 #0bf;
   -webkit-transition: all ease 1.5s;
@@ -62,5 +82,22 @@ button {
     -webkit-transform: scale(0);
     transform: scale(0);
     opacity: 1;
+  }
+}
+
+@-webkit-keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }

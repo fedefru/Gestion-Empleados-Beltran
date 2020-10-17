@@ -2,22 +2,22 @@
   "gestionEmpleadosApp": {
     "contactoUsuarios": {
       "home": {
-        "title": "Contacto Usuarios",
-        "createLabel": "Create a new Contacto Usuarios",
-        "createOrEditLabel": "Create or edit a Contacto Usuarios",
-        "notFound": "No Contacto Usuarios found"
+        "title": "User contact",
+        "createLabel": "Create a new User contact",
+        "createOrEditLabel": "Create or edit a User contact",
+        "notFound": "No User contact found"
       },
-      "created": "A new Contacto Usuarios is created with identifier {{ param }}",
-      "updated": "A Contacto Usuarios is updated with identifier {{ param }}",
-      "deleted": "A Contacto Usuarios is deleted with identifier {{ param }}",
+      "created": "A new User contact is created with identifier {{ param }}",
+      "updated": "A User contact is updated with identifier {{ param }}",
+      "deleted": "A User contact is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Contacto Usuarios {{ id }}?"
+        "question": "Are you sure you want to delete User contact {{ id }}?"
       },
       "detail": {
-        "title": "Contacto Usuarios"
+        "title": "User contact"
       },
-      "nombre": "Nombre",
-      "contacto": "Contacto"
+      "nombre": "Name",
+      "contacto": "Contact"
     }
   }
 }

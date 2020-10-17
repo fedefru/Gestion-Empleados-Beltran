@@ -2,22 +2,22 @@
   "gestionEmpleadosApp": {
     "ciudades": {
       "home": {
-        "title": "Ciudades",
-        "createLabel": "Create a new Ciudades",
-        "createOrEditLabel": "Create or edit a Ciudades",
-        "notFound": "No Ciudades found"
+        "title": "Cities",
+        "createLabel": "Create a new City",
+        "createOrEditLabel": "Create or edit a City",
+        "notFound": "No Cities found"
       },
-      "created": "A new Ciudades is created with identifier {{ param }}",
-      "updated": "A Ciudades is updated with identifier {{ param }}",
-      "deleted": "A Ciudades is deleted with identifier {{ param }}",
+      "created": "A new City is created with identifier {{ param }}",
+      "updated": "A City is updated with identifier {{ param }}",
+      "deleted": "A City is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Ciudades {{ id }}?"
+        "question": "Are you sure you want to delete City {{ id }}?"
       },
       "detail": {
-        "title": "Ciudades"
+        "title": "Cities"
       },
-      "nombre": "Nombre",
-      "provicia": "Provicia"
+      "nombre": "Name",
+      "provicia": "Province"
     }
   }
 }

@@ -5,13 +5,13 @@
         "title": "Usuarios",
         "createLabel": "Registrar una cuenta",
         "createOrEditLabel": "Registrar una cuenta",
-        "notFound": "Ningún Usuarios encontrado"
+        "notFound": "Ningún Usuario encontrado"
       },
-      "created": "Un nuevo Usuarios ha sido creado con el identificador {{ param }}",
-      "updated": "Un Usuarios ha sido actualizado con el identificador {{ param }}",
-      "deleted": "Un Usuarios ha sido eliminado con el identificador {{ param }}",
+      "created": "Un nuevo Usuario ha sido creado con el identificador {{ param }}",
+      "updated": "Un Usuario ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Usuario ha sido eliminado con el identificador {{ param }}",
       "delete": {
-        "question": "¿Seguro que quiere eliminar Usuarios {{ id }}?"
+        "question": "¿Seguro que quiere eliminar Usuario {{ id }}?"
       },
       "detail": {
         "title": "Usuarios"

@@ -2,22 +2,22 @@
   "gestionEmpleadosApp": {
     "grupos": {
       "home": {
-        "title": "Grupos",
-        "createLabel": "Create a new Grupos",
-        "createOrEditLabel": "Create or edit a Grupos",
-        "notFound": "No Grupos found"
+        "title": "Groups",
+        "createLabel": "Create a new Group",
+        "createOrEditLabel": "Create or edit a Grupo",
+        "notFound": "No Groups found"
       },
-      "created": "A new Grupos is created with identifier {{ param }}",
-      "updated": "A Grupos is updated with identifier {{ param }}",
-      "deleted": "A Grupos is deleted with identifier {{ param }}",
+      "created": "A new Group is created with identifier {{ param }}",
+      "updated": "A Group is updated with identifier {{ param }}",
+      "deleted": "A Group is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Grupos {{ id }}?"
+        "question": "Are you sure you want to delete Group {{ id }}?"
       },
       "detail": {
-        "title": "Grupos"
+        "title": "Groups"
       },
-      "nombre": "Nombre",
-      "descripcion": "Descripcion"
+      "nombre": "Name",
+      "descripcion": "Description"
     }
   }
 }

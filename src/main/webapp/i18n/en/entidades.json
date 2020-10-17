@@ -2,22 +2,22 @@
   "gestionEmpleadosApp": {
     "entidades": {
       "home": {
-        "title": "Entidades",
-        "createLabel": "Create a new Entidades",
-        "createOrEditLabel": "Create or edit a Entidades",
-        "notFound": "No Entidades found"
+        "title": "Entities",
+        "createLabel": "Create a new Entity",
+        "createOrEditLabel": "Create or edit an Entity",
+        "notFound": "No Entities found"
       },
-      "created": "A new Entidades is created with identifier {{ param }}",
-      "updated": "A Entidades is updated with identifier {{ param }}",
-      "deleted": "A Entidades is deleted with identifier {{ param }}",
+      "created": "A new Entity is created with identifier {{ param }}",
+      "updated": "An Entity is updated with identifier {{ param }}",
+      "deleted": "An Entity is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Entidades {{ id }}?"
+        "question": "Are you sure you want to delete Entity {{ id }}?"
       },
       "detail": {
-        "title": "Entidades"
+        "title": "Entities"
       },
-      "nombre": "Nombre",
-      "comentario": "Comentario"
+      "nombre": "Name",
+      "comentario": "Comentary"
     }
   }
 }

@@ -2,23 +2,23 @@
   "gestionEmpleadosApp": {
     "permisosGrupos": {
       "home": {
-        "title": "Permisos Grupos",
-        "createLabel": "Create a new Permisos Grupos",
-        "createOrEditLabel": "Create or edit a Permisos Grupos",
-        "notFound": "No Permisos Grupos found"
+        "title": "Permissions group",
+        "createLabel": "Create a new Permissions group",
+        "createOrEditLabel": "Create or edit a Permissions group",
+        "notFound": "No Permissions group found"
       },
-      "created": "A new Permisos Grupos is created with identifier {{ param }}",
-      "updated": "A Permisos Grupos is updated with identifier {{ param }}",
-      "deleted": "A Permisos Grupos is deleted with identifier {{ param }}",
+      "created": "A new Permissions group is created with identifier {{ param }}",
+      "updated": "A Permissions group is updated with identifier {{ param }}",
+      "deleted": "A Permissions group is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Permisos Grupos {{ id }}?"
+        "question": "Are you sure you want to delete Permissions group {{ id }}?"
       },
       "detail": {
-        "title": "Permisos Grupos"
+        "title": "Permissions group"
       },
-      "nombre": "Nombre",
-      "permiso": "Permiso",
-      "grupos": "Grupos"
+      "nombre": "Name",
+      "permiso": "Permission",
+      "grupos": "Group"
     }
   }
 }

@@ -2,28 +2,28 @@
   "gestionEmpleadosApp": {
     "empleados": {
       "home": {
-        "title": "Empleados",
-        "createLabel": "Create a new Empleados",
-        "createOrEditLabel": "Create or edit a Empleados",
-        "notFound": "No Empleados found"
+        "title": "Employees",
+        "createLabel": "Create a new Employee",
+        "createOrEditLabel": "Create or edit a Employee",
+        "notFound": "No Employees found"
       },
-      "created": "A new Empleados is created with identifier {{ param }}",
-      "updated": "A Empleados is updated with identifier {{ param }}",
-      "deleted": "A Empleados is deleted with identifier {{ param }}",
+      "created": "A new Employee is created with identifier {{ param }}",
+      "updated": "An Employee is updated with identifier {{ param }}",
+      "deleted": "An Employee is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Empleados {{ id }}?"
+        "question": "Are you sure you want to delete Employee {{ id }}?"
       },
       "detail": {
-        "title": "Empleados"
+        "title": "Employees"
       },
-      "fechaIngreso": "Fecha Ingreso",
-      "jefe": "Jefe",
-      "usuario": "Usuario",
-      "estado": "Estado",
+      "fechaIngreso": "Admission date",
+      "jefe": "Boss",
+      "usuario": "User",
+      "estado": "State",
       "area": "Area",
-      "puesto": "Puesto",
-      "fichaje": "Fichaje",
-      "empresa": "Empresa"
+      "puesto": "Position",
+      "fichaje": "Signing",
+      "empresa": "Company"
     }
   }
 }

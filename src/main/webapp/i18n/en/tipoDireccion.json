@@ -2,22 +2,22 @@
   "gestionEmpleadosApp": {
     "tipoDireccion": {
       "home": {
-        "title": "Tipo Direccions",
-        "createLabel": "Create a new Tipo Direccion",
-        "createOrEditLabel": "Create or edit a Tipo Direccion",
-        "notFound": "No Tipo Direccions found"
+        "title": "Direction Type",
+        "createLabel": "Create a new Direction Type",
+        "createOrEditLabel": "Create or edit a Direction Type",
+        "notFound": "No Direction Types found"
       },
-      "created": "A new Tipo Direccion is created with identifier {{ param }}",
-      "updated": "A Tipo Direccion is updated with identifier {{ param }}",
-      "deleted": "A Tipo Direccion is deleted with identifier {{ param }}",
+      "created": "A new Direction Type is created with identifier {{ param }}",
+      "updated": "A Direction Type is updated with identifier {{ param }}",
+      "deleted": "A Direction Type is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Tipo Direccion {{ id }}?"
+        "question": "Are you sure you want to delete Direction Type {{ id }}?"
       },
       "detail": {
-        "title": "Tipo Direccion"
+        "title": "Direction Type"
       },
-      "descripcion": "Descripcion",
-      "direccion": "Direccion"
+      "descripcion": "Description",
+      "direccion": "Adress"
     }
   }
 }

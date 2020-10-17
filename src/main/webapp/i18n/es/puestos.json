@@ -3,15 +3,15 @@
     "puestos": {
       "home": {
         "title": "Puestos",
-        "createLabel": "Crear nuevo Puestos",
-        "createOrEditLabel": "Crear o editar Puestos",
-        "notFound": "Ningún Puestos encontrado"
+        "createLabel": "Crear nuevo Puesto",
+        "createOrEditLabel": "Crear o editar Puesto",
+        "notFound": "Ningún Puesto encontrado"
       },
-      "created": "Un nuevo Puestos ha sido creado con el identificador {{ param }}",
-      "updated": "Un Puestos ha sido actualizado con el identificador {{ param }}",
-      "deleted": "Un Puestos ha sido eliminado con el identificador {{ param }}",
+      "created": "Un nuevo Puesto ha sido creado con el identificador {{ param }}",
+      "updated": "Un Puesto ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Puesto ha sido eliminado con el identificador {{ param }}",
       "delete": {
-        "question": "¿Seguro que quiere eliminar Puestos {{ id }}?"
+        "question": "¿Seguro que quiere eliminar Puesto {{ id }}?"
       },
       "detail": {
         "title": "Puestos"

@@ -2,22 +2,22 @@
   "gestionEmpleadosApp": {
     "provincias": {
       "home": {
-        "title": "Provincias",
-        "createLabel": "Create a new Provincias",
-        "createOrEditLabel": "Create or edit a Provincias",
-        "notFound": "No Provincias found"
+        "title": "Provinces",
+        "createLabel": "Create a new Province",
+        "createOrEditLabel": "Create or edit a Province",
+        "notFound": "No Provinces found"
       },
-      "created": "A new Provincias is created with identifier {{ param }}",
-      "updated": "A Provincias is updated with identifier {{ param }}",
-      "deleted": "A Provincias is deleted with identifier {{ param }}",
+      "created": "A new Province is created with identifier {{ param }}",
+      "updated": "A Province is updated with identifier {{ param }}",
+      "deleted": "A Province is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Provincias {{ id }}?"
+        "question": "Are you sure you want to delete Province {{ id }}?"
       },
       "detail": {
-        "title": "Provincias"
+        "title": "Provinces"
       },
-      "nombre": "Nombre",
-      "pais": "Pais"
+      "nombre": "Name",
+      "pais": "Country"
     }
   }
 }

@@ -2,22 +2,22 @@
   "gestionEmpleadosApp": {
     "tipoContactos": {
       "home": {
-        "title": "Tipo Contactos",
-        "createLabel": "Create a new Tipo Contactos",
-        "createOrEditLabel": "Create or edit a Tipo Contactos",
-        "notFound": "No Tipo Contactos found"
+        "title": "Contact Type",
+        "createLabel": "Create a new Contact Type",
+        "createOrEditLabel": "Create or edit a Contact Type",
+        "notFound": "No Contact Type found"
       },
-      "created": "A new Tipo Contactos is created with identifier {{ param }}",
-      "updated": "A Tipo Contactos is updated with identifier {{ param }}",
-      "deleted": "A Tipo Contactos is deleted with identifier {{ param }}",
+      "created": "A new Contact Type is created with identifier {{ param }}",
+      "updated": "A Contact Type is updated with identifier {{ param }}",
+      "deleted": "A Contact Type is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Tipo Contactos {{ id }}?"
+        "question": "Are you sure you want to delete Contact Type {{ id }}?"
       },
       "detail": {
-        "title": "Tipo Contactos"
+        "title": "Contact Type"
       },
-      "descripcion": "Descripcion",
-      "tipoDocumento": "Tipo Documento"
+      "descripcion": "Description",
+      "tipoDocumento": "Document Type"
     }
   }
 }
