@@ -17,7 +17,8 @@
         "title": "Tipo Contactos"
       },
       "descripcion": "Descripcion",
-      "tipoDocumento": "Tipo Documento"
+      "tipoDocumento": "Tipo Documento",
+      "documento": "Documento"
     }
   }
 }

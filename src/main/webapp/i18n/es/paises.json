@@ -16,7 +16,8 @@
       "detail": {
         "title": "Paises"
       },
-      "nombre": "Nombre"
+      "nombre": "Nombre",
+      "value": "Pais"
     }
   }
 }

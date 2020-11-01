@@ -15,6 +15,7 @@ import { PageRibbonComponent } from './layouts/profiles/page-ribbon.component';
 import { ActiveMenuDirective } from './layouts/navbar/active-menu.directive';
 import { ErrorComponent } from './layouts/error/error.component';
 import { GestionEmpleadosOrganigramaModule } from './entities/organigrama/organigrama.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
@@ -26,6 +27,7 @@ import { GestionEmpleadosOrganigramaModule } from './entities/organigrama/organi
     GestionEmpleadosEntityModule,
     GestionEmpleadosAppRoutingModule,
     GestionEmpleadosOrganigramaModule,
+    BrowserAnimationsModule,
   ],
   declarations: [MainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
   bootstrap: [MainComponent],

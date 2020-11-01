@@ -1,0 +1,288 @@
+<div class="col-md-6 offset-md-3 block">
+  <mat-horizontal-stepper linear #stepper>
+
+    <mat-step label="Contacto" >
+      <p>Contacto</p>
+      <form name="contactoForm" role="form" novalidate [formGroup]="contactoForm">
+
+        <div>
+          <jhi-alert-error></jhi-alert-error>
+          <!-- Formulario para entidad de documento -->
+          <div class="form-group" [hidden]="!contactoForm.get('id')!.value">
+            <label for="idTipoDocumento" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="idTipoDocumento" name="idTipoDocumento" formControlName="id"
+              readonly />
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.tipoContactos.tipoDocumento"
+              for="field_tipoDocumentos">Tipo Documento</label>
+            <select class="form-control" #tipoDoc name="tipoDocumentos" (change)="setTipoDoc(tipoDoc.value)" required>
+              <option [ngValue]="null"></option>
+              <option *ngFor="let tipoDocumentosOption of tipodocumentos;" [ngValue]="tipoDocumentosOption">
+                {{ tipoDocumentosOption.tipo }}</option>
+              </select>
+            
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.tipoContactos.documento"
+              for="field_valor">Documento</label>
+            <input type="number" class="form-control" name="valorDocumento" id="field_valor"
+              formControlName="valorDocumento" maxlength="250" required />
+          </div>
+
+
+        </div>
+      </form>
+      <button mat-button matStepperNext>Siguiente</button>
+    </mat-step>
+    <mat-step label="Direccion" >
+      <div class="container">
+        <p>Direccion</p>
+        <div class="row">
+          <div class="col-6">
+            <!-- Formulario para entidad de pais -->
+            <form name="paisForm" role="form" novalidate [formGroup]="paisForm">
+              <div class="form-group" [hidden]="!paisForm.get('id')!.value">
+                <label for="idPais" jhiTranslate="global.field.id">ID</label>
+                <input type="text" class="form-control" id="idPais" name="idPais" formControlName="id" readonly required />
+              </div>
+
+              <div class="form-group">
+                <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.paises.value"
+                  for="field_nombre_pais">Pais</label>
+                <select class="form-control" #mySelect (change)="setProvincias(mySelect.value)" required>
+                  <option *ngFor="let country of paises" [ngValue]="country">{{country.name}}</option>
+                </select>
+              </div>
+            </form>
+          </div>
+
+          <div class="col-6">
+            <!-- Formulario para entidad de provincia -->
+            <form name="provinciaForm" role="form" novalidate [formGroup]="provinciaForm">
+              <div class="form-group" [hidden]="!provinciaForm.get('id')!.value">
+                <label for="id" jhiTranslate="global.field.id">ID</label>
+                <input type="text" class="form-control" id="id_provincia" name="id" formControlName="id" readonly required/>
+              </div>
+
+              <div class="form-group">
+                <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.provincias.value"
+                  for="field_nombre_provincia">Provincia</label>
+
+                <select class="form-control" #provSel *ngIf="provincias" (change)="setProvForm(provSel.value)" required>
+                  <option *ngFor="let prov of provincias" [ngValue]="prov">{{prov.name}}</option>
+                </select>
+
+              </div>
+            </form>
+          </div>
+          <div class="col-4">
+            <!-- Formulario para entidad de ciudad -->
+            <form name="ciudadForm" role="form" novalidate [formGroup]="ciudadForm">
+              <div class="form-group" [hidden]="!ciudadForm.get('id')!.value">
+                <label for="id" jhiTranslate="global.field.id">ID</label>
+                <input type="text" class="form-control" id="id_ciudad" name="id" formControlName="id" readonly required />
+              </div>
+
+              <div class="form-group">
+                <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.ciudades.value"
+                  for="field_nombre_ciudad">Ciudad</label>
+                <input type="text" class="form-control" name="nombre" id="field_nombre_ciudad" formControlName="nombre"
+                  minlength="4" required />
+              </div>
+            </form>
+          </div>
+
+
+          <!-- Formulario para entidad de direcciones -->
+          
+          <div class="col-4">
+            <form name="direccionesForm" role="form" [formGroup]="direccionesForm">
+              <jhi-alert-error></jhi-alert-error>
+
+              <div class="form-group" [hidden]="!direccionesForm.get('id')!.value">
+                <label for="id" jhiTranslate="global.field.id">ID</label>
+                <input type="text" class="form-control" id="id_direcciones" name="id" formControlName="id" readonly required />
+              </div>
+              <div class="form-group">
+                <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.direcciones.calle"
+                  for="field_calle">Calle</label>
+                <input type="text" class="form-control" name="calle" id="field_calle" formControlName="calle"
+                  minlength="4" required />
+              </div>
+            </form>
+          </div>
+
+          <div class="col-4">
+            <form name="direccionesForm" role="form" [formGroup]="direccionesForm">
+            <div class="form-group">
+              <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.direcciones.altura"
+                for="field_altura">Altura</label>
+              <input type="number" #altura class="form-control" name="altura" id="field_altura" formControlName="altura" min="1"
+                (change)="setAltura(altura.value)" required />
+            </div>
+          </form>
+          </div>
+
+          <div class="col-2">
+            <form name="direccionesForm" role="form" [formGroup]="direccionesForm">
+            <div class="form-group">
+              <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.direcciones.piso"
+                for="field_piso">Piso</label>
+              <input type="number" class="form-control" #piso name="piso" id="field_piso" formControlName="piso" min="1" (change)="setPiso(piso.value)" required/>
+            </div>
+          </form>
+          </div>
+
+          <div class="col-10">
+            <form name="direccionesForm" role="form" [formGroup]="direccionesForm">
+            <div class="form-group">
+              <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.direcciones.departamento"
+                for="field_departamento">Departamento</label>
+              <input type="text" #depto class="form-control" name="departamento" id="field_departamento"
+                formControlName="departamento" (change)="setDepartamento(depto.value)" required  />
+            </div>
+          </form>
+          </div>
+
+
+          <button mat-button matStepperPrevious>Volver</button>
+          <button mat-button matStepperNext>Siguiente</button>
+        </div>
+      </div>
+    </mat-step>
+    <mat-step label="Empresa" >
+      <p>Empresa</p>
+      <!-- Formulario para entidad de empresa -->
+      <form name="empresaForm" role="form" [formGroup]="empresaForm">
+
+        <div class="form-group" [hidden]="!empresaForm.get('id')!.value">
+          <label for="id" jhiTranslate="global.field.id">ID</label>
+          <input type="text" class="form-control" id="id_empresa" name="id" formControlName="id" readonly required/>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.empresas.nombre"
+            for="field_nombre">Nombre</label>
+          <input type="text" class="form-control" name="nombre" #nombreEmpresa id="field_nombre" formControlName="nombre" minlength="3"
+            required (change)="setNombreEmpresa(nombreEmpresa.value)" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_clave">Clave</label>
+          <input type="password" #clave class="form-control" name="clave" formControlName="clave" minlength="8" required
+            (change)="setClave(clave.value)" />
+
+          <input type="password" #confirmaClave class="form-control" name="confirmaClave" minlength="8" required
+            (change)="checkPasswords(clave.value,confirmaClave.value)" />
+        </div>
+
+
+        <div *ngIf="coincidenPass === null">
+        </div>
+        <div *ngIf="coincidenPass" class="alert alert-success" role="alert">
+          <span>Contraseñas coinciden</span>
+        </div>
+        <div *ngIf="coincidenPass === false" class="alert alert-danger" role="alert">
+          <span>Contraseñas no coinciden</span>
+        </div>
+
+
+      </form>
+      <button mat-button matStepperPrevious>Volver</button>
+      <button mat-button matStepperNext>Siguiente</button>
+    </mat-step>
+    <mat-step label="Confirmación">
+      <!--<p>{{empresaForm.get('nombre')?.value}}</p>-->
+
+      <div class="container">
+
+        <!--Muestro los datos ingresados-->
+
+        <!--Documento-->
+        <table class="table table-bordered table-dark">
+          <thead>
+            <tr>
+              <th scope="col" class="align-middle">Tipo documento</th>
+              <th scope="col" class="align-middle">Documento</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="align-middle">{{contactoForm.get(['tipoDocumentos'])?.value}}</td>
+              <td class="align-middle">{{contactoForm.get(['valorDocumento'])?.value}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="table table-bordered table-dark">
+          <thead>
+            <tr>
+              <th scope="col" class="align-middle">Pais</th>
+              <th scope="col" class="align-middle">Provincia</th>
+              <th scope="col" class="align-middle">Calle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="align-middle">{{paisForm.get(['nombre'])?.value}}</td>
+              <td class="align-middle">{{provinciaForm.get(['nombre'])?.value}}</td>
+              <td class="align-middle">{{direccionesForm.get(['calle'])?.value}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!--Direcciones-->
+
+        <table class="table table-bordered table-dark">
+          <thead>
+            <tr>
+              <th scope="col" class="align-middle">Ciudad</th>
+              <th scope="col" class="align-middle">Altura</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="align-middle">{{ciudadForm.get(['nombre'])?.value}}</td>
+              <td class="align-middle">{{direccionesForm.get(['altura'])?.value}}</td>
+            </tr>
+          </tbody>
+          <thead>
+            <tr>
+              <th scope="col" class="align-middle">Piso</th>
+              <th scope="col" class="align-middle">Departamento</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="align-middle">{{direccionesForm.get(['piso'])?.value}}</td>
+              <td class="align-middle">{{direccionesForm.get(['departamento'])?.value}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!--Empresa-->
+        <table class="table table-bordered table-dark">
+          <thead>
+            <tr>
+              <th scope="col" class="align-middle">Empresa</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="align-middle">{{empresaForm.get('nombre')?.value}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+
+      </div>
+      <div class="text-center">
+      <button type="submit" class="btn btn-primary" (click)="save()">Submit</button>
+      <button mat-button matStepperPrevious>Volver</button>
+    </div>
+    </mat-step>
+
+  </mat-horizontal-stepper>
+
+</div>

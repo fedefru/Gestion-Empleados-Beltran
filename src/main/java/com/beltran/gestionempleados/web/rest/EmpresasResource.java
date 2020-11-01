@@ -1,7 +1,8 @@
 package com.beltran.gestionempleados.web.rest;
 
-import com.beltran.gestionempleados.domain.Empresas;
-import com.beltran.gestionempleados.repository.EmpresasRepository;
+import com.beltran.gestionempleados.domain.*;
+import com.beltran.gestionempleados.domain.DTO.EmpresaDTO;
+import com.beltran.gestionempleados.repository.*;
 import com.beltran.gestionempleados.service.UserService;
 import com.beltran.gestionempleados.web.rest.errors.BadRequestAlertException;
 
@@ -45,9 +46,27 @@ public class EmpresasResource {
     private String applicationName;
 
     private final EmpresasRepository empresasRepository;
+    private final TipoContactosRepository tipoContactosRepository;
+    private final PaisesRepository paisesRepository;
+    private final ProvinciasRepository provinciasRepository;
+    private final CiudadesRepository ciudadesRepository;
+    private final DireccionesRepository direccionesRepository;
+    private final TipoDireccionRepository tipoDireccionRepository;
 
-    public EmpresasResource(EmpresasRepository empresasRepository) {
-        this.empresasRepository = empresasRepository;
+    public EmpresasResource(EmpresasRepository empresasRepository,
+                            TipoContactosRepository tipoContactosRepository,
+                            PaisesRepository paisesRepository,
+                            ProvinciasRepository provinciasRepository,
+                            CiudadesRepository ciudadesRepository,
+                            DireccionesRepository direccionesRepository,
+                            TipoDireccionRepository tipoDireccionRepository){
+            this.empresasRepository = empresasRepository;
+            this.tipoContactosRepository = tipoContactosRepository;
+            this.paisesRepository = paisesRepository;
+            this.provinciasRepository = provinciasRepository;
+            this.ciudadesRepository = ciudadesRepository;
+            this.direccionesRepository = direccionesRepository;
+            this.tipoDireccionRepository = tipoDireccionRepository;
     }
 
     /**
@@ -68,6 +87,58 @@ public class EmpresasResource {
         return ResponseEntity.created(new URI("/api/empresas/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
             .body(result);
+    }
+
+
+    @PostMapping("/empresas/registro")
+    public ResponseEntity<Empresas> createEmpresasRegistro(@RequestBody EmpresaDTO empresaDTO) throws URISyntaxException {
+        log.debug("REST request to save Empresas with registro-empresa : {}", empresaDTO);
+
+        // Debo importar todos los repositories de las entidades para realizar el save exitoso de cada uno. Pais, Provincia, Ciudad ...
+
+        try{
+            // Guardo los datos que me llegan con el DTO para luego relacionarlos con la empresa
+            TipoContactos resultTipoContacto = tipoContactosRepository.save(empresaDTO.getTipoContactos());
+
+            // Le guardo el id del pais a la provincia
+            Paises resultPais = paisesRepository.save(empresaDTO.getPaises());
+            empresaDTO.getProvincias().getPais().setId(resultPais.getId());
+
+            // Le guardo el id de la provincia a la ciudad
+            Provincias resultProvincia = provinciasRepository.save(empresaDTO.getProvincias());
+            empresaDTO.getCiudades().getProvicia().setId(resultProvincia.getId());
+
+            // Le guardo el id de la ciudad a la direccion
+            Ciudades resultCiudades = ciudadesRepository.save(empresaDTO.getCiudades());
+            empresaDTO.getDirecciones().getCiudad().setId(resultCiudades.getId());
+
+            Direcciones resultDirecciones = direccionesRepository.save(empresaDTO.getDirecciones());
+
+
+            // Instancio un nuevo tipo de direccion en el cual le seteo el ID de la direccion que acabo de crear
+            TipoDireccion tipoDireccion = new TipoDireccion();
+            tipoDireccion.setDireccion(resultDirecciones);
+
+            // Hago el save del tipo de direccion
+            TipoDireccion resultTipoDireccion = tipoDireccionRepository.save(tipoDireccion);
+
+            Empresas empresa = new Empresas();
+
+            empresa.setNombre(empresaDTO.getNombre());
+            empresa.setClave(empresaDTO.getClave());
+            empresa.setDireccion(resultTipoDireccion);
+            empresa.setContacto(empresaDTO.getTipoContactos());
+
+            Empresas resultEmpresa = empresasRepository.save(empresa);
+
+            userService.registerEmpresa(empresa);
+            return ResponseEntity.created(new URI("/api/empresas/" + resultEmpresa.getId()))
+                .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, resultEmpresa.getId().toString()))
+                .body(resultEmpresa);
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return null;
     }
 
     /**

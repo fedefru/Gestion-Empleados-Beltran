@@ -17,7 +17,8 @@
         "title": "Provinces"
       },
       "nombre": "Name",
-      "pais": "Country"
+      "pais": "Country",
+      "value": "Province"
     }
   }
 }

@@ -112,6 +112,10 @@ import { RouterModule } from '@angular/router';
         path: 'organigrama',
         loadChildren: () => import('./organigrama/organigrama.module').then(m => m.GestionEmpleadosOrganigramaModule),
       },
+      {
+        path: 'registro-empresa',
+        loadChildren: () => import('./registro/registro.module').then(m => m.GestionEmpleadosRegistroModule),
+      },
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ]),
   ],

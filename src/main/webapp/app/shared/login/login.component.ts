@@ -63,7 +63,7 @@ export class LoginModalComponent implements AfterViewInit {
 
   register(): void {
     this.activeModal.dismiss('to state register');
-    this.router.navigate(['/account/register']);
+    this.router.navigate(['/registro-empresa']);
   }
 
   requestResetPassword(): void {

@@ -12,5 +12,6 @@ import { tipoContactosRoute } from './tipo-contactos.route';
   imports: [GestionEmpleadosSharedModule, RouterModule.forChild(tipoContactosRoute)],
   declarations: [TipoContactosComponent, TipoContactosDetailComponent, TipoContactosUpdateComponent, TipoContactosDeleteDialogComponent],
   entryComponents: [TipoContactosDeleteDialogComponent],
+  exports: [TipoContactosUpdateComponent],
 })
 export class GestionEmpleadosTipoContactosModule {}

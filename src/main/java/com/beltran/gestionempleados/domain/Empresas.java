@@ -40,6 +40,7 @@ public class Empresas implements Serializable {
     @JsonIgnoreProperties(value = "empresas", allowSetters = true)
     private Estados estado;
 
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
         return id;

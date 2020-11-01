@@ -49,13 +49,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .antMatchers("/content/**")
             .antMatchers("/h2-console/**")
             .antMatchers("/swagger-ui/index.html")
-            .antMatchers("/test/**")
-            .antMatchers("/api/usuarios")
-            .antMatchers("/api/empresas")
-            .antMatchers("/api/tipo-direccion")
-            .antMatchers("/api/tipo-direccions")
-            .antMatchers("/api/estados")
-            .antMatchers("/api/tipo-contactos");
+            .antMatchers("/test/**");
     }
 
     @Override
@@ -85,6 +79,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .authorizeRequests()
             .antMatchers("/api/authenticate").permitAll()
             .antMatchers("/api/register").permitAll()
+            .antMatchers("/api/registro-empresa").permitAll()
             .antMatchers("/api/activate").permitAll()
             .antMatchers("/api/account/reset-password/init").permitAll()
             .antMatchers("/api/account/reset-password/finish").permitAll()
@@ -93,13 +88,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .antMatchers("/management/info").hasAuthority(AuthoritiesConstants.ADMIN)
             .antMatchers("/management/prometheus").hasAuthority(AuthoritiesConstants.ADMIN)
             .antMatchers("/management/**").hasAuthority(AuthoritiesConstants.ADMIN)
-            .antMatchers("/api/usuarios").hasAuthority(AuthoritiesConstants.ADMIN)
-            .antMatchers("/api/empresas").hasAuthority(AuthoritiesConstants.ADMIN)
-            .antMatchers("/api/tipo-direccion").hasAuthority(AuthoritiesConstants.ADMIN)
-            .antMatchers("/api/tipo-direccions").hasAuthority(AuthoritiesConstants.ADMIN)
-            .antMatchers("/api/estados").hasAuthority(AuthoritiesConstants.ADMIN)
-            .antMatchers("/api/tipo-contactos").hasAuthority(AuthoritiesConstants.ADMIN)
-            .antMatchers("/api/sugerencias").hasAnyAuthority(AuthoritiesConstants.ADMIN)
+
         .and()
             .httpBasic()
         .and()

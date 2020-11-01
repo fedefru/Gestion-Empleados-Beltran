@@ -1,4 +1,6 @@
 {
   "extends": "./tsconfig.base.json",
-  "files": ["src/main/webapp/app/app.main.ts"]
+  "files": ["src/main/webapp/app/app.main.ts"],
+  "types": ["node"],
+  "typeRoots": ["../node_modules/@types"]
 }

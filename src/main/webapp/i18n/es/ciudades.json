@@ -17,7 +17,8 @@
         "title": "Ciudades"
       },
       "nombre": "Nombre",
-      "provicia": "Provicia"
+      "provicia": "Provicia",
+      "value": "Ciudad"
     }
   }
 }
