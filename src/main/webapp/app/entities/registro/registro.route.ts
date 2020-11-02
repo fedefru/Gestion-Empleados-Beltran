@@ -5,9 +5,5 @@ export const registroRoute: Routes = [
   {
     path: '',
     component: RegistroComponent,
-    data: {
-      authorities: [],
-      pageTitle: 'gestionEmpleadosApp.registro.home.title',
-    },
   },
 ];
