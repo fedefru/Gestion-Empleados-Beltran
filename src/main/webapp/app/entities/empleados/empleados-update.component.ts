@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { Component, OnInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -65,7 +66,10 @@ export class EmpleadosUpdateComponent implements OnInit {
     this.activatedRoute.data.subscribe(({ empleados }) => {
       this.updateForm(empleados);
 
-      this.empleadosService.query().subscribe((res: HttpResponse<IEmpleados[]>) => (this.empleadosCollection = res.body || []));
+      this.empleadosService.query().subscribe((res: HttpResponse<IEmpleados[]>) => {
+        this.empleadosCollection = res.body || [];
+        console.log(this.empleadosCollection);
+      });
 
       this.usuariosService.query().subscribe((res: HttpResponse<IUsuarios[]>) => (this.usuarios = res.body || []));
 
@@ -144,3 +148,4 @@ export class EmpleadosUpdateComponent implements OnInit {
     return item.id;
   }
 }
+/* eslint-enable no-console */
