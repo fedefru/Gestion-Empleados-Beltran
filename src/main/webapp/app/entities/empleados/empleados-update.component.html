@@ -25,7 +25,7 @@
                     <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.empleados.jefe" for="field_jefe">Jefe</label>
                     <select class="form-control" id="field_jefe" name="jefe" formControlName="jefe">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="empleadosOption.id === editForm.get('jefe')!.value?.id ? editForm.get('jefe')!.value : empleadosOption" *ngFor="let empleadosOption of empleadosCollection; trackBy: trackById">{{ empleadosOption.id }}</option>
+                        <option [ngValue]="empleadosOption.id === editForm.get('jefe')!.value?.id ? editForm.get('jefe')!.value : empleadosOption" *ngFor="let empleadosOption of empleadosCollection; trackBy: trackById">{{ empleadosOption.usuario?.nombre| titlecase }} {{empleadosOption.usuario?.apellido | titlecase}} </option>
                     </select>
                 </div>
 
