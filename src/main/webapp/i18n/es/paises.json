@@ -3,21 +3,20 @@
     "paises": {
       "home": {
         "title": "Paises",
-        "createLabel": "Crear nuevo Pais",
-        "createOrEditLabel": "Crear o editar Pais",
-        "notFound": "Ningún Pais encontrado"
+        "createLabel": "Crear nuevo Paises",
+        "createOrEditLabel": "Crear o editar Paises",
+        "notFound": "Ningún Paises encontrado"
       },
-      "created": "Un nuevo Paise ha sido creado con el identificador {{ param }}",
-      "updated": "Un Paise ha sido actualizado con el identificador {{ param }}",
-      "deleted": "Un Paise ha sido eliminado con el identificador {{ param }}",
+      "created": "Un nuevo Paises ha sido creado con el identificador {{ param }}",
+      "updated": "Un Paises ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Paises ha sido eliminado con el identificador {{ param }}",
       "delete": {
-        "question": "¿Seguro que quiere eliminar Pais {{ id }}?"
+        "question": "¿Seguro que quiere eliminar Paises {{ id }}?"
       },
       "detail": {
         "title": "Paises"
       },
-      "nombre": "Nombre",
-      "value": "Pais"
+      "nombre": "Nombre"
     }
   }
 }

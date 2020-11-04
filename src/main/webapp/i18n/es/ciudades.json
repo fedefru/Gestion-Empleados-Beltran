@@ -3,22 +3,21 @@
     "ciudades": {
       "home": {
         "title": "Ciudades",
-        "createLabel": "Crear nueva Ciudad",
-        "createOrEditLabel": "Crear o editar Ciudad",
-        "notFound": "Ningúna Ciudad encontrada"
+        "createLabel": "Crear nuevo Ciudades",
+        "createOrEditLabel": "Crear o editar Ciudades",
+        "notFound": "Ningún Ciudades encontrado"
       },
-      "created": "Una nueva Ciudad ha sido creado con el identificador {{ param }}",
-      "updated": "Una Ciudad ha sido actualizada con el identificador {{ param }}",
-      "deleted": "Una Ciudad ha sido eliminada con el identificador {{ param }}",
+      "created": "Un nuevo Ciudades ha sido creado con el identificador {{ param }}",
+      "updated": "Un Ciudades ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Ciudades ha sido eliminado con el identificador {{ param }}",
       "delete": {
-        "question": "¿Seguro que quiere eliminar Ciudad {{ id }}?"
+        "question": "¿Seguro que quiere eliminar Ciudades {{ id }}?"
       },
       "detail": {
         "title": "Ciudades"
       },
       "nombre": "Nombre",
-      "provicia": "Provicia",
-      "value": "Ciudad"
+      "provicia": "Provicia"
     }
   }
 }

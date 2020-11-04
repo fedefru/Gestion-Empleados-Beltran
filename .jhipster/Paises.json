@@ -10,7 +10,7 @@
   "changelogDate": "20200704004130",
   "entityTableName": "paises",
   "dto": "no",
-  "pagination": "no",
+  "pagination": "true",
   "service": "no",
   "jpaMetamodelFiltering": false,
   "fluentMethods": true,

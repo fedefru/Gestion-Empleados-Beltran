@@ -18,7 +18,7 @@
   "changelogDate": "20200704004230",
   "entityTableName": "provincias",
   "dto": "no",
-  "pagination": "no",
+  "pagination": "true",
   "service": "no",
   "jpaMetamodelFiltering": false,
   "fluentMethods": true,

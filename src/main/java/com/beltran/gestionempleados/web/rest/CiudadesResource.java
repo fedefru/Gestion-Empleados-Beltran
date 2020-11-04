@@ -1,14 +1,21 @@
 package com.beltran.gestionempleados.web.rest;
 
 import com.beltran.gestionempleados.domain.Ciudades;
+import com.beltran.gestionempleados.domain.Provincias;
 import com.beltran.gestionempleados.repository.CiudadesRepository;
 import com.beltran.gestionempleados.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
+import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -82,12 +89,15 @@ public class CiudadesResource {
     /**
      * {@code GET  /ciudades} : get all the ciudades.
      *
+     * @param pageable the pagination information.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of ciudades in body.
      */
     @GetMapping("/ciudades")
-    public List<Ciudades> getAllCiudades() {
-        log.debug("REST request to get all Ciudades");
-        return ciudadesRepository.findAll();
+    public ResponseEntity<List<Ciudades>> getAllCiudades(Pageable pageable) {
+        log.debug("REST request to get a page of Ciudades");
+        Page<Ciudades> page = ciudadesRepository.findAll(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 
     /**
@@ -101,6 +111,13 @@ public class CiudadesResource {
         log.debug("REST request to get Ciudades : {}", id);
         Optional<Ciudades> ciudades = ciudadesRepository.findById(id);
         return ResponseUtil.wrapOrNotFound(ciudades);
+    }
+
+
+    @GetMapping("/getByState/{id}")
+    public List<Ciudades> getByState(@PathVariable Long id) {
+        log.debug("REST request to get Ciudades : {}", id);
+        return  ciudadesRepository.findAllByProviciaId(id);
     }
 
     /**

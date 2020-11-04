@@ -14,14 +14,14 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.ciudades.nombre" for="field_nombre">Nombre</label>
                     <input type="text" class="form-control" name="nombre" id="field_nombre"
-                           formControlName="nombre" minlength="4" required />
+                           formControlName="nombre"/>
                 </div>
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.ciudades.provicia" for="field_provicia">Provicia</label>
                     <select class="form-control" id="field_provicia" name="provicia" formControlName="provicia">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="provinciasOption.id === editForm.get('provicia')!.value?.id ? editForm.get('provicia')!.value : provinciasOption" *ngFor="let provinciasOption of provincias; trackBy: trackById">{{ provinciasOption.nombre }}</option>
+                        <option [ngValue]="provinciasOption.id === editForm.get('provicia')!.value?.id ? editForm.get('provicia')!.value : provinciasOption" *ngFor="let provinciasOption of provincias; trackBy: trackById">{{ provinciasOption.id }}</option>
                     </select>
                 </div>
             </div>

@@ -12,6 +12,7 @@ type EntityArrayResponseType = HttpResponse<IProvincias[]>;
 @Injectable({ providedIn: 'root' })
 export class ProvinciasService {
   public resourceUrl = SERVER_API_URL + 'api/provincias';
+  public resourceUrlProvincias = SERVER_API_URL + 'api/getByCountry';
 
   constructor(protected http: HttpClient) {}
 
@@ -30,6 +31,10 @@ export class ProvinciasService {
   query(req?: any): Observable<EntityArrayResponseType> {
     const options = createRequestOption(req);
     return this.http.get<IProvincias[]>(this.resourceUrl, { params: options, observe: 'response' });
+  }
+
+  getByCountry(id: number): Observable<EntityArrayResponseType> {
+    return this.http.get<IProvincias[]>(`${this.resourceUrlProvincias}/${id}`, { observe: 'response' });
   }
 
   delete(id: number): Observable<HttpResponse<{}>> {

@@ -16,6 +16,9 @@ import { EmpresaDto, IEmpresaDto } from '../../shared/model/empresa-dto.model';
 import { countries } from '../listado/countries';
 import { ITipoContactos, TipoContactos } from 'app/shared/model/tipo-contactos.model';
 import { IPaises, Paises } from 'app/shared/model/paises.model';
+import { PaisesService } from '../paises/paises.service';
+import { ProvinciasService } from '../provincias/provincias.service';
+import { CiudadesService } from '../ciudades/ciudades.service';
 import { IProvincias, Provincias } from 'app/shared/model/provincias.model';
 import { Ciudades, ICiudades } from 'app/shared/model/ciudades.model';
 import { Direcciones, IDirecciones } from 'app/shared/model/direcciones.model';
@@ -38,8 +41,9 @@ export class RegistroComponent {
   linear: boolean = true;
   isSaving?: boolean;
 
-  paises?: any = countries;
+  paises?: IPaises[];
   provincias?: any;
+  ciudades?: ICiudades[];
 
   registerForm = this.fb.group({
     login: [
@@ -102,25 +106,44 @@ export class RegistroComponent {
     private loginModalService: LoginModalService,
     private registroService: RegistroService,
     private fb: FormBuilder,
-    private tipoDocumentosService: TipoDocumentosService
+    private tipoDocumentosService: TipoDocumentosService,
+    private paisesService: PaisesService,
+    private provinciasService: ProvinciasService,
+    private ciudadesService: CiudadesService
   ) {
     this.coincidenPass = null;
   }
 
   ngOnInit(): void {
     this.tipoDocumentosService.query().subscribe((res: HttpResponse<ITipoDocumentos[]>) => (this.tipodocumentos = res.body || []));
-    console.log(this.coincidenPass);
+
+    this.paisesService.getAll().subscribe((res: HttpResponse<IPaises[]>) => {
+      this.paises = res.body || [];
+      console.log(this.paises);
+    });
   }
 
   setProvincias(country: any): void {
+    console.log(country);
     this.paisForm.controls['nombre'].setValue(country);
+    country = this.paises?.filter(x => x.nombre == country);
+    this.provinciasService.getByCountry(country[0].id).subscribe((res: HttpResponse<IProvincias[]>) => {
+      this.provincias = res.body || [];
+    });
+  }
 
-    this.provincias = countries.filter((x: any) => x.name == country);
-    this.provincias = this.provincias[0].states;
+  setCiudades(state: any): void {
+    this.ciudadForm.controls['nombre'].setValue(state);
   }
 
   setProvForm(provincia: any): void {
-    this.provinciaForm.controls['nombre'].setValue(provincia);
+    provincia = this.provincias.filter((x: any) => x.nombre == provincia);
+    this.ciudadesService.getByState(provincia[0].id).subscribe((res: HttpResponse<ICiudades[]>) => {
+      this.ciudades = res.body || [];
+      console.log(this.ciudades);
+    });
+
+    this.provinciaForm.controls['nombre'].setValue(provincia[0].nombre);
   }
 
   setTipoDoc(tipoDoc: any): void {

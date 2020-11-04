@@ -5,10 +5,16 @@ import com.beltran.gestionempleados.repository.PaisesRepository;
 import com.beltran.gestionempleados.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
+import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -82,12 +88,21 @@ public class PaisesResource {
     /**
      * {@code GET  /paises} : get all the paises.
      *
+     * @param pageable the pagination information.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of paises in body.
      */
     @GetMapping("/paises")
-    public List<Paises> getAllPaises() {
-        log.debug("REST request to get all Paises");
-        return paisesRepository.findAll();
+    public ResponseEntity<List<Paises>> getAllPaises(Pageable pageable) {
+        log.debug("REST request to get a page of Paises");
+        Page<Paises> page = paisesRepository.findAll(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+
+    @GetMapping("/paises/all")
+    public List<Paises> getAll() {
+        log.debug("REST request to get a page of Paises");
+        return  paisesRepository.findAll();
     }
 
     /**

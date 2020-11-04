@@ -12,6 +12,7 @@ type EntityArrayResponseType = HttpResponse<ICiudades[]>;
 @Injectable({ providedIn: 'root' })
 export class CiudadesService {
   public resourceUrl = SERVER_API_URL + 'api/ciudades';
+  public resourceUrlCiudades = SERVER_API_URL + 'api/getByState';
 
   constructor(protected http: HttpClient) {}
 
@@ -30,6 +31,10 @@ export class CiudadesService {
   query(req?: any): Observable<EntityArrayResponseType> {
     const options = createRequestOption(req);
     return this.http.get<ICiudades[]>(this.resourceUrl, { params: options, observe: 'response' });
+  }
+
+  getByState(id: number): Observable<EntityArrayResponseType> {
+    return this.http.get<ICiudades[]>(`${this.resourceUrlCiudades}/${id}`, { observe: 'response' });
   }
 
   delete(id: number): Observable<HttpResponse<{}>> {

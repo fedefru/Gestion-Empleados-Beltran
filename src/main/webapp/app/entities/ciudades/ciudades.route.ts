@@ -40,6 +40,7 @@ export const ciudadesRoute: Routes = [
     component: CiudadesComponent,
     data: {
       authorities: [Authority.USER],
+      defaultSort: 'id,asc',
       pageTitle: 'gestionEmpleadosApp.ciudades.home.title',
     },
     canActivate: [UserRouteAccessService],
