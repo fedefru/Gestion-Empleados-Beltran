@@ -21,6 +21,7 @@
     "fichar": "Fichar ahora",
     "crearSugerencia": "Crear sugerencia",
     "verSugerencias": "Ver sugerencias",
+    "cargarEmpleados": "Cargar empleados",
     "logged": {
       "message": "Está conectado como \"{{username}}\"."
     },
