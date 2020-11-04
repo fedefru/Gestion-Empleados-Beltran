@@ -21,6 +21,7 @@
     "fichar": "Credit hours",
     "crearSugerencia": "Create suggestion",
     "verSugerencias": "See suggestions",
+    "cargarEmpleados": "Upload employees",
     "logged": {
       "message": "You are logged in as user \"{{username}}\"."
     },
