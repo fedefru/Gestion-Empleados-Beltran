@@ -88,8 +88,8 @@ public class EmpleadosResource {
         }
         String encryptedPassword = passwordEncoder.encode(empleados.getUsuario().getClave());
         //empleados.getUsuario().setClave(encryptedPassword);
-        //Usuarios resultUser = usuariosRepository.save(empleados.getUsuario());
-        //empleados.getUsuario().setId(resultUser.getId());
+        Usuarios resultUser = usuariosRepository.save(empleados.getUsuario());
+        empleados.getUsuario().setId(resultUser.getId());
         Empleados result = empleadosRepository.save(empleados);
 
         userService.registerUser(empleados.getUsuario(),empleados.getUsuario().getClave());
