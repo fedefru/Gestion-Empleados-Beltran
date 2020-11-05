@@ -119,12 +119,10 @@ export class RegistroComponent {
 
     this.paisesService.getAll().subscribe((res: HttpResponse<IPaises[]>) => {
       this.paises = res.body || [];
-      console.log(this.paises);
     });
   }
 
   setProvincias(country: any): void {
-    console.log(country);
     this.paisForm.controls['nombre'].setValue(country);
     country = this.paises?.filter(x => x.nombre == country);
     this.provinciasService.getByCountry(country[0].id).subscribe((res: HttpResponse<IProvincias[]>) => {
@@ -140,7 +138,6 @@ export class RegistroComponent {
     provincia = this.provincias.filter((x: any) => x.nombre == provincia);
     this.ciudadesService.getByState(provincia[0].id).subscribe((res: HttpResponse<ICiudades[]>) => {
       this.ciudades = res.body || [];
-      console.log(this.ciudades);
     });
 
     this.provinciaForm.controls['nombre'].setValue(provincia[0].nombre);
@@ -168,22 +165,12 @@ export class RegistroComponent {
     this.coincidenPass = clave === confirmaClave;
   }
 
-  showItems(): void {
-    console.log(
-      'elementos=> ',
-      this.direccionesForm.get(['altura'])?.value,
-      this.direccionesForm.get(['piso'])?.value,
-      this.direccionesForm.get(['departamento'])?.value
-    );
-  }
-
   openLogin(): void {
     this.loginModalService.open();
   }
 
   siguientePaso(): void {
     this.habilitarPaso = true;
-    console.log(this.registerForm);
   }
 
   private processError(response: HttpErrorResponse): void {
@@ -248,7 +235,6 @@ export class RegistroComponent {
   // Genero el save que instancia todas las entidades y las incluye al dto para hacer el save
 
   save(): void {
-    console.log();
     this.isSaving = true;
     const nombre = this.empresaForm.get(['nombre'])?.value;
     const clave = this.empresaForm.get(['clave'])?.value;

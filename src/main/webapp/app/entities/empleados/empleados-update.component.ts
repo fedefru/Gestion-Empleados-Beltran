@@ -79,10 +79,7 @@ export class EmpleadosUpdateComponent implements OnInit {
     this.activatedRoute.data.subscribe(({ empleados }) => {
       this.updateForm(empleados);
 
-      this.empleadosService.query().subscribe((res: HttpResponse<IEmpleados[]>) => {
-        this.empleadosCollection = res.body || [];
-        console.log(this.empleadosCollection);
-      });
+      this.empleadosService.query().subscribe((res: HttpResponse<IEmpleados[]>) => (this.empleadosCollection = res.body || []));
 
       this.usuariosService.query().subscribe((res: HttpResponse<IUsuarios[]>) => (this.usuarios = res.body || []));
 
@@ -119,8 +116,6 @@ export class EmpleadosUpdateComponent implements OnInit {
   save(): void {
     this.isSaving = true;
     const empleados = this.createFromForm();
-
-    console.log('empleado que mando', empleados);
 
     this.subscribeToSaveResponse(this.empleadosService.createEmp(empleados));
   }

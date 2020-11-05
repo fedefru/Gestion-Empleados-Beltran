@@ -19,7 +19,6 @@ export class ImagenesFichajeService {
 
   create(fichajes: IFichajes): Observable<EntityResponseType> {
     const copy = fichajes;
-    console.log('entre, fichaje -> ' + copy);
     return this.http.post<IFichajes>(this.resourceUrl, copy, { observe: 'response' });
   }
 
@@ -29,20 +28,17 @@ export class ImagenesFichajeService {
   }
 
   find(id: number): Observable<EntityResponseType> {
-    return this.http
-      .get<IFichajes>(`${this.resourceUrl}/${id}`, { observe: 'response' })
+    return this.http.get<IFichajes>(`${this.resourceUrl}/${id}`, { observe: 'response' });
   }
 
   query(req?: any): Observable<EntityArrayResponseType> {
     const options = createRequestOption(req);
-    return this.http
-      .get<IFichajes[]>(this.resourceUrl, { params: options, observe: 'response' })
+    return this.http.get<IFichajes[]>(this.resourceUrl, { params: options, observe: 'response' });
   }
 
   queryImagenes(search: any): Observable<EntityArrayResponseType> {
     const options = createRequestOption(search);
-    return this.http
-      .get<[]>(this.resourceUrlRuta + search, { params: options, observe: 'response' });
+    return this.http.get<[]>(this.resourceUrlRuta + search, { params: options, observe: 'response' });
   }
 
   delete(id: number): Observable<HttpResponse<{}>> {
@@ -52,7 +48,5 @@ export class ImagenesFichajeService {
   reconocerRostro(): Observable<HttpResponse<any>> {
     return this.http.get<any>(`${this.urlFichaje}`, { observe: 'response' });
   }
-
-
 }
 /* eslint-enable no-console */

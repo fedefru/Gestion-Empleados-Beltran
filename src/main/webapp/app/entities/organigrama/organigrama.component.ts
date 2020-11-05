@@ -29,7 +29,6 @@ export class OrganigramaComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.empleadosService.findAll().subscribe((res: any) => {
       this.empleados = res.body;
-      console.log('empleados', this.empleados);
 
       this.empleados.map((x: any) => {
         this.model.key = x.id;

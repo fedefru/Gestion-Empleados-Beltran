@@ -19,9 +19,6 @@ export class SugerenciasService {
   }
 
   update(sugerencias: ISugerencias): Observable<EntityResponseType> {
-    /* eslint-disable no-console */
-    console.log('Antes del back, ', sugerencias);
-    /* eslint-enable no-console */
     return this.http.put<ISugerencias>(this.resourceUrlLeido, sugerencias, { observe: 'response' });
   }
 

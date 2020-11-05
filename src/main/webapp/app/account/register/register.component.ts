@@ -75,9 +75,6 @@ export class RegisterComponent implements AfterViewInit {
 
   siguientePaso(): void {
     this.habilitarPaso = true;
-    // eslint-disable-next-line no-console
-    console.log(this.registerForm);
-    // eslint-enable-next-line no-console
   }
 
   private processError(response: HttpErrorResponse): void {

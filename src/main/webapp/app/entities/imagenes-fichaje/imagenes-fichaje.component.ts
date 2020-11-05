@@ -46,11 +46,9 @@ export class ImagenesFichajeComponent implements OnInit {
 
     this.usuarioService.findUsuarioByAlias(this.cuenta.toLowerCase()).subscribe((resp: HttpResponse<any>) => {
       this.usuario = resp.body;
-      console.log(this.usuario);
 
       this.imagenesFichajeService.queryImagenes(this.usuario.id).subscribe((res: HttpResponse<any>) => {
         this.rutas = res.body;
-        console.log(this.rutas);
 
         this.fechas = this.rutas.map((x: any) => {
           return x.substring(x.lastIndexOf('_') + 1, x.lastIndexOf('T'));
