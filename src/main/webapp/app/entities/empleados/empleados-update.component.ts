@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 
 import { IEmpleados, Empleados } from 'app/shared/model/empleados.model';
 import { EmpleadosService } from './empleados.service';
-import { IUsuarios } from 'app/shared/model/usuarios.model';
+import { IUsuarios, Usuarios } from 'app/shared/model/usuarios.model';
 import { UsuariosService } from 'app/entities/usuarios/usuarios.service';
 import { IEstados } from 'app/shared/model/estados.model';
 import { EstadosService } from 'app/entities/estados/estados.service';
@@ -19,6 +19,7 @@ import { PuestosService } from 'app/entities/puestos/puestos.service';
 import { IFichajes } from 'app/shared/model/fichajes.model';
 import { FichajesService } from 'app/entities/fichajes/fichajes.service';
 import { IEmpresas } from 'app/shared/model/empresas.model';
+import { EmpleadoDto, IEmpleadoDTO } from 'app/shared/model/empleado-dto.model';
 import { EmpresasService } from 'app/entities/empresas/empresas.service';
 
 type SelectableEntity = IEmpleados | IUsuarios | IEstados | IAreas | IPuestos | IFichajes | IEmpresas;
@@ -48,6 +49,18 @@ export class EmpleadosUpdateComponent implements OnInit {
     puesto: [],
     fichaje: [],
     empresa: [],
+  });
+
+  usuarioForm = this.fb.group({
+    id: [],
+    nombre: [],
+    apellido: [],
+    fechaNac: [],
+    clave: [],
+    usuario: [],
+    estado: [],
+    direccion: [],
+    contacto: [],
   });
 
   constructor(
@@ -106,20 +119,33 @@ export class EmpleadosUpdateComponent implements OnInit {
   save(): void {
     this.isSaving = true;
     const empleados = this.createFromForm();
-    if (empleados.id !== undefined) {
-      this.subscribeToSaveResponse(this.empleadosService.update(empleados));
-    } else {
-      this.subscribeToSaveResponse(this.empleadosService.create(empleados));
-    }
+
+    console.log('empleado que mando', empleados);
+
+    this.subscribeToSaveResponse(this.empleadosService.createEmp(empleados));
   }
 
+  private createUsuarioFromForm(): IUsuarios {
+    return {
+      ...new Usuarios(),
+      id: this.usuarioForm.get(['id'])!.value,
+      nombre: this.usuarioForm.get(['nombre'])!.value,
+      apellido: this.usuarioForm.get(['apellido'])!.value,
+      fechaNac: this.usuarioForm.get(['fechaNac'])!.value,
+      clave: this.usuarioForm.get(['clave'])!.value,
+      usuario: this.usuarioForm.get(['usuario'])!.value,
+      estado: this.usuarioForm.get(['estado'])!.value,
+      direccion: this.usuarioForm.get(['direccion'])!.value,
+      contacto: this.usuarioForm.get(['contacto'])!.value,
+    };
+  }
   private createFromForm(): IEmpleados {
     return {
       ...new Empleados(),
       id: this.editForm.get(['id'])!.value,
       fechaIngreso: this.editForm.get(['fechaIngreso'])!.value,
       jefe: this.editForm.get(['jefe'])!.value,
-      usuario: this.editForm.get(['usuario'])!.value,
+      usuario: this.createUsuarioFromForm(),
       estado: this.editForm.get(['estado'])!.value,
       area: this.editForm.get(['area'])!.value,
       puesto: this.editForm.get(['puesto'])!.value,
@@ -129,6 +155,13 @@ export class EmpleadosUpdateComponent implements OnInit {
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IEmpleados>>): void {
+    result.subscribe(
+      () => this.onSaveSuccess(),
+      () => this.onSaveError()
+    );
+  }
+
+  protected subscribeToSaveResponseUser(result: Observable<HttpResponse<IUsuarios>>): void {
     result.subscribe(
       () => this.onSaveSuccess(),
       () => this.onSaveError()
