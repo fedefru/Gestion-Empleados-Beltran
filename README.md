@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-# Gestion-Empleados-Beltran
-Desarrollo de proyecto de Gestión de Empleados con la herramienta JHipster. La misma cuenta con todas las entidades necesarias para una optima gestión de los empleados en una Empresa/Instituto.
-=======
 # GestionEmpleados
 
 This application was generated using JHipster 6.10.0, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v6.10.0](https://www.jhipster.tech/documentation-archive/v6.10.0).
@@ -239,4 +235,3 @@ To configure CI for your project, run the ci-cd sub-generator (`jhipster ci-cd`)
 [protractor]: https://angular.github.io/protractor/
 [leaflet]: https://leafletjs.com/
 [definitelytyped]: https://definitelytyped.org/
->>>>>>> 5b5eb9f... push proyect
