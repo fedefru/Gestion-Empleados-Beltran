@@ -40,7 +40,7 @@
                     <td>{{ empleados.fechaIngreso | date:'mediumDate' }}</td>
                     <td>
                         <div *ngIf="empleados.jefe">
-                            <a [routerLink]="['/empleados', empleados.jefe?.id, 'view']" >{{ empleados.jefe?.usuario?.nombre }}</a>
+                            <a [routerLink]="['/empleados', empleados.jefe?.id, 'view']" >{{ empleados.jefe?.usuario?.nombre}}</a>
                         </div>
                     </td>
                     <td>

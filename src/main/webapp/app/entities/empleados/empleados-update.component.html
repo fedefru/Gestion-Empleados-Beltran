@@ -4,8 +4,8 @@
             <h2 id="jhi-empleados-heading" jhiTranslate="gestionEmpleadosApp.empleados.home.createOrEditLabel">Create or edit a Empleados</h2>
 
             <div>
-                <jhi-alert-error></jhi-alert-error>
-
+                
+                <jhi-alert></jhi-alert>
                 <div class="form-group" [hidden]="!editForm.get('id')!.value">
                     <label for="id" jhiTranslate="global.field.id">ID</label>
                     <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
@@ -20,22 +20,76 @@
                         </span>
                     </div>
                 </div>
+            </form>
+                <!-- Datos del usuario-->
 
+                <form name="usuarioForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="usuarioForm">
+                    <div>
+                        <div class="form-group" [hidden]="!usuarioForm.get('id')!.value">
+                            <label for="id" jhiTranslate="global.field.id">ID</label>
+                            <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                        </div>
+        
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.usuarios.usuario" for="field_usuario">Usuario</label>
+                            <input type="text" class="form-control" name="usuario" id="field_usuario"
+                                   formControlName="usuario" minlength="4" required />
+                        </div>
+        
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.usuarios.nombre" for="field_nombre">Nombre</label>
+                            <input type="text" class="form-control" name="nombre" id="field_nombre"
+                                   formControlName="nombre" minlength="4" required />
+                        </div>
+        
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.usuarios.apellido" for="field_apellido">Apellido</label>
+                            <input type="text" class="form-control" name="apellido" id="field_apellido"
+                                   formControlName="apellido" minlength="4" required />
+                        </div>
+        
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.usuarios.fechaNac" for="field_fechaNac">Fecha Nac</label>
+                            <div class="input-group">
+                                <input id="field_fechaNac" type="text" class="form-control" name="fechaNac" autocomplete="off" ngbDatepicker #fechaNacDp="ngbDatepicker" formControlName="fechaNac"/>
+                                <span class="input-group-append">
+                                    <button type="button" class="btn btn-secondary" (click)="fechaNacDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                                </span>
+                            </div>
+                        </div>
+        
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.usuarios.clave" for="field_clave">Clave</label>
+                            <input type="password" class="form-control" name="clave" id="field_clave"
+                                   formControlName="clave" minlength="8" required autocomplete="off" />
+                        </div>
+        
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.usuarios.estado" for="field_estado">Estado</label>
+                            <select class="form-control" id="field_estado" name="estado" formControlName="estado">
+                                <option [ngValue]="null"></option>
+                                <option [ngValue]="estadosOption.id === usuarioForm.get('estado')!.value?.id ? usuarioForm.get('estado')!.value : estadosOption" *ngFor="let estadosOption of estados; trackBy: trackById">{{ estadosOption.nombre }}</option>
+                            </select>
+                        </div>
+                    </form>
+
+                <!-- Fin de datos del usuario-->
+                <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.empleados.jefe" for="field_jefe">Jefe</label>
                     <select class="form-control" id="field_jefe" name="jefe" formControlName="jefe">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="empleadosOption.id === editForm.get('jefe')!.value?.id ? editForm.get('jefe')!.value : empleadosOption" *ngFor="let empleadosOption of empleadosCollection; trackBy: trackById">{{ empleadosOption.id }}</option>
+                        <option [ngValue]="empleadosOption.id === editForm.get('jefe')!.value?.id ? editForm.get('jefe')!.value : empleadosOption" *ngFor="let empleadosOption of empleadosCollection; trackBy: trackById">{{ empleadosOption.usuario?.nombre }}</option>
                     </select>
                 </div>
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.empleados.usuario" for="field_usuario">Usuario</label>
                     <select class="form-control" id="field_usuario" name="usuario" formControlName="usuario">
                         <option [ngValue]="null"></option>
                         <option [ngValue]="usuariosOption.id === editForm.get('usuario')!.value?.id ? editForm.get('usuario')!.value : usuariosOption" *ngFor="let usuariosOption of usuarios; trackBy: trackById">{{ usuariosOption.nombre }}</option>
                     </select>
-                </div>
+                </div> -->
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.empleados.estado" for="field_estado">Estado</label>
@@ -62,7 +116,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.empleados.fichaje" for="field_fichaje">Fichaje</label>
+                    <!-- <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.empleados.fichaje" for="field_fichaje">Fichaje</label>
                     <select class="form-control" id="field_fichaje" name="fichaje" formControlName="fichaje">
                         <option [ngValue]="null"></option>
                         <option [ngValue]="fichajesOption.id === editForm.get('fichaje')!.value?.id ? editForm.get('fichaje')!.value : fichajesOption" *ngFor="let fichajesOption of fichajes; trackBy: trackById">{{ fichajesOption.accion }}</option>
@@ -75,7 +129,7 @@
                         <option [ngValue]="null"></option>
                         <option [ngValue]="empresasOption.id === editForm.get('empresa')!.value?.id ? editForm.get('empresa')!.value : empresasOption" *ngFor="let empresasOption of empresas; trackBy: trackById">{{ empresasOption.nombre }}</option>
                     </select>
-                </div>
+                </div> -->
             </div>
 
             <div>

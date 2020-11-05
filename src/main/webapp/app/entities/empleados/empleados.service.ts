@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -8,6 +9,8 @@ import { DATE_FORMAT } from 'app/shared/constants/input.constants';
 import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared/util/request-util';
 import { IEmpleados } from 'app/shared/model/empleados.model';
+import { EmpleadoDto, IEmpleadoDTO } from 'app/shared/model/empleado-dto.model';
+import { IEmpresaDto } from 'app/shared/model/empresa-dto.model';
 
 type EntityResponseType = HttpResponse<IEmpleados>;
 type EntityArrayResponseType = HttpResponse<IEmpleados[]>;
@@ -23,6 +26,11 @@ export class EmpleadosService {
     return this.http
       .post<IEmpleados>(this.resourceUrl, copy, { observe: 'response' })
       .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
+  }
+
+  createEmp(empleados: IEmpleados): Observable<EntityResponseType> {
+    const copy = this.convertDateFromClient(empleados);
+    return this.http.post<IEmpleadoDTO>(this.resourceUrl + '/user', copy, { observe: 'response' });
   }
 
   update(empleados: IEmpleados): Observable<EntityResponseType> {
@@ -78,3 +86,4 @@ export class EmpleadosService {
     return res;
   }
 }
+/* eslint-enable no-console */
