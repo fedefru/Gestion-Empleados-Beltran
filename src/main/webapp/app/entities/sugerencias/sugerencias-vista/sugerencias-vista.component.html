@@ -15,9 +15,9 @@
 
             </div>
             <div class="card-body"> 
-              <p class="card-text"> {{sugerencia.mensaje}} <span *jhiHasAnyAuthority="'ROLE_ADMIN'"> <span id="visto--eye" *ngIf="sugerencia.leido == false" (click)="marcarComoLeido(sugerencia.id)" title="Marcar como leido">👁‍🗨</span> <span id="cross--sugerencia" title="eliminar sugerencia" (click)="eliminarSugerencia(sugerencia.id)">❌</span></span></p>     
+              <p class="card-text"> {{sugerencia.mensaje}} <span *jhiHasAnyAuthority="'ROLE_EMPRESA'"> <span id="visto--eye" *ngIf="sugerencia.leido == false" (click)="marcarComoLeido(sugerencia.id)" title="Marcar como leido">👁‍🗨</span> <span id="cross--sugerencia" title="eliminar sugerencia" (click)="eliminarSugerencia(sugerencia.id)">❌</span></span></p>     
             </div>
-            <div *jhiHasAnyAuthority="'ROLE_ADMIN'" class="card-footer border-success" [ngStyle]="{'background-color':sugerencia.prioridad === 'Baja' ? '#52BE80' : '#E74C3C'}"> 
+            <div *jhiHasAnyAuthority="'ROLE_EMPRESA'" class="card-footer border-success" [ngStyle]="{'background-color':sugerencia.prioridad === 'Baja' ? '#52BE80' : '#E74C3C'}"> 
               <span id="check--text">Prioridad {{sugerencia.prioridad}} </span> 
               <br>
               <span id="check--text" > Redactado por {{sugerencia.usuario.nombre}} {{sugerencia.usuario.apellido}} </span>

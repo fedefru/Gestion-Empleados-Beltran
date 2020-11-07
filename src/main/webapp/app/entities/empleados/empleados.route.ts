@@ -39,7 +39,7 @@ export const empleadosRoute: Routes = [
     path: '',
     component: EmpleadosComponent,
     data: {
-      authorities: [Authority.ADMIN],
+      authorities: [Authority.EMPRESA],
       defaultSort: 'id,asc',
       pageTitle: 'gestionEmpleadosApp.empleados.home.title',
     },
@@ -52,7 +52,7 @@ export const empleadosRoute: Routes = [
       empleados: EmpleadosResolve,
     },
     data: {
-      authorities: [Authority.ADMIN],
+      authorities: [Authority.EMPRESA],
       pageTitle: 'gestionEmpleadosApp.empleados.home.title',
     },
     canActivate: [UserRouteAccessService],
@@ -64,7 +64,7 @@ export const empleadosRoute: Routes = [
       empleados: EmpleadosResolve,
     },
     data: {
-      authorities: [Authority.ADMIN],
+      authorities: [Authority.EMPRESA],
       pageTitle: 'gestionEmpleadosApp.empleados.home.title',
     },
     canActivate: [UserRouteAccessService],
@@ -76,7 +76,7 @@ export const empleadosRoute: Routes = [
       empleados: EmpleadosResolve,
     },
     data: {
-      authorities: [Authority.ADMIN],
+      authorities: [Authority.EMPRESA],
       pageTitle: 'gestionEmpleadosApp.empleados.home.title',
     },
     canActivate: [UserRouteAccessService],

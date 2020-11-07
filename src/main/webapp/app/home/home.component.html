@@ -103,14 +103,20 @@
 </div>
 
 <div class="row justify-content-center"  *ngIf="isAuthenticated()" id="row--option">
-    <div class="col-md-1"></div>
-    <div class="col-md-10">
+    <div class="col-md-12">
 
        <a href="/organigrama"> <button id="home--option" class="btn btn-primary" jhiTranslate="home.organigrama">Organigrama</button></a>
        <a href="/fichajes/fichaje"> <button id="home--option" class="btn btn-primary" jhiTranslate="home.fichar">Fichar ahora</button></a>
        <a href="/sugerencias"> <button id="home--option" class="btn btn-primary" jhiTranslate="home.crearSugerencia">Crear sugerencia</button></a>
        <a href="/sugerencias/portal"> <button id="home--option" class="btn btn-primary" jhiTranslate="home.verSugerencias">Ver sugerencias</button></a> 
-       <a href="/empleados/new"> <button id="home--option" class="btn btn-primary" jhiTranslate="home.cargarEmpleados">Cargar empleado</button></a> 
+       <a href="/imagenes-fichaje"> <button id="home--option" class="btn btn-primary" jhiTranslate="home.verFichajesAnteriores">Ver fichajes anteriores</button></a> 
+       <div *jhiHasAnyAuthority="'ROLE_EMPRESA'">
+            <a href="/empleados/new"> <button id="home--option" class="btn btn-primary" jhiTranslate="home.cargarEmpleados">Cargar empleado</button></a>
+       <a href="/areas/new"> <button id="home--option" class="btn btn-primary" jhiTranslate="home.cargarArea">Cargar area</button></a> 
+       <a href="/puestos/new"> <button id="home--option" class="btn btn-primary" jhiTranslate="home.cargarPuesto">Cargar puesto</button></a>
+       <a href="/usuarios"> <button id="home--option" class="btn btn-primary" jhiTranslate="home.verUsuarios">Ver usuarios</button></a>
+       </div>
+      
     </div>
 
 </div>

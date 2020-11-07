@@ -9,8 +9,7 @@ import { DATE_FORMAT } from 'app/shared/constants/input.constants';
 import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared/util/request-util';
 import { IEmpleados } from 'app/shared/model/empleados.model';
-import { EmpleadoDto, IEmpleadoDTO } from 'app/shared/model/empleado-dto.model';
-import { IEmpresaDto } from 'app/shared/model/empresa-dto.model';
+import { IEmpleadoDTO } from 'app/shared/model/empleado-dto.model';
 
 type EntityResponseType = HttpResponse<IEmpleados>;
 type EntityArrayResponseType = HttpResponse<IEmpleados[]>;
