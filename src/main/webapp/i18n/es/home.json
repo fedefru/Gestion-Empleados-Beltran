@@ -22,6 +22,10 @@
     "crearSugerencia": "Crear sugerencia",
     "verSugerencias": "Ver sugerencias",
     "cargarEmpleados": "Cargar empleados",
+    "cargarArea": "Cargar area",
+    "cargarPuesto": "Cargar puesto",
+    "verFichajesAnteriores": "fichajes anteriores",
+    "verUsuarios": "Ver usuarios",
     "logged": {
       "message": "Está conectado como \"{{username}}\"."
     },

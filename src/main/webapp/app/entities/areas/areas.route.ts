@@ -39,7 +39,7 @@ export const areasRoute: Routes = [
     path: '',
     component: AreasComponent,
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.EMPRESA],
       pageTitle: 'gestionEmpleadosApp.areas.home.title',
     },
     canActivate: [UserRouteAccessService],
@@ -51,7 +51,7 @@ export const areasRoute: Routes = [
       areas: AreasResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.EMPRESA],
       pageTitle: 'gestionEmpleadosApp.areas.home.title',
     },
     canActivate: [UserRouteAccessService],
@@ -63,7 +63,7 @@ export const areasRoute: Routes = [
       areas: AreasResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.EMPRESA],
       pageTitle: 'gestionEmpleadosApp.areas.home.title',
     },
     canActivate: [UserRouteAccessService],
@@ -75,7 +75,7 @@ export const areasRoute: Routes = [
       areas: AreasResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.EMPRESA],
       pageTitle: 'gestionEmpleadosApp.areas.home.title',
     },
     canActivate: [UserRouteAccessService],

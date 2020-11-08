@@ -4,7 +4,6 @@ import { Resolve, ActivatedRouteSnapshot, Routes, Router } from '@angular/router
 import { Observable, of, EMPTY } from 'rxjs';
 import { flatMap } from 'rxjs/operators';
 
-import { Authority } from 'app/shared/constants/authority.constants';
 import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
 import { IFichajes, Fichajes } from 'app/shared/model/fichajes.model';
 import { FichajesService } from './fichajes.service';
@@ -40,7 +39,7 @@ export const fichajesRoute: Routes = [
     path: '',
     component: FichajesComponent,
     data: {
-      authorities: [Authority.USER],
+      authorities: [],
       pageTitle: 'gestionEmpleadosApp.fichajes.home.title',
     },
     canActivate: [UserRouteAccessService],
@@ -52,7 +51,7 @@ export const fichajesRoute: Routes = [
       fichajes: FichajesResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [],
       pageTitle: 'gestionEmpleadosApp.fichajes.home.title',
     },
     canActivate: [UserRouteAccessService],
@@ -64,7 +63,7 @@ export const fichajesRoute: Routes = [
       fichajes: FichajesResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [],
       pageTitle: 'gestionEmpleadosApp.fichajes.home.title',
     },
     canActivate: [UserRouteAccessService],
@@ -76,7 +75,7 @@ export const fichajesRoute: Routes = [
       fichajes: FichajesResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [],
       pageTitle: 'gestionEmpleadosApp.fichajes.home.title',
     },
     canActivate: [UserRouteAccessService],
@@ -85,7 +84,7 @@ export const fichajesRoute: Routes = [
     path: 'fichaje',
     component: InterfazFichajeComponent,
     data: {
-      authorities: [Authority.USER],
+      authorities: [],
       pageTitle: 'gestionEmpleadosApp.fichajes.home.title',
     },
     canActivate: [UserRouteAccessService],

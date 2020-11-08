@@ -29,6 +29,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 /**
  * REST controller for managing {@link com.beltran.gestionempleados.domain.Empleados}.
@@ -88,6 +89,12 @@ public class EmpleadosResource {
         }
         String encryptedPassword = passwordEncoder.encode(empleados.getUsuario().getClave());
         //empleados.getUsuario().setClave(encryptedPassword);
+        Optional<Usuarios> u = usuariosRepository.findByUsuario(empleados.getUsuario().getUsuario());
+        if(u.isPresent()) {
+            Random r = new Random();
+            int valorDado = r.nextInt(999)+1;  // Entre 0 y 999, más 1.
+            empleados.getUsuario().setUsuario(empleados.getUsuario().getUsuario()+valorDado);
+        }
         Usuarios resultUser = usuariosRepository.save(empleados.getUsuario());
         empleados.getUsuario().setId(resultUser.getId());
         Empleados result = empleadosRepository.save(empleados);

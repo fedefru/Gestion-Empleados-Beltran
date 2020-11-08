@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 
@@ -19,7 +19,6 @@ import { PuestosService } from 'app/entities/puestos/puestos.service';
 import { IFichajes } from 'app/shared/model/fichajes.model';
 import { FichajesService } from 'app/entities/fichajes/fichajes.service';
 import { IEmpresas } from 'app/shared/model/empresas.model';
-import { EmpleadoDto, IEmpleadoDTO } from 'app/shared/model/empleado-dto.model';
 import { EmpresasService } from 'app/entities/empresas/empresas.service';
 
 type SelectableEntity = IEmpleados | IUsuarios | IEstados | IAreas | IPuestos | IFichajes | IEmpresas;

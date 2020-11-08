@@ -39,7 +39,7 @@ export const puestosRoute: Routes = [
     path: '',
     component: PuestosComponent,
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.EMPRESA],
       pageTitle: 'gestionEmpleadosApp.puestos.home.title',
     },
     canActivate: [UserRouteAccessService],
@@ -51,7 +51,7 @@ export const puestosRoute: Routes = [
       puestos: PuestosResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.EMPRESA],
       pageTitle: 'gestionEmpleadosApp.puestos.home.title',
     },
     canActivate: [UserRouteAccessService],
@@ -63,7 +63,7 @@ export const puestosRoute: Routes = [
       puestos: PuestosResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.EMPRESA],
       pageTitle: 'gestionEmpleadosApp.puestos.home.title',
     },
     canActivate: [UserRouteAccessService],
@@ -75,7 +75,7 @@ export const puestosRoute: Routes = [
       puestos: PuestosResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.EMPRESA],
       pageTitle: 'gestionEmpleadosApp.puestos.home.title',
     },
     canActivate: [UserRouteAccessService],

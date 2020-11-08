@@ -39,7 +39,7 @@ export const usuariosRoute: Routes = [
     path: '',
     component: UsuariosComponent,
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.EMPRESA],
       defaultSort: 'id,asc',
       pageTitle: 'gestionEmpleadosApp.usuarios.home.title',
     },
@@ -52,7 +52,7 @@ export const usuariosRoute: Routes = [
       usuarios: UsuariosResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.EMPRESA],
       pageTitle: 'gestionEmpleadosApp.usuarios.home.title',
     },
     canActivate: [UserRouteAccessService],
@@ -64,7 +64,7 @@ export const usuariosRoute: Routes = [
       usuarios: UsuariosResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.EMPRESA],
       pageTitle: 'gestionEmpleadosApp.usuarios.home.title',
     },
     canActivate: [UserRouteAccessService],
@@ -76,7 +76,7 @@ export const usuariosRoute: Routes = [
       usuarios: UsuariosResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.EMPRESA],
       pageTitle: 'gestionEmpleadosApp.usuarios.home.title',
     },
     canActivate: [UserRouteAccessService],

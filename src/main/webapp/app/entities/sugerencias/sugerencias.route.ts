@@ -4,7 +4,6 @@ import { Resolve, ActivatedRouteSnapshot, Routes, Router } from '@angular/router
 import { Observable, of, EMPTY } from 'rxjs';
 import { flatMap } from 'rxjs/operators';
 
-import { Authority } from '../../../app/shared/constants/authority.constants';
 import { UserRouteAccessService } from '../../../app/core/auth/user-route-access-service';
 
 import { ISugerencias, Sugerencias } from '../../shared/model/sugerencias.model';
@@ -39,7 +38,7 @@ export const sugerenciasRoute: Routes = [
     path: '',
     component: SugerenciasComponent,
     data: {
-      authorities: [Authority.USER],
+      authorities: [],
       pageTitle: 'Sugerencia',
     },
     canActivate: [UserRouteAccessService],
@@ -48,7 +47,7 @@ export const sugerenciasRoute: Routes = [
     path: 'portal',
     component: SugerenciasVistaComponent,
     data: {
-      authorities: [Authority.USER],
+      authorities: [],
       pageTitle: 'Sugerencia',
     },
     canActivate: [UserRouteAccessService],
@@ -60,7 +59,7 @@ export const sugerenciasRoute: Routes = [
       puestos: PuestosResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [],
       pageTitle: 'gestionEmpleadosApp.puestos.home.title',
     },
     canActivate: [UserRouteAccessService],
@@ -72,7 +71,7 @@ export const sugerenciasRoute: Routes = [
       puestos: PuestosResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [],
       pageTitle: 'gestionEmpleadosApp.puestos.home.title',
     },
     canActivate: [UserRouteAccessService],
@@ -84,7 +83,7 @@ export const sugerenciasRoute: Routes = [
       puestos: PuestosResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [],
       pageTitle: 'gestionEmpleadosApp.puestos.home.title',
     },
     canActivate: [UserRouteAccessService],

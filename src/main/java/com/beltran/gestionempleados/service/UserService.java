@@ -7,6 +7,7 @@ import com.beltran.gestionempleados.domain.User;
 import com.beltran.gestionempleados.domain.Usuarios;
 import com.beltran.gestionempleados.repository.AuthorityRepository;
 import com.beltran.gestionempleados.repository.UserRepository;
+import com.beltran.gestionempleados.repository.UsuariosRepository;
 import com.beltran.gestionempleados.security.AuthoritiesConstants;
 import com.beltran.gestionempleados.security.SecurityUtils;
 import com.beltran.gestionempleados.service.dto.UserDTO;
@@ -15,6 +16,7 @@ import io.github.jhipster.security.RandomUtil;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -44,6 +46,9 @@ public class UserService {
     private final AuthorityRepository authorityRepository;
 
     private final CacheManager cacheManager;
+
+    @Autowired
+    UsuariosRepository usuariosRepository;
 
     public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, AuthorityRepository authorityRepository, CacheManager cacheManager) {
         this.userRepository = userRepository;
@@ -98,8 +103,8 @@ public class UserService {
         newUser.setPassword(encryptedPassword);
         newUser.setFirstName(userDTO.getNombre());
         newUser.setLastName(userDTO.getApellido());
-        if ((userDTO.getNombre()+"@gmail.com") != null) {
-            newUser.setEmail(userDTO.getNombre().toLowerCase()+ "@gmail.com");
+        if ((userDTO.getNombre()) != null) {
+            newUser.setEmail(userDTO.getUsuario().toLowerCase()+ "@gmail.com");
         }
         //newUser.setImageUrl(userDTO.getImageUrl());
         //newUser.setLangKey(userDTO.getLangKey());
@@ -137,7 +142,10 @@ public class UserService {
         // new user gets registration key
         newUser.setActivationKey(RandomUtil.generateActivationKey());
         Set<Authority> authorities = new HashSet<>();
-        authorityRepository.findById(AuthoritiesConstants.ADMIN).ifPresent(authorities::add);
+        //authorityRepository.findById(AuthoritiesConstants.ADMIN).ifPresent(authorities::add);
+        Authority rol = new Authority();
+        rol.setName("ROLE_EMPRESA");
+        authorities.add(rol);
         newUser.setAuthorities(authorities);
         userRepository.save(newUser);
         this.clearUserCaches(newUser);
