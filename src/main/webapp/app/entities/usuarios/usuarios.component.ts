@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { ActivatedRoute, ParamMap, Router, Data } from '@angular/router';
@@ -10,6 +11,7 @@ import { IUsuarios } from 'app/shared/model/usuarios.model';
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { UsuariosService } from './usuarios.service';
 import { UsuariosDeleteDialogComponent } from './usuarios-delete-dialog.component';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'jhi-usuarios',
@@ -25,13 +27,32 @@ export class UsuariosComponent implements OnInit, OnDestroy {
   ascending!: boolean;
   ngbPaginationPage = 1;
 
+  usuarioSeleccionado?: IUsuarios;
+
+  public formGroup: FormGroup | undefined;
+
   constructor(
     protected usuariosService: UsuariosService,
     protected activatedRoute: ActivatedRoute,
     protected router: Router,
     protected eventManager: JhiEventManager,
-    protected modalService: NgbModal
+    protected modalService: NgbModal,
+    private formBuilder: FormBuilder
   ) {}
+
+  private buildForm(): void {
+    this.formGroup = this.formBuilder.group({
+      id: [this.usuarioSeleccionado?.id],
+      usuario: [this.usuarioSeleccionado?.usuario],
+      nombre: [this.usuarioSeleccionado?.nombre],
+      apellido: [this.usuarioSeleccionado?.apellido],
+      fechaNac: [this.usuarioSeleccionado?.fechaNac],
+      clave: [this.usuarioSeleccionado?.clave],
+      contacto: [this.usuarioSeleccionado?.contacto],
+      direccion: [this.usuarioSeleccionado?.direccion],
+      estado: [this.usuarioSeleccionado?.estado],
+    });
+  }
 
   loadPage(page?: number, dontNavigate?: boolean): void {
     const pageToLoad: number = page || this.page || 1;
@@ -115,4 +136,24 @@ export class UsuariosComponent implements OnInit, OnDestroy {
   protected onError(): void {
     this.ngbPaginationPage = this.page ?? 1;
   }
+
+  editarUsuario(usuario: IUsuarios): void {
+    this.usuarioSeleccionado = usuario;
+
+    if (this.usuarioSeleccionado !== undefined) {
+      this.buildForm();
+    }
+    console.log(usuario);
+  }
+
+  actualizarUsuario(info: any): void {
+    if (info !== undefined) {
+      info.id = this.usuarioSeleccionado?.id;
+      this.usuariosService.update(info).subscribe((res: HttpResponse<IUsuarios>) => {
+        console.log(res);
+        window.location.reload();
+      });
+    }
+  }
 }
+/* eslint-enable no-console */
