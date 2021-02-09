@@ -13,6 +13,13 @@ import { UsuariosService } from './usuarios.service';
 import { UsuariosDeleteDialogComponent } from './usuarios-delete-dialog.component';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
+import { EstadosService } from '../estados/estados.service';
+import { IEstados } from 'app/shared/model/estados.model';
+import { IDirecciones } from '../../shared/model/direcciones.model';
+import { DireccionesService } from '../direcciones/direcciones.service';
+import { IContactoUsuarios } from 'app/shared/model/contacto-usuarios.model';
+import { ContactoUsuariosService } from '../contacto-usuarios/contacto-usuarios.service';
+
 @Component({
   selector: 'jhi-usuarios',
   templateUrl: './usuarios.component.html',
@@ -27,6 +34,10 @@ export class UsuariosComponent implements OnInit, OnDestroy {
   ascending!: boolean;
   ngbPaginationPage = 1;
 
+  estados?: IEstados[];
+  adress?: IDirecciones[];
+  contacto?: IContactoUsuarios[];
+
   usuarioSeleccionado?: IUsuarios;
 
   public formGroup: FormGroup | undefined;
@@ -37,7 +48,10 @@ export class UsuariosComponent implements OnInit, OnDestroy {
     protected router: Router,
     protected eventManager: JhiEventManager,
     protected modalService: NgbModal,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    protected estadoService: EstadosService,
+    protected direccionService: DireccionesService,
+    protected contactoService: ContactoUsuariosService
   ) {}
 
   private buildForm(): void {
@@ -51,6 +65,27 @@ export class UsuariosComponent implements OnInit, OnDestroy {
       contacto: [this.usuarioSeleccionado?.contacto],
       direccion: [this.usuarioSeleccionado?.direccion],
       estado: [this.usuarioSeleccionado?.estado],
+    });
+  }
+
+  cargarEstados(): void {
+    this.estadoService.query().subscribe((res: HttpResponse<any>) => {
+      this.estados = res.body;
+      console.log(this.estados);
+    });
+  }
+
+  cargarDireccion(): void {
+    this.direccionService.query().subscribe((res: HttpResponse<any>) => {
+      this.adress = res.body;
+      console.log(this.adress);
+    });
+  }
+
+  cargarContacto(): void {
+    this.contactoService.query().subscribe((res: HttpResponse<any>) => {
+      this.contacto = res.body;
+      console.log(this.contacto);
     });
   }
 
@@ -72,6 +107,9 @@ export class UsuariosComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.handleNavigation();
     this.registerChangeInUsuarios();
+    this.cargarEstados();
+    this.cargarDireccion();
+    this.cargarContacto();
   }
 
   protected handleNavigation(): void {
@@ -149,10 +187,11 @@ export class UsuariosComponent implements OnInit, OnDestroy {
   actualizarUsuario(info: any): void {
     if (info !== undefined) {
       info.id = this.usuarioSeleccionado?.id;
-      this.usuariosService.update(info).subscribe((res: HttpResponse<IUsuarios>) => {
+      console.log(info);
+      /* this.usuariosService.update(info).subscribe((res: HttpResponse<IUsuarios>) => {
         console.log(res);
         window.location.reload();
-      });
+      }); */
     }
   }
 }

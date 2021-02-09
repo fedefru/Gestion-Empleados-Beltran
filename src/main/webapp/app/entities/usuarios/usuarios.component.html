@@ -147,7 +147,7 @@
                         <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.usuarios.estado" for="field_estado">Estado</label>
                         <select class="form-control" id="field_estado" name="estado" formControlName="estado">
                             <option [ngValue]="null"></option>
-                            <option value=""></option>
+                            <option *ngFor="let estado of estados" value="{{estado.nombre}}"> {{estado.nombre}} </option>
                         </select>
                     </div>
     
@@ -155,7 +155,7 @@
                         <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.usuarios.direccion" for="field_direccion">Direccion</label>
                         <select class="form-control" id="field_direccion" name="direccion" formControlName="direccion">
                             <option [ngValue]="null"></option>
-                            <option value=""></option>
+                            <option *ngFor="let direccion of adress" value=" {{direccion.calle }} {{direccion.altura}} "> {{direccion.calle}} {{direccion.altura}} </option>
                         </select>
                     </div>
     
@@ -163,7 +163,7 @@
                         <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.usuarios.contacto" for="field_contacto">Contacto</label>
                         <select class="form-control" id="field_contacto" name="contacto" formControlName="contacto">
                             <option [ngValue]="null"></option>
-                            <option value=""></option>
+                            <option *ngFor="let contacto of contacto" value="{{contacto.nombre}}"> {{contacto.nombre}} </option>
                         </select>
                     </div>
                 </div>
