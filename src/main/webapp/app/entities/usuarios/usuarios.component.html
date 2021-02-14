@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="usuarioSeleccionado == undefined">
     <h2 id="page-heading">
         <span jhiTranslate="gestionEmpleadosApp.usuarios.home.title">Usuarios</span>
 
@@ -67,7 +67,7 @@
                             </button>
 
                             <button type="submit"
-                                    [routerLink]="['/usuarios', usuarios.id, 'edit']"
+                                    (click)="editarUsuario(usuarios)"
                                     class="btn btn-primary btn-sm">
                                 <fa-icon icon="pencil-alt"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
@@ -94,4 +94,91 @@
             <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
         </div>
     </div>
+</div>
+
+<div *ngIf="usuarioSeleccionado">
+    <div class="row justify-content-center">
+        <div class="col-8" *ngIf="formGroup != undefined">
+            <form name="editForm" role="form" [formGroup]="formGroup" (ngSubmit)="actualizarUsuario(formGroup.value)">
+                <h2 id="jhi-usuarios-heading" jhiTranslate="gestionEmpleadosApp.usuarios.home.createOrEditLabel">Editar un usuario</h2>
+    
+                <div>
+                    
+                   <!--  <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                        <label for="id" jhiTranslate="global.field.id">ID</label>
+                        <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                    </div> -->
+    
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.usuarios.usuario" for="field_usuario">Usuario</label>
+                        <input type="text" class="form-control" name="usuario" id="field_usuario"
+                               formControlName="usuario" minlength="4" required />
+                    </div>
+    
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.usuarios.nombre" for="field_nombre">Nombre</label>
+                        <input type="text" class="form-control" name="nombre" id="field_nombre"
+                               formControlName="nombre" minlength="4" required />
+                    </div>
+    
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.usuarios.apellido" for="field_apellido">Apellido</label>
+                        <input type="text" class="form-control" name="apellido" id="field_apellido"
+                               formControlName="apellido" minlength="4" required />
+                    </div>
+    
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.usuarios.fechaNac" for="field_fechaNac">Fecha Nac</label>
+                        <div class="input-group">
+                            <input id="field_fechaNac" type="text" class="form-control" name="fechaNac" autocomplete="off" ngbDatepicker #fechaNacDp="ngbDatepicker" formControlName="fechaNac"/>
+                            <span class="input-group-append">
+                                <button type="button" class="btn btn-secondary" (click)="fechaNacDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                            </span>
+                        </div>
+                    </div>
+    
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.usuarios.clave" for="field_clave">Clave</label>
+                        <input type="password" class="form-control" name="clave" id="field_clave"
+                               formControlName="clave" minlength="8" required autocomplete="off" />
+                    </div>
+    
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.usuarios.estado" for="field_estado">Estado</label>
+                        <select class="form-control" id="field_estado" name="estado" formControlName="estado">
+                            <option [ngValue]="null"></option>
+                            <option *ngFor="let estado of estados" value="{{estado.nombre}}"> {{estado.nombre}} </option>
+                        </select>
+                    </div>
+    
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.usuarios.direccion" for="field_direccion">Direccion</label>
+                        <select class="form-control" id="field_direccion" name="direccion" formControlName="direccion">
+                            <option [ngValue]="null"></option>
+                            <option *ngFor="let direccion of adress" value=" {{direccion.calle }} {{direccion.altura}} "> {{direccion.calle}} {{direccion.altura}} </option>
+                        </select>
+                    </div>
+    
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.usuarios.contacto" for="field_contacto">Contacto</label>
+                        <select class="form-control" id="field_contacto" name="contacto" formControlName="contacto">
+                            <option [ngValue]="null"></option>
+                            <option *ngFor="let contacto of contacto" value="{{contacto.nombre}}"> {{contacto.nombre}} </option>
+                        </select>
+                    </div>
+                </div>
+    
+                <div>
+                    <button type="button" id="cancel-save" class="btn btn-secondary">
+                        <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                    </button>
+    
+                    <button type="submit" id="save-entity" class="btn btn-primary">
+                        <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
 </div>
