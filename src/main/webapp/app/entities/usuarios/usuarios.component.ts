@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { ActivatedRoute, ParamMap, Router, Data } from '@angular/router';
@@ -10,6 +11,14 @@ import { IUsuarios } from 'app/shared/model/usuarios.model';
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { UsuariosService } from './usuarios.service';
 import { UsuariosDeleteDialogComponent } from './usuarios-delete-dialog.component';
+import { FormBuilder, FormGroup } from '@angular/forms';
+
+import { EstadosService } from '../estados/estados.service';
+import { IEstados } from 'app/shared/model/estados.model';
+import { IDirecciones } from '../../shared/model/direcciones.model';
+import { DireccionesService } from '../direcciones/direcciones.service';
+import { IContactoUsuarios } from 'app/shared/model/contacto-usuarios.model';
+import { ContactoUsuariosService } from '../contacto-usuarios/contacto-usuarios.service';
 
 @Component({
   selector: 'jhi-usuarios',
@@ -25,13 +34,60 @@ export class UsuariosComponent implements OnInit, OnDestroy {
   ascending!: boolean;
   ngbPaginationPage = 1;
 
+  estados?: IEstados[];
+  adress?: IDirecciones[];
+  contacto?: IContactoUsuarios[];
+
+  usuarioSeleccionado?: IUsuarios;
+
+  public formGroup: FormGroup | undefined;
+
   constructor(
     protected usuariosService: UsuariosService,
     protected activatedRoute: ActivatedRoute,
     protected router: Router,
     protected eventManager: JhiEventManager,
-    protected modalService: NgbModal
+    protected modalService: NgbModal,
+    private formBuilder: FormBuilder,
+    protected estadoService: EstadosService,
+    protected direccionService: DireccionesService,
+    protected contactoService: ContactoUsuariosService
   ) {}
+
+  private buildForm(): void {
+    this.formGroup = this.formBuilder.group({
+      id: [this.usuarioSeleccionado?.id],
+      usuario: [this.usuarioSeleccionado?.usuario],
+      nombre: [this.usuarioSeleccionado?.nombre],
+      apellido: [this.usuarioSeleccionado?.apellido],
+      fechaNac: [this.usuarioSeleccionado?.fechaNac],
+      clave: [this.usuarioSeleccionado?.clave],
+      contacto: [this.usuarioSeleccionado?.contacto],
+      direccion: [this.usuarioSeleccionado?.direccion],
+      estado: [this.usuarioSeleccionado?.estado],
+    });
+  }
+
+  cargarEstados(): void {
+    this.estadoService.query().subscribe((res: HttpResponse<any>) => {
+      this.estados = res.body;
+      console.log(this.estados);
+    });
+  }
+
+  cargarDireccion(): void {
+    this.direccionService.query().subscribe((res: HttpResponse<any>) => {
+      this.adress = res.body;
+      console.log(this.adress);
+    });
+  }
+
+  cargarContacto(): void {
+    this.contactoService.query().subscribe((res: HttpResponse<any>) => {
+      this.contacto = res.body;
+      console.log(this.contacto);
+    });
+  }
 
   loadPage(page?: number, dontNavigate?: boolean): void {
     const pageToLoad: number = page || this.page || 1;
@@ -51,6 +107,9 @@ export class UsuariosComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.handleNavigation();
     this.registerChangeInUsuarios();
+    this.cargarEstados();
+    this.cargarDireccion();
+    this.cargarContacto();
   }
 
   protected handleNavigation(): void {
@@ -115,4 +174,25 @@ export class UsuariosComponent implements OnInit, OnDestroy {
   protected onError(): void {
     this.ngbPaginationPage = this.page ?? 1;
   }
+
+  editarUsuario(usuario: IUsuarios): void {
+    this.usuarioSeleccionado = usuario;
+
+    if (this.usuarioSeleccionado !== undefined) {
+      this.buildForm();
+    }
+    console.log(usuario);
+  }
+
+  actualizarUsuario(info: any): void {
+    if (info !== undefined) {
+      info.id = this.usuarioSeleccionado?.id;
+      console.log(info);
+      /* this.usuariosService.update(info).subscribe((res: HttpResponse<IUsuarios>) => {
+        console.log(res);
+        window.location.reload();
+      }); */
+    }
+  }
 }
+/* eslint-enable no-console */
