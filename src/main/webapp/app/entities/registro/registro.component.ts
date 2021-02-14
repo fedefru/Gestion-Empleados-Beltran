@@ -260,6 +260,11 @@ export class RegistroComponent {
 
   protected onSaveSuccess(): void {
     this.isSaving = false;
+    this.previousState();
+  }
+
+  previousState(): void {
+    window.history.back();
   }
 
   protected onSaveError(): void {

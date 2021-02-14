@@ -38,6 +38,12 @@ export class UsuariosService {
       .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
   }
 
+  getAll(): Observable<EntityResponseType> {
+    return this.http
+      .get<IUsuarios>(this.resourceUrl, { observe: 'response' })
+      .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
+  }
+
   findUsuarioByAlias(user: string): Observable<HttpResponse<any>> {
     return this.http.get<IUsuarios>(`${this.resourceUrl}/alias/${user}`, { observe: 'response' });
   }

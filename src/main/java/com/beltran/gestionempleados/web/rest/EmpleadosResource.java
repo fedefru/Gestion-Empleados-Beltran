@@ -1,10 +1,8 @@
 package com.beltran.gestionempleados.web.rest;
 
 import com.beltran.gestionempleados.domain.*;
-import com.beltran.gestionempleados.domain.DTO.EmpleadoDTO;
-import com.beltran.gestionempleados.domain.DTO.EmpresaDTO;
-import com.beltran.gestionempleados.repository.EmpleadosRepository;
-import com.beltran.gestionempleados.repository.UsuariosRepository;
+import com.beltran.gestionempleados.domain.DTO.EmpleadoRegistroDTO;
+import com.beltran.gestionempleados.repository.*;
 import com.beltran.gestionempleados.service.UserService;
 import com.beltran.gestionempleados.web.rest.errors.BadRequestAlertException;
 
@@ -18,7 +16,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.http.ResponseEntity;
@@ -53,13 +50,28 @@ public class EmpleadosResource {
 
     private final EmpleadosRepository empleadosRepository;
     private final UsuariosRepository usuariosRepository;
+    private final DireccionesRepository direccionesRepository;
+    private final TipoDireccionRepository tipoDireccionRepository;
+    private final PaisesRepository paisesRepository;
+    private final ProvinciasRepository provinciasRepository;
+    private final CiudadesRepository ciudadesRepository;
+    private final TipoContactosRepository tipoContactosRepository;
+
 
     public EmpleadosResource(EmpleadosRepository empleadosRepository,
                              UsuariosRepository usuariosRepository,
-                             PasswordEncoder passwordEncoder) {
+                             DireccionesRepository direccionesRepository,
+                             TipoDireccionRepository tipoDireccionRepository,
+                             PasswordEncoder passwordEncoder, PaisesRepository paisesRepository, ProvinciasRepository provinciasRepository, CiudadesRepository ciudadesRepository, TipoContactosRepository tipoContactosRepository) {
         this.empleadosRepository = empleadosRepository;
         this.usuariosRepository = usuariosRepository;
+        this.direccionesRepository = direccionesRepository;
+        this.tipoDireccionRepository = tipoDireccionRepository;
         this.passwordEncoder = passwordEncoder;
+        this.paisesRepository = paisesRepository;
+        this.provinciasRepository = provinciasRepository;
+        this.ciudadesRepository = ciudadesRepository;
+        this.tipoContactosRepository = tipoContactosRepository;
     }
 
     /**
@@ -104,10 +116,75 @@ public class EmpleadosResource {
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
             .body(result);
     }
+
+
+    @PostMapping("/empleados/registro-empleado")
+    public ResponseEntity<Empleados> registroEmpleadoDto(@RequestBody EmpleadoRegistroDTO empleadoRegistroDTO) throws URISyntaxException {
+        log.debug("REST request to save Empleados : {}", empleadoRegistroDTO);
+        if (empleadoRegistroDTO.getEmpleados().getId() != null) {
+            throw new BadRequestAlertException("A new empleados cannot already have an ID", ENTITY_NAME, "idexists");
+        }
+
+        try {
+
+            // Guardo los datos que me llegan con el DTO para luego relacionarlos con el empleado
+            TipoContactos resultTipoContacto = tipoContactosRepository.save(empleadoRegistroDTO.getEmpleados().getUsuario().getContacto());
+
+            // Le guardo el id del pais a la provincia
+            Paises resultPais = paisesRepository.save(empleadoRegistroDTO.getPaises());
+            empleadoRegistroDTO.getProvincias().getPais().setId(resultPais.getId());
+
+            // Le guardo el id de la provincia a la ciudad
+            Provincias resultProvincia = provinciasRepository.save(empleadoRegistroDTO.getProvincias());
+            empleadoRegistroDTO.getDirecciones().getCiudad().getProvicia().setId(resultProvincia.getId());
+
+            // Le guardo el id de la ciudad a la direccion
+            Ciudades resultCiudades = ciudadesRepository.save(empleadoRegistroDTO.getDirecciones().getCiudad());
+            empleadoRegistroDTO.getDirecciones().getCiudad().setId(resultCiudades.getId());
+
+            Direcciones resultDirecciones = direccionesRepository.save(empleadoRegistroDTO.getDirecciones());
+
+
+            // Instancio un nuevo tipo de direccion en el cual le seteo el ID de la direccion que acabo de crear
+            TipoDireccion tipoDireccion = new TipoDireccion();
+            tipoDireccion.setDireccion(resultDirecciones);
+            tipoDireccion.setDescripcion("Direccion del empleado con id "+ empleadoRegistroDTO.getEmpleados().getId());
+            // Hago el save del tipo de direccion
+            TipoDireccion resultTipoDireccion = tipoDireccionRepository.save(tipoDireccion);
+
+
+            String encryptedPassword = passwordEncoder.encode(empleadoRegistroDTO.getEmpleados().getUsuario().getClave());
+            //empleados.getUsuario().setClave(encryptedPassword);
+            Optional<Usuarios> u = usuariosRepository.findByUsuario(empleadoRegistroDTO.getEmpleados().getUsuario().getUsuario());
+            if(u.isPresent()) {
+                Random r = new Random();
+                int valorDado = r.nextInt(999)+1;  // Entre 0 y 999, más 1.
+                empleadoRegistroDTO.getEmpleados().getUsuario().setUsuario(empleadoRegistroDTO.getEmpleados().getUsuario().getUsuario()+valorDado);
+            }
+            Usuarios resultUser = usuariosRepository.save(empleadoRegistroDTO.getEmpleados().getUsuario());
+            empleadoRegistroDTO.getEmpleados().getUsuario().setId(resultUser.getId());
+
+            empleadoRegistroDTO.getEmpleados().getUsuario().setDireccion(resultTipoDireccion);
+            empleadoRegistroDTO.getEmpleados().getUsuario().setContacto(resultTipoContacto);
+
+            Empleados result = empleadosRepository.save(empleadoRegistroDTO.getEmpleados());
+
+            userService.registerUser(empleadoRegistroDTO.getEmpleados().getUsuario(),empleadoRegistroDTO.getEmpleados().getUsuario().getClave());
+            return ResponseEntity.created(new URI("/api/empleados/registro-empleado" + result.getId()))
+                .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
+                .body(result);
+
+
+        } catch (Exception e){
+            System.out.println(e);
+            return null;
+        }
+
+    }
 /*
     @PostMapping("/empleados/user")
-    public ResponseEntity<Empleados> createEmpleadoUser(@RequestBody EmpleadoDTO empleadoDTO) throws URISyntaxException {
-        log.debug("REST request to save Empresas with registro-empresa : {}", empleadoDTO);
+    public ResponseEntity<Empleados> createEmpleadoUser(@RequestBody EmpleadoDTO empleadoRegistroDTO) throws URISyntaxException {
+        log.debug("REST request to save Empresas with registro-empresa : {}", empleadoRegistroDTO);
 
         // Debo importar todos los repositories de las entidades para realizar el save exitoso de cada uno...
 

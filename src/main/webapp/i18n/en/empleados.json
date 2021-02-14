@@ -23,7 +23,13 @@
       "area": "Area",
       "puesto": "Position",
       "fichaje": "Signing",
-      "empresa": "Company"
+      "empresa": "Company",
+      "datosEmpleado": "User data",
+      "contacto": "Contact information",
+      "direccion": "Adress information",
+      "jerarquia": "Organization",
+      "pais": "Country",
+      "provincia": "State"
     }
   }
 }

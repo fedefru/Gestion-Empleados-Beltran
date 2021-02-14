@@ -10,6 +10,7 @@ import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared/util/request-util';
 import { IEmpleados } from 'app/shared/model/empleados.model';
 import { IEmpleadoDTO } from 'app/shared/model/empleado-dto.model';
+import { IEmpleadoRegistroDto } from 'app/shared/model/empleado-registro-dto.model';
 
 type EntityResponseType = HttpResponse<IEmpleados>;
 type EntityArrayResponseType = HttpResponse<IEmpleados[]>;
@@ -17,6 +18,7 @@ type EntityArrayResponseType = HttpResponse<IEmpleados[]>;
 @Injectable({ providedIn: 'root' })
 export class EmpleadosService {
   public resourceUrl = SERVER_API_URL + 'api/empleados';
+  public resourceUrlReg = SERVER_API_URL + 'api/empleados/registro-empleado';
 
   constructor(protected http: HttpClient) {}
 
@@ -30,6 +32,11 @@ export class EmpleadosService {
   createEmp(empleados: IEmpleados): Observable<EntityResponseType> {
     const copy = this.convertDateFromClient(empleados);
     return this.http.post<IEmpleadoDTO>(this.resourceUrl + '/user', copy, { observe: 'response' });
+  }
+
+  createEmpReg(emp: IEmpleadoRegistroDto): any {
+    console.log('empleado que quiero cargar', emp);
+    return this.http.post<IEmpleadoRegistroDto>(this.resourceUrlReg, emp, { observe: 'response' });
   }
 
   update(empleados: IEmpleados): Observable<EntityResponseType> {

@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 
@@ -16,10 +16,21 @@ import { IAreas } from 'app/shared/model/areas.model';
 import { AreasService } from 'app/entities/areas/areas.service';
 import { IPuestos } from 'app/shared/model/puestos.model';
 import { PuestosService } from 'app/entities/puestos/puestos.service';
+import { TipoDocumentosService } from 'app/entities/tipo-documentos/tipo-documentos.service';
 import { IFichajes } from 'app/shared/model/fichajes.model';
 import { FichajesService } from 'app/entities/fichajes/fichajes.service';
 import { IEmpresas } from 'app/shared/model/empresas.model';
 import { EmpresasService } from 'app/entities/empresas/empresas.service';
+import { ITipoDocumentos } from 'app/shared/model/tipo-documentos.model';
+import { IPaises, Paises } from 'app/shared/model/paises.model';
+import { IProvincias, Provincias } from 'app/shared/model/provincias.model';
+import { Ciudades, ICiudades } from 'app/shared/model/ciudades.model';
+import { PaisesService } from '../paises/paises.service';
+import { ProvinciasService } from '../provincias/provincias.service';
+import { CiudadesService } from '../ciudades/ciudades.service';
+import { ITipoContactos, TipoContactos } from 'app/shared/model/tipo-contactos.model';
+import { Direcciones, IDirecciones } from 'app/shared/model/direcciones.model';
+import { EmpleadoRegistroDto } from 'app/shared/model/empleado-registro-dto.model';
 
 type SelectableEntity = IEmpleados | IUsuarios | IEstados | IAreas | IPuestos | IFichajes | IEmpresas;
 
@@ -36,6 +47,10 @@ export class EmpleadosUpdateComponent implements OnInit {
   puestos: IPuestos[] = [];
   fichajes: IFichajes[] = [];
   empresas: IEmpresas[] = [];
+  paises: IPaises[] = [];
+  provincias: IProvincias[] = [];
+  ciudades: ICiudades[] = [];
+  tipodocumentos?: ITipoDocumentos[];
   fechaIngresoDp: any;
 
   editForm = this.fb.group({
@@ -62,6 +77,38 @@ export class EmpleadosUpdateComponent implements OnInit {
     contacto: [],
   });
 
+  contactoForm = this.fb.group({
+    id: [],
+    valorDocumento: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(12)]],
+    tipoDocumentos: ['', [Validators.required]],
+  });
+
+  paisForm = this.fb.group({
+    id: [],
+    nombre: ['', [Validators.required]],
+  });
+
+  provinciaForm = this.fb.group({
+    id: [],
+    nombre: ['', [Validators.required]],
+    pais: ['', [Validators.required]],
+  });
+
+  ciudadForm = this.fb.group({
+    id: [],
+    nombre: ['', [Validators.required]],
+    provincia: ['', [Validators.required]],
+  });
+
+  direccionesForm = this.fb.group({
+    id: [],
+    calle: ['', [Validators.required]],
+    altura: ['', [Validators.required]],
+    piso: ['', [Validators.required]],
+    departamento: ['', [Validators.required]],
+    ciudad: ['', [Validators.required]],
+  });
+
   constructor(
     protected empleadosService: EmpleadosService,
     protected usuariosService: UsuariosService,
@@ -70,6 +117,10 @@ export class EmpleadosUpdateComponent implements OnInit {
     protected puestosService: PuestosService,
     protected fichajesService: FichajesService,
     protected empresasService: EmpresasService,
+    protected tipoDocumentosService: TipoDocumentosService,
+    protected paisesService: PaisesService,
+    protected provinciasService: ProvinciasService,
+    protected ciudadesService: CiudadesService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -91,6 +142,12 @@ export class EmpleadosUpdateComponent implements OnInit {
       this.fichajesService.query().subscribe((res: HttpResponse<IFichajes[]>) => (this.fichajes = res.body || []));
 
       this.empresasService.query().subscribe((res: HttpResponse<IEmpresas[]>) => (this.empresas = res.body || []));
+
+      this.tipoDocumentosService.query().subscribe((res: HttpResponse<ITipoDocumentos[]>) => (this.tipodocumentos = res.body || []));
+
+      this.paisesService.getAll().subscribe((res: HttpResponse<IPaises[]>) => {
+        this.paises = res.body || [];
+      });
     });
   }
 
@@ -115,8 +172,63 @@ export class EmpleadosUpdateComponent implements OnInit {
   save(): void {
     this.isSaving = true;
     const empleados = this.createFromForm();
+    const pais = this.createPaisFromForm();
+    const provincia = this.createProvinciaFromForm(pais);
+    const ciudad = this.createCiudadesFromForm(provincia);
+    const direcciones = this.createDireccionesFromForm(ciudad);
 
-    this.subscribeToSaveResponse(this.empleadosService.createEmp(empleados));
+    const empleado = new EmpleadoRegistroDto(empleados, direcciones, pais, provincia);
+
+    this.subscribeToSaveResponse(this.empleadosService.createEmpReg(empleado));
+  }
+
+  // Creo las instancias que necesito
+
+  private createContactoFromForm(): ITipoContactos {
+    return {
+      ...new TipoContactos(),
+      id: this.contactoForm.get(['id'])?.value,
+      descripcion: this.contactoForm.get(['descripcion'])?.value,
+      tipoDocumento: this.contactoForm.get(['tipoDocumento'])?.value,
+    };
+  }
+
+  private createPaisFromForm(): IPaises {
+    return {
+      ...new Paises(),
+      id: this.paisForm.get(['id'])?.value,
+      nombre: this.paisForm.get(['nombre'])?.value,
+    };
+  }
+
+  private createProvinciaFromForm(pais: Paises): IProvincias {
+    return {
+      ...new Provincias(),
+      id: this.provinciaForm.get(['id'])?.value,
+      nombre: this.provinciaForm.get(['nombre'])?.value,
+      pais,
+    };
+  }
+
+  private createCiudadesFromForm(provincia: Provincias): ICiudades {
+    return {
+      ...new Ciudades(),
+      id: this.ciudadForm.get(['id'])?.value,
+      nombre: this.ciudadForm.get(['nombre'])?.value,
+      provicia: provincia,
+    };
+  }
+
+  private createDireccionesFromForm(ciudad: Ciudades): IDirecciones {
+    return {
+      ...new Direcciones(),
+      id: this.direccionesForm.get(['id'])?.value,
+      calle: this.direccionesForm.get(['calle'])?.value,
+      altura: this.direccionesForm.get(['altura'])?.value,
+      piso: this.direccionesForm.get(['piso'])?.value,
+      departamento: this.direccionesForm.get(['departamento'])?.value,
+      ciudad,
+    };
   }
 
   private createUsuarioFromForm(): IUsuarios {
@@ -130,9 +242,10 @@ export class EmpleadosUpdateComponent implements OnInit {
       usuario: this.usuarioForm.get(['usuario'])!.value,
       estado: this.usuarioForm.get(['estado'])!.value,
       direccion: this.usuarioForm.get(['direccion'])!.value,
-      contacto: this.usuarioForm.get(['contacto'])!.value,
+      contacto: this.createContactoFromForm(),
     };
   }
+
   private createFromForm(): IEmpleados {
     return {
       ...new Empleados(),
@@ -169,6 +282,41 @@ export class EmpleadosUpdateComponent implements OnInit {
 
   protected onSaveError(): void {
     this.isSaving = false;
+  }
+
+  setTipoDoc(tipoDoc: any): void {
+    this.contactoForm.controls['tipoDocumentos'].setValue(tipoDoc);
+  }
+
+  setProvincias(country: any): void {
+    this.paisForm.controls['nombre'].setValue(country);
+    country = this.paises?.filter(x => x.nombre === country);
+    this.provinciasService.getByCountry(country[0].id).subscribe((res: HttpResponse<IProvincias[]>) => {
+      this.provincias = res.body || [];
+    });
+  }
+
+  setCiudades(state: any): void {
+    this.ciudadForm.controls['nombre'].setValue(state);
+  }
+
+  setProvForm(provincia: any): void {
+    provincia = this.provincias.filter((x: any) => x.nombre === provincia);
+    this.ciudadesService.getByState(provincia[0].id).subscribe((res: HttpResponse<ICiudades[]>) => {
+      this.ciudades = res.body || [];
+    });
+
+    this.provinciaForm.controls['nombre'].setValue(provincia[0].nombre);
+  }
+
+  setAltura(altura: any): void {
+    this.direccionesForm.controls['altura'].setValue(altura);
+  }
+  setPiso(piso: any): void {
+    this.direccionesForm.controls['piso'].setValue(piso);
+  }
+  setDepartamento(depto: any): void {
+    this.direccionesForm.controls['departamento'].setValue(depto);
   }
 
   trackById(index: number, item: SelectableEntity): any {

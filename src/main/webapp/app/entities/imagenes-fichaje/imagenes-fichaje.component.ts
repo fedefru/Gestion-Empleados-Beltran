@@ -20,12 +20,16 @@ import { LoginService } from 'app/core/login/login.service';
 export class ImagenesFichajeComponent implements OnInit {
   isSaving = false;
   cuenta: any;
-  usuario!: IUsuarios;
+  usuario!: any;
   server!: string;
   rutas?: any;
   fechas?: any;
   horas?: any;
   regex: any;
+  allImg?: string[] = [];
+  usuarios: IUsuarios[] = [];
+  filter!: boolean;
+  imagenes?: any;
 
   constructor(
     protected imagenesFichajeService: ImagenesFichajeService,
@@ -37,12 +41,15 @@ export class ImagenesFichajeComponent implements OnInit {
   ) {
     this.server = 'http://localhost:5000/get_image?filename=';
     this.regex = /-/gi;
+    this.filter = false;
   }
 
   ngOnInit(): void {
     this.accountService.identity().subscribe(account => {
       this.cuenta = account!.login;
     });
+
+    this.loadAllImages();
 
     this.usuarioService.findUsuarioByAlias(this.cuenta.toLowerCase()).subscribe((resp: HttpResponse<any>) => {
       this.usuario = resp.body;
@@ -85,6 +92,59 @@ export class ImagenesFichajeComponent implements OnInit {
     this.loginService.logout();
     this.router.navigate(['']);
     this.loginModalService.open();
+  }
+
+  loadAllImages(): void {
+    this.allImg = [];
+    // Cargo a todos los usuarios
+    this.usuarioService.getAll().subscribe((res: HttpResponse<any>) => {
+      this.usuarios = res.body;
+
+      // Ejecuto una llamada al servicio por cada usuario que tenga para traer sus imagenes
+      this.usuarios.map(user => {
+        this.imagenesFichajeService.queryImagenes(user.id).subscribe((resImg: HttpResponse<any>) => {
+          this.allImg?.push(resImg.body);
+          this.allImg = this.allImg?.filter(x => x.length > 0);
+          console.log('LoadAllImages =>', this.allImg);
+          this.fechas = this.allImg?.map((x: any) => {
+            return x.substring(x.lastIndexOf('_') + 1, x.lastIndexOf('T'));
+          });
+
+          this.horas = this.allImg?.map((x: any) => {
+            x = x.substring(x.lastIndexOf('T') + 1, x.lastIndexOf('.'));
+            return x.replace(this.regex, ':');
+          });
+        });
+      });
+    });
+  }
+
+  filterImg(user: string): void {
+    if (user === 'null') {
+      this.loadAllImages();
+      this.usuario = undefined;
+    } else {
+      this.allImg = [];
+      this.fechas = [];
+      this.horas = [];
+
+      this.usuarioService.findUsuarioByAlias(user).subscribe((resp: HttpResponse<any>) => {
+        this.usuario = resp.body;
+
+        this.imagenesFichajeService.queryImagenes(this.usuario.id).subscribe((res: HttpResponse<any>) => {
+          this.allImg = res.body;
+          console.log('Filter =>', this.allImg);
+          this.fechas = this.allImg?.map((x: any) => {
+            return x.substring(x.lastIndexOf('_') + 1, x.lastIndexOf('T'));
+          });
+
+          this.horas = this.allImg?.map((x: any) => {
+            x = x.substring(x.lastIndexOf('T') + 1, x.lastIndexOf('.'));
+            return x.replace(this.regex, ':');
+          });
+        });
+      });
+    }
   }
 }
 

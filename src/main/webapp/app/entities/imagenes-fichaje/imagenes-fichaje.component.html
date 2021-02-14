@@ -1,15 +1,39 @@
 <div>
-    <h1 *ngIf="usuario" class="tittle"><span jhiTranslate="gestionEmpleadosApp.fichajes.home.fichajesDe"></span> {{usuario.nombre}}</h1>
+    <h1 *ngIf="usuario !== undefined" class="tittle"><span jhiTranslate="gestionEmpleadosApp.fichajes.home.fichajesDe"></span> {{usuario.nombre}}</h1>
     <br>
-    <div *ngIf="rutas" >
-        <div class="row">
+
+    <select *jhiHasAnyAuthority="'ROLE_EMPRESA'" #user (change)="filterImg(user.value)">
+        <option value="null"></option>
+        <option *ngFor="let user of usuarios">
+            {{user.usuario}}
+        </option>
+    </select>
+
+    <div *ngIf="rutas">
+        <div class="row" *jhiHasAnyAuthority="'ROLE_USER'">
             <div *ngFor="let ruta of rutas; let i = index" class="col-md-2 fichajes--box">
-                <img class="img--fichaje"  src="{{server}}{{ruta}}" alt="">
+                <img class="img--fichaje"   src="{{server}}{{ruta}}" alt="">
                <p>
                 <span id="fichaje--item" jhiTranslate="gestionEmpleadosApp.fichajes.home.fechaFichaje"> </span>
                 <span id="bold--item"> {{fechas[i] | date: 'dd/MM/yyyy'}}</span>
                </p>
                <p>
+                <span id="fichaje--item" jhiTranslate="gestionEmpleadosApp.fichajes.home.horaFichaje"></span>
+                <span id="bold--item"> {{horas[i]}}</span>
+                </p>
+            </div>
+        </div>   
+    </div>
+
+    <div *ngIf="allImg">
+        <div class="row" *jhiHasAnyAuthority="'ROLE_EMPRESA'">
+            <div *ngFor="let img of allImg; let i = index" class="col-md-2 fichajes--box">
+                <img class="img--fichaje" src="{{server}}{{img}}" alt="">
+               <p *ngIf="fechas">
+                <span id="fichaje--item" jhiTranslate="gestionEmpleadosApp.fichajes.home.fechaFichaje"> </span>
+                <span id="bold--item" > {{fechas[i] | date: 'dd/MM/yyyy'}}</span>
+               </p>
+               <p *ngIf="horas">
                 <span id="fichaje--item" jhiTranslate="gestionEmpleadosApp.fichajes.home.horaFichaje"></span>
                 <span id="bold--item"> {{horas[i]}}</span>
                 </p>

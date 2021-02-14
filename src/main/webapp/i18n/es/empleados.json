@@ -23,7 +23,13 @@
       "area": "Area",
       "puesto": "Puesto",
       "fichaje": "Fichaje",
-      "empresa": "Empresa"
+      "empresa": "Empresa",
+      "datosEmpleado": "Datos del usuario",
+      "contacto": "Contacto",
+      "direccion": "Direccion",
+      "jerarquia": "Jerarquia",
+      "pais": "Pais",
+      "provincia": "Provincia"
     }
   }
 }
