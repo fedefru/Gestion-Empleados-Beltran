@@ -94,6 +94,8 @@ public class EmpresasResource {
     public ResponseEntity<Empresas> createEmpresasRegistro(@RequestBody EmpresaDTO empresaDTO) throws URISyntaxException {
         log.debug("REST request to save Empresas with registro-empresa : {}", empresaDTO);
 
+        System.out.println("*************" + empresaDTO.getUsuario()+"*************"+ empresaDTO +"*************");
+
         // Debo importar todos los repositories de las entidades para realizar el save exitoso de cada uno. Pais, Provincia, Ciudad ...
 
         try{
@@ -125,6 +127,7 @@ public class EmpresasResource {
             Empresas empresa = new Empresas();
 
             empresa.setNombre(empresaDTO.getNombre());
+            empresa.setUsuario(empresaDTO.getUsuario());
             empresa.setClave(empresaDTO.getClave());
             empresa.setDireccion(resultTipoDireccion);
             empresa.setContacto(empresaDTO.getTipoContactos());

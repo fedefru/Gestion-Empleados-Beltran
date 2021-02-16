@@ -17,6 +17,7 @@
         "title": "Enterprises"
       },
       "nombre": "Name",
+      "usuario": "User",
       "direccion": "Adress",
       "contacto": "Contact",
       "estado": "State"

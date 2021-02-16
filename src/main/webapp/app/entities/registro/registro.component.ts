@@ -95,6 +95,7 @@ export class RegistroComponent {
   empresaForm = this.fb.group({
     id: [],
     nombre: ['', [Validators.required]],
+    usuario: ['', [Validators.required]],
     clave: ['', [Validators.required]],
     direccion: [],
     contacto: [],
@@ -157,6 +158,9 @@ export class RegistroComponent {
   }
   setNombreEmpresa(nombre: any): void {
     this.empresaForm.controls['nombre'].setValue(nombre);
+  }
+  setUsuarioEmpresa(usuario: any): void {
+    this.empresaForm.controls['usuario'].setValue(usuario);
   }
   setClave(clave: any): void {
     this.empresaForm.controls['clave'].setValue(clave);
@@ -237,6 +241,7 @@ export class RegistroComponent {
   save(): void {
     this.isSaving = true;
     const nombre = this.empresaForm.get(['nombre'])?.value;
+    const usuario = this.empresaForm.get(['usuario'])?.value;
     const clave = this.empresaForm.get(['clave'])?.value;
     const contactos = this.createContactoFromForm();
     const pais = this.createPaisFromForm();
@@ -244,8 +249,7 @@ export class RegistroComponent {
     const ciudad = this.createCiudadesFromForm(provincia);
     const direcciones = this.createDireccionesFromForm(ciudad);
 
-    const empresa = new EmpresaDto(nombre, clave, contactos, pais, provincia, ciudad, direcciones);
-
+    const empresa = new EmpresaDto(nombre, usuario, clave, contactos, pais, provincia, ciudad, direcciones);
     this.subscribeToSaveResponse(this.registroService.create(empresa));
   }
 

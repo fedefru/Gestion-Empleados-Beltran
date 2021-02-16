@@ -165,9 +165,16 @@
 
         <div class="form-group">
           <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.empresas.nombre"
-            for="field_nombre">Nombre</label>
+            for="field_nombre">Nombre de la Empresa/Institución</label>
           <input type="text" class="form-control" name="nombre" #nombreEmpresa id="field_nombre" formControlName="nombre" minlength="3"
             required (change)="setNombreEmpresa(nombreEmpresa.value)" />
+        </div>
+        
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.empresas.usuario"
+            for="field_usuario">Usuario</label>
+          <input type="text" class="form-control" name="usuario" #usuarioEmpresa id="field_usuario" formControlName="usuario" minlength="3"
+            required (change)="setUsuarioEmpresa(usuarioEmpresa.value)" />
         </div>
 
         <div class="form-group">
@@ -273,6 +280,10 @@
           <tbody>
             <tr>
               <td class="align-middle">{{empresaForm.get('nombre')?.value}}</td>
+            </tr>
+            <th scope="col" class="align-middle">Usuario de Empresa</th>
+            <tr>
+              <td class="align-middle">{{empresaForm.get('usuario')?.value}}</td>
             </tr>
           </tbody>
         </table>

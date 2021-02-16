@@ -25,6 +25,9 @@ public class Empresas implements Serializable {
     @Column(name = "nombre")
     private String nombre;
 
+    @Column(name = "usuario")
+    private String usuario;
+
     @Column(name = "clave")
     private String clave;
 
@@ -61,6 +64,18 @@ public class Empresas implements Serializable {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public Empresas usuario(String usuario) {
+        this.usuario = usuario;
+        return this;
+    }
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
     public String getClave() {

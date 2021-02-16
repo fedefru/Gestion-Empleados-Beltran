@@ -124,15 +124,17 @@ public class UserService {
 
     public User registerEmpresa(Empresas empresasDTO) {
 
+        System.out.println("*************" + empresasDTO.getUsuario()+"*************"+ empresasDTO +"*************");
+
         User newUser = new User();
         String encryptedPassword = passwordEncoder.encode(empresasDTO.getClave());
-        newUser.setLogin(empresasDTO.getNombre().toLowerCase());
+        newUser.setLogin(empresasDTO.getUsuario().toLowerCase());
         // new user gets initially a generated password
         newUser.setPassword(encryptedPassword);
-        newUser.setFirstName(empresasDTO.getNombre());
+        newUser.setFirstName(empresasDTO.getUsuario());
         newUser.setLastName("-");
-        if ((empresasDTO.getNombre()+"@gmail.com") != null) {
-            newUser.setEmail(empresasDTO.getNombre().toLowerCase()+ "@gmail.com");
+        if ((empresasDTO.getUsuario()+"@gmail.com") != null) {
+            newUser.setEmail(empresasDTO.getUsuario().toLowerCase()+ "@gmail.com");
         }
         //newUser.setImageUrl(userDTO.getImageUrl());
         //newUser.setLangKey(userDTO.getLangKey());

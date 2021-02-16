@@ -19,6 +19,9 @@
             <column name="nombre" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
+            <column name="usuario" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
             <column name="clave" type="varchar(255)">
                 <constraints nullable="true" />
             </column>

@@ -5,6 +5,7 @@ import com.beltran.gestionempleados.domain.*;
 public class EmpresaDTO {
 
     private String nombre;
+    private String usuario;
     private String clave;
     private TipoContactos tipoContactos;
     private Paises paises;
@@ -22,6 +23,14 @@ public class EmpresaDTO {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
     public String getClave() {

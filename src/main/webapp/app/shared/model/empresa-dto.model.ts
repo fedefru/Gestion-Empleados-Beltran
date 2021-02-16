@@ -7,6 +7,7 @@ import { IDirecciones } from '../model/direcciones.model';
 
 export interface IEmpresaDto {
   nombre?: string;
+  usuario?: string;
   clave?: string;
   tipoContactos?: ITipoContactos;
   paises?: IPaises;
@@ -19,6 +20,7 @@ export interface IEmpresaDto {
 export class EmpresaDto implements IEmpresaDto {
   constructor(
     public nombre?: string,
+    public usuario?: string,
     public clave?: string,
     public tipoContactos?: ITipoContactos,
     public paises?: IPaises,
