@@ -1,22 +1,20 @@
-
-
-    <jhi-alert></jhi-alert>
+<jhi-alert></jhi-alert>
 <div class="row" *ngIf="!isAuthenticated()">
     <div class="parallax" style="height: 80vh;">
         <div class="fondo-efecto" style="height: 80vh;">
-        <div class="row">
-            
-        
-            <div class="col-md-6 offset-md-1 text-panel">
-                <h1 jhiTranslate="home.title"></h1>
-                <h2><span jhiTranslate="home.subtitleOne"></span> <br>
-                    <span jhiTranslate="home.subtitleTwo"></span><br>
-                    <span jhiTranslate="home.subtitleThree"></span> 
-                </h2>
+            <div class="row">
+
+
+                <div class="col-md-6 offset-md-1 text-panel">
+                    <h1 jhiTranslate="home.title"></h1>
+                    <h2><span jhiTranslate="home.subtitleOne"></span> <br>
+                        <span jhiTranslate="home.subtitleTwo"></span><br>
+                        <span jhiTranslate="home.subtitleThree"></span>
+                    </h2>
+                </div>
+
             </div>
-            
-        </div>
-        
+
             <h5 class="text-panel-footer" jhiTranslate="home.subtitleFour"> </h5>
 
         </div>
@@ -25,101 +23,128 @@
 
     <div class="col-md-10 offset-md-1">
 
-    <div class="row">
+        <div class="row">
 
-    <div class="col-md-4 col-home">
-        <div class="row">
-            <div class="col-md-3">
-            <i class="fas fa-users" style="font-size: 50px;"></i>
-            </div>    
-            <div class="col-md-9">
-            <h5 jhiTranslate="home.empleados"></h5>
+            <div class="col-md-4 col-home">
+                <div class="row">
+                    <div class="col-md-3">
+                        <i class="fas fa-users" style="font-size: 50px;"></i>
+                    </div>
+                    <div class="col-md-9">
+                        <h5 jhiTranslate="home.empleados"></h5>
+                    </div>
+                    <p class="text-home" style="margin-left: 30px;" jhiTranslate="home.empleadosTexto"></p>
+                </div>
             </div>
-            <p class="text-home" style="margin-left: 30px;" jhiTranslate="home.empleadosTexto"></p>
-        </div>
-    </div>
-    
-    <div class="col-md-4 col-home">
-        <div class="row">
-            <div class="col-md-3">
-            <i class="far fa-building" style="font-size: 50px;"></i>
-            </div>    
-            <div class="col-md-9">
-            <h5 jhiTranslate="home.empresas"></h5>
-            </div>
-            <p class="text-home" style="margin-left: 30px;" jhiTranslate="home.empresasTexto"></p>
-        </div>
-    </div>
-    
-    <div class="col-md-4 col-home">
-        <div class="row">
-            <div class="col-md-3">
-            <img src="../../../../proyecto-imagenes/webcam.png" alt="icon-cam" style="width: 50px; height: 50px;">
-            </div>    
-            <div class="col-md-9">
-            <h5 jhiTranslate="home.fichaje"></h5>
-            </div>
-            <p class="text-home" style="margin-left: 70px;" jhiTranslate="home.fichajeTexto"></p>
-        </div>
-    </div>
 
-    <div class="col-md-4 col-home">
-        <div class="row">
-            <div class="col-md-3">
-            <i class="far fa-sticky-note" style="font-size: 50px;"></i>
-            </div>    
-            <div class="col-md-9">
-            <h5 jhiTranslate="home.sugerencias"></h5>
+            <div class="col-md-4 col-home">
+                <div class="row">
+                    <div class="col-md-3">
+                        <i class="far fa-building" style="font-size: 50px;"></i>
+                    </div>
+                    <div class="col-md-9">
+                        <h5 jhiTranslate="home.empresas"></h5>
+                    </div>
+                    <p class="text-home" style="margin-left: 30px;" jhiTranslate="home.empresasTexto"></p>
+                </div>
             </div>
-            <p class="text-home" jhiTranslate="home.sugerenciasTexto"></p>
-        </div>
-    </div>
-    
-    <div class="col-md-4 col-home">
-        <div class="row">
-            <div class="col-md-3">
-            <i class="fas fa-map-marker-alt" style="font-size: 50px;"></i>
-            </div>    
-            <div class="col-md-9">
-            <h5 jhiTranslate="home.localizacion"></h5>
-            </div>
-            <p class="text-home" jhiTranslate="home.localizacionTexto"></p>
-        </div>
-    </div>
-    
-    <div class="col-md-4 col-home">
-        <div class="row">
-            <div class="col-md-3">
-            <i class="far fa-clock" style="font-size: 50px;"></i>
-            </div>    
-            <div class="col-md-9">
-            <h5 jhiTranslate="home.controlHorarios"></h5>
-            </div>
-            <p class="text-home" style="margin-left: 70px;" jhiTranslate="home.controlHorariosTexto"></p>
-        </div>
-    </div>
-    
-</div>  
 
+            <div class="col-md-4 col-home">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="../../../../proyecto-imagenes/webcam.png" alt="icon-cam"
+                            style="width: 50px; height: 50px;">
+                    </div>
+                    <div class="col-md-9">
+                        <h5 jhiTranslate="home.fichaje"></h5>
+                    </div>
+                    <p class="text-home" style="margin-left: 70px;" jhiTranslate="home.fichajeTexto"></p>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-home">
+                <div class="row">
+                    <div class="col-md-3">
+                        <i class="far fa-sticky-note" style="font-size: 50px;"></i>
+                    </div>
+                    <div class="col-md-9">
+                        <h5 jhiTranslate="home.sugerencias"></h5>
+                    </div>
+                    <p class="text-home" jhiTranslate="home.sugerenciasTexto"></p>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-home">
+                <div class="row">
+                    <div class="col-md-3">
+                        <i class="fas fa-map-marker-alt" style="font-size: 50px;"></i>
+                    </div>
+                    <div class="col-md-9">
+                        <h5 jhiTranslate="home.localizacion"></h5>
+                    </div>
+                    <p class="text-home" jhiTranslate="home.localizacionTexto"></p>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-home">
+                <div class="row">
+                    <div class="col-md-3">
+                        <i class="far fa-clock" style="font-size: 50px;"></i>
+                    </div>
+                    <div class="col-md-9">
+                        <h5 jhiTranslate="home.controlHorarios"></h5>
+                    </div>
+                    <p class="text-home" style="margin-left: 70px;" jhiTranslate="home.controlHorariosTexto"></p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div style="height: 500px;"></div>
 </div>
-<div style="height: 500px;"></div>
-</div>
 
-<div class="row justify-content-center"  *ngIf="isAuthenticated()" id="row--option">
-    <div class="col-md-12">
+<div class="row" *ngIf="isAuthenticated()" id="row--option">
 
-       <a href="/organigrama"> <button id="home--option" class="btn btn-primary" jhiTranslate="home.organigrama">Organigrama</button></a>
-       <a href="/fichajes/fichaje"> <button id="home--option" class="btn btn-primary" jhiTranslate="home.fichar">Fichar ahora</button></a>
-       <a href="/sugerencias"> <button id="home--option" class="btn btn-primary" jhiTranslate="home.crearSugerencia">Crear sugerencia</button></a>
-       <a href="/sugerencias/portal"> <button id="home--option" class="btn btn-primary" jhiTranslate="home.verSugerencias">Ver sugerencias</button></a> 
-       <a href="/imagenes-fichaje"> <button id="home--option" class="btn btn-primary" jhiTranslate="home.verFichajesAnteriores">Ver fichajes anteriores</button></a> 
-       <div *jhiHasAnyAuthority="'ROLE_EMPRESA'">
-            <a href="/empleados/new"> <button id="home--option" class="btn btn-primary" jhiTranslate="home.cargarEmpleados">Cargar empleado</button></a>
-       <a href="/areas/new"> <button id="home--option" class="btn btn-primary" jhiTranslate="home.cargarArea">Cargar area</button></a> 
-       <a href="/puestos/new"> <button id="home--option" class="btn btn-primary" jhiTranslate="home.cargarPuesto">Cargar puesto</button></a>
-       <a href="/usuarios"> <button id="home--option" class="btn btn-primary" jhiTranslate="home.verUsuarios">Ver usuarios</button></a>
-       </div>
-      
+    <div class="col-3">
+        <a href="/organigrama"> <button id="home--option" class="btn btn-primary"
+                jhiTranslate="home.organigrama">Organigrama</button></a>
     </div>
+    <div *jhiHasAnyAuthority="'ROLE_USER'" class="col-3">
+        <a href="/fichajes/fichaje"> <button id="home--option" class="btn btn-primary" jhiTranslate="home.fichar">Fichar
+                ahora</button></a>
+    </div>
+    <div class="col-3">
+        <a href="/sugerencias"> <button id="home--option" class="btn btn-primary"
+                jhiTranslate="home.crearSugerencia">Crear sugerencia</button></a>
+    </div>
+    <div class="col-3">
+        <a href="/sugerencias/portal"> <button id="home--option" class="btn btn-primary"
+                jhiTranslate="home.verSugerencias">Ver sugerencias</button></a>
+    </div>
+    <div class="col-3">
+        <a href="/imagenes-fichaje"> <button id="home--option" class="btn btn-primary"
+                jhiTranslate="home.verFichajesAnteriores">Ver fichajes anteriores</button></a>
+    </div>
+
+    <div *jhiHasAnyAuthority="'ROLE_EMPRESA'" class="col-3">
+        <a href="/empleados/new"> <button id="home--option" class="btn btn-primary"
+                jhiTranslate="home.cargarEmpleados">Cargar empleado</button></a>
+    </div>
+    <div *jhiHasAnyAuthority="'ROLE_EMPRESA'" class="col-3">
+        <a href="/areas/new"> <button id="home--option" class="btn btn-primary" jhiTranslate="home.cargarArea">Cargar
+                area</button></a>
+    </div>
+    <div *jhiHasAnyAuthority="'ROLE_EMPRESA'" class="col-3">
+        <a href="/puestos/new"> <button id="home--option" class="btn btn-primary"
+                jhiTranslate="home.cargarPuesto">Cargar puesto</button></a>
+    </div>
+    <div *jhiHasAnyAuthority="'ROLE_EMPRESA'" class="col-3">
+        <a href="/usuarios"> <button id="home--option" class="btn btn-primary" jhiTranslate="home.verUsuarios">Ver
+                usuarios</button></a>
+    </div>
+
+
+
 
 </div>

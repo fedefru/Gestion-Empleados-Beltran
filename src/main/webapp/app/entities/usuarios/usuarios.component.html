@@ -29,8 +29,6 @@
                     <!-- <th scope="col"  jhiSortBy="clave"><span jhiTranslate="gestionEmpleadosApp.usuarios.clave">Clave</span> <fa-icon icon="sort"></fa-icon></th> -->
                     <th scope="col"  jhiSortBy="usuario"><span jhiTranslate="gestionEmpleadosApp.usuarios.usuario">Usuario</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="estado.id"><span jhiTranslate="gestionEmpleadosApp.usuarios.estado">Estado</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="direccion.id"><span jhiTranslate="gestionEmpleadosApp.usuarios.direccion">Direccion</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="contacto.id"><span jhiTranslate="gestionEmpleadosApp.usuarios.contacto">Contacto</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -45,16 +43,6 @@
                     <td>
                         <div *ngIf="usuarios.estado">
                             <a [routerLink]="['/estados', usuarios.estado?.id, 'view']" >{{ usuarios.estado?.nombre }}</a>
-                        </div>
-                    </td>
-                    <td>
-                        <div *ngIf="usuarios.direccion">
-                            <a [routerLink]="['/tipo-direccion', usuarios.direccion?.id, 'view']" >{{ usuarios.direccion?.descripcion }}</a>
-                        </div>
-                    </td>
-                    <td>
-                        <div *ngIf="usuarios.contacto">
-                            <a [routerLink]="['/tipo-contactos', usuarios.contacto?.id, 'view']" >{{ usuarios.contacto?.descripcion }}</a>
                         </div>
                     </td>
                     <td class="text-right">

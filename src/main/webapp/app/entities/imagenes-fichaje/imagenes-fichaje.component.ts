@@ -11,6 +11,7 @@ import { AccountService } from 'app/core/auth/account.service';
 import { IUsuarios } from 'app/shared/model/usuarios.model';
 import { UsuariosService } from '../usuarios/usuarios.service';
 import { LoginService } from 'app/core/login/login.service';
+import { UserService } from 'app/core/user/user.service';
 
 @Component({
   selector: 'jhi-imagenes-fichaje',
@@ -30,6 +31,7 @@ export class ImagenesFichajeComponent implements OnInit {
   usuarios: IUsuarios[] = [];
   filter!: boolean;
   imagenes?: any;
+  roles: any;
 
   constructor(
     protected imagenesFichajeService: ImagenesFichajeService,
@@ -37,6 +39,7 @@ export class ImagenesFichajeComponent implements OnInit {
     protected usuarioService: UsuariosService,
     protected loginService: LoginService,
     private loginModalService: LoginModalService,
+    protected userService: UserService,
     private router: Router
   ) {
     this.server = 'http://localhost:5000/get_image?filename=';
@@ -47,9 +50,8 @@ export class ImagenesFichajeComponent implements OnInit {
   ngOnInit(): void {
     this.accountService.identity().subscribe(account => {
       this.cuenta = account!.login;
+      this.roles = account!.authorities[0];
     });
-
-    this.loadAllImages();
 
     this.usuarioService.findUsuarioByAlias(this.cuenta.toLowerCase()).subscribe((resp: HttpResponse<any>) => {
       this.usuario = resp.body;
@@ -67,6 +69,7 @@ export class ImagenesFichajeComponent implements OnInit {
         });
       });
     });
+    this.loadAllImages();
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IFichajes>>): void {
@@ -97,26 +100,43 @@ export class ImagenesFichajeComponent implements OnInit {
   loadAllImages(): void {
     this.allImg = [];
     // Cargo a todos los usuarios
-    this.usuarioService.getAll().subscribe((res: HttpResponse<any>) => {
-      this.usuarios = res.body;
+    if (this.roles === 'ROLE_EMPRESA') {
+      this.usuarioService.getAll().subscribe((res: HttpResponse<any>) => {
+        this.usuarios = res.body;
 
-      // Ejecuto una llamada al servicio por cada usuario que tenga para traer sus imagenes
-      this.usuarios.map(user => {
-        this.imagenesFichajeService.queryImagenes(user.id).subscribe((resImg: HttpResponse<any>) => {
-          this.allImg?.push(resImg.body);
-          this.allImg = this.allImg?.filter(x => x.length > 0);
-          console.log('LoadAllImages =>', this.allImg);
-          this.fechas = this.allImg?.map((x: any) => {
-            return x.substring(x.lastIndexOf('_') + 1, x.lastIndexOf('T'));
-          });
+        // Ejecuto una llamada al servicio por cada usuario que tenga para traer sus imagenes
+        this.usuarios.map(user => {
+          this.imagenesFichajeService.queryImagenes(user.id).subscribe((resImg: HttpResponse<any>) => {
+            this.allImg?.push(resImg.body);
+            this.allImg = this.allImg?.filter(x => x.length > 0);
+            console.log('LoadAllImages =>', this.allImg);
+            this.fechas = this.allImg?.map((x: any) => {
+              return x.substring(x.lastIndexOf('_') + 1, x.lastIndexOf('T'));
+            });
 
-          this.horas = this.allImg?.map((x: any) => {
-            x = x.substring(x.lastIndexOf('T') + 1, x.lastIndexOf('.'));
-            return x.replace(this.regex, ':');
+            this.horas = this.allImg?.map((x: any) => {
+              x = x.substring(x.lastIndexOf('T') + 1, x.lastIndexOf('.'));
+              return x.replace(this.regex, ':');
+            });
           });
         });
       });
-    });
+    } else {
+      this.imagenesFichajeService.queryImagenes(this.usuario.id).subscribe((resImg: HttpResponse<any>) => {
+        this.allImg?.push(resImg.body);
+        this.allImg = this.allImg?.filter(x => x.length > 0);
+        console.log('LoadAllImages =>', this.allImg);
+
+        this.fechas = this.allImg?.map((x: any) => {
+          return x.substring(x.lastIndexOf('_') + 1, x.lastIndexOf('T'));
+        });
+
+        this.horas = this.allImg?.map((x: any) => {
+          x = x.substring(x.lastIndexOf('T') + 1, x.lastIndexOf('.'));
+          return x.replace(this.regex, ':');
+        });
+      });
+    }
   }
 
   filterImg(user: string): void {
