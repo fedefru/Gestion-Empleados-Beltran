@@ -50,6 +50,8 @@ export class EmpleadosUpdateComponent implements OnInit {
   tipodocumentos?: ITipoDocumentos[];
   fechaIngresoDp: any;
 
+  modelName?: any;
+
   empleadoSeleccionado?: any;
 
   empleadoForm?: any;
@@ -115,7 +117,7 @@ export class EmpleadosUpdateComponent implements OnInit {
       estado: [this.empleadoSeleccionado.usuario.estado],
       tipoDocumento: [this.empleadoSeleccionado.usuario.contacto.tipoDocumento],
       pais: [this.empleadoSeleccionado.usuario.direccion.direccion.ciudad.provicia.pais],
-      /* provicia: [this.empleadoSeleccionado.usuario.direccion.direccion.ciudad.provicia]  */
+      provicia: [this.empleadoSeleccionado.usuario.direccion.direccion.ciudad.provicia],
     });
   }
 
@@ -154,11 +156,11 @@ export class EmpleadosUpdateComponent implements OnInit {
     return item.id;
   }
 
-  setProvincias(country: any): void {
-    console.log(country);
-    //this.empleadoForm.pais.controls['nombre'].setValue(country);
-    country = this.paises?.filter(x => x.nombre === country);
-    this.provinciasService.getByCountry(country[0].id).subscribe((res: HttpResponse<IProvincias[]>) => {
+  setProvincias(): void {
+    console.log(this.modelName);
+
+    this.modelName = this.paises?.filter(x => x.nombre === this.modelName);
+    this.provinciasService.getByCountry(this.modelName[0].id).subscribe((res: HttpResponse<IProvincias[]>) => {
       this.provincias = res.body || [];
     });
   }

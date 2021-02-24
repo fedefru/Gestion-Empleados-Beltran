@@ -133,8 +133,8 @@
                     <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.paises.value"
                       for="field_nombre_pais">Pais</label>
                      
-                    <select class="form-control" formControlName="pais" name="pais" >
-                      <option *ngFor="let country of paises" (select)="setProvincias(country.nombre)" [ngValue]="country.id">{{country.nombre}}</option>
+                    <select class="form-control" formControlName="pais" name="pais" [(ngModel)]="modelName" (change)="setProvincias()">
+                      <option *ngFor="let country of paises" [ngValue]="country.nombre">{{country.nombre}}</option>
                     </select>
                   </div>
               </div>
@@ -147,7 +147,7 @@
                     <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.provincias.value"
                       for="field_nombre_provincia">Provincia</label>
     
-                    <select class="form-control"  #provSel *ngIf="provincias" required>
+                    <select class="form-control" #provSel *ngIf="provincias" formControlName="provicia">
                       <option *ngFor="let prov of provincias" [ngValue]="prov.id">{{prov.nombre}}</option>
                     </select>
     
