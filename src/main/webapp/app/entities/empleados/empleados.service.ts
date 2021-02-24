@@ -19,6 +19,7 @@ type EntityArrayResponseType = HttpResponse<IEmpleados[]>;
 export class EmpleadosService {
   public resourceUrl = SERVER_API_URL + 'api/empleados';
   public resourceUrlReg = SERVER_API_URL + 'api/empleados/registro-empleado';
+  public resourceUrlUpdate = SERVER_API_URL + 'api/empleados/update-empleado';
 
   constructor(protected http: HttpClient) {}
 
@@ -37,6 +38,11 @@ export class EmpleadosService {
   createEmpReg(emp: IEmpleadoRegistroDto): any {
     console.log('empleado que quiero cargar', emp);
     return this.http.post<IEmpleadoRegistroDto>(this.resourceUrlReg, emp, { observe: 'response' });
+  }
+
+  updateEmpReg(emp: IEmpleadoRegistroDto): any {
+    console.log('empleado que quiero cargar', emp);
+    return this.http.put<IEmpleadoRegistroDto>(this.resourceUrlUpdate, emp, { observe: 'response' });
   }
 
   update(empleados: IEmpleados): Observable<EntityResponseType> {

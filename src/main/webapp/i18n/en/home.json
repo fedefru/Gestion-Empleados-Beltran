@@ -25,7 +25,7 @@
     "verFichajesAnteriores": "Previous signings",
     "cargarArea": "New area",
     "cargarPuesto": "New employment",
-    "verUsuarios": "Users",
+    "verEmpleados": "Employees",
     "logged": {
       "message": "You are logged in as user \"{{username}}\"."
     },

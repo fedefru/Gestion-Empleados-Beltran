@@ -185,11 +185,19 @@ public class Empleados implements Serializable {
     }
 
     // prettier-ignore
+
     @Override
     public String toString() {
         return "Empleados{" +
-            "id=" + getId() +
-            ", fechaIngreso='" + getFechaIngreso() + "'" +
-            "}";
+            "id=" + id +
+            ", fechaIngreso=" + fechaIngreso +
+            ", jefe=" + jefe +
+            ", usuario=" + usuario +
+            ", estado=" + estado +
+            ", area=" + area +
+            ", puesto=" + puesto +
+            ", fichaje=" + fichaje +
+            ", empresa=" + empresa +
+            '}';
     }
 }

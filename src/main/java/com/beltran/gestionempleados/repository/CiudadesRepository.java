@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Spring Data  repository for the Ciudades entity.
@@ -15,4 +16,6 @@ import java.util.List;
 public interface CiudadesRepository extends JpaRepository<Ciudades, Long> {
 
     List<Ciudades> findAllByProviciaId(Long id);
+
+    Optional <Ciudades> findByNombre(String nombre);
 }

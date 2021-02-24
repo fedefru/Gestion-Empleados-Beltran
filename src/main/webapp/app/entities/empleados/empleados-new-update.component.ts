@@ -30,8 +30,8 @@ import { ProvinciasService } from '../provincias/provincias.service';
 import { CiudadesService } from '../ciudades/ciudades.service';
 import { ITipoContactos, TipoContactos } from 'app/shared/model/tipo-contactos.model';
 import { Direcciones, IDirecciones } from 'app/shared/model/direcciones.model';
-import { EmpleadoRegistroDto } from 'app/shared/model/empleado-registro-dto.model';
 import * as moment from 'moment';
+import { EmpleadoRegistroDto } from 'app/shared/model/empleado-registro-dto.model';
 
 type SelectableEntity = IEmpleados | IUsuarios | IEstados | IAreas | IPuestos | IFichajes | IEmpresas;
 
@@ -161,7 +161,7 @@ export class EmpleadosNewUpdateComponent implements OnInit {
 
   setValores(): void {
     this.usuarioForm = this.fb.group({
-      id: [],
+      id: [this.empleadoSeleccionado!.usuario?.id],
       nombre: [this.empleadoSeleccionado!.usuario?.nombre],
       apellido: [this.empleadoSeleccionado!.usuario?.apellido],
       fechaNac: [moment(this.empleadoSeleccionado!.usuario?.fechaNac, 'YYYY-MM-DD')],
@@ -173,7 +173,7 @@ export class EmpleadosNewUpdateComponent implements OnInit {
     });
 
     this.contactoForm = this.fb.group({
-      id: [],
+      id: [this.empleadoSeleccionado!.usuario?.contacto?.id],
       valorDocumento: [
         this.empleadoSeleccionado!.usuario?.contacto?.descripcion,
         [Validators.required, Validators.minLength(8), Validators.maxLength(12)],
@@ -182,7 +182,7 @@ export class EmpleadosNewUpdateComponent implements OnInit {
     });
 
     this.direccionesForm = this.fb.group({
-      id: [],
+      id: [this.empleadoSeleccionado!.usuario?.direccion?.direccion?.id],
       calle: [this.empleadoSeleccionado!.usuario?.direccion?.direccion?.calle, [Validators.required]],
       altura: [this.empleadoSeleccionado!.usuario?.direccion?.direccion?.altura, [Validators.required]],
       piso: [this.empleadoSeleccionado!.usuario?.direccion?.direccion?.piso, [Validators.required]],
@@ -191,18 +191,18 @@ export class EmpleadosNewUpdateComponent implements OnInit {
     });
 
     this.paisForm = this.fb.group({
-      id: [],
+      id: [this.empleadoSeleccionado!.usuario?.direccion?.direccion?.ciudad?.provicia?.pais?.id],
       nombre: [this.empleadoSeleccionado!.usuario?.direccion?.direccion?.ciudad?.provicia?.pais?.nombre, [Validators.required]],
     });
 
     this.provinciaForm = this.fb.group({
-      id: [],
+      id: [this.empleadoSeleccionado!.usuario?.direccion?.direccion?.ciudad?.provicia?.id],
       nombre: [this.empleadoSeleccionado!.usuario?.direccion?.direccion?.ciudad?.provicia?.nombre, [Validators.required]],
       pais: [this.empleadoSeleccionado!.usuario?.direccion?.direccion?.ciudad?.provicia?.pais?.id, [Validators.required]],
     });
 
     this.ciudadForm = this.fb.group({
-      id: [],
+      id: [this.empleadoSeleccionado!.usuario?.direccion?.direccion?.ciudad?.id],
       nombre: [this.empleadoSeleccionado!.usuario?.direccion?.direccion?.ciudad?.nombre, [Validators.required]],
       provincia: [this.empleadoSeleccionado!.usuario?.direccion?.direccion?.ciudad?.provicia?.id, [Validators.required]],
     });
@@ -236,7 +236,7 @@ export class EmpleadosNewUpdateComponent implements OnInit {
 
     const empleado = new EmpleadoRegistroDto(empleados, direcciones, pais, provincia);
 
-    this.subscribeToSaveResponse(this.empleadosService.createEmpReg(empleado));
+    this.subscribeToSaveResponse(this.empleadosService.updateEmpReg(empleado));
   }
 
   // Creo las instancias que necesito
@@ -334,7 +334,7 @@ export class EmpleadosNewUpdateComponent implements OnInit {
 
   protected onSaveSuccess(): void {
     this.isSaving = false;
-    this.previousState();
+    //this.previousState();
   }
 
   protected onSaveError(): void {
