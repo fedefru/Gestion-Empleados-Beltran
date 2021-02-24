@@ -140,7 +140,7 @@ export class EmpleadosNewUpdateComponent implements OnInit {
 
       this.puestosService.query().subscribe((res: HttpResponse<IPuestos[]>) => (this.puestos = res.body || []));
 
-      this.fichajesService.query().subscribe((res: HttpResponse<IFichajes[]>) => (this.fichajes = res.body || []));
+      /* this.fichajesService.query().subscribe((res: HttpResponse<IFichajes[]>) => (this.fichajes = res.body || [])); */
 
       this.empresasService.query().subscribe((res: HttpResponse<IEmpresas[]>) => (this.empresas = res.body || []));
 
@@ -150,8 +150,10 @@ export class EmpleadosNewUpdateComponent implements OnInit {
         this.paises = res.body || [];
       });
 
-      this.empleadoSeleccionado = empleados;
       console.clear();
+
+      this.empleadoSeleccionado = empleados;
+
       console.log(this.empleadoSeleccionado);
       this.setValores();
     });

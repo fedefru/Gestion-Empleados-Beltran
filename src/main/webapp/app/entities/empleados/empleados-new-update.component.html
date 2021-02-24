@@ -74,14 +74,14 @@
           required autocomplete="off" />
       </div>
 
-      <div class="form-group">
+      <div class="form-group" *ngIf="empleadoSeleccionado !== undefined">
         <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.usuarios.estado"
           for="field_estado">Estado</label>
         <select class="form-control" id="field_estado" name="estado" formControlName="estado">
-          <option [ngValue]="null"></option>
           <option
             [ngValue]="estadosOption.id === usuarioForm.get('estado')!.value?.id ? usuarioForm.get('estado')!.value : estadosOption"
-            *ngFor="let estadosOption of estados; trackBy: trackById">{{ estadosOption.nombre }}
+            *ngFor="let estadosOption of estados; trackBy: trackById">
+            {{ estadosOption.nombre }}
           </option>
         </select>
       </div>
@@ -103,8 +103,7 @@
         <div class="form-group">
           <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.tipoContactos.tipoDocumento"
             for="field_tipoDocumentos">Tipo Documento</label>
-          <select class="form-control" #tipoDoc name="tipoDocumentos" (change)="setTipoDoc(tipoDoc.value)" required>
-            <option [ngValue]="null"></option>
+          <select class="form-control" #tipoDoc name="tipoDocumentos" (change)="setTipoDoc(tipoDoc.value)" required value="empleadoSeleccionado.usuario.contacto.tipoDocumento.tipo">
             <option *ngFor="let tipoDocumentosOption of tipodocumentos;" [ngValue]="tipoDocumentosOption">
               {{ tipoDocumentosOption.tipo }}</option>
           </select>
