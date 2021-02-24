@@ -77,12 +77,15 @@
       <div class="form-group" *ngIf="empleadoSeleccionado !== undefined">
         <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.usuarios.estado"
           for="field_estado">Estado</label>
-        <select class="form-control" id="field_estado" name="estado" formControlName="estado">
+        <!-- <select class="form-control" id="field_estado" name="estado" formControlName="estado">
           <option
             [ngValue]="estadosOption.id === usuarioForm.get('estado')!.value?.id ? usuarioForm.get('estado')!.value : estadosOption"
             *ngFor="let estadosOption of estados; trackBy: trackById">
             {{ estadosOption.nombre }}
           </option>
+        </select> -->
+        <select class="form-control" id="field_estado" name="estado" formControlName="estado" value="empleadoSeleccionado.usuario.estado.nombre">
+          <option *ngFor="let estadosOption of estados; trackBy: trackById">{{ estadosOption.nombre }}</option>
         </select>
       </div>
     </form>

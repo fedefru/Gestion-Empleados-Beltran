@@ -31,6 +31,7 @@ import { CiudadesService } from '../ciudades/ciudades.service';
 import { ITipoContactos, TipoContactos } from 'app/shared/model/tipo-contactos.model';
 import { Direcciones, IDirecciones } from 'app/shared/model/direcciones.model';
 import { EmpleadoRegistroDto } from 'app/shared/model/empleado-registro-dto.model';
+import * as moment from 'moment';
 
 type SelectableEntity = IEmpleados | IUsuarios | IEstados | IAreas | IPuestos | IFichajes | IEmpresas;
 
@@ -52,7 +53,7 @@ export class EmpleadosNewUpdateComponent implements OnInit {
   ciudades: ICiudades[] = [];
   tipodocumentos?: ITipoDocumentos[];
   fechaIngresoDp: any;
-  empleadoSeleccionado: any;
+  empleadoSeleccionado?: IEmpleados;
 
   editForm = this.fb.group({
     id: [],
@@ -153,7 +154,6 @@ export class EmpleadosNewUpdateComponent implements OnInit {
       console.clear();
 
       this.empleadoSeleccionado = empleados;
-
       console.log(this.empleadoSeleccionado);
       this.setValores();
     });
@@ -162,12 +162,12 @@ export class EmpleadosNewUpdateComponent implements OnInit {
   setValores(): void {
     this.usuarioForm = this.fb.group({
       id: [],
-      nombre: [this.empleadoSeleccionado.usuario.nombre],
-      apellido: [this.empleadoSeleccionado.usuario.apellido],
-      fechaNac: [this.empleadoSeleccionado.usuario.fechaNac],
-      clave: [this.empleadoSeleccionado.usuario.clave],
-      usuario: [this.empleadoSeleccionado.usuario.usuario],
-      estado: [this.empleadoSeleccionado.usuario.estado.nombre],
+      nombre: [this.empleadoSeleccionado!.usuario?.nombre],
+      apellido: [this.empleadoSeleccionado!.usuario?.apellido],
+      fechaNac: [moment(this.empleadoSeleccionado!.usuario?.fechaNac, 'YYYY-MM-DD')],
+      clave: [this.empleadoSeleccionado!.usuario!.clave],
+      usuario: [this.empleadoSeleccionado!.usuario?.usuario],
+      estado: [this.empleadoSeleccionado!.usuario?.estado?.nombre],
       direccion: [],
       contacto: [],
     });
@@ -175,36 +175,36 @@ export class EmpleadosNewUpdateComponent implements OnInit {
     this.contactoForm = this.fb.group({
       id: [],
       valorDocumento: [
-        this.empleadoSeleccionado.usuario.contacto.descripcion,
+        this.empleadoSeleccionado!.usuario?.contacto?.descripcion,
         [Validators.required, Validators.minLength(8), Validators.maxLength(12)],
       ],
-      tipoDocumentos: [this.empleadoSeleccionado.usuario.contacto.tipoDocumento, [Validators.required]],
+      tipoDocumentos: [this.empleadoSeleccionado!.usuario?.contacto?.tipoDocumento, [Validators.required]],
     });
 
     this.direccionesForm = this.fb.group({
       id: [],
-      calle: [this.empleadoSeleccionado.usuario.direccion.direccion.calle, [Validators.required]],
-      altura: [this.empleadoSeleccionado.usuario.direccion.direccion.altura, [Validators.required]],
-      piso: [this.empleadoSeleccionado.usuario.direccion.direccion.piso, [Validators.required]],
-      departamento: [this.empleadoSeleccionado.usuario.direccion.direccion.departamento, [Validators.required]],
-      ciudad: [this.empleadoSeleccionado.usuario.direccion.direccion.ciudad.nombre, [Validators.required]],
+      calle: [this.empleadoSeleccionado!.usuario?.direccion?.direccion?.calle, [Validators.required]],
+      altura: [this.empleadoSeleccionado!.usuario?.direccion?.direccion?.altura, [Validators.required]],
+      piso: [this.empleadoSeleccionado!.usuario?.direccion?.direccion?.piso, [Validators.required]],
+      departamento: [this.empleadoSeleccionado!.usuario?.direccion?.direccion?.departamento, [Validators.required]],
+      ciudad: [this.empleadoSeleccionado!.usuario?.direccion?.direccion?.ciudad?.nombre, [Validators.required]],
     });
 
     this.paisForm = this.fb.group({
       id: [],
-      nombre: [this.empleadoSeleccionado.usuario.direccion.direccion.ciudad.provicia.pais.nombre, [Validators.required]],
+      nombre: [this.empleadoSeleccionado!.usuario?.direccion?.direccion?.ciudad?.provicia?.pais?.nombre, [Validators.required]],
     });
 
     this.provinciaForm = this.fb.group({
       id: [],
-      nombre: [this.empleadoSeleccionado.usuario.direccion.direccion.ciudad.provicia.nombre, [Validators.required]],
-      pais: [this.empleadoSeleccionado.usuario.direccion.direccion.ciudad.provicia.pais.id, [Validators.required]],
+      nombre: [this.empleadoSeleccionado!.usuario?.direccion?.direccion?.ciudad?.provicia?.nombre, [Validators.required]],
+      pais: [this.empleadoSeleccionado!.usuario?.direccion?.direccion?.ciudad?.provicia?.pais?.id, [Validators.required]],
     });
 
     this.ciudadForm = this.fb.group({
       id: [],
-      nombre: [this.empleadoSeleccionado.usuario.direccion.direccion.ciudad.nombre, [Validators.required]],
-      provincia: [this.empleadoSeleccionado.usuario.direccion.direccion.ciudad.provicia.id, [Validators.required]],
+      nombre: [this.empleadoSeleccionado!.usuario?.direccion?.direccion?.ciudad?.nombre, [Validators.required]],
+      provincia: [this.empleadoSeleccionado!.usuario?.direccion?.direccion?.ciudad?.provicia?.id, [Validators.required]],
     });
   }
 
