@@ -1,6 +1,6 @@
 <div class="row justify-content-center">
     <div class="col-8">
-        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+        <form name="empleadoForm" role="form" novalidate (ngSubmit)="actualizarEmpleado(empleadoForm.value)" [formGroup]="empleadoForm">
             <h2 id="jhi-empleados-heading" jhiTranslate="gestionEmpleadosApp.empleados.home.createOrEditLabel">Create or
                 edit a Empleados</h2>
 
@@ -8,7 +8,7 @@
                 
                 <h3 jhiTranslate="gestionEmpleadosApp.empleados.datosEmpleado">Datos del Empleado</h3>
                 <jhi-alert></jhi-alert>
-                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                <div class="form-group" [hidden]="!empleadoForm.get('id')!.value">
                     <label for="id" jhiTranslate="global.field.id">ID</label>
                     <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
                 </div>
@@ -26,19 +26,18 @@
                         </span>
                     </div>
                 </div>
-        </form>
         <!-- Datos del usuario-->
-        <form name="usuarioForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="usuarioForm">
+      
             <div>
-                <div class="form-group" [hidden]="!usuarioForm.get('id')!.value">
+                <!-- <div class="form-group" [hidden]="!empleadoForm.get('id')!.value">
                     <label for="id" jhiTranslate="global.field.id">ID</label>
                     <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
-                </div>
+                </div> -->
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.usuarios.usuario"
                         for="field_usuario">Usuario</label>
-                    <input type="text" class="form-control" name="usuario" id="field_usuario" formControlName="usuario"
+                    <input type="text" class="form-control" name="usuario" id="field_usuario" formControlName="usuario" value="asd"
                         minlength="4" required />
                 </div>
 
@@ -70,7 +69,7 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" *jhiHasAnyAuthority="'ROLE_USER'" >
                     <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.usuarios.clave"
                         for="field_clave">Clave</label>
                     <input type="password" class="form-control" name="clave" id="field_clave" formControlName="clave"
@@ -80,34 +79,30 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.usuarios.estado"
                         for="field_estado">Estado</label>
-                    <select class="form-control" id="field_estado" name="estado" formControlName="estado">
-                        <option [ngValue]="null"></option>
-                        <option
-                            [ngValue]="estadosOption.id === usuarioForm.get('estado')!.value?.id ? usuarioForm.get('estado')!.value : estadosOption"
-                            *ngFor="let estadosOption of estados; trackBy: trackById">{{ estadosOption.nombre }}
-                        </option>
+                    <select class="form-control" id="field_estado" name="estado" formControlName="estado" value="empleadoSeleccionado.usuario.estado.nombre">  
+                      <option *ngFor="let estadosOption of estados; trackBy: trackById">{{ estadosOption.nombre }}</option>
                     </select>
                 </div>
-        </form>
+        
 
         <!-- CONTACTO -->
 
         <h3 jhiTranslate="gestionEmpleadosApp.empleados.contacto">Contacto</h3>
-        <form name=" " role="form" novalidate [formGroup]="contactoForm">
+       
 
             <div>
                 <jhi-alert-error></jhi-alert-error>
                 <!-- Formulario para entidad de documento -->
-                <div class="form-group" [hidden]="!contactoForm.get('id')!.value">
+                <!-- <div class="form-group" [hidden]="!empleadoForm.get('id')!.value">
                     <label for="idTipoDocumento" jhiTranslate="global.field.id">ID</label>
                     <input type="text" class="form-control" id="idTipoDocumento" name="idTipoDocumento"
                         formControlName="id" readonly />
-                </div>
+                </div> -->
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.tipoContactos.tipoDocumento"
                         for="field_tipoDocumentos">Tipo Documento</label>
-                    <select class="form-control" #tipoDoc name="tipoDocumentos" (change)="setTipoDoc(tipoDoc.value)"
-                        required>
+                    <select class="form-control" #tipoDoc name="tipoDocumentos"
+                        required formControlName="tipoDocumento">
                         <option [ngValue]="null"></option>
                         <option *ngFor="let tipoDocumentosOption of tipodocumentos;" [ngValue]="tipoDocumentosOption">
                             {{ tipoDocumentosOption.tipo }}</option>
@@ -118,12 +113,12 @@
                     <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.tipoContactos.documento"
                         for="field_valor">Documento</label>
                     <input type="number" class="form-control" name="valorDocumento" id="field_valor"
-                        formControlName="valorDocumento" maxlength="250" required />
+                        maxlength="250" required />
                 </div>
 
 
             </div>
-        </form>
+
 
         <!--FIN CONTACTO-->
 
@@ -133,45 +128,36 @@
             <div class="row">
               <div class="col-6">
                 <!-- Formulario para entidad de pais -->
-                <form name="paisForm" role="form" novalidate [formGroup]="paisForm">
-                  <div class="form-group" [hidden]="!paisForm.get('id')!.value">
-                    <label for="idPais" jhiTranslate="global.field.id">ID</label>
-                    <input type="text" class="form-control" id="idPais" name="idPais" formControlName="id" readonly required />
-                  </div>
-    
-                  <div class="form-group">
+               
+                  <div class="form-group" *ngIf="paises !== undefined" >
                     <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.paises.value"
                       for="field_nombre_pais">Pais</label>
-                    <select class="form-control" #mySelect (change)="setProvincias(mySelect.value)" required>
-                      <option *ngFor="let country of paises" [ngValue]="country.id">{{country.nombre}}</option>
+                     
+                    <select class="form-control" formControlName="pais" name="pais" >
+                      <option *ngFor="let country of paises" (select)="setProvincias(country.nombre)" [ngValue]="country.id">{{country.nombre}}</option>
                     </select>
                   </div>
-                </form>
               </div>
     
               <div class="col-6">
-                <!-- Formulario para entidad de provincia -->
-                <form name="provinciaForm" role="form" novalidate [formGroup]="provinciaForm">
-                  <div class="form-group" [hidden]="!provinciaForm.get('id')!.value">
-                    <label for="id" jhiTranslate="global.field.id">ID</label>
-                    <input type="text" class="form-control" id="id_provincia" name="id" formControlName="id" readonly required/>
-                  </div>
+                
+                
     
                   <div class="form-group">
                     <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.provincias.value"
                       for="field_nombre_provincia">Provincia</label>
     
-                    <select class="form-control" #provSel *ngIf="provincias" (change)="setProvForm(provSel.value)" required>
+                    <select class="form-control"  #provSel *ngIf="provincias" required>
                       <option *ngFor="let prov of provincias" [ngValue]="prov.id">{{prov.nombre}}</option>
                     </select>
     
                   </div>
-                </form>
+              
               </div>
               <div class="col-4">
                 <!-- Formulario para entidad de ciudad -->
-                <form name="ciudadForm" role="form" novalidate [formGroup]="ciudadForm">
-                  <div class="form-group" [hidden]="!ciudadForm.get('id')!.value">
+               
+                  <div class="form-group" [hidden]="!empleadoForm.get('id')!.value">
                     <label for="id" jhiTranslate="global.field.id">ID</label>
                     <input type="text" class="form-control" id="id_ciudad" name="id" formControlName="id" readonly required />
                   </div>
@@ -180,21 +166,21 @@
                     <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.ciudades.value"
                       for="field_nombre_ciudad">Ciudad</label>
     
-                       <select class="form-control" #city *ngIf="ciudades" (change)="setCiudades(city.value)" required>
+                       <select class="form-control" #city *ngIf="ciudades"  required>
                         <option *ngFor="let ciudad of ciudades" [ngValue]="ciudad">{{ciudad.nombre}}</option>
                       </select> 
                   </div>
-                </form>
+     
               </div>
     
     
               <!-- Formulario para entidad de direcciones -->
               
               <div class="col-4">
-                <form name="direccionesForm" role="form" [formGroup]="direccionesForm">
+               
                   <jhi-alert-error></jhi-alert-error>
     
-                  <div class="form-group" [hidden]="!direccionesForm.get('id')!.value">
+                  <div class="form-group" [hidden]="!empleadoForm.get('id')!.value">
                     <label for="id" jhiTranslate="global.field.id">ID</label>
                     <input type="text" class="form-control" id="id_direcciones" name="id" formControlName="id" readonly required />
                   </div>
@@ -204,39 +190,38 @@
                     <input type="text" class="form-control" name="calle" id="field_calle" formControlName="calle"
                       minlength="4" required />
                   </div>
-                </form>
+
               </div>
     
               <div class="col-4">
-                <form name="direccionesForm" role="form" [formGroup]="direccionesForm">
                 <div class="form-group">
                   <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.direcciones.altura"
                     for="field_altura">Altura</label>
                   <input type="number" #altura class="form-control" name="altura" id="field_altura" formControlName="altura" min="1"
-                    (change)="setAltura(altura.value)" required />
+                     required />
                 </div>
-              </form>
+
               </div>
     
               <div class="col-2">
-                <form name="direccionesForm" role="form" [formGroup]="direccionesForm">
+              
                 <div class="form-group">
                   <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.direcciones.piso"
                     for="field_piso">Piso</label>
-                  <input type="number" class="form-control" #piso name="piso" id="field_piso" formControlName="piso" min="1" (change)="setPiso(piso.value)" required/>
+                  <input type="number" class="form-control" #piso name="piso" id="field_piso" formControlName="piso" min="1" required/>
                 </div>
-              </form>
+         
               </div>
     
               <div class="col-10">
-                <form name="direccionesForm" role="form" [formGroup]="direccionesForm">
+               
                 <div class="form-group">
                   <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.direcciones.departamento"
                     for="field_departamento">Departamento</label>
                   <input type="text" #depto class="form-control" name="departamento" id="field_departamento"
-                    formControlName="departamento" (change)="setDepartamento(depto.value)" required  />
+                    formControlName="departamento" required  />
                 </div>
-              </form>
+  
               </div>
     
 
@@ -246,8 +231,6 @@
         <!-- Fin de datos del usuario-->
         <hr>
         
-    
-        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
         <h3 jhiTranslate="gestionEmpleadosApp.empleados.jerarquia">Jerarquia</h3>
             <div class="form-group">
                 <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.empleados.jefe"
@@ -255,7 +238,7 @@
                 <select class="form-control" id="field_jefe" name="jefe" formControlName="jefe">
                     <option [ngValue]="null"></option>
                     <option
-                        [ngValue]="empleadosOption.id === editForm.get('jefe')!.value?.id ? editForm.get('jefe')!.value : empleadosOption"
+                        [ngValue]="empleadosOption.id === empleadoForm.get('jefe')!.value?.id ? empleadoForm.get('jefe')!.value : empleadosOption"
                         *ngFor="let empleadosOption of empleadosCollection; trackBy: trackById">
                         {{ empleadosOption.usuario?.nombre }}</option>
                 </select>
@@ -267,7 +250,7 @@
                 <select class="form-control" id="field_area" name="area" formControlName="area">
                     <option [ngValue]="null"></option>
                     <option
-                        [ngValue]="areasOption.id === editForm.get('area')!.value?.id ? editForm.get('area')!.value : areasOption"
+                        [ngValue]="areasOption.id === empleadoForm.get('area')!.value?.id ? empleadoForm.get('area')!.value : areasOption"
                         *ngFor="let areasOption of areas; trackBy: trackById">{{ areasOption.nombre }}</option>
                 </select>
             </div>
@@ -278,7 +261,7 @@
                 <select class="form-control" id="field_puesto" name="puesto" formControlName="puesto">
                     <option [ngValue]="null"></option>
                     <option
-                        [ngValue]="puestosOption.id === editForm.get('puesto')!.value?.id ? editForm.get('puesto')!.value : puestosOption"
+                        [ngValue]="puestosOption.id === empleadoForm.get('puesto')!.value?.id ? empleadoForm.get('puesto')!.value : puestosOption"
                         *ngFor="let puestosOption of puestos; trackBy: trackById">{{ puestosOption.nombre }}</option>
                 </select>
             </div>
@@ -289,12 +272,12 @@
                     <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
                 </button>
 
-                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving"
+                <button type="submit" id="save-entity" [disabled]="empleadoForm.invalid || isSaving"
                     class="btn btn-primary">
                     <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
                 </button>
             </div>
         </form>
-        
+            
     </div>
 </div>

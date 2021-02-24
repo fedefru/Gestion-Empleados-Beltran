@@ -38,8 +38,8 @@
     "zone.js": "0.10.3"
   },
   "devDependencies": {
-    "@angular/cli": "10.0.0",
     "@angular/compiler-cli": "10.0.0",
+    "@angular/cli": "10.0.0",
     "@ngtools/webpack": "10.0.0",
     "@openapitools/openapi-generator-cli": "1.0.13-4.3.1",
     "@types/jest": "26.0.3",
@@ -99,6 +99,7 @@
     "node": ">=12.16.1"
   },
   "scripts": {
+    "start:dev": "npm run start:dev",
     "prettier:format": "prettier --write \"{,src/**/}*.{md,json,ts,css,scss,yml}\"",
     "lint": "eslint . --ext .js,.ts",
     "lint:fix": "npm run lint -- --fix",
