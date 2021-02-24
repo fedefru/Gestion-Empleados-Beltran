@@ -11,6 +11,7 @@ import { EmpleadosService } from './empleados.service';
 import { EmpleadosComponent } from './empleados.component';
 import { EmpleadosDetailComponent } from './empleados-detail.component';
 import { EmpleadosUpdateComponent } from './empleados-update.component';
+import { EmpleadosNewUpdateComponent } from './empleados-new-update.component';
 
 @Injectable({ providedIn: 'root' })
 export class EmpleadosResolve implements Resolve<IEmpleados> {
@@ -71,7 +72,7 @@ export const empleadosRoute: Routes = [
   },
   {
     path: ':id/edit',
-    component: EmpleadosUpdateComponent,
+    component: EmpleadosNewUpdateComponent,
     resolve: {
       empleados: EmpleadosResolve,
     },
