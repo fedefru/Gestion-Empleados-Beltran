@@ -192,8 +192,7 @@ public class EmpleadosResource {
 
         try {
 
-            Optional<Ciudades> idCiudad =  ciudadesRepository.findByNombre(empleadoRegistroDTO.getEmpleados().getUsuario().getDireccion().getDireccion().getCiudad().getNombre());
-            empleadoRegistroDTO.getDirecciones().setCiudad(idCiudad);
+            //empleadoRegistroDTO.getDirecciones().setCiudad(idCiudad.get(0));
             Direcciones resultDirecciones = direccionesRepository.save(empleadoRegistroDTO.getDirecciones());
 
             // Instancio un nuevo tipo de direccion en el cual le seteo el ID de la direccion que acabo de crear

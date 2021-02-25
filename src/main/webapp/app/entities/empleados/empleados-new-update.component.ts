@@ -236,7 +236,8 @@ export class EmpleadosNewUpdateComponent implements OnInit {
 
     const empleado = new EmpleadoRegistroDto(empleados, direcciones, pais, provincia);
 
-    this.subscribeToSaveResponse(this.empleadosService.updateEmpReg(empleado));
+    console.log(empleado);
+    //this.subscribeToSaveResponse(this.empleadosService.updateEmpReg(empleado));
   }
 
   // Creo las instancias que necesito

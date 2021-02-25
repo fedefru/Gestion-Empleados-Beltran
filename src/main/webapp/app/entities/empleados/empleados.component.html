@@ -27,8 +27,8 @@
                     <th scope="col"  jhiSortBy="estado.id"><span jhiTranslate="gestionEmpleadosApp.empleados.estado">Estado</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="area.id"><span jhiTranslate="gestionEmpleadosApp.empleados.area">Area</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="puesto.id"><span jhiTranslate="gestionEmpleadosApp.empleados.puesto">Puesto</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="fichaje.id"><span jhiTranslate="gestionEmpleadosApp.empleados.fichaje">Fichaje</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="empresa.id"><span jhiTranslate="gestionEmpleadosApp.empleados.empresa">Empresa</span> <fa-icon icon="sort"></fa-icon></th>
+                    <!-- <th scope="col"  jhiSortBy="fichaje.id"><span jhiTranslate="gestionEmpleadosApp.empleados.fichaje">Fichaje</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="empresa.id"><span jhiTranslate="gestionEmpleadosApp.empleados.empresa">Empresa</span> <fa-icon icon="sort"></fa-icon></th> -->
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -61,7 +61,7 @@
                             <a [routerLink]="['/puestos', empleados.puesto?.id, 'view']" >{{ empleados.puesto?.nombre }}</a>
                         </div>
                     </td>
-                    <td>
+                    <!-- <td>
                         <div *ngIf="empleados.fichaje">
                             <a [routerLink]="['/fichajes', empleados.fichaje?.id, 'view']" >{{ empleados.fichaje?.accion }}</a>
                         </div>
@@ -70,7 +70,7 @@
                         <div *ngIf="empleados.empresa">
                             <a [routerLink]="['/empresas', empleados.empresa?.id, 'view']" >{{ empleados.empresa?.nombre }}</a>
                         </div>
-                    </td>
+                    </td> -->
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

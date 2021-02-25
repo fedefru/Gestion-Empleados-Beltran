@@ -10,18 +10,22 @@
             <dl class="row-md jh-entity-details">
                 <dt><span jhiTranslate="gestionEmpleadosApp.empleados.fechaIngreso">Fecha Ingreso</span></dt>
                 <dd>
-                    <span>{{ empleados.fechaIngreso }}</span>
+                    <span>{{ date }}</span>
                 </dd>
+
+
                 <dt><span jhiTranslate="gestionEmpleadosApp.empleados.jefe">Jefe</span></dt>
                 <dd>
                     <div *ngIf="empleados.jefe">
-                        <a [routerLink]="['/empleados', empleados.jefe?.id, 'view']">{{ empleados.jefe?.usuario?.nombre }}</a>
+                        <a [routerLink]="['/empleados', empleados.jefe?.id, 'view']">{{ empleados.jefe?.usuario?.nombre
+                            }}</a>
                     </div>
                 </dd>
                 <dt><span jhiTranslate="gestionEmpleadosApp.empleados.usuario">Usuario</span></dt>
                 <dd>
                     <div *ngIf="empleados.usuario">
-                        <a [routerLink]="['/usuarios', empleados.usuario?.id, 'view']">{{ empleados.usuario?.nombre }}</a>
+                        <a [routerLink]="['/usuarios', empleados.usuario?.id, 'view']">{{ empleados.usuario?.nombre
+                            }}</a>
                     </div>
                 </dd>
                 <dt><span jhiTranslate="gestionEmpleadosApp.empleados.estado">Estado</span></dt>
@@ -42,7 +46,7 @@
                         <a [routerLink]="['/puestos', empleados.puesto?.id, 'view']">{{ empleados.puesto?.nombre }}</a>
                     </div>
                 </dd>
-                <dt><span jhiTranslate="gestionEmpleadosApp.empleados.fichaje">Fichaje</span></dt>
+                <!-- <dt><span jhiTranslate="gestionEmpleadosApp.empleados.fichaje">Fichaje</span></dt>
                 <dd>
                     <div *ngIf="empleados.fichaje">
                         <a [routerLink]="['/fichajes', empleados.fichaje?.id, 'view']">{{ empleados.fichaje?.accion }}</a>
@@ -53,18 +57,14 @@
                     <div *ngIf="empleados.empresa">
                         <a [routerLink]="['/empresas', empleados.empresa?.id, 'view']">{{ empleados.empresa?.nombre }}</a>
                     </div>
-                </dd>
+                </dd> -->
             </dl>
 
-            <button type="submit"
-                    (click)="previousState()"
-                    class="btn btn-info">
+            <button type="submit" (click)="previousState()" class="btn btn-info">
                 <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
             </button>
 
-            <button type="button"
-                    [routerLink]="['/empleados', empleados.id, 'edit']"
-                    class="btn btn-primary">
+            <button type="button" [routerLink]="['/empleados', empleados.id, 'edit']" class="btn btn-primary">
                 <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
             </button>
         </div>
