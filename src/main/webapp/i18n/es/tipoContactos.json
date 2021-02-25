@@ -18,7 +18,24 @@
       },
       "descripcion": "Descripcion",
       "tipoDocumento": "Tipo Documento",
-      "documento": "Documento"
+      "documento": "Documento",
+      "contacto": "Contacto",
+      "siguiente": "Siguiente",
+      "direccion": "Dirección",
+      "pais": "País",
+      "ciudad": "Ciudad",
+      "atras": "Atrás",
+      "empresa": "Empresa",
+      "clave": "Clave",
+      "claveCheck": "Las contraseñas coinciden",
+      "claveNo": "Las contraseñas no coinciden",
+      "provincia": "Provincia",
+      "calle": "Calle",
+      "altura": "Altura",
+      "piso": "Piso",
+      "departamente": "Departamento",
+      "empresaUser": "Usuario de empresa",
+      "guardar": "Guardar"
     }
   }
 }

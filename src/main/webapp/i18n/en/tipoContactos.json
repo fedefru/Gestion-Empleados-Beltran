@@ -18,7 +18,24 @@
       },
       "descripcion": "Description",
       "tipoDocumento": "Document Type",
-      "documento": "Document"
+      "documento": "Document",
+      "contacto": "Contact",
+      "siguiente": "Next",
+      "direccion": "Adress",
+      "pais": "Country",
+      "ciudad": "City",
+      "atras": "Back",
+      "empresa": "Business",
+      "clave": "Password",
+      "claveCheck": "Passwords match",
+      "claveNo": "Passwords not match",
+      "provincia": "State",
+      "calle": "Street",
+      "altura": "Height",
+      "piso": "Storey",
+      "departamento": "Departmen",
+      "empresaUser": "Company User",
+      "guardar": "Save"
     }
   }
 }

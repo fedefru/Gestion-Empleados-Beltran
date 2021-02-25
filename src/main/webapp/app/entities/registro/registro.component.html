@@ -1,8 +1,8 @@
 <div class="col-md-6 offset-md-3 block">
   <mat-horizontal-stepper linear #stepper>
 
-    <mat-step label="Contacto" >
-      <p>Contacto</p>
+    <mat-step label="Contacto">
+      <p jhiTranslate="gestionEmpleadosApp.tipoContactos.contacto">Contacto</p>
       <form name="contactoForm" role="form" novalidate [formGroup]="contactoForm">
 
         <div>
@@ -33,11 +33,11 @@
 
         </div>
       </form>
-      <button mat-button matStepperNext>Siguiente</button>
+      <button mat-raised-button color="primary" matStepperNext jhiTranslate="gestionEmpleadosApp.tipoContactos.siguiente">Siguiente</button>
     </mat-step>
-    <mat-step label="Direccion" >
+    <mat-step label="Dirección" >
       <div class="container">
-        <p>Direccion</p>
+        <p jhiTranslate="gestionEmpleadosApp.tipoContactos.direccion">Dirección</p>
         <div class="row">
           <div class="col-6">
             <!-- Formulario para entidad de pais -->
@@ -49,7 +49,7 @@
 
               <div class="form-group">
                 <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.paises.value"
-                  for="field_nombre_pais">Pais</label>
+                  for="field_nombre_pais" jhiTranslate="gestionEmpleadosApp.tipoContactos.pais">País</label>
                 <select class="form-control" #mySelect (change)="setProvincias(mySelect.value)" required>
                   <option *ngFor="let country of paises" [ngValue]="country.id">{{country.nombre}}</option>
                 </select>
@@ -85,7 +85,7 @@
               </div>
 
               <div class="form-group">
-                <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.ciudades.value"
+                <label class="form-control-label" jhiTranslate="gestionEmpleadosApp.tipoContactos.ciudad"
                   for="field_nombre_ciudad">Ciudad</label>
 
                    <select class="form-control" #city *ngIf="ciudades" (change)="setCiudades(city.value)" required>
@@ -148,13 +148,13 @@
           </div>
 
 
-          <button mat-button matStepperPrevious>Volver</button>
-          <button mat-button matStepperNext>Siguiente</button>
+          <button mat-raised-button color="primary" jhiTranslate="gestionEmpleadosApp.tipoContactos.atras" matStepperPrevious style="margin-right: 5%;">Volver</button>
+          <button mat-raised-button color="primary" jhiTranslate="gestionEmpleadosApp.tipoContactos.siguiente" matStepperNext>Siguiente</button>
         </div>
       </div>
     </mat-step>
     <mat-step label="Empresa" >
-      <p>Empresa</p>
+      <p jhiTranslate="gestionEmpleadosApp.tipoContactos.empresa">Empresa</p>
       <!-- Formulario para entidad de empresa -->
       <form name="empresaForm" role="form" [formGroup]="empresaForm">
 
@@ -178,10 +178,10 @@
         </div>
 
         <div class="form-group">
-          <label class="form-control-label" for="field_clave">Clave</label>
+          <label class="form-control-label" for="field_clave" jhiTranslate="gestionEmpleadosApp.tipoContactos.clave">Clave</label>
           <input type="password" #clave class="form-control" name="clave" formControlName="clave" minlength="8" required
             (change)="setClave(clave.value)" />
-
+            <br>
           <input type="password" #confirmaClave class="form-control" name="confirmaClave" minlength="8" required
             (change)="checkPasswords(clave.value,confirmaClave.value)" />
         </div>
@@ -190,16 +190,16 @@
         <div *ngIf="coincidenPass === null">
         </div>
         <div *ngIf="coincidenPass" class="alert alert-success" role="alert">
-          <span>Contraseñas coinciden</span>
+          <span jhiTranslate="gestionEmpleadosApp.tipoContactos.claveCheck">Contraseñas coinciden</span>
         </div>
         <div *ngIf="coincidenPass === false" class="alert alert-danger" role="alert">
-          <span>Contraseñas no coinciden</span>
+          <span jhiTranslate="gestionEmpleadosApp.tipoContactos.claveNo">Contraseñas no coinciden</span>
         </div>
 
 
       </form>
-      <button mat-button matStepperPrevious>Volver</button>
-      <button mat-button matStepperNext>Siguiente</button>
+      <button mat-raised-button color="primary" style="margin-right: 5%;" matStepperPrevious jhiTranslate="gestionEmpleadosApp.tipoContactos.atras">Volver</button>
+      <button mat-raised-button color="primary" matStepperNext jhiTranslate="gestionEmpleadosApp.tipoContactos.siguiente">Siguiente</button>
     </mat-step>
     <mat-step label="Confirmación">
       <!--<p>{{empresaForm.get('nombre')?.value}}</p>-->
@@ -212,8 +212,8 @@
         <table class="table table-bordered table-dark">
           <thead>
             <tr>
-              <th scope="col" class="align-middle">Tipo documento</th>
-              <th scope="col" class="align-middle">Documento</th>
+              <th scope="col" class="align-middle" jhiTranslate="gestionEmpleadosApp.tipoContactos.tipoDocumento">Tipo documento</th>
+              <th scope="col" class="align-middle" jhiTranslate="gestionEmpleadosApp.tipoContactos.documento">Documento</th>
             </tr>
           </thead>
           <tbody>
@@ -227,9 +227,9 @@
         <table class="table table-bordered table-dark">
           <thead>
             <tr>
-              <th scope="col" class="align-middle">Pais</th>
-              <th scope="col" class="align-middle">Provincia</th>
-              <th scope="col" class="align-middle">Calle</th>
+              <th scope="col" class="align-middle" jhiTranslate="gestionEmpleadosApp.tipoContactos.pais">Pais</th>
+              <th scope="col" class="align-middle" jhiTranslate="gestionEmpleadosApp.tipoContactos.provincia">Provincia</th>
+              <th scope="col" class="align-middle" jhiTranslate="gestionEmpleadosApp.tipoContactos.calle">Calle</th>
             </tr>
           </thead>
           <tbody>
@@ -246,8 +246,8 @@
         <table class="table table-bordered table-dark">
           <thead>
             <tr>
-              <th scope="col" class="align-middle">Ciudad</th>
-              <th scope="col" class="align-middle">Altura</th>
+              <th scope="col" class="align-middle" jhiTranslate="gestionEmpleadosApp.tipoContactos.ciudad">Ciudad</th>
+              <th scope="col" class="align-middle" jhiTranslate="gestionEmpleadosApp.tipoContactos.pais">Altura</th>
             </tr>
           </thead>
           <tbody>
@@ -258,8 +258,8 @@
           </tbody>
           <thead>
             <tr>
-              <th scope="col" class="align-middle">Piso</th>
-              <th scope="col" class="align-middle">Departamento</th>
+              <th scope="col" class="align-middle" jhiTranslate="gestionEmpleadosApp.tipoContactos.piso">Piso</th>
+              <th scope="col" class="align-middle" jhiTranslate="gestionEmpleadosApp.tipoContactos.departamento">Departamento</th>
             </tr>
           </thead>
           <tbody>
@@ -274,14 +274,14 @@
         <table class="table table-bordered table-dark">
           <thead>
             <tr>
-              <th scope="col" class="align-middle">Empresa</th>
+              <th scope="col" class="align-middle" jhiTranslate="gestionEmpleadosApp.tipoContactos.empresa">Empresa</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td class="align-middle">{{empresaForm.get('nombre')?.value}}</td>
             </tr>
-            <th scope="col" class="align-middle">Usuario de Empresa</th>
+            <th scope="col" class="align-middle" jhiTranslate="gestionEmpleadosApp.tipoContactos.empresaUser" >Usuario de Empresa</th>
             <tr>
               <td class="align-middle">{{empresaForm.get('usuario')?.value}}</td>
             </tr>
@@ -291,8 +291,8 @@
 
       </div>
       <div class="text-center">
-      <button type="submit" class="btn btn-primary" (click)="save()">Submit</button>
-      <button mat-button matStepperPrevious>Volver</button>
+      <button mat-raised-button color="primary" matStepperPrevious jhiTranslate="gestionEmpleadosApp.tipoContactos.atras">Volver</button>
+      <button type="submit" mat-raised-button color="primary" (click)="save()" jhiTranslate="gestionEmpleadosApp.tipoContactos.guardar">Submit</button>
     </div>
     </mat-step>
 
