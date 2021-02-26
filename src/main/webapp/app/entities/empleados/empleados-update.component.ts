@@ -31,6 +31,7 @@ import { CiudadesService } from '../ciudades/ciudades.service';
 import { ITipoContactos, TipoContactos } from 'app/shared/model/tipo-contactos.model';
 import { Direcciones, IDirecciones } from 'app/shared/model/direcciones.model';
 import { EmpleadoRegistroDto } from 'app/shared/model/empleado-registro-dto.model';
+import { AccountService } from 'app/core/auth/account.service';
 
 type SelectableEntity = IEmpleados | IUsuarios | IEstados | IAreas | IPuestos | IFichajes | IEmpresas;
 
@@ -52,6 +53,8 @@ export class EmpleadosUpdateComponent implements OnInit {
   ciudades: ICiudades[] = [];
   tipodocumentos?: ITipoDocumentos[];
   fechaIngresoDp: any;
+  cuentaLogueada?: any;
+  empresaLogueada?: any;
 
   editForm = this.fb.group({
     id: [],
@@ -121,6 +124,7 @@ export class EmpleadosUpdateComponent implements OnInit {
     protected paisesService: PaisesService,
     protected provinciasService: ProvinciasService,
     protected ciudadesService: CiudadesService,
+    protected accountService: AccountService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -128,6 +132,16 @@ export class EmpleadosUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ empleados }) => {
       this.updateForm(empleados);
+
+      // Obtengo el nombre de usuario de la persona logueada
+      this.accountService.identity().subscribe(account => {
+        this.cuentaLogueada = account!.login;
+      });
+
+      // Obtengo la empresa Logueada, si es que es empresa
+      this.empresasService.findByUsuario(this.cuentaLogueada).subscribe(empresa => {
+        this.empresaLogueada = empresa.body;
+      });
 
       this.empleadosService.query().subscribe((res: HttpResponse<IEmpleados[]>) => (this.empleadosCollection = res.body || []));
 
@@ -172,6 +186,7 @@ export class EmpleadosUpdateComponent implements OnInit {
   save(): void {
     this.isSaving = true;
     const empleados = this.createFromForm();
+    empleados.empresa = this.empresaLogueada;
     const pais = this.createPaisFromForm();
     const provincia = this.createProvinciaFromForm(pais);
     const ciudad = this.createCiudadesFromForm(provincia);
