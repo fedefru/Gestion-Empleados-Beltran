@@ -26,6 +26,9 @@ export class SugerenciasVistaComponent implements OnInit {
   empresaLogueada: any;
   empleados: IEmpleados[] = [];
   sugerenciasFiltrados: Array<Sugerencias> = [];
+  empresaDelEmpleado?: number;
+
+  cuentaAuth?: any;
 
   test: any = false;
   constructor(
@@ -39,6 +42,7 @@ export class SugerenciasVistaComponent implements OnInit {
   ngOnInit(): void {
     this.accountService.identity().subscribe(account => {
       this.cuenta = account!.login;
+      this.cuentaAuth = account;
     });
 
     this.usuarioService.findUsuarioByAlias(this.cuenta.toLowerCase()).subscribe((resp: HttpResponse<any>) => {
@@ -46,21 +50,16 @@ export class SugerenciasVistaComponent implements OnInit {
     });
 
     this.empleadosService.findAll().subscribe((res: any) => {
-      this.empresasService.findByUsuario(this.cuenta).subscribe((empresa: any) => {
-        this.empresaLogueada = empresa.body;
+      if (this.cuentaAuth.authorities[0] === 'ROLE_USER') {
         this.empleados = res.body;
-        console.clear();
 
-        console.log('Empleados sin filtrar => ', this.empleados);
-        if (this.empresaLogueada) {
-          console.log('Empresa ', this.empresaLogueada['id']);
-          this.empleados = this.empleados.filter(empleado => {
-            console.log(typeof empleado.empresa!.id, typeof this.empresaLogueada['id']);
-            console.log(empleado.empresa!.id === this.empresaLogueada['id']);
-            return empleado.empresa!.id === this.empresaLogueada['id'];
-          });
-        }
-        console.log('Empleados filtrados => ', this.empleados);
+        this.empleados.forEach((emp: Empleados) => {
+          if (emp.id === this.usuario.id) {
+            this.empresaDelEmpleado = emp.empresa?.id;
+          }
+        });
+
+        this.empleados = this.empleados.filter((emp: Empleados) => emp.empresa?.id === this.empresaDelEmpleado);
 
         this.sugerenciasService.query().subscribe((respuesta: HttpResponse<any>) => {
           this.sugerencias = respuesta.body;
@@ -78,7 +77,40 @@ export class SugerenciasVistaComponent implements OnInit {
             });
           });
         });
-      });
+      } else if (this.cuentaAuth.authorities[0] === 'ROLE_EMPRESA') {
+        this.empresasService.findByUsuario(this.cuenta).subscribe((empresa: any) => {
+          this.empresaLogueada = empresa.body;
+          this.empleados = res.body;
+
+          console.log('Empleados sin filtrar => ', this.empleados);
+          if (this.empresaLogueada) {
+            console.log('Empresa ', this.empresaLogueada['id']);
+            this.empleados = this.empleados.filter(empleado => {
+              console.log(typeof empleado.empresa!.id, typeof this.empresaLogueada['id']);
+              console.log(empleado.empresa!.id === this.empresaLogueada['id']);
+              return empleado.empresa!.id === this.empresaLogueada['id'];
+            });
+          }
+          console.log('Empleados filtrados => ', this.empleados);
+
+          this.sugerenciasService.query().subscribe((respuesta: HttpResponse<any>) => {
+            this.sugerencias = respuesta.body;
+
+            console.log('sugerencias sin filtro => ', this.sugerencias, ' El largo de empleados => ', this.empleados.length);
+
+            this.empleados.forEach((emp: Empleados) => {
+              this.sugerencias.forEach((sug: any) => {
+                if (emp.usuario?.id === sug.usuario?.id) {
+                  console.log(emp.usuario?.id, sug.usuario?.id);
+                  console.log(sug);
+                  this.sugerenciasFiltrados?.push(sug);
+                  console.log('sugerencias con filtro => ', this.sugerenciasFiltrados);
+                }
+              });
+            });
+          });
+        });
+      }
     });
   }
 
