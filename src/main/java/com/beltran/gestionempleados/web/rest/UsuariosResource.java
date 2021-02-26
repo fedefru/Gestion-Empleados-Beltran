@@ -93,6 +93,7 @@ public class UsuariosResource {
             .body(result);
     }
 
+
     /**
      * {@code GET  /usuarios} : get all the usuarios.
      *

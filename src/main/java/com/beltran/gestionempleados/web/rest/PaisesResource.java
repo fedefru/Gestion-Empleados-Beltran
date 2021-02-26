@@ -118,6 +118,13 @@ public class PaisesResource {
         return ResponseUtil.wrapOrNotFound(paises);
     }
 
+    @GetMapping("/paises/nombre/{nombre}")
+    public ResponseEntity<Paises> getPaisesByNombre(@PathVariable String nombre) {
+        log.debug("REST request to get Paises by nombre : {}", nombre);
+        Optional<Paises> paises = paisesRepository.findByNombre(nombre);
+        return ResponseUtil.wrapOrNotFound(paises);
+    }
+
     /**
      * {@code DELETE  /paises/:id} : delete the "id" paises.
      *

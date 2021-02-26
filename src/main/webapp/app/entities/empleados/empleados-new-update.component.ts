@@ -55,6 +55,10 @@ export class EmpleadosNewUpdateComponent implements OnInit {
   fechaIngresoDp: any;
   empleadoSeleccionado?: IEmpleados;
 
+  paisEncontrado: any;
+  provinciaEncontrado: any;
+  ciudadEncontrado: any;
+
   editForm = this.fb.group({
     id: [],
     fechaIngreso: [],
@@ -335,7 +339,7 @@ export class EmpleadosNewUpdateComponent implements OnInit {
 
   protected onSaveSuccess(): void {
     this.isSaving = false;
-    //this.previousState();
+    this.previousState();
   }
 
   protected onSaveError(): void {
@@ -347,15 +351,28 @@ export class EmpleadosNewUpdateComponent implements OnInit {
   }
 
   setProvincias(country: any): void {
-    this.paisForm.controls['nombre'].setValue(country);
-    country = this.paises?.filter(x => x.nombre === country);
-    this.provinciasService.getByCountry(country[0].id).subscribe((res: HttpResponse<IProvincias[]>) => {
-      this.provincias = res.body || [];
+    console.log('setProvincias value ', country);
+
+    // Traerme el pais por nombre
+    this.paisesService.findByNombre(country).subscribe((res: HttpResponse<Paises>) => {
+      this.paisEncontrado = res.body;
+      console.log(this.paisEncontrado);
+      this.paisForm.controls['id'].setValue(this.paisEncontrado.id);
+      this.paisForm.controls['nombre'].setValue(this.paisEncontrado.nombre);
+
+      this.provinciasService.getByCountry(this.paisEncontrado.id).subscribe((resp: HttpResponse<IProvincias[]>) => {
+        this.provincias = resp.body || [];
+      });
     });
   }
 
   setCiudades(state: any): void {
-    this.ciudadForm.controls['nombre'].setValue(state);
+    this.ciudadesService.findByNombre(state).subscribe((res: HttpResponse<Paises>) => {
+      this.ciudadEncontrado = res.body;
+      console.log(this.ciudadEncontrado);
+      this.ciudadForm.controls['id'].setValue(this.ciudadEncontrado.id);
+      this.ciudadForm.controls['nombre'].setValue(this.ciudadEncontrado.nombre);
+    });
   }
 
   setProvForm(provincia: any): void {
@@ -364,6 +381,7 @@ export class EmpleadosNewUpdateComponent implements OnInit {
       this.ciudades = res.body || [];
     });
 
+    this.provinciaForm.controls['id'].setValue(provincia[0].id);
     this.provinciaForm.controls['nombre'].setValue(provincia[0].nombre);
   }
 

@@ -13,6 +13,7 @@ type EntityArrayResponseType = HttpResponse<ICiudades[]>;
 export class CiudadesService {
   public resourceUrl = SERVER_API_URL + 'api/ciudades';
   public resourceUrlCiudades = SERVER_API_URL + 'api/getByState';
+  public resourceUrlNombre = SERVER_API_URL + 'api/ciudades/nombre';
 
   constructor(protected http: HttpClient) {}
 
@@ -26,6 +27,10 @@ export class CiudadesService {
 
   find(id: number): Observable<EntityResponseType> {
     return this.http.get<ICiudades>(`${this.resourceUrl}/${id}`, { observe: 'response' });
+  }
+
+  findByNombre(nombre: string): Observable<EntityResponseType> {
+    return this.http.get<ICiudades>(`${this.resourceUrlNombre}/${nombre}`, { observe: 'response' });
   }
 
   query(req?: any): Observable<EntityArrayResponseType> {

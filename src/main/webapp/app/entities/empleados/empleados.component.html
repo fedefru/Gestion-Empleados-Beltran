@@ -46,11 +46,11 @@
                             <a [routerLink]="['/usuarios', empleados.usuario?.id, 'view']" >{{ empleados.usuario?.nombre }}</a>
                         </div>
                     </td>
-                    <td>
+                    <!-- <td>
                         <div *ngIf="empleados.estado">
                             <a [routerLink]="['/estados', empleados.estado?.id, 'view']" >{{ empleados.estado?.nombre }}</a>
                         </div>
-                    </td>
+                    </td> -->
                     <td>
                         <div *ngIf="empleados.area">
                             <a [routerLink]="['/areas', empleados.area?.id, 'view']" >{{ empleados.area?.nombre }}</a>

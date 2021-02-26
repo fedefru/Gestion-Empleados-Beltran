@@ -113,6 +113,12 @@ public class CiudadesResource {
         return ResponseUtil.wrapOrNotFound(ciudades);
     }
 
+    @GetMapping("/ciudades/nombre/{nombre}")
+    public ResponseEntity<Ciudades> getCiudadesByNombre(@PathVariable String nombre) {
+        log.debug("REST request to get Ciudades by nombre : {}", nombre);
+        Optional<Ciudades> ciudades = ciudadesRepository.findByNombre(nombre);
+        return ResponseUtil.wrapOrNotFound(ciudades);
+    }
 
     @GetMapping("/getByState/{id}")
     public List<Ciudades> getByState(@PathVariable Long id) {
