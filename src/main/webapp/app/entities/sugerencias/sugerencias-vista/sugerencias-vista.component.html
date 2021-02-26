@@ -1,32 +1,47 @@
 <div class="container-fluid">
-    <div class="row">
+  <div class="row">
 
-      <div *ngFor="let sugerencia of sugerencias" id="col--card">
+    <div *ngIf="sugerenciasFiltrados == undefined || sugerenciasFiltrados.length == 0" class="alert alert-warning w-100"
+      role="alert">
+      <p class="text-center">No hay sugerencias cargadas</p>
+    </div>
 
+    <div *ngIf="sugerenciasFiltrados && sugerenciasFiltrados.length > 0">
+
+      <div *ngFor="let sugerencia of sugerenciasFiltrados" id="col--card">
+
+        <div>
         <div id="card--sugerencia" class="card" style="width: 20rem;">
-           <!--  <img src="..." class="card-img-top" alt="..."> -->
-           <div class="card-header" > 
-               <h5 class="card-title"> {{sugerencia.asunto}}</h5>
-               <div class="row justify-content-center">
+          <!--  <img src="..." class="card-img-top" alt="..."> -->
+          <div class="card-header">
+            <h5 class="card-title"> {{sugerencia.asunto}}</h5>
+            <div class="row justify-content-center">
 
-                  <span id="fecha--sugerencia"> {{sugerencia.fecha | date:'dd/MM/yyyy'}} </span>
-
-               </div>
+              <span id="fecha--sugerencia"> {{sugerencia.fecha | date:'dd/MM/yyyy'}} </span>
 
             </div>
-            <div class="card-body"> 
-              <p class="card-text"> {{sugerencia.mensaje}} <span *jhiHasAnyAuthority="'ROLE_EMPRESA'"> <span id="visto--eye" *ngIf="sugerencia.leido == false" (click)="marcarComoLeido(sugerencia.id)" title="Marcar como leido">👁‍🗨</span> <span id="cross--sugerencia" title="eliminar sugerencia" (click)="eliminarSugerencia(sugerencia.id)">❌</span></span></p>     
-            </div>
-            <div *jhiHasAnyAuthority="'ROLE_EMPRESA'" class="card-footer border-success" [ngStyle]="{'background-color':sugerencia.prioridad === 'Baja' ? '#52BE80' : '#E74C3C'}"> 
-              <span id="check--text">Prioridad {{sugerencia.prioridad}} </span> 
-              <br>
-              <span id="check--text" > Redactado por {{sugerencia.usuario.nombre}} {{sugerencia.usuario.apellido}} </span>
-              <br>
-              <span id="check--text" *ngIf="sugerencia.leido">Leido</span>
-              <span id="check--text" *ngIf="!sugerencia.leido">No leido</span>
-            </div>       
+
+          </div>
+          <div class="card-body">
+            <p class="card-text"> {{sugerencia.mensaje}} <span *jhiHasAnyAuthority="'ROLE_EMPRESA'"> <span
+                  id="visto--eye" *ngIf="sugerencia.leido == false" (click)="marcarComoLeido(sugerencia.id)"
+                  title="Marcar como leido">👁‍🗨</span> <span id="cross--sugerencia" title="eliminar sugerencia"
+                  (click)="eliminarSugerencia(sugerencia.id)">❌</span></span></p>
+          </div>
+          <div *jhiHasAnyAuthority="'ROLE_EMPRESA'" class="card-footer border-success"
+            [ngStyle]="{'background-color':sugerencia.prioridad === 'Baja' ? '#52BE80' : '#E74C3C'}">
+            <span id="check--text">Prioridad {{sugerencia.prioridad}} </span>
+            <br>
+            <span id="check--text"> Redactado por {{sugerencia.usuario.nombre}} {{sugerencia.usuario.apellido}} </span>
+            <br>
+            <span id="check--text" *ngIf="sugerencia.leido">Leido</span>
+            <span id="check--text" *ngIf="!sugerencia.leido">No leido</span>
+          </div>
         </div>
 
       </div>
+
     </div>
+
+  </div>
 </div>

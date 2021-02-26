@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { ActivatedRoute, ParamMap, Router, Data } from '@angular/router';
@@ -8,8 +9,10 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IEmpleados } from 'app/shared/model/empleados.model';
 
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
+import { AccountService } from 'app/core/auth/account.service';
 import { EmpleadosService } from './empleados.service';
 import { EmpleadosDeleteDialogComponent } from './empleados-delete-dialog.component';
+import { EmpresasService } from '../empresas/empresas.service';
 
 @Component({
   selector: 'jhi-empleados',
@@ -24,9 +27,14 @@ export class EmpleadosComponent implements OnInit, OnDestroy {
   predicate!: string;
   ascending!: boolean;
   ngbPaginationPage = 1;
+  cuentaLogueada?: any;
+  empresaLogueada?: any;
+  empFiltrados: any;
 
   constructor(
     protected empleadosService: EmpleadosService,
+    protected accountService: AccountService,
+    protected empresasService: EmpresasService,
     protected activatedRoute: ActivatedRoute,
     protected router: Router,
     protected eventManager: JhiEventManager,
@@ -49,6 +57,14 @@ export class EmpleadosComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.accountService.identity().subscribe(account => {
+      this.cuentaLogueada = account!.login;
+    });
+
+    this.empresasService.findByUsuario(this.cuentaLogueada).subscribe(empresa => {
+      this.empresaLogueada = empresa.body;
+    });
+
     this.handleNavigation();
     this.registerChangeInEmpleados();
   }
@@ -109,6 +125,17 @@ export class EmpleadosComponent implements OnInit, OnDestroy {
       });
     }
     this.empleados = data || [];
+    console.clear();
+
+    console.log('Empleados sin filtrar => ', this.empleados);
+    if (this.empresaLogueada !== undefined) {
+      console.log('Empresa ', this.empresaLogueada['id']);
+      this.empleados = this.empleados.filter(empleado => {
+        return empleado.empresa!.id === this.empresaLogueada['id'];
+      });
+    }
+    console.log('Empleados filtrados => ', this.empleados);
+
     this.ngbPaginationPage = this.page;
   }
 
@@ -116,3 +143,5 @@ export class EmpleadosComponent implements OnInit, OnDestroy {
     this.ngbPaginationPage = this.page ?? 1;
   }
 }
+
+/* eslint-enable no-console */

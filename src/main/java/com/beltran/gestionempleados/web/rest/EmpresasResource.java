@@ -192,6 +192,13 @@ public class EmpresasResource {
         return ResponseUtil.wrapOrNotFound(empresas);
     }
 
+    @GetMapping("/empresas/logueada/{nombre}")
+    public ResponseEntity<Empresas> getEmpresasByUsuario(@PathVariable String nombre) {
+        log.debug("REST request to get Empresas by Usuario: {}", nombre);
+        Optional<Empresas> empresas = empresasRepository.findByUsuario(nombre);
+        return ResponseUtil.wrapOrNotFound(empresas);
+    }
+
     /**
      * {@code DELETE  /empresas/:id} : delete the "id" empresas.
      *
