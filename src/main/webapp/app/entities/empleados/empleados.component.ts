@@ -57,10 +57,12 @@ export class EmpleadosComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    // Obtengo el nombre de usuario de la persona logueada
     this.accountService.identity().subscribe(account => {
       this.cuentaLogueada = account!.login;
     });
 
+    // Obtengo la empresa Logueada, si es que es empresa
     this.empresasService.findByUsuario(this.cuentaLogueada).subscribe(empresa => {
       this.empresaLogueada = empresa.body;
     });

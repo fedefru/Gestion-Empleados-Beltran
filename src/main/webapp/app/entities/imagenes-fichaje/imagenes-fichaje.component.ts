@@ -12,6 +12,10 @@ import { IUsuarios } from 'app/shared/model/usuarios.model';
 import { UsuariosService } from '../usuarios/usuarios.service';
 import { LoginService } from 'app/core/login/login.service';
 import { UserService } from 'app/core/user/user.service';
+import { EmpresasService } from '../empresas/empresas.service';
+import { Empresas } from 'app/shared/model/empresas.model';
+import { IEmpleados } from 'app/shared/model/empleados.model';
+import { EmpleadosService } from '../empleados/empleados.service';
 
 @Component({
   selector: 'jhi-imagenes-fichaje',
@@ -24,33 +28,64 @@ export class ImagenesFichajeComponent implements OnInit {
   usuario!: any;
   server!: string;
   rutas?: any;
-  fechas?: any;
-  horas?: any;
+  fechas?: Array<[]> = [];
+  horas?: Array<[]> = [];
   regex: any;
   allImg?: string[] = [];
   usuarios: IUsuarios[] = [];
   filter!: boolean;
   imagenes?: any;
   roles: any;
+  inicial: boolean;
+  empresaLogueada?: any;
+  empleados?: IEmpleados[];
+  noTieneFichajesEmpleados!: boolean;
 
   constructor(
     protected imagenesFichajeService: ImagenesFichajeService,
     protected accountService: AccountService,
     protected usuarioService: UsuariosService,
+    protected empresasService: EmpresasService,
     protected loginService: LoginService,
     private loginModalService: LoginModalService,
+    protected empleadosService: EmpleadosService,
     protected userService: UserService,
     private router: Router
   ) {
     this.server = 'http://localhost:5000/get_image?filename=';
     this.regex = /-/gi;
     this.filter = false;
+    this.inicial = true;
+    this.noTieneFichajesEmpleados = false;
   }
 
   ngOnInit(): void {
     this.accountService.identity().subscribe(account => {
       this.cuenta = account!.login;
       this.roles = account!.authorities[0];
+    });
+
+    // Obtengo la empresa Logueada, si es que es empresa
+    this.empresasService.findByUsuario(this.cuenta).subscribe(empresa => {
+      this.empresaLogueada = empresa.body;
+    });
+
+    this.empleadosService.findAll().subscribe((resp: HttpResponse<any>) => {
+      this.empleados = resp.body;
+
+      console.clear();
+
+      console.log('Empleados sin filtrar => ', this.empleados);
+      if (this.empresaLogueada !== undefined && this.empleados !== undefined) {
+        console.log('Empresa ', this.empresaLogueada['id']);
+        this.empleados = this.empleados.filter(empleado => {
+          return empleado.empresa!.id === this.empresaLogueada['id'];
+        });
+      }
+
+      this.empleados?.length === 0 ? (this.noTieneFichajesEmpleados = false) : (this.noTieneFichajesEmpleados = true);
+
+      console.log('Empleados filtrados => ', this.empleados);
     });
 
     this.usuarioService.findUsuarioByAlias(this.cuenta.toLowerCase()).subscribe((resp: HttpResponse<any>) => {
@@ -69,6 +104,7 @@ export class ImagenesFichajeComponent implements OnInit {
         });
       });
     });
+
     this.loadAllImages();
   }
 
@@ -99,6 +135,9 @@ export class ImagenesFichajeComponent implements OnInit {
 
   loadAllImages(): void {
     this.allImg = [];
+    this.horas = [];
+    this.fechas = [];
+    this.inicial = true;
     // Cargo a todos los usuarios
     if (this.roles === 'ROLE_EMPRESA') {
       this.usuarioService.getAll().subscribe((res: HttpResponse<any>) => {
@@ -107,17 +146,25 @@ export class ImagenesFichajeComponent implements OnInit {
         // Ejecuto una llamada al servicio por cada usuario que tenga para traer sus imagenes
         this.usuarios.map(user => {
           this.imagenesFichajeService.queryImagenes(user.id).subscribe((resImg: HttpResponse<any>) => {
+            // Cargo en allImg las imagenes que recibo
             this.allImg?.push(resImg.body);
+            // Filtro los array.. vacios
             this.allImg = this.allImg?.filter(x => x.length > 0);
-            console.log('LoadAllImages =>', this.allImg);
-            this.fechas = this.allImg?.map((x: any) => {
-              return x.substring(x.lastIndexOf('_') + 1, x.lastIndexOf('T'));
-            });
+            if (this.allImg !== undefined) {
+              this.allImg.forEach((imgArray: any) => {
+                imgArray.forEach((img: any) => {
+                  this.fechas?.push(img.substring(img.lastIndexOf('_') + 1, img.lastIndexOf('T')));
+                });
+              });
 
-            this.horas = this.allImg?.map((x: any) => {
-              x = x.substring(x.lastIndexOf('T') + 1, x.lastIndexOf('.'));
-              return x.replace(this.regex, ':');
-            });
+              this.allImg.forEach((dato: any) => {
+                dato.forEach((hr: any) => {
+                  hr = hr.substring(hr.lastIndexOf('T') + 1, hr.lastIndexOf('.'));
+                  this.horas?.push(hr.replace(this.regex, ':'));
+                });
+              });
+              console.log('Todas mis img=> ', this.allImg);
+            }
           });
         });
       });
@@ -147,6 +194,7 @@ export class ImagenesFichajeComponent implements OnInit {
       this.allImg = [];
       this.fechas = [];
       this.horas = [];
+      this.inicial = false;
 
       this.usuarioService.findUsuarioByAlias(user).subscribe((resp: HttpResponse<any>) => {
         this.usuario = resp.body;

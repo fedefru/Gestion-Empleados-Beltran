@@ -1,5 +1,6 @@
 <div>
     <h1 *ngIf="usuario !== undefined" class="tittle"><span jhiTranslate="gestionEmpleadosApp.fichajes.home.fichajesDe"></span> {{usuario.nombre}}</h1>
+    <h1 *ngIf="inicial && usuario == undefined" class="tittle"><span jhiTranslate="gestionEmpleadosApp.fichajes.home.fichajeInicial"></span></h1>
     <br>
 
     <select *jhiHasAnyAuthority="'ROLE_EMPRESA'" #user (change)="filterImg(user.value)">
@@ -15,30 +16,50 @@
                 <img class="img--fichaje"   src="{{server}}{{ruta}}" alt="">
                <p>
                 <span id="fichaje--item" jhiTranslate="gestionEmpleadosApp.fichajes.home.fechaFichaje"> </span>
-                <span id="bold--item"> {{fechas[i] | date: 'dd/MM/yyyy'}}</span>
+                <span id="bold--item" *ngIf="fechas"> {{fechas[i] | date: 'dd/MM/yyyy'}}</span>
                </p>
                <p>
                 <span id="fichaje--item" jhiTranslate="gestionEmpleadosApp.fichajes.home.horaFichaje"></span>
-                <span id="bold--item"> {{horas[i]}}</span>
+                <span id="bold--item" *ngIf="horas"> {{horas[i]}}</span>
                 </p>
             </div>
         </div>   
     </div>
 
-    <div *ngIf="allImg">
+    <div *ngIf="allImg && !inicial">
         <div class="row" *jhiHasAnyAuthority="'ROLE_EMPRESA'">
             <div *ngFor="let img of allImg; let i = index" class="col-md-2 fichajes--box">
                 <img class="img--fichaje" src="{{server}}{{img}}" alt="">
                <p *ngIf="fechas">
                 <span id="fichaje--item" jhiTranslate="gestionEmpleadosApp.fichajes.home.fechaFichaje"> </span>
-                <span id="bold--item" > {{fechas[i] | date: 'dd/MM/yyyy'}}</span>
+                <span id="bold--item" *ngIf="fechas"> {{fechas[i] | date: 'dd/MM/yyyy'}}</span>
                </p>
                <p *ngIf="horas">
                 <span id="fichaje--item" jhiTranslate="gestionEmpleadosApp.fichajes.home.horaFichaje"></span>
-                <span id="bold--item"> {{horas[i]}}</span>
+                <span id="bold--item" *ngIf="horas"> {{horas[i]}}</span>
                 </p>
             </div>
         </div>   
+    </div>
+
+    <div  *ngIf="allImg && inicial">
+        <div *jhiHasAnyAuthority="'ROLE_EMPRESA'">
+            <div class="row" *ngFor="let img of allImg; let i = index">
+                    <div class="col-2 fichajes--box" *ngFor="let im of img; let i = index" >
+                        <img class="img--fichaje" src="{{server}}{{im}}" alt="">
+                        <p *ngIf="fechas">
+                            <span id="fichaje--item" jhiTranslate="gestionEmpleadosApp.fichajes.home.fechaFichaje">
+                            </span>
+                            <span id="bold--item"> {{fechas[i] | date: 'dd/MM/yyyy'}}</span>
+                        </p>
+                        <p *ngIf="horas">
+                            <span id="fichaje--item"
+                                jhiTranslate="gestionEmpleadosApp.fichajes.home.horaFichaje"></span>
+                            <span id="bold--item"> {{horas[i]}}</span>
+                        </p>
+                    </div>
+            </div>
+        </div>
     </div>
 </div>
 

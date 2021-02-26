@@ -4,6 +4,7 @@
       "home": {
         "title": "Fichajes",
         "titleInterfazFichaje": "Atención!",
+        "fichajeInicial": "Fichaje de todos los empleados",
         "subtitleInterfazFichaje": "Tenga en cuenta los siguientes consejos para una mejor experiencia",
         "tipOne": "Trate de encontrar un lugar con buena iluminación",
         "tipTwo": "Evite tener la luz natural o articial detrás de usted",

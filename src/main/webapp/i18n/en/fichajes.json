@@ -2,7 +2,8 @@
   "gestionEmpleadosApp": {
     "fichajes": {
       "home": {
-        "title": "Fichajes",
+        "title": "Check in",
+        "fichajeInicial": "Check in of all the employees",
         "titleInterfazFichaje": "Atention!",
         "subtitleInterfazFichaje": "Keep the following tips in mind for a better experience",
         "tipOne": "Try to find a place with good lighting",
